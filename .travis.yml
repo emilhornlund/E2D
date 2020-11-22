@@ -1,0 +1,54 @@
+language: cpp
+
+addons:
+  apt:
+    packages:
+      - libsdl2-dev
+  homebrew:
+    packages:
+      - sdl2
+
+jobs:
+  include:
+    - os: osx
+      compiler: gcc
+      osx_image: xcode11.2
+      env:
+        - GCC_VER="9"
+        - MATRIX_EVAL="CC=gcc-${GCC_VER} && CXX=g++-${GCC_VER}"
+
+    - os: osx
+      compiler: clang
+      osx_image: xcode11.2
+      env:
+        - MATRIX_EVAL=""
+
+    - os: linux
+      dist: focal
+      compiler: gcc
+      env:
+        - GCC_VER="9"
+        - MATRIX_EVAL="CC=gcc-${GCC_VER} && CXX=g++-${GCC_VER}"
+      addons.apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-9
+          - g++-9
+      after_script:
+        - bash <(curl -s https://codecov.io/bash) -x /usr/bin/gcov-${GCC_VER}
+
+    - os: linux
+      dist: focal
+      compiler: clang
+      env:
+        - MATRIX_EVAL="CC=clang && CXX=clang++"
+
+before_script:
+  - eval "${MATRIX_EVAL}"
+
+script:
+  - mkdir build && cd build
+  - cmake -DCMAKE_BUILD_TYPE=Debug -DE2D_BUILD_EXAMPLES=ON -DE2D_BUILD_TESTS=ON -DE2D_ENABLE_COVERAGE=ON ../
+  - cmake --build .
+  - ctest

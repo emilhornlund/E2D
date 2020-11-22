@@ -1,0 +1,3 @@
+ignore:
+  - "extlibs/**/*"
+  - "examples/**/*"
