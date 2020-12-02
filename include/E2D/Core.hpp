@@ -26,5 +26,6 @@
 
 #include <E2D/Core/Application.hpp>
 #include <E2D/Core/Export.hpp>
+#include <E2D/Core/Window.hpp>
 
 #endif //E2D_CORE_HPP

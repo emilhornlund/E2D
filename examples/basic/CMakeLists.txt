@@ -12,5 +12,5 @@ set(TARGET_NAME e2d-example-basic)
 e2d_add_example(${TARGET_NAME}
     SOURCES ${SRC_FILES}
     INCLUDE ${PROJECT_SOURCE_DIR}/examples/basic/include
-    DEPENDS e2d-core
+    DEPENDS e2d-system e2d-core
 )

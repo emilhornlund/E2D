@@ -21,41 +21,27 @@
  * THE SOFTWARE.
  */
 
-#include <E2D/Core/Application.hpp>
 #include <E2D/Core/Window.hpp>
 
-#include "EventHandler.hpp"
+#include <SDL.h>
 
-#include "SDL.h"
+e2d::Window::Window() :
+        m_window(nullptr) {}
 
-e2d::Application::Application() :
-        m_exitCode(0),
-        m_running(false),
-        m_window(std::make_shared<Window>()) {}
-
-e2d::Application::~Application() = default;
-
-bool e2d::Application::isRunning() const {
-    return this->m_running;
-}
-
-int e2d::Application::run() {
-    this->m_running = true;
-
-    this->m_window->open("E2D", {800, 600});
-
-    auto eventHandler = std::unique_ptr<EventHandler>(new EventHandler(*this));
-
-    while (this->m_running) {
-        eventHandler->pollEvent();
+e2d::Window::~Window() {
+    if (this->m_window != nullptr) {
+        SDL_DestroyWindow(this->m_window);
+        SDL_Quit();
     }
-
-    this->m_window->close();
-
-    return this->m_exitCode;
 }
 
-void e2d::Application::quit(int exitCode) {
-    this->m_running = false;
-    this->m_exitCode = exitCode;
+void e2d::Window::open(const std::string &title, const Vector2<unsigned int> &size) {
+    SDL_Init(SDL_INIT_VIDEO);
+    this->m_window = SDL_CreateWindow(title.c_str(), 0, 0, static_cast<int>(size.x), static_cast<int>(size.y), SDL_WINDOW_HIDDEN);
+    SDL_ShowWindow(this->m_window);
+}
+
+void e2d::Window::close() {
+    SDL_DestroyWindow(this->m_window);
+    SDL_Quit();
 }

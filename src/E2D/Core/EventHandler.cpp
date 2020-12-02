@@ -21,41 +21,23 @@
  * THE SOFTWARE.
  */
 
-#include <E2D/Core/Application.hpp>
-#include <E2D/Core/Window.hpp>
-
 #include "EventHandler.hpp"
+
+#include <E2D/Core/Application.hpp>
 
 #include "SDL.h"
 
-e2d::Application::Application() :
-        m_exitCode(0),
-        m_running(false),
-        m_window(std::make_shared<Window>()) {}
+e2d::EventHandler::EventHandler(Application &application) :
+        m_app(application) {}
 
-e2d::Application::~Application() = default;
+e2d::EventHandler::~EventHandler() = default;
 
-bool e2d::Application::isRunning() const {
-    return this->m_running;
-}
-
-int e2d::Application::run() {
-    this->m_running = true;
-
-    this->m_window->open("E2D", {800, 600});
-
-    auto eventHandler = std::unique_ptr<EventHandler>(new EventHandler(*this));
-
-    while (this->m_running) {
-        eventHandler->pollEvent();
+void e2d::EventHandler::pollEvent() {
+    SDL_Event event;
+    while (SDL_PollEvent(&event)) {
+        if (event.type == SDL_QUIT) {
+            this->m_app.get().quit(0);
+        }
     }
-
-    this->m_window->close();
-
-    return this->m_exitCode;
-}
-
-void e2d::Application::quit(int exitCode) {
-    this->m_running = false;
-    this->m_exitCode = exitCode;
+    SDL_Delay(32);
 }

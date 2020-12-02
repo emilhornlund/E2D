@@ -45,10 +45,10 @@ namespace e2d {
         /**
          * @brief Construct the vector from its coordinates
          *
-         * @param x X coordinate
+         * @param _x X coordinate
          * @param y Y coordinate
          */
-        Vector2(T x, T y);
+        Vector2(T _x, T y);
 
         /**
          * @brief Construct the vector from another type of vector
@@ -70,7 +70,7 @@ namespace e2d {
     Vector2<T>::Vector2() : x(0), y(0) {}
 
     template<typename T>
-    Vector2<T>::Vector2(T x, T y) : x(x), y(y) {}
+    Vector2<T>::Vector2(T _x, T _y) : x(_x), y(_y) {}
 
     template<typename T>
     template<typename U>

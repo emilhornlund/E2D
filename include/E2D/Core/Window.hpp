@@ -21,68 +21,55 @@
  * THE SOFTWARE.
  */
 
-#ifndef E2D_CORE_APPLICATION_HPP
-#define E2D_CORE_APPLICATION_HPP
+#ifndef E2D_CORE_WINDOW_HPP
+#define E2D_CORE_WINDOW_HPP
 
 #include <E2D/Core/Export.hpp>
+#include <E2D/System/Vector2.hpp>
 
-#include <memory>
+#include <string>
+
+struct SDL_Window;
 
 /**
  * @brief Engine2D
  */
 namespace e2d {
-    class EventHandler;
-    class Window;
 
     /**
-     * @brief Main application
+     * @brief Window
      */
-    class E2D_CORE_API Application {
+    class E2D_CORE_API Window final {
     public:
         /**
          * @brief Default constructor
          */
-        Application();
+        Window();
 
         /**
          * @brief Default destructor
          */
-        virtual ~Application() = 0;
+        ~Window();
 
         /**
-         * @brief Whether the application is running or not
+         * @brief
          *
-         * @return True if the application is running, false otherwise
+         * @param title
+         * @param size
          */
-        bool isRunning() const;
+        void open(const std::string &title, const Vector2<unsigned int> &size);
 
         /**
-         * @brief Starts the application game loop
-         *
-         * @return Exitcode after finished run
+         * @brief
          */
-        int run();
-
-        /**
-         * @brief Quits the application
-         *
-         * @param exitCode Exitcode that should be returned
-         */
-        void quit(int exitCode = 0);
+        void close();
 
     private:
-        /// Code used when returning from application running state
-        int m_exitCode;
+        /// The underlying sdl window
+        SDL_Window *m_window;
 
-        /// Whether the application is running or not
-        bool m_running;
-
-        /// Window that serves as a target for rendering
-        std::shared_ptr<Window> m_window;
-
-    }; // class Application
+    }; // class Window
 
 } // namespace e2d
 
-#endif //E2D_CORE_APPLICATION_HPP
+#endif //E2D_CORE_WINDOW_HPP
