@@ -82,6 +82,9 @@ macro(e2d_add_library TARGET_NAME)
         add_library(${TARGET_NAME} STATIC ${THIS_SOURCES})
     endif()
 
+    # determine c++ linker language
+    set_target_properties(${TARGET_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+
     # define the export symbol of the module
     string(REPLACE "-" "_" NAME_UPPER "${TARGET_NAME}")
     string(TOUPPER "${NAME_UPPER}" NAME_UPPER)

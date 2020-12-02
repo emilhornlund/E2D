@@ -7,4 +7,5 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/modules/")
 # set the output directory for E2D libraries
 set(LIBRARY_OUTPUT_PATH "${PROJECT_BINARY_DIR}/lib")
 
+add_subdirectory(System)
 add_subdirectory(Core)
