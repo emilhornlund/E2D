@@ -1,0 +1,7 @@
+# CLion IDE
+.idea/
+
+# CMake
+cmake-build-*/
+build/
+release/
