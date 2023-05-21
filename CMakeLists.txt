@@ -7,6 +7,19 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
 
 set(CMAKE_CXX_STANDARD 20)
 
+if(E2D_OS_WINDOWS)
+    list(APPEND CMAKE_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/extlibs/headers")
+    if(E2D_COMPILER_GCC OR (E2D_COMPILER_CLANG AND MINGW))
+        if(ARCH_32BITS)
+            list(APPEND CMAKE_LIBRARY_PATH "${PROJECT_SOURCE_DIR}/extlibs/libs-mingw/x86")
+            list(APPEND CMAKE_LIBRARY_PATH "${PROJECT_SOURCE_DIR}/extlibs/bin/x86")
+        elseif(ARCH_64BITS)
+            list(APPEND CMAKE_LIBRARY_PATH "${PROJECT_SOURCE_DIR}/extlibs/libs-mingw/x64")
+            list(APPEND CMAKE_LIBRARY_PATH "${PROJECT_SOURCE_DIR}/extlibs/bin/x64")
+        endif()
+    endif()
+endif()
+
 find_package(SDL2 REQUIRED)
 
 add_executable(e2d main.cpp)
