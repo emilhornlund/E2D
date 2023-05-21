@@ -1,0 +1,29 @@
+include(${PROJECT_SOURCE_DIR}/cmake/Macros.cmake)
+
+if(E2D_OS_WINDOWS)
+    list(APPEND CMAKE_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/extlibs/headers")
+    if(E2D_COMPILER_GCC OR (E2D_COMPILER_CLANG AND MINGW))
+        if(ARCH_32BITS)
+            list(APPEND CMAKE_LIBRARY_PATH "${PROJECT_SOURCE_DIR}/extlibs/libs-mingw/x86")
+            list(APPEND CMAKE_LIBRARY_PATH "${PROJECT_SOURCE_DIR}/extlibs/bin/x86")
+        elseif(ARCH_64BITS)
+            list(APPEND CMAKE_LIBRARY_PATH "${PROJECT_SOURCE_DIR}/extlibs/libs-mingw/x64")
+            list(APPEND CMAKE_LIBRARY_PATH "${PROJECT_SOURCE_DIR}/extlibs/bin/x64")
+        endif()
+    endif()
+endif()
+
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/modules/")
+set(LIBRARY_OUTPUT_PATH "${PROJECT_BINARY_DIR}/lib")
+
+find_package(SDL2 REQUIRED)
+
+add_subdirectory(Engine)
+
+if(E2D_OS_WINDOWS)
+    if(ARCH_32BITS)
+        file(COPY "${PROJECT_SOURCE_DIR}/extlibs/bin/x86/SDL2.dll" DESTINATION "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+    elseif(ARCH_64BITS)
+        file(COPY "${PROJECT_SOURCE_DIR}/extlibs/bin/x64/SDL2.dll" DESTINATION "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+    endif()
+endif()

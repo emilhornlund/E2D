@@ -24,41 +24,31 @@
  * THE SOFTWARE.
  */
 
-#include <SDL.h>
+#include <E2D/Engine/Application.hpp>
 
 #include <algorithm>
 #include <iostream>
 
+class HelloWorldApplication final: public e2d::Application {
+public:
+    HelloWorldApplication();
+
+    ~HelloWorldApplication() final;
+};
+
+HelloWorldApplication::HelloWorldApplication() : e2d::Application("Hello World Example") {}
+
+HelloWorldApplication::~HelloWorldApplication() = default;
+
 int main(int argc, char *argv[]) {
     std::copy(argv, argv + argc, std::ostream_iterator<char *>(std::cout, "\n"));
 
-    // Initialize SDL
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        std::cerr << "SDL initialization failed: " << SDL_GetError() << std::endl;
-        return 1;
-    }
+    auto *application = new HelloWorldApplication();
 
-    // Create a window
-    SDL_Window* window = SDL_CreateWindow("SDL2 Example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
-    if (window == nullptr) {
-        std::cerr << "Failed to create window: " << SDL_GetError() << std::endl;
-        SDL_Quit();
-        return 1;
-    }
+    int exitCode = application->run();
 
-    // Event loop
-    bool isRunning = true;
-    while (isRunning) {
-        SDL_Event event;
-        while (SDL_PollEvent(&event) != 0) {
-            if (event.type == SDL_QUIT) {
-                isRunning = false;
-            }
-        }
-    }
+    delete application;
+    application = nullptr;
 
-    // Cleanup and exit
-    SDL_DestroyWindow(window);
-    SDL_Quit();
-    return 0;
+    return exitCode;
 }
