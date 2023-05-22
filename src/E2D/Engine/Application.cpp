@@ -32,9 +32,9 @@
 #include <utility>
 
 e2d::Application::Application(std::string windowTitle) :
-        m_windowTitle(std::move(windowTitle)),
         m_exitCode(0),
         m_running(false),
+        m_windowTitle(std::move(windowTitle)),
         m_window(nullptr),
         m_renderer(nullptr) {}
 

@@ -1,3 +1,7 @@
+include(CMakeParseArguments)
+
+include(${CMAKE_CURRENT_LIST_DIR}/CompilerWarnings.cmake)
+
 function(e2d_set_public_symbols_hidden target)
     set_target_properties(${target} PROPERTIES
                           CXX_VISIBILITY_PRESET hidden
@@ -20,6 +24,7 @@ macro(e2d_add_library module)
 
     target_compile_features(${target} PUBLIC cxx_std_20)
 
+    e2d_set_target_warnings(${target})
     e2d_set_public_symbols_hidden(${target})
 
     string(REPLACE "-" "_" NAME_UPPER "${target}")
@@ -68,6 +73,7 @@ macro(e2d_add_example target)
     set(target_input ${THIS_SOURCES})
     add_executable(${target} ${target_input})
 
+    e2d_set_target_warnings(${target})
     e2d_set_public_symbols_hidden(${target})
 
     set_target_properties(${target} PROPERTIES DEBUG_POSTFIX -d)
