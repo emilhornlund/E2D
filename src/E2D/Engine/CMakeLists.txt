@@ -9,5 +9,4 @@ set(SRC
 
 e2d_add_library(Engine SOURCES ${SRC})
 
-target_include_directories(e2d-engine PRIVATE ${SDL2_INCLUDE_DIR})
-target_link_libraries(e2d-engine PRIVATE ${SDL2_LIBRARY})
+target_link_libraries(e2d-engine PRIVATE SDL2)

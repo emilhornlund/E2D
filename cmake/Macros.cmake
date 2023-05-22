@@ -76,3 +76,28 @@ macro(e2d_add_example target)
         target_link_libraries(${target} PRIVATE ${THIS_DEPENDS})
     endif()
 endmacro()
+
+function(e2d_find_package)
+    list(GET ARGN 0 target)
+    list(REMOVE_AT ARGN 0)
+
+    if(TARGET ${target})
+        message(FATAL_ERROR "Target '${target}' is already defined")
+    endif()
+
+    cmake_parse_arguments(THIS "" "" "INCLUDE;LINK" ${ARGN})
+    if(THIS_UNPARSED_ARGUMENTS)
+        message(FATAL_ERROR "Unknown arguments when calling e2d_find_package: ${THIS_UNPARSED_ARGUMENTS}")
+    endif()
+
+    find_package(${target} REQUIRED)
+    add_library(${target} INTERFACE)
+
+    foreach(include_dir IN LISTS THIS_INCLUDE)
+        target_include_directories(${target} SYSTEM INTERFACE "$<BUILD_INTERFACE:${${include_dir}}>")
+    endforeach()
+
+    foreach(link_item IN LISTS THIS_LINK)
+        target_link_libraries(${target} INTERFACE "$<BUILD_INTERFACE:${${link_item}}>")
+    endforeach()
+endfunction()

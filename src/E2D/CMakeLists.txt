@@ -22,7 +22,7 @@ endif()
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/modules/")
 set(LIBRARY_OUTPUT_PATH "${PROJECT_BINARY_DIR}/lib")
 
-find_package(SDL2 REQUIRED)
+e2d_find_package(SDL2 INCLUDE "SDL2_INCLUDE_DIR" LINK "SDL2_LIBRARY")
 
 add_subdirectory(Engine)
 
