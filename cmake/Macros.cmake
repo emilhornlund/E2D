@@ -1,3 +1,9 @@
+function(e2d_set_public_symbols_hidden target)
+    set_target_properties(${target} PROPERTIES
+                          CXX_VISIBILITY_PRESET hidden
+                          VISIBILITY_INLINES_HIDDEN YES)
+endfunction()
+
 macro(e2d_add_library module)
     cmake_parse_arguments(THIS "STATIC" "" "SOURCES" ${ARGN})
     if(NOT "${THIS_UNPARSED_ARGUMENTS}" STREQUAL "")
@@ -13,6 +19,8 @@ macro(e2d_add_library module)
     add_library(E2D::${module} ALIAS ${target})
 
     target_compile_features(${target} PUBLIC cxx_std_20)
+
+    e2d_set_public_symbols_hidden(${target})
 
     string(REPLACE "-" "_" NAME_UPPER "${target}")
     string(TOUPPER "${NAME_UPPER}" NAME_UPPER)
@@ -59,6 +67,8 @@ macro(e2d_add_example target)
 
     set(target_input ${THIS_SOURCES})
     add_executable(${target} ${target_input})
+
+    e2d_set_public_symbols_hidden(${target})
 
     set_target_properties(${target} PROPERTIES DEBUG_POSTFIX -d)
 
