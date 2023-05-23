@@ -52,6 +52,16 @@
         // Unsupported UNIX system
         #error This UNIX operating system is not supported by E2D library
     #endif
+#elif defined(__APPLE__) && defined(__MACH__)
+    #include "TargetConditionals.h"
+
+    #if TARGET_OS_MAC
+        // MacOS
+        #define E2D_SYSTEM_MACOS
+    #else
+        // Unsupported Apple system
+        #error This Apple operating system is not supported by SFML library
+    #endif
 #else
     // Unsupported system
     #error This operating system is not supported by E2D library
