@@ -1,0 +1,78 @@
+name: E2D CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {
+              name: "Windows MSVC",
+              os: windows-latest,
+              build_type: "Release",
+              cc: "cl",
+              cxx: "cl",
+              environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
+              generators: "Visual Studio 17 2022"
+            }
+          - {
+              name: "Windows MinGW",
+              os: windows-latest,
+              build_type: "Release",
+              cc: "gcc",
+              cxx: "g++",
+              generators: "Ninja"
+            }
+          - {
+              name: "Linux GCC",
+              os: ubuntu-latest,
+              build_type: "Release",
+              cc: "gcc",
+              cxx: "g++",
+              generators: "Ninja"
+            }
+          - {
+              name: "macOS Clang",
+              os: macos-latest,
+              build_type: "Release",
+              cc: "clang",
+              cxx: "clang++",
+              generators: "Ninja"
+            }
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        if: startsWith(matrix.config.os, 'Windows')
+        run: |
+          choco install ninja cmake
+          ninja --version
+          cmake --version
+
+      - name: Install dependencies
+        if: startsWith(matrix.config.name, 'Linux')
+        run: |
+          sudo apt-get update
+          sudo apt-get install ninja-build cmake libsdl2-dev
+          ninja --version
+          cmake --version
+          gcc --version
+
+      - name: Install dependencies
+        if: startsWith(matrix.config.os, 'macOS')
+        run: |
+          brew install cmake ninja
+          ninja --version
+          cmake --version
+
+      - name: Configure CMake
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} -G "${{ matrix.config.generators }}"
+
+      - name: Build project
+        run: cmake --build build --config ${{ matrix.config.build_type }}
