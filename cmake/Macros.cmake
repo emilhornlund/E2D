@@ -8,14 +8,32 @@ function(e2d_set_public_symbols_hidden target)
                           VISIBILITY_INLINES_HIDDEN YES)
 endfunction()
 
+macro(e2d_set_xcode_property TARGET XCODE_PROPERTY XCODE_VALUE)
+    set_property (TARGET ${TARGET} PROPERTY XCODE_ATTRIBUTE_${XCODE_PROPERTY} ${XCODE_VALUE})
+endmacro()
+
+function(e2d_set_stdlib target)
+    if(E2D_OS_WINDOWS AND E2D_COMPILER_GCC)
+        if(E2D_USE_STATIC_STD_LIBS AND NOT E2D_COMPILER_GCC_TDM)
+            target_link_libraries(${target} PRIVATE "-static-libgcc" "-static-libstdc++")
+        elseif(NOT E2D_USE_STATIC_STD_LIBS AND E2D_COMPILER_GCC_TDM)
+            target_link_libraries(${target} PRIVATE "-shared-libgcc" "-shared-libstdc++")
+        endif()
+    endif()
+
+    if(E2D_OS_MACOSX)
+        e2d_set_xcode_property(${target} CLANG_CXX_LIBRARY "libc++")
+    endif()
+endfunction()
+
 macro(e2d_add_library module)
-    cmake_parse_arguments(THIS "STATIC" "" "SOURCES" ${ARGN})
+    cmake_parse_arguments(THIS "" "" "SOURCES" ${ARGN})
     if(NOT "${THIS_UNPARSED_ARGUMENTS}" STREQUAL "")
         message(FATAL_ERROR "Extra unparsed arguments when calling e2d_add_library: ${THIS_UNPARSED_ARGUMENTS}")
     endif()
 
     string(TOLOWER e2d-${module} target)
-    if(THIS_STATIC)
+    if(NOT BUILD_SHARED_LIBS)
         add_library(${target} STATIC ${THIS_SOURCES})
     else()
         add_library(${target} ${THIS_SOURCES})
@@ -33,7 +51,7 @@ macro(e2d_add_library module)
 
     set_target_properties(${target} PROPERTIES EXPORT_NAME E2D::${module})
 
-    if(BUILD_SHARED_LIBS AND NOT THIS_STATIC)
+    if(BUILD_SHARED_LIBS)
         if(E2D_OS_WINDOWS)
             set_target_properties(${target} PROPERTIES DEBUG_POSTFIX -d)
             set_target_properties(${target} PROPERTIES SUFFIX "-${PROJECT_VERSION_MAJOR}${CMAKE_SHARED_LIBRARY_SUFFIX}")
@@ -50,7 +68,13 @@ macro(e2d_add_library module)
         set_target_properties(${target} PROPERTIES RELEASE_POSTFIX -s)
         set_target_properties(${target} PROPERTIES MINSIZEREL_POSTFIX -s)
         set_target_properties(${target} PROPERTIES RELWITHDEBINFO_POSTFIX -s)
+        
+        if(E2D_USE_STATIC_STD_LIBS)
+            set_property(TARGET ${target} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+        endif()
     endif()
+
+    e2d_set_stdlib(${target})
 
     if (E2D_GENERATE_PDB)
         if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
@@ -59,7 +83,7 @@ macro(e2d_add_library module)
             set(E2D_PDB_POSTFIX "")
         endif()
 
-        if(BUILD_SHARED_LIBS AND NOT THIS_STATIC)
+        if(BUILD_SHARED_LIBS)
             set_target_properties(${target} PROPERTIES
                                   PDB_NAME "${target}${E2D_PDB_POSTFIX}"
                                   PDB_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
@@ -91,10 +115,16 @@ macro(e2d_add_example target)
     set(target_input ${THIS_SOURCES})
     add_executable(${target} ${target_input})
 
+    if(E2D_USE_STATIC_STD_LIBS)
+        set_property(TARGET ${target} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+    endif()
+
     e2d_set_target_warnings(${target})
     e2d_set_public_symbols_hidden(${target})
 
     set_target_properties(${target} PROPERTIES DEBUG_POSTFIX -d)
+
+    e2d_set_stdlib(${target})
 
     if(THIS_DEPENDS)
         target_link_libraries(${target} PRIVATE ${THIS_DEPENDS})

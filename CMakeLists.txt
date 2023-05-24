@@ -19,6 +19,14 @@ if(E2D_COMPILER_MSVC)
     e2d_set_option(E2D_GENERATE_PDB TRUE BOOL "True to generate PDB debug symbols, FALSE otherwise.")
 endif()
 
+if(E2D_OS_WINDOWS)
+    e2d_set_option(E2D_USE_STATIC_STD_LIBS FALSE BOOL "TRUE to statically link to the standard libraries, FALSE to use them as DLLs")
+    
+    if(BUILD_SHARED_LIBS AND E2D_USE_STATIC_STD_LIBS)
+        message(FATAL_ERROR "BUILD_SHARED_LIBS and E2D_USE_STATIC_STD_LIBS cannot be used together")
+    endif()
+endif()
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
 add_subdirectory(src/E2D)
