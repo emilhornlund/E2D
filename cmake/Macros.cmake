@@ -52,6 +52,24 @@ macro(e2d_add_library module)
         set_target_properties(${target} PROPERTIES RELWITHDEBINFO_POSTFIX -s)
     endif()
 
+    if (E2D_GENERATE_PDB)
+        if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+            set(E2D_PDB_POSTFIX "-d")
+        else()
+            set(E2D_PDB_POSTFIX "")
+        endif()
+
+        if(BUILD_SHARED_LIBS AND NOT THIS_STATIC)
+            set_target_properties(${target} PROPERTIES
+                                  PDB_NAME "${target}${E2D_PDB_POSTFIX}"
+                                  PDB_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
+        else()
+            set_target_properties(${target} PROPERTIES
+                                  COMPILE_PDB_NAME "${target}-s${E2D_PDB_POSTFIX}"
+                                  COMPILE_PDB_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
+        endif()
+    endif()
+
     set_target_properties(${target} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
     set_target_properties(${target} PROPERTIES VERSION ${PROJECT_VERSION})
 

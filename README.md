@@ -17,7 +17,8 @@ The E2D project provides several configuration options that can be set during th
 
 - `CMAKE_BUILD_TYPE`: Choose the type of build. Valid options are `Debug` or `Release`. By default, the build type is set to `Release`.
 - `BUILD_SHARED_LIBS`: Set this variable to `TRUE` to build E2D as shared libraries or `FALSE` to build it as static libraries. The default value is `TRUE`, which means E2D will be built as shared libraries.
-
+- `E2D_GENERATE_PDB`: Set this variable to `TRUE` to generate PDB debug symbols for MSVC compiler, or `FALSE` to disable PDB generation. PDB files contain debugging information and are specific to Windows and MSVC compilers. By default, PDB generation is enabled.
+- 
 To configure these options, use the `-D` flag when generating the build files. For example:
 
 ```shell
