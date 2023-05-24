@@ -28,6 +28,7 @@ set(LIBRARY_OUTPUT_PATH "${PROJECT_BINARY_DIR}/lib")
 
 e2d_find_package(SDL2 INCLUDE "SDL2_INCLUDE_DIR" LINK "SDL2_LIBRARY")
 
+add_subdirectory(Core)
 add_subdirectory(Engine)
 
 if(E2D_OS_WINDOWS)

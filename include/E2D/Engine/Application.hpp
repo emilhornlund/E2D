@@ -28,6 +28,7 @@
 #define E2D_ENGINE_APPLICATION_HPP
 
 #include <E2D/Engine/Export.hpp>
+#include <E2D/Core/NonCopyable.hpp>
 
 #include <string>
 
@@ -42,7 +43,7 @@ namespace e2d {
     /**
      * @brief Represents the application class.
      */
-    class E2D_ENGINE_API Application {
+    class E2D_ENGINE_API Application : NonCopyable {
     public:
         /**
          * @brief Constructs an Application object.

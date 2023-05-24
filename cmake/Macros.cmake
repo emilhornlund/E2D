@@ -27,7 +27,7 @@ function(e2d_set_stdlib target)
 endfunction()
 
 macro(e2d_add_library module)
-    cmake_parse_arguments(THIS "" "" "SOURCES" ${ARGN})
+    cmake_parse_arguments(THIS "INTERFACE" "" "SOURCES" ${ARGN})
     if(NOT "${THIS_UNPARSED_ARGUMENTS}" STREQUAL "")
         message(FATAL_ERROR "Extra unparsed arguments when calling e2d_add_library: ${THIS_UNPARSED_ARGUMENTS}")
     endif()
@@ -35,14 +35,23 @@ macro(e2d_add_library module)
     string(TOLOWER e2d-${module} target)
     if(NOT BUILD_SHARED_LIBS)
         add_library(${target} STATIC ${THIS_SOURCES})
+    elseif(THIS_INTERFACE)
+        add_library(${target} INTERFACE)
+        target_sources(${target} INTERFACE ${THIS_SOURCES})
     else()
         add_library(${target} ${THIS_SOURCES})
     endif()
     add_library(E2D::${module} ALIAS ${target})
 
-    target_compile_features(${target} PUBLIC cxx_std_20)
+    if(NOT THIS_INTERFACE)
+        target_compile_features(${target} PUBLIC cxx_std_20)
+    endif()
 
-    e2d_set_target_warnings(${target})
+    set_target_properties(${target} PROPERTIES LINKER_LANGUAGE CXX)
+
+    if(NOT THIS_INTERFACE)
+        e2d_set_target_warnings(${target})
+    endif()
     e2d_set_public_symbols_hidden(${target})
 
     string(REPLACE "-" "_" NAME_UPPER "${target}")
@@ -97,9 +106,13 @@ macro(e2d_add_library module)
     set_target_properties(${target} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
     set_target_properties(${target} PROPERTIES VERSION ${PROJECT_VERSION})
 
-    target_include_directories(${target}
-            PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-            PRIVATE ${PROJECT_SOURCE_DIR}/src)
+    if(THIS_INTERFACE)
+        target_include_directories(${target} INTERFACE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>)
+    else()
+        target_include_directories(${target}
+                PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+                PRIVATE ${PROJECT_SOURCE_DIR}/src)
+    endif()
 
     if(NOT BUILD_SHARED_LIBS)
         target_compile_definitions(${target} PUBLIC "E2D_STATIC")
