@@ -36,3 +36,7 @@ else()
     message(FATAL_ERROR "Unsupported compiler")
     return()
 endif()
+
+if(E2D_OS_MACOS AND NOT E2D_COMPILER_CLANG)
+    message(FATAL_ERROR "Clang is the only supported compiler on macOS")
+endif()
