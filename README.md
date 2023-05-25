@@ -1,3 +1,5 @@
+![example workflow](https://github.com/emilhornlund/E2D/actions/workflows/main.yml/badge.svg)
+
 # E2D
 
 My own, Emil's 2D (E2D) game engine written in C++20 using SDL2.
