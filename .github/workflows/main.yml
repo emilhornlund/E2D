@@ -72,7 +72,7 @@ jobs:
           cmake --version
 
       - name: Configure CMake
-        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} -G "${{ matrix.config.generators }}"
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} -DE2D_BUILD_EXAMPLES=ON -G "${{ matrix.config.generators }}"
 
       - name: Build project
         run: cmake --build build --config ${{ matrix.config.build_type }}

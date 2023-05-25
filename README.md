@@ -21,6 +21,8 @@ The E2D project provides several configuration options that can be set during th
 - `BUILD_SHARED_LIBS`: Set this variable to `TRUE` to build E2D as shared libraries or `FALSE` to build it as static libraries. The default value is `TRUE`, which means E2D will be built as shared libraries.
 - `E2D_GENERATE_PDB`: Set this variable to `TRUE` to generate PDB debug symbols for MSVC compiler, or `FALSE` to disable PDB generation. PDB files contain debugging information and are specific to Windows and MSVC compilers. By default, PDB generation is enabled.
 - `E2D_USE_STATIC_STD_LIBS`:  Set this variable to  `TRUE` to statically link to the standard libraries, or `FALSE` to use them as DLLs. By default, statically linking the standard libraries are disabled.
+- `E2D_BUILD_ENGINE`: Set this variable to `TRUE` to enable the building of the E2D library module called "Engine", or `FALSE` to disable it. By default, building the "Engine" module is enabled.
+- `E2D_BUILD_EXAMPLES`: Set this variable to `TRUE` to enable the building of the project examples, or `FALSE` to disable it. By default, building the examples is disabled.
 
 To configure these options, use the `-D` flag when generating the build files. For example:
 
