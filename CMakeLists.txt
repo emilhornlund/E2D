@@ -15,6 +15,10 @@ include(cmake/Config.cmake)
 
 e2d_set_option(BUILD_SHARED_LIBS TRUE BOOL "TRUE to build E2D as shared libraries, FALSE to build it as static libraries (default: TRUE)")
 
+if(E2D_OS_MACOS)
+    e2d_set_option(E2D_BUILD_FRAMEWORKS FALSE BOOL "TRUE to build E2D as frameworks libraries (release only), FALSE to build according to BUILD_SHARED_LIBS (default: FALSE)")
+endif()
+
 e2d_set_option(E2D_BUILD_ENGINE TRUE BOOL "TRUE to build E2D's Engine module. (default: TRUE)")
 
 if(E2D_COMPILER_MSVC)
@@ -29,6 +33,20 @@ if(E2D_OS_WINDOWS)
     endif()
 endif()
 
+if(E2D_OS_MACOS)
+    if(E2D_BUILD_FRAMEWORKS)
+        if(NOT CMAKE_BUILD_TYPE STREQUAL "Release")
+            message(FATAL_ERROR "CMAKE_BUILD_TYPE should be \"Release\" when E2D_BUILD_FRAMEWORKS is TRUE")
+            return()
+        endif()
+
+        if(NOT BUILD_SHARED_LIBS)
+            message(FATAL_ERROR "BUILD_SHARED_LIBS should be TRUE when E2D_BUILD_FRAMEWORKS is TRUE")
+            return()
+        endif()
+    endif()
+endif()
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
 add_subdirectory(src/E2D)
@@ -36,4 +54,61 @@ add_subdirectory(src/E2D)
 e2d_set_option(E2D_BUILD_EXAMPLES FALSE BOOL "TRUE to build the E2D examples, FALSE to ignore them (default: FALSE)")
 if(E2D_BUILD_EXAMPLES AND NOT E2D_OS_ANDROID)
     add_subdirectory(examples)
+endif()
+
+if(NOT E2D_BUILD_FRAMEWORKS)
+    # TODO: install header files
+    
+    if(E2D_GENERATE_PDB)
+        # TODO: install pdb files
+    endif()
+else()
+    file(GLOB E2D_HEADERS RELATIVE ${PROJECT_SOURCE_DIR} "include/E2D/*")
+
+    set_property(GLOBAL PROPERTY XCODE_EMIT_EFFECTIVE_PLATFORM_NAME OFF)
+
+    add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/dummy.cpp
+                       COMMAND touch ${CMAKE_CURRENT_BINARY_DIR}/dummy.cpp
+                       VERBATIM)
+
+    set(E2D_SOURCES ${E2D_HEADERS})
+    list(APPEND E2D_SOURCES ${CMAKE_CURRENT_BINARY_DIR}/dummy.cpp)
+
+    add_library(E2D ${E2D_SOURCES})
+
+    target_compile_features(E2D PUBLIC cxx_std_20)
+
+    e2d_set_stdlib(E2D)
+
+    set_target_properties(E2D PROPERTIES
+                          FRAMEWORK TRUE
+                          FRAMEWORK_VERSION ${PROJECT_VERSION}
+                          MACOSX_FRAMEWORK_IDENTIFIER com.emilhornlund.E2D
+                          MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${PROJECT_VERSION}
+                          MACOSX_FRAMEWORK_BUNDLE_VERSION ${PROJECT_VERSION}
+                          PUBLIC_HEADER "${E2D_HEADERS}")
+
+    add_custom_command(TARGET E2D POST_BUILD COMMAND cp -r
+                      ${PROJECT_SOURCE_DIR}/include/E2D/Config.hpp
+                      ${PROJECT_SOURCE_DIR}/include/E2D/Core.hpp
+                      ${PROJECT_SOURCE_DIR}/include/E2D/Core
+                      $<TARGET_FILE_DIR:E2D>/Headers
+                      VERBATIM)
+
+    if(E2D_BUILD_ENGINE)
+        add_custom_command(TARGET E2D POST_BUILD COMMAND cp -r
+                           ${PROJECT_SOURCE_DIR}/include/E2D/Engine.hpp
+                           ${PROJECT_SOURCE_DIR}/include/E2D/Engine
+                           $<TARGET_FILE_DIR:E2D>/Headers
+                           VERBATIM)
+    endif()
+
+    set_target_properties(E2D PROPERTIES INSTALL_NAME_DIR "@rpath")
+    if(NOT CMAKE_SKIP_BUILD_RPATH)
+        set_target_properties(${target} PROPERTIES BUILD_WITH_INSTALL_NAME_DIR TRUE)
+    endif()
+
+    install(TARGETS E2D
+            FRAMEWORK DESTINATION "."
+            COMPONENT devel)
 endif()

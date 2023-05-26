@@ -103,6 +103,24 @@ macro(e2d_add_library module)
         endif()
     endif()
 
+    if(E2D_OS_MACOS AND BUILD_SHARED_LIBS)
+        if(E2D_BUILD_FRAMEWORKS)
+            set_target_properties(${target} PROPERTIES
+                    FRAMEWORK TRUE
+                    FRAMEWORK_VERSION ${PROJECT_VERSION}
+                    MACOSX_FRAMEWORK_IDENTIFIER com.emilhornlund.${target}
+                    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${PROJECT_VERSION}
+                    MACOSX_FRAMEWORK_BUNDLE_VERSION ${PROJECT_VERSION})
+        endif()
+
+        if(NOT CMAKE_SKIP_RPATH AND NOT CMAKE_SKIP_INSTALL_RPATH AND NOT CMAKE_INSTALL_RPATH AND NOT CMAKE_INSTALL_RPATH_USE_LINK_PATH AND NOT CMAKE_INSTALL_NAME_DIR)
+            set_target_properties(${target} PROPERTIES INSTALL_NAME_DIR "@rpath")
+            if(NOT CMAKE_SKIP_BUILD_RPATH)
+                set_target_properties(${target} PROPERTIES BUILD_WITH_INSTALL_NAME_DIR TRUE)
+            endif()
+        endif()
+    endif()
+
     set_target_properties(${target} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
     set_target_properties(${target} PROPERTIES VERSION ${PROJECT_VERSION})
 
@@ -112,6 +130,12 @@ macro(e2d_add_library module)
         target_include_directories(${target}
                 PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
                 PRIVATE ${PROJECT_SOURCE_DIR}/src)
+    endif()
+    
+    if(E2D_BUILD_FRAMEWORKS)
+        target_include_directories(${target} INTERFACE $<INSTALL_INTERFACE:E2D.framework>)
+    else()
+        target_include_directories(${target} INTERFACE $<INSTALL_INTERFACE:include>)
     endif()
 
     if(NOT BUILD_SHARED_LIBS)

@@ -23,6 +23,7 @@ The E2D project provides several configuration options that can be set during th
 - `E2D_USE_STATIC_STD_LIBS`:  Set this variable to  `TRUE` to statically link to the standard libraries, or `FALSE` to use them as DLLs. By default, statically linking the standard libraries are disabled.
 - `E2D_BUILD_ENGINE`: Set this variable to `TRUE` to enable the building of the E2D library module called "Engine", or `FALSE` to disable it. By default, building the "Engine" module is enabled.
 - `E2D_BUILD_EXAMPLES`: Set this variable to `TRUE` to enable the building of the project examples, or `FALSE` to disable it. By default, building the examples is disabled.
+- `E2D_BUILD_FRAMEWORKS`: Set this variable to `TRUE` to build E2D as framework libraries (release only), or `FALSE` to build according to `BUILD_SHARED_LIBS`. By default, framework library building is disabled.
 
 To configure these options, use the `-D` flag when generating the build files. For example:
 
