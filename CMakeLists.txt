@@ -21,6 +21,25 @@ endif()
 
 e2d_set_option(E2D_BUILD_ENGINE TRUE BOOL "TRUE to build E2D's Engine module. (default: TRUE)")
 
+e2d_set_option(E2D_USE_SYSTEM_DEPS FALSE BOOL "TRUE to use system dependencies, FALSE to use the bundled ones. (default: FALSE)")
+if(E2D_USE_SYSTEM_DEPS)
+    file(GLOB_RECURSE DEP_LIBS    "${PROJECT_SOURCE_DIR}/extlibs/libs*/*")
+    file(GLOB_RECURSE DEP_BINS    "${PROJECT_SOURCE_DIR}/extlibs/bin*/*")
+    file(GLOB_RECURSE DEP_HEADERS "${PROJECT_SOURCE_DIR}/extlibs/headers/*")
+
+    foreach(DEP_FILE ${DEP_LIBS} ${DEP_BINS} ${DEP_HEADERS})
+        get_filename_component(DEP_DIR ${DEP_FILE} PATH)
+        list(APPEND CMAKE_IGNORE_PATH "${DEP_DIR}")
+        get_filename_component(DEP_PARENT_DIR ${DEP_DIR} PATH)
+        while(NOT DEP_PARENT_DIR STREQUAL "${PROJECT_SOURCE_DIR}/extlibs")
+            list(APPEND CMAKE_IGNORE_PATH "${DEP_PARENT_DIR}")
+            get_filename_component(DEP_PARENT_DIR ${DEP_PARENT_DIR} PATH)
+        endwhile()
+    endforeach()
+
+    list(REMOVE_DUPLICATES CMAKE_IGNORE_PATH)
+endif()
+
 if(E2D_COMPILER_MSVC)
     e2d_set_option(E2D_GENERATE_PDB TRUE BOOL "True to generate PDB debug symbols, FALSE otherwise.")
 endif()
