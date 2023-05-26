@@ -4,75 +4,67 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.platform.name }} ${{ matrix.config.name }} ${{ matrix.type.name }}
+    runs-on: ${{ matrix.platform.os }}
+
     strategy:
       fail-fast: false
       matrix:
+        platform:
+          - { name: Windows ClangCL VS2022 x86, os: windows-2022, cc: cl,    cxx: cl,      flags: -G"Visual Studio 17 2022" -A Win32 }
+          - { name: Windows ClangCL VS2022 x64, os: windows-2022, cc: cl,    cxx: cl,      flags: -G"Visual Studio 17 2022" -A x64 }
+          - { name: Windows GCC Ninja,          os: windows-2022, cc: gcc,   cxx: g++,     flags: -GNinja }
+          - { name: Linux GCC Ninja,            os: ubuntu-22.04, cc: clang, cxx: clang++, flags: -GNinja }
+          - { name: Linux Clang Ninja,          os: ubuntu-22.04, cc: gcc,   cxx: g++,     flags: -GNinja }
+          - { name: MacOS Clang Ninja,          os: macos-11,     cc: clang, cxx: clang++, flags: -GNinja }
+          - { name: MacOS Clang Xcode,          os: macos-11,     cc: clang, cxx: clang++, flags: -GXcode }
         config:
-          - {
-              name: "Windows MSVC",
-              os: windows-latest,
-              build_type: "Release",
-              cc: "cl",
-              cxx: "cl",
-              environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
-              generators: "Visual Studio 17 2022"
-            }
-          - {
-              name: "Windows MinGW",
-              os: windows-latest,
-              build_type: "Release",
-              cc: "gcc",
-              cxx: "g++",
-              generators: "Ninja"
-            }
-          - {
-              name: "Linux GCC",
-              os: ubuntu-latest,
-              build_type: "Release",
-              cc: "gcc",
-              cxx: "g++",
-              generators: "Ninja"
-            }
-          - {
-              name: "macOS Clang",
-              os: macos-latest,
-              build_type: "Release",
-              cc: "clang",
-              cxx: "clang++",
-              generators: "Ninja"
-            }
+          - { name: Shared, flags: -DBUILD_SHARED_LIBS=ON }
+          - { name: Static, flags: -DBUILD_SHARED_LIBS=OFF }
+        type:
+          - { name: Release }
+          - { name: Debug, flags: -DCMAKE_BUILD_TYPE=Debug }
+
+        exclude:
+          - platform: { name: Windows ClangCL VS2022 x86 }
+            config: { name: Static }
+          - platform: { name: Windows ClangCL VS2022 x64 }
+            config: { name: Static }
+          - platform: { name: MacOS Clang Ninja }
+            config: { name: Static }
+          - platform: { name: MacOS Clang Xcode }
+            config: { name: Static }
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Install dependencies
-        if: startsWith(matrix.config.os, 'Windows')
+      - name: Install Windows dependencies
+        if: startsWith(matrix.platform.name, 'Windows')
         run: |
           choco install ninja cmake
           ninja --version
           cmake --version
 
-      - name: Install dependencies
-        if: startsWith(matrix.config.name, 'Linux')
+      - name: Install Linux dependencies
+        if: startsWith(matrix.platform.name, 'Linux')
         run: |
           sudo apt-get update
           sudo apt-get install ninja-build cmake libsdl2-dev
           ninja --version
           cmake --version
           gcc --version
+          clang --version
 
-      - name: Install dependencies
-        if: startsWith(matrix.config.os, 'macOS')
+      - name: Install macOS dependencies
+        if: startsWith(matrix.platform.name, 'macOS')
         run: |
           brew install cmake ninja
           ninja --version
           cmake --version
 
       - name: Configure CMake
-        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} -DE2D_BUILD_EXAMPLES=ON -G "${{ matrix.config.generators }}"
+        run: cmake -S . -B build -DE2D_BUILD_EXAMPLES=ON ${{matrix.platform.flags}} ${{matrix.config.flags}} ${{matrix.type.flags}}
 
       - name: Build project
-        run: cmake --build build --config ${{ matrix.config.build_type }}
+        run: cmake --build build --config ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }}
