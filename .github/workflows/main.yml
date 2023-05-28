@@ -54,7 +54,7 @@ jobs:
           cmake --version
 
       - name: Configure CMake
-        run: cmake -S . -B build -DE2D_BUILD_EXAMPLES=ON ${{matrix.platform.flags}} ${{matrix.config.flags}} ${{matrix.type.flags}}
+        run: cmake -S . -B build -DCMAKE_INSTALL_PREFIX=install -DE2D_BUILD_EXAMPLES=ON ${{matrix.platform.flags}} ${{matrix.config.flags}} ${{matrix.type.flags}}
 
       - name: Build project
         run: cmake --build build --config ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }}

@@ -21,7 +21,7 @@ function(e2d_set_stdlib target)
         endif()
     endif()
 
-    if(E2D_OS_MACOSX)
+    if(E2D_OS_MACOS)
         e2d_set_xcode_property(${target} CLANG_CXX_LIBRARY "libc++")
     endif()
 endfunction()
@@ -117,10 +117,16 @@ macro(e2d_add_library module)
     set_target_properties(${target} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
     set_target_properties(${target} PROPERTIES VERSION ${PROJECT_VERSION})
 
+    install(TARGETS ${target} EXPORT E2DConfigExport
+            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT bin
+            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT bin
+            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT devel
+            FRAMEWORK DESTINATION "." COMPONENT bin)
+
     target_include_directories(${target}
                                PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
                                PRIVATE ${PROJECT_SOURCE_DIR}/src)
-    
+
     if(E2D_BUILD_FRAMEWORKS)
         target_include_directories(${target} INTERFACE $<INSTALL_INTERFACE:E2D.framework>)
     else()
@@ -180,4 +186,46 @@ function(e2d_find_package)
     foreach(link_item IN LISTS THIS_LINK)
         target_link_libraries(${target} INTERFACE "$<BUILD_INTERFACE:${${link_item}}>")
     endforeach()
+
+    install(TARGETS ${target} EXPORT E2DConfigExport)
+endfunction()
+
+function(e2d_export_targets)
+    set(CURRENT_DIR "${PROJECT_SOURCE_DIR}/cmake")
+
+    include(CMakePackageConfigHelpers)
+    write_basic_package_version_file("${CMAKE_CURRENT_BINARY_DIR}/E2DConfigVersion.cmake"
+                                     VERSION ${PROJECT_VERSION}
+                                     COMPATIBILITY SameMajorVersion)
+
+    if(BUILD_SHARED_LIBS)
+        set(config_name "Shared")
+    else()
+        set(config_name "Static")
+    endif()
+    set(targets_config_filename "E2D${config_name}Targets.cmake")
+
+    export(EXPORT E2DConfigExport
+           FILE "${CMAKE_CURRENT_BINARY_DIR}/${targets_config_filename}")
+
+    if(E2D_BUILD_FRAMEWORKS)
+        set(config_package_location "E2D.framework/Resources/CMake")
+    else()
+        set(config_package_location ${CMAKE_INSTALL_LIBDIR}/cmake/E2D)
+    endif()
+
+    configure_package_config_file("${CURRENT_DIR}/E2DConfig.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/E2DConfig.cmake"
+            INSTALL_DESTINATION "${config_package_location}")
+    configure_package_config_file("${CURRENT_DIR}/E2DConfigDependencies.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/E2DConfigDependencies.cmake"
+            INSTALL_DESTINATION "${config_package_location}")
+
+    install(EXPORT E2DConfigExport
+            FILE ${targets_config_filename}
+            DESTINATION ${config_package_location})
+
+    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/E2DConfig.cmake"
+            "${CMAKE_CURRENT_BINARY_DIR}/E2DConfigDependencies.cmake"
+            "${CMAKE_CURRENT_BINARY_DIR}/E2DConfigVersion.cmake"
+            DESTINATION ${config_package_location}
+            COMPONENT devel)
 endfunction()

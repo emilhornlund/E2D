@@ -1,0 +1,145 @@
+# This script provides the E2D libraries as imported targets
+# ------------------------------------
+#
+# Usage
+# -----
+#
+# When you try to locate the E2D libraries, you must specify which modules you want to use (Core, Engine).
+# If none is given, no imported target will be created and you won't be able to link to E2D libraries.
+# example:
+#   find_package(E2D COMPONENTS Engine) # find the engine module
+#
+# You can enforce a specific version, either MAJOR.MINOR or only MAJOR.
+# If nothing is specified, the version won't be checked (i.e. any version will be accepted).
+# example:
+#   find_package(E2D COMPONENTS ...)     # no specific version required
+#   find_package(E2D 1 COMPONENTS ...)   # any 1.x version
+#   find_package(E2D 1.1 COMPONENTS ...) # version 1.1 or greater with the same major version
+#
+# By default, the dynamic libraries of E2D will be found. To find the static ones instead,
+# you must set the E2D_STATIC_LIBRARIES variable to TRUE before calling find_package(E2D ...).
+# You don't need to deal with E2D's dependencies when linking your targets against E2D libraries,
+# they will all be configured automatically, even if you use E2D static libraries.
+# example:
+#   set(E2D_STATIC_LIBRARIES TRUE)
+#   find_package(E2D 1 COMPONENTS Engine)
+#
+# On macOS by default CMake will search for frameworks. If you want to use static libraries and have installed
+# both E2D frameworks and E2D static libraries, your must set CMAKE_FIND_FRAMEWORK to "NEVER" or "LAST"
+# in addition to setting E2D_STATIC_LIBRARIES to TRUE. Otherwise CMake will check the frameworks bundle config and
+# fail after finding out that it does not provide static libraries. Please refer to CMake documentation for more details.
+#
+# Additionally, keep in mind that E2D frameworks are only available as release libraries unlike dylibs which
+# are available for both release and debug modes.
+#
+# If E2D is not installed in a standard path, you can use the E2D_DIR CMake variable
+# to tell CMake where E2D's config file is located (PREFIX/lib/cmake/E2D for a library-based installation,
+# and PREFIX/E2D.framework/Resources/CMake on macOS for a framework-based installation).
+#
+# Output
+# ------
+#
+# This script defines the following variables:
+# - For each specified module XXX (Core, Engine):
+#   - E2D_XXX_FOUND:  true if either the debug or release library of the xxx module is found
+# - E2D_FOUND:        true if all the required modules are found
+#
+# And the following targets:
+# - For each specified module XXX (Core, Engine):
+#   - E2D::XXX
+# The E2D targets are the same for both Debug and Release build configurations and will automatically provide
+# correct settings based on your currently active build configuration. The E2D targets name also do not change
+# when using dynamic or static E2D libraries.
+#
+# When linking against a E2D target, you do not need to specify indirect dependencies. For example, linking
+# against E2D::Engine will also automatically link against E2D::Core.
+#
+# example:
+#   find_package(E2D COMPONENTS Engine REQUIRED)
+#   add_executable(mygame ...)
+#   target_link_libraries(mygame PRIVATE E2D::Engine)
+
+if(NOT E2D_FIND_COMPONENTS)
+    message(FATAL_ERROR "find_package(E2D) called with no component")
+endif()
+
+set(FIND_E2D_PATHS
+    "${CMAKE_CURRENT_LIST_DIR}/../.."
+    ${E2D_ROOT}
+    $ENV{E2D_ROOT}
+    ~/Library/Frameworks
+    /Library/Frameworks
+    /usr/local
+    /usr
+    /sw
+    /opt/local
+    /opt/csw
+    /opt)
+
+find_path(E2D_DOC_DIR E2D.tag
+          PATH_SUFFIXES E2D/doc share/doc/E2D
+          PATHS ${FIND_E2D_PATHS})
+
+# Update requested components (eg. request core if engine component was requested)
+set(FIND_E2D_CORE_DEPENDENCIES "")
+set(FIND_E2D_ENGINE_DEPENDENCIES "")
+set(FIND_E2D_ADDITIONAL_COMPONENTS "")
+foreach(component ${E2D_FIND_COMPONENTS})
+    string(TOUPPER "${component}" UPPER_COMPONENT)
+    list(APPEND FIND_E2D_ADDITIONAL_COMPONENTS ${FIND_E2D_${UPPER_COMPONENT}_DEPENDENCIES})
+endforeach()
+list(APPEND E2D_FIND_COMPONENTS ${FIND_E2D_ADDITIONAL_COMPONENTS})
+list(REMOVE_DUPLICATES E2D_FIND_COMPONENTS)
+
+# Choose which target definitions must be imported
+if(E2D_STATIC_LIBRARIES)
+	set(E2D_IS_FRAMEWORK_INSTALL "@E2D_BUILD_FRAMEWORKS@")
+    if(E2D_IS_FRAMEWORK_INSTALL)
+        message(WARNING "Static frameworks are not supported by E2D. Clear E2D_DIR cache entry, \
+and either change E2D_STATIC_LIBRARIES or CMAKE_FIND_FRAMEWORK before calling find_package(E2D)")
+    endif()
+    set(config_name "Static")
+else()
+    set(config_name "Shared")
+endif()
+set(targets_config_file "${CMAKE_CURRENT_LIST_DIR}/E2D${config_name}Targets.cmake")
+
+# Generate imported targets for E2D and its dependencies
+if(EXISTS "${targets_config_file}")
+    # Set E2D_FOUND to TRUE by default, may be overwritten by one of the includes below
+    set(E2D_FOUND TRUE)
+    include("${targets_config_file}")
+    include("${CMAKE_CURRENT_LIST_DIR}/E2DConfigDependencies.cmake")
+
+    if(E2D_FOUND)
+        set(E2D_VERSION_IS_RELEASE @VERSION_IS_RELEASE@)
+
+        foreach(component ${E2D_FIND_COMPONENTS})
+            string(TOUPPER "${component}" UPPER_COMPONENT)
+            set(E2D_${UPPER_COMPONENT}_FOUND FALSE)
+            if(TARGET E2D::${component})
+                set(E2D_${UPPER_COMPONENT}_FOUND TRUE)
+            elseif(E2D_FIND_REQUIRED_${component})
+                set(FIND_E2D_ERROR "Found E2D but requested component '${component}' is missing in the config defined in ${E2D_DIR}.")
+                set(E2D_FOUND FALSE)
+            endif()
+        endforeach()
+    endif()
+else()
+    set(FIND_E2D_ERROR "Requested E2D configuration (${config_name}) was not found")
+    set(E2D_FOUND FALSE)
+endif()
+
+if(NOT E2D_FOUND)
+    if(E2D_FIND_REQUIRED)
+        # fatal error
+        message(FATAL_ERROR "${FIND_E2D_ERROR}")
+    elseif(NOT E2D_FIND_QUIETLY)
+        # error but continue
+        message(STATUS "${FIND_E2D_ERROR}")
+    endif()
+endif()
+
+if(E2D_FOUND AND NOT E2D_FIND_QUIETLY)
+    message(STATUS "Found E2D @PROJECT_VERSION@ in ${CMAKE_CURRENT_LIST_DIR}")
+endif()

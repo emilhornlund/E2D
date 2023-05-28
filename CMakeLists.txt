@@ -13,6 +13,8 @@ project(E2D VERSION 1.0.0)
 
 include(cmake/Config.cmake)
 
+include(GNUInstallDirs)
+
 e2d_set_option(BUILD_SHARED_LIBS TRUE BOOL "TRUE to build E2D as shared libraries, FALSE to build it as static libraries (default: TRUE)")
 
 if(E2D_OS_MACOS)
@@ -76,10 +78,16 @@ if(E2D_BUILD_EXAMPLES AND NOT E2D_OS_ANDROID)
 endif()
 
 if(NOT E2D_BUILD_FRAMEWORKS)
-    # TODO: install header files
+    install(DIRECTORY include/
+            DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+            COMPONENT devel
+            FILES_MATCHING PATTERN "*.hpp")
     
     if(E2D_GENERATE_PDB)
-        # TODO: install pdb files
+        install(DIRECTORY ${PROJECT_BINARY_DIR}/lib/
+                DESTINATION ${CMAKE_INSTALL_LIBDIR}
+                COMPONENT devel
+                FILES_MATCHING PATTERN "*.pdb")
     endif()
 else()
     file(GLOB E2D_HEADERS RELATIVE ${PROJECT_SOURCE_DIR} "include/E2D/*")
@@ -131,3 +139,34 @@ else()
             FRAMEWORK DESTINATION "."
             COMPONENT devel)
 endif()
+
+install(FILES LICENSE DESTINATION ${CMAKE_INSTALL_DOCDIR})
+install(FILES README.md DESTINATION ${CMAKE_INSTALL_DOCDIR})
+
+if(E2D_OS_WINDOWS)
+    if(NOT E2D_USE_SYSTEM_DEPS)
+        if(ARCH_32BITS)
+            install(DIRECTORY extlibs/bin/x86/ DESTINATION ${CMAKE_INSTALL_BINDIR})
+            if(E2D_COMPILER_MSVC OR (E2D_COMPILER_CLANG AND NOT MINGW))
+                install(DIRECTORY extlibs/libs-msvc/x86/ DESTINATION ${CMAKE_INSTALL_LIBDIR})
+            else()
+                install(DIRECTORY extlibs/libs-mingw/x86/ DESTINATION ${CMAKE_INSTALL_LIBDIR})
+            endif()
+        elseif(ARCH_64BITS)
+            install(DIRECTORY extlibs/bin/x64/ DESTINATION ${CMAKE_INSTALL_BINDIR})
+            if(E2D_COMPILER_MSVC OR (E2D_COMPILER_CLANG AND NOT MINGW))
+                install(DIRECTORY extlibs/libs-msvc/x64/ DESTINATION ${CMAKE_INSTALL_LIBDIR})
+            else()
+                install(DIRECTORY extlibs/libs-mingw/x64/ DESTINATION ${CMAKE_INSTALL_LIBDIR})
+            endif()
+        endif()
+    endif()
+elseif(E2D_OS_MACOS)
+    if(E2D_BUILD_ENGINE)
+        if(SDL2 STREQUAL "${PROJECT_SOURCE_DIR}/extlibs/libs-macos/Frameworks/SDL2.framework")
+            install(DIRECTORY extlibs/libs-macos/Frameworks/SDL2.framework DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        endif()
+    endif()
+endif()
+
+e2d_export_targets()
