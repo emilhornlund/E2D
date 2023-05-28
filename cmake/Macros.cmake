@@ -99,11 +99,11 @@ macro(e2d_add_library module)
     if(E2D_OS_MACOS AND BUILD_SHARED_LIBS)
         if(E2D_BUILD_FRAMEWORKS)
             set_target_properties(${target} PROPERTIES
-                    FRAMEWORK TRUE
-                    FRAMEWORK_VERSION ${PROJECT_VERSION}
-                    MACOSX_FRAMEWORK_IDENTIFIER com.emilhornlund.${target}
-                    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${PROJECT_VERSION}
-                    MACOSX_FRAMEWORK_BUNDLE_VERSION ${PROJECT_VERSION})
+                                  FRAMEWORK TRUE
+                                  FRAMEWORK_VERSION ${PROJECT_VERSION}
+                                  MACOSX_FRAMEWORK_IDENTIFIER com.emilhornlund.${target}
+                                  MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${PROJECT_VERSION}
+                                  MACOSX_FRAMEWORK_BUNDLE_VERSION ${PROJECT_VERSION})
         endif()
 
         if(NOT CMAKE_SKIP_RPATH AND NOT CMAKE_SKIP_INSTALL_RPATH AND NOT CMAKE_INSTALL_RPATH AND NOT CMAKE_INSTALL_RPATH_USE_LINK_PATH AND NOT CMAKE_INSTALL_NAME_DIR)
@@ -215,9 +215,9 @@ function(e2d_export_targets)
     endif()
 
     configure_package_config_file("${CURRENT_DIR}/E2DConfig.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/E2DConfig.cmake"
-            INSTALL_DESTINATION "${config_package_location}")
+                                  INSTALL_DESTINATION "${config_package_location}")
     configure_package_config_file("${CURRENT_DIR}/E2DConfigDependencies.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/E2DConfigDependencies.cmake"
-            INSTALL_DESTINATION "${config_package_location}")
+                                  INSTALL_DESTINATION "${config_package_location}")
 
     install(EXPORT E2DConfigExport
             FILE ${targets_config_filename}
