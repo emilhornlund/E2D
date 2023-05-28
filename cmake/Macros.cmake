@@ -35,23 +35,16 @@ macro(e2d_add_library module)
     string(TOLOWER e2d-${module} target)
     if(NOT BUILD_SHARED_LIBS)
         add_library(${target} STATIC ${THIS_SOURCES})
-    elseif(THIS_INTERFACE)
-        add_library(${target} INTERFACE)
-        target_sources(${target} INTERFACE ${THIS_SOURCES})
     else()
         add_library(${target} ${THIS_SOURCES})
     endif()
     add_library(E2D::${module} ALIAS ${target})
 
-    if(NOT THIS_INTERFACE)
-        target_compile_features(${target} PUBLIC cxx_std_20)
-    endif()
+    target_compile_features(${target} PUBLIC cxx_std_20)
 
     set_target_properties(${target} PROPERTIES LINKER_LANGUAGE CXX)
 
-    if(NOT THIS_INTERFACE)
-        e2d_set_target_warnings(${target})
-    endif()
+    e2d_set_target_warnings(${target})
     e2d_set_public_symbols_hidden(${target})
 
     string(REPLACE "-" "_" NAME_UPPER "${target}")
@@ -124,13 +117,9 @@ macro(e2d_add_library module)
     set_target_properties(${target} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
     set_target_properties(${target} PROPERTIES VERSION ${PROJECT_VERSION})
 
-    if(THIS_INTERFACE)
-        target_include_directories(${target} INTERFACE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>)
-    else()
-        target_include_directories(${target}
-                PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-                PRIVATE ${PROJECT_SOURCE_DIR}/src)
-    endif()
+    target_include_directories(${target}
+                               PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+                               PRIVATE ${PROJECT_SOURCE_DIR}/src)
     
     if(E2D_BUILD_FRAMEWORKS)
         target_include_directories(${target} INTERFACE $<INSTALL_INTERFACE:E2D.framework>)

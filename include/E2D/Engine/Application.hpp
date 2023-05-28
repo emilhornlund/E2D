@@ -28,6 +28,7 @@
 #define E2D_ENGINE_APPLICATION_HPP
 
 #include <E2D/Engine/Export.hpp>
+#include <E2D/Core/Color.hpp>
 #include <E2D/Core/NonCopyable.hpp>
 
 #include <string>
@@ -71,6 +72,21 @@ namespace e2d {
          */
         void quit(int exitCode = 0);
 
+    protected:
+        /**
+         * @brief Get the background color of the window
+         *
+         * @return The background color
+         */
+        [[nodiscard]] const Color& getBackgroundColor() const;
+
+        /**
+         * @brief Set the background color of the window
+         *
+         * @param backgroundColor The background color
+         */
+        void setBackgroundColor(const Color& backgroundColor);
+
     private:
         /// The exit code of the application.
         int m_exitCode;
@@ -86,6 +102,9 @@ namespace e2d {
 
         /// Pointer to the SDL renderer.
         SDL_Renderer* m_renderer;
+
+        /// The background color of the window
+        Color m_backgroundColor;
 
         /**
          * @brief Initializes the SDL library and creates the window and renderer.

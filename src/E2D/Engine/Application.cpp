@@ -36,7 +36,8 @@ e2d::Application::Application(std::string windowTitle) :
         m_running(false),
         m_windowTitle(std::move(windowTitle)),
         m_window(nullptr),
-        m_renderer(nullptr) {}
+        m_renderer(nullptr),
+        m_backgroundColor(Color::Black) {}
 
 e2d::Application::~Application() = default;
 
@@ -106,10 +107,18 @@ void e2d::Application::handleEvents() {
 }
 
 void e2d::Application::render() {
-    SDL_SetRenderDrawColor(this->m_renderer, 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(this->m_renderer, this->m_backgroundColor.r, this->m_backgroundColor.g, this->m_backgroundColor.b, this->m_backgroundColor.a);
     SDL_RenderClear(this->m_renderer);
 
     //TODO: render other elements here
 
     SDL_RenderPresent(this->m_renderer);
+}
+
+const e2d::Color &e2d::Application::getBackgroundColor() const {
+    return this->m_backgroundColor;
+}
+
+void e2d::Application::setBackgroundColor(const e2d::Color& backgroundColor) {
+    this->m_backgroundColor = backgroundColor;
 }

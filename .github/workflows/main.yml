@@ -25,16 +25,6 @@ jobs:
           - { name: Release }
           - { name: Debug, flags: -DCMAKE_BUILD_TYPE=Debug }
 
-        exclude:
-          - platform: { name: Windows ClangCL VS2022 x86 }
-            config: { name: Static }
-          - platform: { name: Windows ClangCL VS2022 x64 }
-            config: { name: Static }
-          - platform: { name: MacOS Clang Ninja }
-            config: { name: Static }
-          - platform: { name: MacOS Clang Xcode }
-            config: { name: Static }
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
