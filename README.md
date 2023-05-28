@@ -2,6 +2,25 @@
 
 # E2D
 
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+   - [Instructions](#prerequisites-instructions)
+      - [Windows](#windows-prerequisites)
+      - [macOS](#macos-prerequisites)
+      - [Linux](#linux-prerequisites)
+- [Configuration](#configuration)
+- [Installation](#installation)
+- [Example](#example)
+- [Generating Documentation](#generating-documentation)
+   - [Instructions for Installing Doxygen](#instructions-for-installing-doxygen)
+      - [Windows](#windows-doxygen-installation)
+      - [macOS](#macos-doxygen-installation)
+      - [Linux](#linux-doxygen-installation)
+- [Collaboration](#collaboration)
+- [License](#license)
+
+## Overview
+
 E2D is a modern 2D game engine written in C++20 that leverages the SDL2 library. Currently, a work in progress, the project aims to provide developers with a powerful and flexible platform to create cross-platform 2D games with ease. With its comprehensive features, intuitive API, and extensive documentation, E2D aims to empower developers to bring their game ideas to life efficiently and deliver captivating gaming experiences.
 
 ## Prerequisites
@@ -13,6 +32,102 @@ Before building and running the E2D project, ensure you have the following prere
 - **CMake 3.22 or higher:** E2D uses CMake as the build system. Ensure that you have CMake version 3.22 or higher installed on your system. You can download CMake from the [official CMake website](https://cmake.org/download/).
 - **SDL2 Library:** E2D uses the SDL2 library for graphics and input handling. SDL2 is already bundled with E2D for Windows and macOS. For Linux, make sure you have SDL2 installed on your system. Installation instructions for SDL2 can be found in the [official SDL2 documentation](https://www.libsdl.org/download-2.0.php).
 - **Doxygen (optional):** If you plan on generating the documentation, Doxygen is required. You can install Doxygen using the instructions provided for your specific operating system.
+
+### Prerequisites Instructions
+
+#### Windows Prerequisites
+
+To set up the development environment on Windows, follow these steps:
+
+1. **Compiler:** Install one of the following C++20 compilers:
+   - **Visual Studio:** Download and install Visual Studio 2019 or newer from the [official Microsoft website](https://visualstudio.microsoft.com/downloads/). Make sure to select the C++ development workload during the installation process.
+   - **MinGW-w64:** Download and install MinGW-w64 from the [official MinGW-w64 website](http://mingw-w64.org/doku.php). Make sure to select the C++ components during the installation process.
+
+2. **CMake:** Download and install CMake version 3.22 or higher from the [official CMake website](https://cmake.org/download/). Make sure to add CMake to your system's PATH during the installation process.
+
+3. **SDL2:** SDL2 is already bundled with E2D for Windows, so no additional installation is required.
+
+4. **Ninja:** To enhance the build performance, it is recommended to use Ninja as the build system. Install Ninja by running the following command using Chocolatey:
+
+   ```shell
+   choco install ninja
+   ```
+
+   If you don't have Chocolatey installed, you can manually download Ninja from the [official Ninja website](https://ninja-build.org/) and add it to your system's PATH.
+
+#### macOS Prerequisites
+
+To set up the development environment on macOS, follow these steps:
+
+1. **Compiler:** macOS comes with Clang installed by default, which supports C++20. No additional installation is required.
+
+2. **CMake:** Install CMake version 3.22 or higher using Homebrew. Open a terminal and run the following command:
+
+   ```shell
+   brew install cmake
+   ```
+
+   Homebrew will download and install CMake on your system.
+
+3. **SDL2:** SDL2 is already bundled with E2D for macOS, so no additional installation is required.
+
+4. **Ninja:** To enhance the build performance, it is recommended to use Ninja as the build system. Install Ninja by running the following command using Homebrew:
+
+   ```shell
+   brew install ninja
+   ```
+
+   Homebrew will download and install Ninja on your system.
+
+#### Linux Prerequisites
+
+To set up the development environment on Linux, follow these steps:
+
+1. **Compiler:** Install one of the following C++20 compilers:
+   - **GCC (GNU Compiler Collection):** Open a terminal and run the following command to install GCC:
+
+     ```shell
+     sudo apt-get update
+     sudo apt-get install build-essential
+     ```
+
+   - **Clang:** Open a terminal and run the following command to install Clang:
+
+     ```shell
+     sudo apt-get update
+     sudo apt-get install clang
+     ```
+
+   Choose the compiler that suits your preference.
+
+2. **CMake:** Install CMake version 3.22 or higher using the package manager for your Linux distribution. For example, on Ubuntu, open a terminal and run the following command:
+
+   ```shell
+   sudo apt-get update
+   sudo apt-get install cmake
+   ```
+
+   Adjust the command based on the package manager used in your distribution.
+
+3. **SDL2:** Install the SDL2 development package using the package manager for your Linux distribution. For example, on Ubuntu, open a terminal and run the following command:
+
+   ```shell
+   sudo apt-get update
+   sudo apt-get install libsdl2-dev
+   ```
+
+   Adjust the command based on the package manager used in your distribution.
+
+4. **Ninja:** To enhance the build performance, it is recommended to use Ninja as the build system. Install Ninja using the package manager for your Linux distribution. For example, on Ubuntu, open a terminal and run the following command:
+
+   ```shell
+   sudo apt-get update
+   sudo apt-get install ninja-build
+   ```
+
+   Adjust the command based on the package manager used in your distribution.
+
+Ensure that you follow the appropriate instructions for your specific operating system to install the necessary dependencies.
 
 ## Configuration
 
@@ -36,7 +151,7 @@ cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON ...
 
 ## Installation
 
-To build and run the E2D project, follow these steps:
+To build and install the E2D project, follow these steps:
 
 1. Clone the repository:
     ```shell
@@ -44,14 +159,72 @@ To build and run the E2D project, follow these steps:
     ```
 
 2. Generate the build files using CMake:
-    ```shell
-    cmake -S . -B build
-    ```
+
+   - **Windows:**
+
+     If you're using Visual Studio as the compiler, open a command prompt or PowerShell and run the following command:
+
+     ```shell
+     cmake -S . -B build -G"Visual Studio 17 2022" -A Win32
+     ```
+
+     If you're using MinGW as the compiler, open a command prompt or PowerShell and run the following command:
+
+     ```shell
+     cmake -S . -B build -GNinja
+     ```
+
+   - **macOS:**
+
+     Open a terminal and run the following command:
+
+     ```shell
+     cmake -S . -B build -GNinja
+     ```
+
+   - **Linux:**
+
+     Open a terminal and run the following command:
+
+     ```shell
+     cmake -S . -B build -GNinja
+     ```
+
+   Adjust the command based on your operating system, compiler, and preferred CMake generator.
 
 3. Build and install the project:
-    ```shell
-    cmake --build build --target install --config Release
-    ```
+
+   - **Windows:**
+
+     If you're using Visual Studio, open the generated solution file (`E2D.sln`) in Visual Studio. Build the project using the desired configuration (e.g., Release or Debug).
+
+     If you're using MinGW or Ninja, open a command prompt or PowerShell and run the following command:
+
+     ```shell
+     cmake --build build --target install --config Release
+     ```
+
+   - **macOS and Linux:**
+
+     Open a terminal and run the following command:
+
+     ```shell
+     cmake --build build --target install --config Release
+     ```
+
+   Adjust the command based on your operating system and preferred configuration.
+
+   If you want to customize the installation directory, you can modify the CMAKE_INSTALL_PREFIX variable during the CMake configuration step:
+
+   ```shell
+   cmake -S . -B build -DCMAKE_INSTALL_PREFIX=<desired_installation_directory>
+   ```
+
+   Replace `<desired_installation_directory>` with the actual directory path you prefer. By default, the installation will use the system default prefix.
+
+4. After the installation process completes, the E2D project libraries and related files will be installed in the specified directory or the default system directory.
+
+Ensure that you follow the appropriate instructions for your specific operating system, compiler, and CMake generator when building and installing the project. Customize the `CMAKE_INSTALL_PREFIX` as needed to specify the desired installation directory.
 
 ## Example
 
@@ -130,19 +303,19 @@ The generated documentation will be available in the `docs` directory.
 
 ### Instructions for Installing Doxygen:
 
-#### Windows:
+#### Windows Doxygen Installation
 1. Download the Doxygen installer from the official [Doxygen website](https://www.doxygen.nl/download.html).
 2. Run the installer and follow the on-screen instructions to complete the installation.
 3. If you plan to generate HTML Help documentation, ensure that you have the HTML Help Compiler program (hhc.exe) installed. You can download it from the [HTML Help Workshop](https://www.microsoft.com/en-us/download/details.aspx?id=21138) page.
 
-#### macOS:
+#### macOS Doxygen Installation
 Install Doxygen using Homebrew by running the following command in the terminal:
 
 ```shell
 brew install doxygen
 ```
 
-#### Linux:
+#### Linux Doxygen Installation
 Install Doxygen using the package manager for your Linux distribution. For example, on Ubuntu, you can run the following command:
 
 ```shell
@@ -158,7 +331,6 @@ sudo dnf install doxygen
 Adjust the command based on the package manager used in your distribution.
 
 Ensure that Doxygen is installed and available in the system's executable search path before configuring and building the project.
-
 
 ## Collaboration
 
