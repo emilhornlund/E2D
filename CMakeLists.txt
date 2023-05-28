@@ -72,6 +72,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
 add_subdirectory(src/E2D)
 
+e2d_set_option(E2D_BUILD_DOCS FALSE BOOL "TRUE to generate the API documentation, FALSE to ignore it (default: false)")
+if(E2D_BUILD_DOCS)
+    add_subdirectory(docs)
+endif()
+
 e2d_set_option(E2D_BUILD_EXAMPLES FALSE BOOL "TRUE to build the E2D examples, FALSE to ignore them (default: FALSE)")
 if(E2D_BUILD_EXAMPLES AND NOT E2D_OS_ANDROID)
     add_subdirectory(examples)

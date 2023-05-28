@@ -2,7 +2,7 @@
 
 # E2D
 
-E2D is a modern 2D game engine written in C++20 that leverages the SDL2 library. Currently a work in progress, the project aims to provide developers with a powerful and flexible platform to create cross-platform 2D games with ease. With its comprehensive features, intuitive API, and extensive documentation, E2D aims to empower developers to bring their game ideas to life efficiently and deliver captivating gaming experiences.
+E2D is a modern 2D game engine written in C++20 that leverages the SDL2 library. Currently, a work in progress, the project aims to provide developers with a powerful and flexible platform to create cross-platform 2D games with ease. With its comprehensive features, intuitive API, and extensive documentation, E2D aims to empower developers to bring their game ideas to life efficiently and deliver captivating gaming experiences.
 
 ## Prerequisites
 
@@ -12,6 +12,7 @@ Before building and running the E2D project, ensure you have the following prere
 - **C++20 Compiler:** E2D requires a compiler that supports the C++20 standard. Supported compilers include GNU C++ (GCC), Clang, MinGW, and MSVC (Microsoft Visual C++).
 - **CMake 3.22 or higher:** E2D uses CMake as the build system. Ensure that you have CMake version 3.22 or higher installed on your system. You can download CMake from the [official CMake website](https://cmake.org/download/).
 - **SDL2 Library:** E2D uses the SDL2 library for graphics and input handling. SDL2 is already bundled with E2D for Windows and macOS. For Linux, make sure you have SDL2 installed on your system. Installation instructions for SDL2 can be found in the [official SDL2 documentation](https://www.libsdl.org/download-2.0.php).
+- **Doxygen (optional):** If you plan on generating the documentation, Doxygen is required. You can install Doxygen using the instructions provided for your specific operating system.
 
 ## Configuration
 
@@ -20,6 +21,7 @@ The E2D project provides several configuration options that can be set during th
 - `CMAKE_BUILD_TYPE`: Choose the type of build. Valid options are `Debug` or `Release`. The default build type is set to `Release`.
 - `BUILD_SHARED_LIBS`: Set this variable to `ON` to build E2D as shared libraries or `OFF` to build it as static libraries. The default value is `ON`, which builds E2D as shared libraries.
 - `E2D_BUILD_ENGINE`: Set this variable to `ON` to enable building the E2D library module called "Engine" or `OFF` to disable it. Building the "Engine" module is enabled by default.
+- `E2D_BUILD_DOCS`: Set this variable to `ON` to enable generating documentation using Doxygen or `OFF` to disable it. Generating documentation is disabled by default.
 - `E2D_BUILD_EXAMPLES`: Set this variable to `ON` to enable building the project examples or `OFF` to disable it. Building the examples is disabled by default.
 - `E2D_BUILD_FRAMEWORKS`: Set this variable to `ON` to build E2D as framework libraries (release only), or `OFF` to build according to `BUILD_SHARED_LIBS`. Framework library building is disabled by default.
 - `E2D_GENERATE_PDB`: Set this variable to `ON` to generate PDB debug symbols for the MSVC compiler or `OFF` to disable PDB generation. PDB files contain debugging information and are specific to Windows and MSVC compilers. PDB generation is enabled by default.
@@ -109,6 +111,54 @@ This example demonstrates the basic setup of an E2D game using the `e2d::Applica
 For more comprehensive examples showcasing various features and functionalities of the E2D library, you can explore the "examples" directory at the root of the repository. The examples directory contains additional sample projects and code snippets that illustrate different aspects of game development using E2D.
 
 For more detailed information on how to use the E2D library and its various features, please refer to the documentation and additional examples provided in the project repository.
+
+## Generating Documentation
+
+E2D supports generating documentation using Doxygen. To enable documentation generation during the build process, set the `E2D_BUILD_DOCS` CMake variable to ON:
+
+```shell
+cmake -DE2D_BUILD_DOCS=ON ...
+```
+
+Once the project is built, you can generate the documentation by running the `e2d-documentation` target:
+
+```shell
+cmake --build build --target e2d-documentation
+```
+
+The generated documentation will be available in the `docs` directory.
+
+### Instructions for Installing Doxygen:
+
+#### Windows:
+1. Download the Doxygen installer from the official [Doxygen website](https://www.doxygen.nl/download.html).
+2. Run the installer and follow the on-screen instructions to complete the installation.
+3. If you plan to generate HTML Help documentation, ensure that you have the HTML Help Compiler program (hhc.exe) installed. You can download it from the [HTML Help Workshop](https://www.microsoft.com/en-us/download/details.aspx?id=21138) page.
+
+#### macOS:
+Install Doxygen using Homebrew by running the following command in the terminal:
+
+```shell
+brew install doxygen
+```
+
+#### Linux:
+Install Doxygen using the package manager for your Linux distribution. For example, on Ubuntu, you can run the following command:
+
+```shell
+sudo apt-get install doxygen
+```
+
+On Fedora, use the following command:
+
+```shell
+sudo dnf install doxygen
+```
+
+Adjust the command based on the package manager used in your distribution.
+
+Ensure that Doxygen is installed and available in the system's executable search path before configuring and building the project.
+
 
 ## Collaboration
 
