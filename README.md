@@ -10,6 +10,7 @@
       - [Linux](#linux-prerequisites)
 - [Configuration](#configuration)
 - [Installation](#installation)
+- [Packaging](#packaging)
 - [Example](#example)
 - [Generating Documentation](#generating-documentation)
    - [Instructions for Installing Doxygen](#instructions-for-installing-doxygen)
@@ -225,6 +226,28 @@ To build and install the E2D project, follow these steps:
 4. After the installation process completes, the E2D project libraries and related files will be installed in the specified directory or the default system directory.
 
 Ensure that you follow the appropriate instructions for your specific operating system, compiler, and CMake generator when building and installing the project. Customize the `CMAKE_INSTALL_PREFIX` as needed to specify the desired installation directory.
+
+## Packaging
+
+To generate a package for the E2D project, you can use CPack, which is included with CMake. CPack provides various generators to create different package formats, such as ZIP, TGZ (TAR with gzip), RPM, DEB, and more.
+
+To generate a package, run the following command after building the project:
+
+```shell
+cpack -G ZIP
+```
+
+This command will generate a ZIP package for the project. You can replace ZIP with the desired generator, such as TGZ for a TAR package with gzip compression.
+
+You can specify multiple generators separated by commas to generate multiple package formats at once. For example:
+
+```shell
+cpack -G ZIP,TGZ
+```
+
+After running the cpack command, the package(s) will be generated in the current directory or the specified output directory, depending on your CPack configuration.
+
+Make sure to adjust the generator and other options according to your project's needs.
 
 ## Example
 
