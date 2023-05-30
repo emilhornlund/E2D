@@ -28,11 +28,11 @@
 
 constexpr e2d::Color::Color() = default;
 
-constexpr e2d::Color::Color(std::uint8_t red, std::uint8_t green, std::uint8_t blue, std::uint8_t alpha) :
-        r(red),
-        g(green),
-        b(blue),
-        a(alpha) {}
+constexpr e2d::Color::Color(std::uint8_t redComponent, std::uint8_t greenComponent, std::uint8_t blueComponent, std::uint8_t alphaComponent) :
+        r(redComponent),
+        g(greenComponent),
+        b(blueComponent),
+        a(alphaComponent) {}
 
 constexpr e2d::Color::Color(std::uint32_t color) :
         r(static_cast<std::uint8_t>((color & 0xff000000) >> 24)),
@@ -106,12 +106,12 @@ constexpr e2d::Color& operator*=(e2d::Color& left, const e2d::Color& right) {
     return left = left * right;
 }
 
-constexpr e2d::Color e2d::Color::Black(0, 0, 0);
-constexpr e2d::Color e2d::Color::White(255, 255, 255);
-constexpr e2d::Color e2d::Color::Red(255, 0, 0);
-constexpr e2d::Color e2d::Color::Green(0, 255, 0);
-constexpr e2d::Color e2d::Color::Blue(0, 0, 255);
-constexpr e2d::Color e2d::Color::Yellow(255, 255, 0);
-constexpr e2d::Color e2d::Color::Magenta(255, 0, 255);
-constexpr e2d::Color e2d::Color::Cyan(0, 255, 255);
-constexpr e2d::Color e2d::Color::Transparent(0, 0, 0, 0);
+constexpr e2d::Color e2d::Color::black(0, 0, 0);
+constexpr e2d::Color e2d::Color::white(255, 255, 255);
+constexpr e2d::Color e2d::Color::red(255, 0, 0);
+constexpr e2d::Color e2d::Color::green(0, 255, 0);
+constexpr e2d::Color e2d::Color::blue(0, 0, 255);
+constexpr e2d::Color e2d::Color::yellow(255, 255, 0);
+constexpr e2d::Color e2d::Color::magenta(255, 0, 255);
+constexpr e2d::Color e2d::Color::cyan(0, 255, 255);
+constexpr e2d::Color e2d::Color::transparent(0, 0, 0, 0);

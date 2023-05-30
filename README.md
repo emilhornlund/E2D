@@ -29,7 +29,7 @@ E2D is a modern 2D game engine written in C++20 that leverages the SDL2 library.
 Before building and running the E2D project, ensure you have the following prerequisites:
 
 - **Operating System:** E2D is supported on Linux, Windows, and macOS.
-- **C++20 Compiler:** E2D requires a compiler that supports the C++20 standard. Supported compilers include GNU C++ (GCC), Clang, MinGW, and MSVC (Microsoft Visual C++).
+- **C++20 Compiler:** E2D requires a compiler that supports the C++20 standard. Supported compilers include GNU C++ (GCC), Clang, MinGW, ClangCL and MSVC (Microsoft Visual C++).
 - **CMake 3.22 or higher:** E2D uses CMake as the build system. Ensure that you have CMake version 3.22 or higher installed on your system. You can download CMake from the [official CMake website](https://cmake.org/download/).
 - **SDL2 Library:** E2D uses the SDL2 library for graphics and input handling. SDL2 is already bundled with E2D for Windows and macOS. For Linux, make sure you have SDL2 installed on your system. Installation instructions for SDL2 can be found in the [official SDL2 documentation](https://www.libsdl.org/download-2.0.php).
 - **Doxygen (optional):** If you plan on generating the documentation, Doxygen is required. You can install Doxygen using the instructions provided for your specific operating system.

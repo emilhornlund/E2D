@@ -89,19 +89,19 @@ namespace e2d {
 
     private:
         /// The exit code of the application.
-        int m_exitCode;
+        int m_exitCode = 0;
 
         /// Flag indicating whether the application is running.
-        bool m_running;
+        bool m_running = false;
 
         /// The title of the window.
         const std::string m_windowTitle;
 
         /// Pointer to the SDL window.
-        SDL_Window* m_window;
+        SDL_Window* m_window = nullptr;
 
         /// Pointer to the SDL renderer.
-        SDL_Renderer* m_renderer;
+        SDL_Renderer* m_renderer = nullptr;
 
         /// The background color of the window
         Color m_backgroundColor;

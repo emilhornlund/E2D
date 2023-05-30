@@ -26,9 +26,6 @@
 
 #include <E2D/Engine/Application.hpp>
 
-#include <algorithm>
-#include <iostream>
-
 class HelloWorldApplication final: public e2d::Application {
 public:
     HelloWorldApplication();
@@ -40,15 +37,12 @@ HelloWorldApplication::HelloWorldApplication() : e2d::Application("Hello World E
 
 HelloWorldApplication::~HelloWorldApplication() = default;
 
-int main(int argc, char *argv[]) {
-    std::copy(argv, argv + argc, std::ostream_iterator<char *>(std::cout, "\n"));
-
+int main() {
     auto *application = new HelloWorldApplication();
 
-    int exitCode = application->run();
+    const auto exitCode = application->run();
 
     delete application;
-    application = nullptr;
 
     return exitCode;
 }

@@ -54,12 +54,12 @@ namespace e2d {
         /**
          * @brief Construct the color from its 4 RGBA components
          *
-         * @param red   Red component (in the range [0, 255])
-         * @param green Green component (in the range [0, 255])
-         * @param blue  Blue component (in the range [0, 255])
-         * @param alpha Alpha (opacity) component (in the range [0, 255])
+         * @param redComponent   redComponent component (in the range [0, 255])
+         * @param greenComponent greenComponent component (in the range [0, 255])
+         * @param blueComponent  blueComponent component (in the range [0, 255])
+         * @param alphaComponent Alpha (opacity) component (in the range [0, 255])
          */
-        constexpr Color(std::uint8_t red, std::uint8_t green, std::uint8_t blue, std::uint8_t alpha = 255);
+        constexpr Color(std::uint8_t redComponent, std::uint8_t greenComponent, std::uint8_t blueComponent, std::uint8_t alphaComponent = 255);
 
         /**
          * @brief Construct the color from 32-bit unsigned integer
@@ -85,23 +85,23 @@ namespace e2d {
         std::uint8_t a{255};
 
         /// Black predefined color
-        static const Color Black;
+        static const Color black;
         /// White predefined color
-        static const Color White;
+        static const Color white;
         /// Red predefined color
-        static const Color Red;
+        static const Color red;
         /// Green predefined color
-        static const Color Green;
+        static const Color green;
         /// Blue predefined color
-        static const Color Blue;
+        static const Color blue;
         /// Yellow predefined color
-        static const Color Yellow;
+        static const Color yellow;
         /// Magenta predefined color
-        static const Color Magenta;
+        static const Color magenta;
         /// Cyan predefined color
-        static const Color Cyan;
+        static const Color cyan;
         /// Transparent (black) predefined color
-        static const Color Transparent;
+        static const Color transparent;
 
     };
 
