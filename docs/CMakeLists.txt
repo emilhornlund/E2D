@@ -33,7 +33,7 @@ endif()
 set(DOXYGEN_CONFIGURED_INPUT ${DOXYGEN_OUTPUT_DIR}/doxyfile)
 configure_file(${DOXYGEN_INPUT_DIR}/docs/doxyfile.in ${DOXYGEN_CONFIGURED_INPUT} @ONLY)
 
-add_custom_target(e2d-documentation
+add_custom_target(e2d-tools-docs
                   COMMAND ${CMAKE_COMMAND} -E echo_append "Building API Documentation..."
                   COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_CONFIGURED_INPUT}
                   COMMAND ${CMAKE_COMMAND} -E echo "Done."
@@ -41,14 +41,14 @@ add_custom_target(e2d-documentation
 
 install(FILES ${DOXYGEN_OUTPUT_DIR}/E2D.tag
         DESTINATION ${CMAKE_INSTALL_DOCDIR}
-        COMPONENT e2d-documentation)
+        COMPONENT e2d-tools-docs)
 
 install(DIRECTORY ${DOXYGEN_OUTPUT_DIR}/html
         DESTINATION ${CMAKE_INSTALL_DOCDIR}
-        COMPONENT e2d-documentation)
+        COMPONENT e2d-tools-docs)
 
 if(DOXYGEN_HHC_PROGRAM)
     install(FILES ${DOXYGEN_OUTPUT_DIR}/e2d.chm
             DESTINATION ${CMAKE_INSTALL_DOCDIR}
-            COMPONENT e2d-documentation)
+            COMPONENT e2d-tools-docs)
 endif()

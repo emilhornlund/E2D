@@ -319,10 +319,10 @@ E2D supports generating documentation using Doxygen. To enable documentation gen
 cmake -DE2D_BUILD_DOCS=ON ...
 ```
 
-Once the project is built, you can generate the documentation by running the `e2d-documentation` target:
+Once the project is built, you can generate the documentation by running the `e2d-tools-docs` target:
 
 ```shell
-cmake --build build --target e2d-documentation
+cmake --build build --target e2d-tools-docs
 ```
 
 The generated documentation will be available in the `docs` directory.
@@ -366,29 +366,29 @@ In the E2D project, we strive for high code quality to ensure maintainability an
 
 Clang-Tidy is a powerful tool that performs static analysis on our C++ code. It helps us identify potential bugs, stylistic issues, and other code quality problems. By integrating Clang-Tidy into our development workflow, we can catch issues early and maintain a consistent and clean codebase.
 
-To run Clang-Tidy, we have created a CMake target named **tidy**. You can invoke this target by running the following command from the build directory:
+To run Clang-Tidy, we have created a CMake target named **e2d-tools-tidy**. You can invoke this target by running the following command from the build directory:
 
 ```shell
-cmake --build . --target tidy
+cmake --build . --target e2d-tools-tidy
 ```
 
-Running the **tidy** target will analyze the source code using Clang-Tidy and provide a report of any identified issues. It is essential to regularly run this target during development to ensure the code meets our quality standards.
+Running the **e2d-tools-tidy** target will analyze the source code using Clang-Tidy and provide a report of any identified issues. It is essential to regularly run this target during development to ensure the code meets our quality standards.
 
 ### Clang-Format
 
 Clang-Format is a tool that automatically formats our C++ code according to a predefined set of rules. It enforces a consistent coding style across the entire codebase, improving readability and reducing the chance of introducing formatting errors.
 
-To apply Clang-Format to our codebase, we have created a CMake target named **format**. You can run this target by executing the following command from the build directory:
+To apply Clang-Format to our codebase, we have created a CMake target named **e2d-tools-format**. You can run this target by executing the following command from the build directory:
 
 ```shell
-cmake --build . --target format
+cmake --build . --target e2d-tools-format
 ```
 
-Running the **format** target will automatically format the source code files using Clang-Format. It will modify the files in place, ensuring that the code follows the defined coding style.
+Running the **e2d-tools-format** target will automatically format the source code files using Clang-Format. It will modify the files in place, ensuring that the code follows the defined coding style.
 
-By regularly running the **format** target, we can maintain a consistent coding style throughout the project and reduce unnecessary code changes during code reviews.
+By regularly running the **e2d-tools-format** target, we can maintain a consistent coding style throughout the project and reduce unnecessary code changes during code reviews.
 
-It is recommended to run both the **tidy** and **format** targets before committing any changes to the repository. This ensures that our codebase remains clean, well-formatted, and adheres to the highest quality standards.
+It is recommended to run both the **e2d-tools-tidy** and **e2d-tools-format** targets before committing any changes to the repository. This ensures that our codebase remains clean, well-formatted, and adheres to the highest quality standards.
 
 ## Collaboration
 

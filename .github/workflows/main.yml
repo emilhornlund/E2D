@@ -124,4 +124,4 @@ jobs:
 
       - name: Analyze Code
         shell: bash
-        run: cmake --build build --target tidy
+        run: cmake --build build --target e2d-tools-tidy
