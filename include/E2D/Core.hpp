@@ -27,8 +27,9 @@
 #ifndef E2D_CORE_HPP
 #define E2D_CORE_HPP
 
-#include <E2D/Core/Color.hpp>
 #include <E2D/Core/Export.hpp>
+
+#include <E2D/Core/Color.hpp>
 #include <E2D/Core/NonCopyable.hpp>
 
 #endif //E2D_CORE_HPP

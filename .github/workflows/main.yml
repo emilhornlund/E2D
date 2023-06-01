@@ -61,6 +61,28 @@ jobs:
       - name: Build Project
         run: cmake --build build --config ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }}
 
+  format:
+    name: Formatting with clang-format-${{ matrix.version }}
+    runs-on: ubuntu-22.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [12, 13, 14]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: sudo apt-get install clang-format-${{ matrix.version }}
+
+      - name: Format Code
+        run: cmake -DCLANG_FORMAT_EXECUTABLE=clang-format-${{ matrix.version }} -P ./cmake/Format.cmake
+
+      - name: Check Formatting
+        run: git diff --exit-code
+
   tidy:
     name: Analyzing on ${{ matrix.platform.name }}
     runs-on: ${{ matrix.platform.os }}

@@ -28,6 +28,7 @@
 #define E2D_ENGINE_APPLICATION_HPP
 
 #include <E2D/Engine/Export.hpp>
+
 #include <E2D/Core/Color.hpp>
 #include <E2D/Core/NonCopyable.hpp>
 
@@ -39,97 +40,99 @@ struct SDL_Renderer;
 /**
  * @brief Namespace for E2D
  */
-namespace e2d {
+namespace e2d
+{
+
+/**
+ * @brief Represents the application class.
+ */
+class E2D_ENGINE_API Application : NonCopyable
+{
+public:
+    /**
+     * @brief Constructs an Application object.
+     *
+     * @param windowTitle The windowTitle of the window
+     */
+    explicit Application(std::string windowTitle);
 
     /**
-     * @brief Represents the application class.
+     * @brief Virtual destructor for Application.
      */
-    class E2D_ENGINE_API Application : NonCopyable {
-    public:
-        /**
-         * @brief Constructs an Application object.
-         *
-         * @param windowTitle The windowTitle of the window
-         */
-        explicit Application(std::string windowTitle);
+    virtual ~Application() = 0;
 
-        /**
-         * @brief Virtual destructor for Application.
-         */
-        virtual ~Application() = 0;
+    /**
+     * @brief Runs the application.
+     *
+     * @return The exit code of the application.
+     */
+    int run();
 
-        /**
-         * @brief Runs the application.
-         *
-         * @return The exit code of the application.
-         */
-        int run();
+    /**
+     * @brief Quits the application.
+     *
+     * @param exitCode The exit code of the application (default is 0).
+     */
+    void quit(int exitCode = 0);
 
-        /**
-         * @brief Quits the application.
-         *
-         * @param exitCode The exit code of the application (default is 0).
-         */
-        void quit(int exitCode = 0);
+protected:
+    /**
+     * @brief Get the background color of the window
+     *
+     * @return The background color
+     */
+    [[nodiscard]] const Color& getBackgroundColor() const;
 
-    protected:
-        /**
-         * @brief Get the background color of the window
-         *
-         * @return The background color
-         */
-        [[nodiscard]] const Color& getBackgroundColor() const;
+    /**
+     * @brief Set the background color of the window
+     *
+     * @param backgroundColor The background color
+     */
+    void setBackgroundColor(const Color& backgroundColor);
 
-        /**
-         * @brief Set the background color of the window
-         *
-         * @param backgroundColor The background color
-         */
-        void setBackgroundColor(const Color& backgroundColor);
+private:
+    /// The exit code of the application.
+    int m_exitCode = 0;
 
-    private:
-        /// The exit code of the application.
-        int m_exitCode = 0;
+    /// Flag indicating whether the application is running.
+    bool m_running = false;
 
-        /// Flag indicating whether the application is running.
-        bool m_running = false;
+    /// The title of the window.
+    const std::string m_windowTitle;
 
-        /// The title of the window.
-        const std::string m_windowTitle;
+    /// Pointer to the SDL window.
+    SDL_Window* m_window = nullptr;
 
-        /// Pointer to the SDL window.
-        SDL_Window* m_window = nullptr;
+    /// Pointer to the SDL renderer.
+    SDL_Renderer* m_renderer = nullptr;
 
-        /// Pointer to the SDL renderer.
-        SDL_Renderer* m_renderer = nullptr;
+    /// The background color of the window
+    Color m_backgroundColor;
 
-        /// The background color of the window
-        Color m_backgroundColor;
+    /**
+     * @brief Initializes the SDL library and creates the window and renderer.
+     *
+     * @return True if initialization is successful, false otherwise.
+     */
+    bool initSDL();
 
-        /**
-         * @brief Initializes the SDL library and creates the window and renderer.
-         *
-         * @return True if initialization is successful, false otherwise.
-         */
-        bool initSDL();
+    /**
+     * @brief Closes the SDL library and destroys the window and renderer.
+     */
+    void closeSDL();
 
-        /**
-         * @brief Closes the SDL library and destroys the window and renderer.
-         */
-        void closeSDL();
+    /**
+     * @brief Handles SDL events such as window close event.
+     */
+    void handleEvents();
 
-        /**
-         * @brief Handles SDL events such as window close event.
-         */
-        void handleEvents();
+    /**
+     * @brief Renders the application content.
+     */
+    void render();
 
-        /**
-         * @brief Renders the application content.
-         */
-        void render();
+}; //Application class
 
-    }; //Application class
-
-} //e2d namespace
+} // namespace e2d
 
 #endif //E2D_ENGINE_APPLICATION_HPP

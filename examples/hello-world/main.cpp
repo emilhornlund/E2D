@@ -26,19 +26,23 @@
 
 #include <E2D/Engine/Application.hpp>
 
-class HelloWorldApplication final: public e2d::Application {
+class HelloWorldApplication final : public e2d::Application
+{
 public:
     HelloWorldApplication();
 
     ~HelloWorldApplication() final;
 };
 
-HelloWorldApplication::HelloWorldApplication() : e2d::Application("Hello World Example") {}
+HelloWorldApplication::HelloWorldApplication() : e2d::Application("Hello World Example")
+{
+}
 
 HelloWorldApplication::~HelloWorldApplication() = default;
 
-int main() {
-    auto *application = new HelloWorldApplication();
+int main()
+{
+    auto* application = new HelloWorldApplication();
 
     const auto exitCode = application->run();
 

@@ -27,7 +27,8 @@
 #ifndef E2D_ENGINE_HPP
 #define E2D_ENGINE_HPP
 
-#include <E2D/Engine/Application.hpp>
 #include <E2D/Engine/Export.hpp>
+
+#include <E2D/Engine/Application.hpp>
 
 #endif //E2D_ENGINE_HPP

@@ -15,10 +15,10 @@ if(E2D_STATIC_LIBRARIES)
     set(FIND_E2D_DEPENDENCIES_NOTFOUND)
 
     # macro that searches for a 3rd-party library
-    function(sfml_bind_dependency)
+    function(e2d_bind_dependency)
         cmake_parse_arguments(THIS "" "TARGET;FRIENDLY_NAME" "SEARCH_NAMES" ${ARGN})
         if(THIS_UNPARSED_ARGUMENTS)
-            message(FATAL_ERROR "Unknown arguments when calling sfml_bind_dependency: ${THIS_UNPARSED_ARGUMENTS}")
+            message(FATAL_ERROR "Unknown arguments when calling e2d_bind_dependency: ${THIS_UNPARSED_ARGUMENTS}")
         endif()
 
         # No lookup in environment variables (PATH on Windows), as they may contain wrong library versions
@@ -35,7 +35,7 @@ if(E2D_STATIC_LIBRARIES)
     # E2D::Engine
     list(FIND E2D_FIND_COMPONENTS "Engine" FIND_E2D_ENGINE_COMPONENT_INDEX)
     if(FIND_E2D_ENGINE_COMPONENT_INDEX GREATER -1)
-        sfml_bind_dependency(TARGET SDL2 FRIENDLY_NAME "SDL2" SEARCH_NAMES "SDL2")
+        e2d_bind_dependency(TARGET SDL2 FRIENDLY_NAME "SDL2" SEARCH_NAMES "SDL2")
     endif()
 
     if(FIND_E2D_DEPENDENCIES_NOTFOUND)

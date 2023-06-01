@@ -32,18 +32,23 @@
 #include <utility>
 
 e2d::Application::Application(std::string windowTitle) :
-        m_windowTitle(std::move(windowTitle)),
-        m_backgroundColor(Color::black) {}
+m_windowTitle(std::move(windowTitle)),
+m_backgroundColor(Color::black)
+{
+}
 
 e2d::Application::~Application() = default;
 
-int e2d::Application::run() {
-    if (!initSDL()) {
+int e2d::Application::run()
+{
+    if (!initSDL())
+    {
         return -1;
     }
 
     this->m_running = true;
-    while (this->m_running) {
+    while (this->m_running)
+    {
         handleEvents();
         render();
     }
@@ -53,25 +58,35 @@ int e2d::Application::run() {
     return this->m_exitCode;
 }
 
-void e2d::Application::quit(int exitCode) {
+void e2d::Application::quit(int exitCode)
+{
     this->m_exitCode = exitCode;
-    this->m_running = false;
+    this->m_running  = false;
 }
 
-bool e2d::Application::initSDL() {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+bool e2d::Application::initSDL()
+{
+    if (SDL_Init(SDL_INIT_VIDEO) < 0)
+    {
         std::cerr << "Failed to initialize SDL: " << SDL_GetError() << std::endl;
         return false;
     }
 
-    this->m_window = SDL_CreateWindow(this->m_windowTitle.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN);
-    if (this->m_window == nullptr) {
+    this->m_window = SDL_CreateWindow(this->m_windowTitle.c_str(),
+                                      SDL_WINDOWPOS_UNDEFINED,
+                                      SDL_WINDOWPOS_UNDEFINED,
+                                      800,
+                                      600,
+                                      SDL_WINDOW_SHOWN);
+    if (this->m_window == nullptr)
+    {
         std::cerr << "Failed to create window: " << SDL_GetError() << std::endl;
         return false;
     }
 
     this->m_renderer = SDL_CreateRenderer(this->m_window, -1, SDL_RENDERER_ACCELERATED);
-    if (this->m_renderer == nullptr) {
+    if (this->m_renderer == nullptr)
+    {
         std::cerr << "Failed to create renderer: " << SDL_GetError() << std::endl;
         return false;
     }
@@ -79,13 +94,16 @@ bool e2d::Application::initSDL() {
     return true;
 }
 
-void e2d::Application::closeSDL() {
-    if (this->m_renderer != nullptr) {
+void e2d::Application::closeSDL()
+{
+    if (this->m_renderer != nullptr)
+    {
         SDL_DestroyRenderer(this->m_renderer);
         this->m_renderer = nullptr;
     }
 
-    if (this->m_window != nullptr) {
+    if (this->m_window != nullptr)
+    {
         SDL_DestroyWindow(this->m_window);
         this->m_window = nullptr;
     }
@@ -93,17 +111,25 @@ void e2d::Application::closeSDL() {
     SDL_Quit();
 }
 
-void e2d::Application::handleEvents() {
+void e2d::Application::handleEvents()
+{
     SDL_Event event;
-    while (SDL_PollEvent(&event)) {
-        if (event.type == SDL_QUIT) {
+    while (SDL_PollEvent(&event))
+    {
+        if (event.type == SDL_QUIT)
+        {
             this->quit();
         }
     }
 }
 
-void e2d::Application::render() {
-    SDL_SetRenderDrawColor(this->m_renderer, this->m_backgroundColor.r, this->m_backgroundColor.g, this->m_backgroundColor.b, this->m_backgroundColor.a);
+void e2d::Application::render()
+{
+    SDL_SetRenderDrawColor(this->m_renderer,
+                           this->m_backgroundColor.r,
+                           this->m_backgroundColor.g,
+                           this->m_backgroundColor.b,
+                           this->m_backgroundColor.a);
     SDL_RenderClear(this->m_renderer);
 
     //TODO: render other elements here
@@ -111,10 +137,12 @@ void e2d::Application::render() {
     SDL_RenderPresent(this->m_renderer);
 }
 
-const e2d::Color &e2d::Application::getBackgroundColor() const {
+const e2d::Color& e2d::Application::getBackgroundColor() const
+{
     return this->m_backgroundColor;
 }
 
-void e2d::Application::setBackgroundColor(const e2d::Color& backgroundColor) {
+void e2d::Application::setBackgroundColor(const e2d::Color& backgroundColor)
+{
     this->m_backgroundColor = backgroundColor;
 }

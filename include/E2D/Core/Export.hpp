@@ -30,9 +30,9 @@
 #include <E2D/Config.hpp>
 
 #ifdef E2D_CORE_EXPORTS
-    #define E2D_CORE_API E2D_API_EXPORT
+#define E2D_CORE_API E2D_API_EXPORT
 #else
-    #define E2D_CORE_API E2D_API_IMPORT
+#define E2D_CORE_API E2D_API_IMPORT
 #endif
 
 #endif //E2D_CORE_EXPORT_HPP

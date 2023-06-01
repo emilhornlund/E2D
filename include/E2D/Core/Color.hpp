@@ -28,6 +28,7 @@
 #define E2D_CORE_COLOR_HPP
 
 #include <E2D/Core/Export.hpp>
+
 #include <E2D/Core/NonCopyable.hpp>
 
 #include <cstdint>
@@ -35,77 +36,80 @@
 /**
  * @brief Namespace for E2D
  */
-namespace e2d {
+namespace e2d
+{
+
+/**
+ * @brief Utility class for manipulating RGBA colors
+ */
+class E2D_CORE_API Color final
+{
+public:
+    /**
+     * @brief Default constructor
+     *
+     * Constructs an opaque black color. It is equivalent to
+     * e2d::Color(0, 0, 0, 255).
+     */
+    constexpr Color();
 
     /**
-     * @brief Utility class for manipulating RGBA colors
+     * @brief Construct the color from its 4 RGBA components
+     *
+     * @param redComponent   redComponent component (in the range [0, 255])
+     * @param greenComponent greenComponent component (in the range [0, 255])
+     * @param blueComponent  blueComponent component (in the range [0, 255])
+     * @param alphaComponent Alpha (opacity) component (in the range [0, 255])
      */
-    class E2D_CORE_API Color final {
-    public:
+    constexpr Color(std::uint8_t redComponent,
+                    std::uint8_t greenComponent,
+                    std::uint8_t blueComponent,
+                    std::uint8_t alphaComponent = 255);
 
-        /**
-         * @brief Default constructor
-         *
-         * Constructs an opaque black color. It is equivalent to
-         * e2d::Color(0, 0, 0, 255).
-         */
-        constexpr Color();
+    /**
+     * @brief Construct the color from 32-bit unsigned integer
+     *
+     * @param color Number containing the RGBA components (in that order)
+     */
+    constexpr explicit Color(std::uint32_t color);
 
-        /**
-         * @brief Construct the color from its 4 RGBA components
-         *
-         * @param redComponent   redComponent component (in the range [0, 255])
-         * @param greenComponent greenComponent component (in the range [0, 255])
-         * @param blueComponent  blueComponent component (in the range [0, 255])
-         * @param alphaComponent Alpha (opacity) component (in the range [0, 255])
-         */
-        constexpr Color(std::uint8_t redComponent, std::uint8_t greenComponent, std::uint8_t blueComponent, std::uint8_t alphaComponent = 255);
+    /**
+     * @brief Retrieve the color as a 32-bit unsigned integer
+     *
+     * @return Color represented as a 32-bit unsigned integer
+     */
+    [[nodiscard]] constexpr std::uint32_t toInteger() const;
 
-        /**
-         * @brief Construct the color from 32-bit unsigned integer
-         *
-         * @param color Number containing the RGBA components (in that order)
-         */
-        constexpr explicit Color(std::uint32_t color);
+    /// The red component
+    std::uint8_t r{};
+    /// The green component
+    std::uint8_t g{};
+    /// The blue component
+    std::uint8_t b{};
+    /// The alpha (opacity) component
+    std::uint8_t a{255};
 
-        /**
-         * @brief Retrieve the color as a 32-bit unsigned integer
-         *
-         * @return Color represented as a 32-bit unsigned integer
-         */
-        [[nodiscard]] constexpr std::uint32_t toInteger() const;
+    /// Black predefined color
+    static const Color black;
+    /// White predefined color
+    static const Color white;
+    /// Red predefined color
+    static const Color red;
+    /// Green predefined color
+    static const Color green;
+    /// Blue predefined color
+    static const Color blue;
+    /// Yellow predefined color
+    static const Color yellow;
+    /// Magenta predefined color
+    static const Color magenta;
+    /// Cyan predefined color
+    static const Color cyan;
+    /// Transparent (black) predefined color
+    static const Color transparent;
+};
 
-        /// The red component
-        std::uint8_t r{};
-        /// The green component
-        std::uint8_t g{};
-        /// The blue component
-        std::uint8_t b{};
-        /// The alpha (opacity) component
-        std::uint8_t a{255};
-
-        /// Black predefined color
-        static const Color black;
-        /// White predefined color
-        static const Color white;
-        /// Red predefined color
-        static const Color red;
-        /// Green predefined color
-        static const Color green;
-        /// Blue predefined color
-        static const Color blue;
-        /// Yellow predefined color
-        static const Color yellow;
-        /// Magenta predefined color
-        static const Color magenta;
-        /// Cyan predefined color
-        static const Color cyan;
-        /// Transparent (black) predefined color
-        static const Color transparent;
-
-    };
-
-}
+} // namespace e2d
 
 /**
  * @relates Color

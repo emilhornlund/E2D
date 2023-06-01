@@ -32,42 +32,43 @@
 /**
  * @brief Namespace for E2D
  */
-namespace e2d {
+namespace e2d
+{
+
+/**
+ * @brief The NonCopyable class provides a base class to make derived classes non-copyable.
+ */
+class E2D_CORE_API NonCopyable
+{
+public:
+    /**
+     * @brief Deleted copy constructor to prevent copying of objects.
+     *
+     * @param other The object to be copied.
+     */
+    NonCopyable(const NonCopyable&) = delete;
 
     /**
-     * @brief The NonCopyable class provides a base class to make derived classes non-copyable.
+     * @brief Deleted copy assignment operator to prevent assignment of objects.
+     *
+     * @param other The object to be assigned.
+     *
+     * @return NonCopyable& A reference to the current object.
      */
-    class E2D_CORE_API NonCopyable {
-    public:
-        /**
-         * @brief Deleted copy constructor to prevent copying of objects.
-         *
-         * @param other The object to be copied.
-         */
-        NonCopyable(const NonCopyable&) = delete;
+    NonCopyable& operator=(const NonCopyable&) = delete;
 
-        /**
-         * @brief Deleted copy assignment operator to prevent assignment of objects.
-         *
-         * @param other The object to be assigned.
-         *
-         * @return NonCopyable& A reference to the current object.
-         */
-        NonCopyable& operator =(const NonCopyable&) = delete;
+protected:
+    /**
+     * @brief Default constructor.
+     */
+    NonCopyable() = default;
 
-    protected:
-        /**
-         * @brief Default constructor.
-         */
-        NonCopyable() = default;
+    /**
+     * @brief Default destructor.
+     */
+    ~NonCopyable() = default;
+};
 
-        /**
-         * @brief Default destructor.
-         */
-        ~NonCopyable() = default;
-
-    };
-
-} //e2d namespace
+} // namespace e2d
 
 #endif //E2D_CORE_NONCOPYABLE_HPP

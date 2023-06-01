@@ -4,19 +4,22 @@
 
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
-   - [Instructions](#prerequisites-instructions)
-      - [Windows](#windows-prerequisites)
-      - [macOS](#macos-prerequisites)
-      - [Linux](#linux-prerequisites)
+    - [Instructions](#prerequisites-instructions)
+        - [Windows](#windows-prerequisites)
+        - [macOS](#macos-prerequisites)
+        - [Linux](#linux-prerequisites)
 - [Configuration](#configuration)
 - [Installation](#installation)
 - [Packaging](#packaging)
 - [Example](#example)
 - [Generating Documentation](#generating-documentation)
-   - [Instructions for Installing Doxygen](#instructions-for-installing-doxygen)
-      - [Windows](#windows-doxygen-installation)
-      - [macOS](#macos-doxygen-installation)
-      - [Linux](#linux-doxygen-installation)
+    - [Instructions for Installing Doxygen](#instructions-for-installing-doxygen)
+        - [Windows](#windows-doxygen-installation)
+        - [macOS](#macos-doxygen-installation)
+        - [Linux](#linux-doxygen-installation)
+- [Code Quality](#code-quality)
+    - [Clang-Tidy](#clang-tidy)
+    - [Clang-Format](#clang-format)
 - [Collaboration](#collaboration)
 - [License](#license)
 
@@ -354,6 +357,38 @@ sudo dnf install doxygen
 Adjust the command based on the package manager used in your distribution.
 
 Ensure that Doxygen is installed and available in the system's executable search path before configuring and building the project.
+
+## Code Quality
+
+In the E2D project, we strive for high code quality to ensure maintainability and readability. We have implemented two tools, **clang-tidy** and **clang-format**, to assist in achieving this goal. These tools help us identify and fix potential issues with our C++ code, ensuring adherence to best practices and coding standards.
+
+### Clang-Tidy
+
+Clang-Tidy is a powerful tool that performs static analysis on our C++ code. It helps us identify potential bugs, stylistic issues, and other code quality problems. By integrating Clang-Tidy into our development workflow, we can catch issues early and maintain a consistent and clean codebase.
+
+To run Clang-Tidy, we have created a CMake target named **tidy**. You can invoke this target by running the following command from the build directory:
+
+```shell
+cmake --build . --target tidy
+```
+
+Running the **tidy** target will analyze the source code using Clang-Tidy and provide a report of any identified issues. It is essential to regularly run this target during development to ensure the code meets our quality standards.
+
+### Clang-Format
+
+Clang-Format is a tool that automatically formats our C++ code according to a predefined set of rules. It enforces a consistent coding style across the entire codebase, improving readability and reducing the chance of introducing formatting errors.
+
+To apply Clang-Format to our codebase, we have created a CMake target named **format**. You can run this target by executing the following command from the build directory:
+
+```shell
+cmake --build . --target format
+```
+
+Running the **format** target will automatically format the source code files using Clang-Format. It will modify the files in place, ensuring that the code follows the defined coding style.
+
+By regularly running the **format** target, we can maintain a consistent coding style throughout the project and reduce unnecessary code changes during code reviews.
+
+It is recommended to run both the **tidy** and **format** targets before committing any changes to the repository. This ensures that our codebase remains clean, well-formatted, and adheres to the highest quality standards.
 
 ## Collaboration
 
