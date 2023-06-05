@@ -69,6 +69,13 @@ public:
     int run();
 
     /**
+     * @brief Checks if the application is running.
+     *
+     * @return True if the application is running, false otherwise.
+     */
+    [[maybe_unused]] bool isRunning() const;
+
+    /**
      * @brief Quits the application.
      *
      * @param exitCode The exit code of the application (default is 0).

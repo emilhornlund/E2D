@@ -190,6 +190,16 @@ set(CPACK_MONOLITHIC_INSTALL ON)
 
 include(CPack)
 
+e2d_set_option(E2D_BUILD_TEST_SUITE FALSE BOOL "TRUE to build the E2D test suite, FALSE to ignore it")
+if(E2D_BUILD_TEST_SUITE)
+    if(E2D_BUILD_ENGINE)
+        enable_testing()
+        add_subdirectory(test)
+    else()
+        message(WARNING "Cannot build unit testing unless all modules are enabled")
+    endif()
+endif()
+
 e2d_set_option(CLANG_FORMAT_EXECUTABLE clang-format STRING "Override clang-format executable, requires version 12, 13, or 14")
 add_custom_target(e2d-tools-format
                   COMMAND ${CMAKE_COMMAND} -DCLANG_FORMAT_EXECUTABLE=${CLANG_FORMAT_EXECUTABLE} -P ./cmake/Format.cmake

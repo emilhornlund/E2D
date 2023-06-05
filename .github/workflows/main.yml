@@ -56,10 +56,23 @@ jobs:
           cmake --version
 
       - name: Configure CMake
-        run: cmake -S . -B build -DCMAKE_INSTALL_PREFIX=install -DE2D_BUILD_EXAMPLES=ON ${{matrix.platform.flags}} ${{matrix.config.flags}} ${{matrix.type.flags}}
+        shell: bash
+        run: cmake -S . -B build -DCMAKE_INSTALL_PREFIX=install -DE2D_BUILD_EXAMPLES=ON -DE2D_BUILD_TEST_SUITE=ON ${{matrix.platform.flags}} ${{matrix.config.flags}} ${{matrix.type.flags}}
 
       - name: Build Project
-        run: cmake --build build --config ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }}
+        shell: bash
+        run: cmake --build build --config ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }} --target install
+
+      - name: Test
+        shell: bash
+        run: |
+          set -e
+          mkdir -p build/bin
+          if [ "${{ runner.os }}" == "Windows" ]; then
+            cmake --build build --target runtests --config ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }}
+          else
+            ctest --test-dir build --output-on-failure -C ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }}
+          fi
 
   format:
     name: Formatting with clang-format-${{ matrix.version }}
@@ -114,7 +127,6 @@ jobs:
       - name: Install macOS Dependencies
         if: runner.os == 'macOS'
         run: |
-          brew update
           brew install cmake ninja llvm || true
           echo /usr/local/opt/llvm/bin >> $GITHUB_PATH
 

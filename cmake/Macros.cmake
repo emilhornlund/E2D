@@ -163,6 +163,21 @@ macro(e2d_add_example target)
     endif()
 endmacro()
 
+function(e2d_add_test target SOURCES DEPENDS)
+    source_group("" FILES ${SOURCES})
+
+    add_executable(${target} ${SOURCES})
+
+    set_target_properties(${target} PROPERTIES FOLDER "Tests")
+
+    target_link_libraries(${target} PRIVATE ${DEPENDS} Catch2::Catch2WithMain)
+
+    e2d_set_target_warnings(${target})
+    e2d_set_public_symbols_hidden(${target})
+
+    catch_discover_tests(${target})
+endfunction()
+
 function(e2d_find_package)
     list(GET ARGN 0 target)
     list(REMOVE_AT ARGN 0)

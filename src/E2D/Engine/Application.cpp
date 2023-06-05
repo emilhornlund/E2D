@@ -58,6 +58,11 @@ int e2d::Application::run()
     return this->m_exitCode;
 }
 
+[[maybe_unused]] bool e2d::Application::isRunning() const
+{
+    return this->m_running;
+}
+
 void e2d::Application::quit(int exitCode)
 {
     this->m_exitCode = exitCode;

@@ -10,6 +10,7 @@
         - [Linux](#linux-prerequisites)
 - [Configuration](#configuration)
 - [Installation](#installation)
+- [Testing](#testing)
 - [Packaging](#packaging)
 - [Example](#example)
 - [Generating Documentation](#generating-documentation)
@@ -140,6 +141,7 @@ The E2D project provides several configuration options that can be set during th
 - `CMAKE_BUILD_TYPE`: Choose the type of build. Valid options are `Debug` or `Release`. The default build type is set to `Release`.
 - `BUILD_SHARED_LIBS`: Set this variable to `ON` to build E2D as shared libraries or `OFF` to build it as static libraries. The default value is `ON`, which builds E2D as shared libraries.
 - `E2D_BUILD_ENGINE`: Set this variable to `ON` to enable building the E2D library module called "Engine" or `OFF` to disable it. Building the "Engine" module is enabled by default.
+- `E2D_BUILD_TEST_SUITE`: Set this variable to `ON` to build the E2D test suite or `OFF` to ignore it. Building the test suite is disabled by default.
 - `E2D_BUILD_DOCS`: Set this variable to `ON` to enable generating documentation using Doxygen or `OFF` to disable it. Generating documentation is disabled by default.
 - `E2D_BUILD_EXAMPLES`: Set this variable to `ON` to enable building the project examples or `OFF` to disable it. Building the examples is disabled by default.
 - `E2D_BUILD_FRAMEWORKS`: Set this variable to `ON` to build E2D as framework libraries (release only), or `OFF` to build according to `BUILD_SHARED_LIBS`. Framework library building is disabled by default.
@@ -229,6 +231,48 @@ To build and install the E2D project, follow these steps:
 4. After the installation process completes, the E2D project libraries and related files will be installed in the specified directory or the default system directory.
 
 Ensure that you follow the appropriate instructions for your specific operating system, compiler, and CMake generator when building and installing the project. Customize the `CMAKE_INSTALL_PREFIX` as needed to specify the desired installation directory.
+
+## Testing
+
+The E2D project uses Catch2 for unit testing. Unit tests are essential to ensure the correctness and stability of the codebase. This section provides information on running the tests and understanding the testing workflow.
+
+To run the tests for the E2D project, follow these steps:
+
+1. Make sure you have built and installed the E2D project as described in the [Installation](#installation) section.
+
+2. Before building the E2D project, make sure to configure CMake to include the test suite by setting the `E2D_BUILD_TEST_SUITE` CMake variable to `ON`. You can do this by adding the following flag when generating the build files:
+
+   ```shell
+   cmake -DE2D_BUILD_TEST_SUITE=ON ...
+   ```
+
+   This will enable the compilation of the test suite along with the rest of the project.
+
+3. Run the following command to execute the tests:
+
+    - **Windows:**
+
+      ```shell
+      cmake --build build --target runtests
+      ```
+
+    - **macOS and Linux:**
+
+      ```shell
+      ctest --test-dir build
+      ```
+
+      The `ctest` command will run all the available tests and display the test results in the terminal.
+
+4. You can also use additional options with the `ctest` command to customize the test execution. Refer to the previous instructions for more information on available options, such as running tests in parallel or running specific tests based on regular expressions.
+
+   Adjust the commands based on your operating system and preferred configuration.
+
+5. After running the tests, you will see a summary of the test results, including the number of passed, failed, and skipped tests. Additionally, detailed test logs will be available in the build directory.
+
+It is important to regularly run the tests to ensure the stability and correctness of the E2D project. Tests help catch bugs and regressions early in the development process, allowing for quick identification and resolution of issues.
+
+Feel free to add or modify tests in the appropriate test files located in the project's source code directory. Follow the existing test file structure and conventions to maintain consistency.
 
 ## Packaging
 
