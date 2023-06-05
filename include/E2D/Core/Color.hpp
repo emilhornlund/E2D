@@ -42,7 +42,7 @@ namespace e2d
 /**
  * @brief Utility class for manipulating RGBA colors
  */
-class E2D_CORE_API Color final
+class Color final
 {
 public:
     /**
@@ -56,9 +56,9 @@ public:
     /**
      * @brief Construct the color from its 4 RGBA components
      *
-     * @param redComponent   redComponent component (in the range [0, 255])
-     * @param greenComponent greenComponent component (in the range [0, 255])
-     * @param blueComponent  blueComponent component (in the range [0, 255])
+     * @param redComponent   Red component (in the range [0, 255])
+     * @param greenComponent Green component (in the range [0, 255])
+     * @param blueComponent  Blue component (in the range [0, 255])
      * @param alphaComponent Alpha (opacity) component (in the range [0, 255])
      */
     constexpr Color(std::uint8_t redComponent,
@@ -89,40 +89,40 @@ public:
     /// The alpha (opacity) component
     std::uint8_t a{255};
 
+    // NOLINTBEGIN(readability-identifier-naming)
     /// Black predefined color
-    static const Color black;
+    static const Color Black;
     /// White predefined color
-    static const Color white;
+    static const Color White;
     /// Red predefined color
-    static const Color red;
+    static const Color Red;
     /// Green predefined color
-    static const Color green;
+    static const Color Green;
     /// Blue predefined color
-    static const Color blue;
+    static const Color Blue;
     /// Yellow predefined color
-    static const Color yellow;
+    static const Color Yellow;
     /// Magenta predefined color
-    static const Color magenta;
+    static const Color Magenta;
     /// Cyan predefined color
-    static const Color cyan;
-    /// Transparent (black) predefined color
-    static const Color transparent;
+    static const Color Cyan;
+    /// Transparent (Black) predefined color
+    static const Color Transparent;
+    // NOLINTEND(readability-identifier-naming)
 };
-
-} // namespace e2d
 
 /**
  * @relates Color
  * @brief Overload of the == operator
- * 
- *  This operator compares two colors and check if they are equal.
- * 
+ *
+ * This operator compares two colors and check if they are equal.
+ *
  * @param left  Left operand
  * @param right Right operand
- * 
+ *
  * @return True if colors are equal, false if they are different
  */
-[[nodiscard]] constexpr bool operator==(const e2d::Color& left, const e2d::Color& right);
+[[nodiscard]] constexpr bool operator==(const Color& left, const Color& right);
 
 /**
  * @relates Color
@@ -135,7 +135,7 @@ public:
  *
  * @return True if colors are different, false if they are equal
  */
-[[nodiscard]] constexpr bool operator!=(const e2d::Color& left, const e2d::Color& right);
+[[nodiscard]] constexpr bool operator!=(const Color& left, const Color& right);
 
 /**
  * @relates Color
@@ -149,7 +149,7 @@ public:
  *
  * @return Result of \a left + \a right
  */
-[[nodiscard]] constexpr e2d::Color operator+(const e2d::Color& left, const e2d::Color& right);
+[[nodiscard]] constexpr Color operator+(const Color& left, const Color& right);
 
 /**
  * @relates Color
@@ -163,7 +163,7 @@ public:
  *
  * @return Result of \a left - \a right
  */
-[[nodiscard]] constexpr e2d::Color operator-(const e2d::Color& left, const e2d::Color& right);
+[[nodiscard]] constexpr Color operator-(const Color& left, const Color& right);
 
 /**
  * @relates Color
@@ -179,7 +179,7 @@ public:
  *
  * @return Result of \a left * \a right
  */
-[[nodiscard]] constexpr e2d::Color operator*(const e2d::Color& left, const e2d::Color& right);
+[[nodiscard]] constexpr Color operator*(const Color& left, const Color& right);
 
 /**
  * @relates Color
@@ -194,7 +194,7 @@ public:
  *
  * @return Reference to \a left
  */
-constexpr e2d::Color& operator+=(e2d::Color& left, const e2d::Color& right);
+constexpr Color& operator+=(Color& left, const Color& right);
 
 /**
  * @relates Color
@@ -209,7 +209,7 @@ constexpr e2d::Color& operator+=(e2d::Color& left, const e2d::Color& right);
  *
  * @return Reference to \a left
  */
-constexpr e2d::Color& operator-=(e2d::Color& left, const e2d::Color& right);
+constexpr Color& operator-=(Color& left, const Color& right);
 
 /**
  * @relates Color
@@ -226,6 +226,10 @@ constexpr e2d::Color& operator-=(e2d::Color& left, const e2d::Color& right);
  *
  * @return Reference to \a left
  */
-constexpr e2d::Color& operator*=(e2d::Color& left, const e2d::Color& right);
+constexpr Color& operator*=(Color& left, const Color& right);
+
+#include <E2D/Core/Color.inl>
+
+} // namespace e2d
 
 #endif //E2D_CORE_COLOR_HPP

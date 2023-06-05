@@ -33,7 +33,7 @@
 
 e2d::Application::Application(std::string windowTitle) :
 m_windowTitle(std::move(windowTitle)),
-m_backgroundColor(Color::black)
+m_backgroundColor(Color::Black)
 {
 }
 

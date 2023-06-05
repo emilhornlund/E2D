@@ -48,7 +48,7 @@ endif()
 
 if(E2D_OS_WINDOWS)
     e2d_set_option(E2D_USE_STATIC_STD_LIBS FALSE BOOL "TRUE to statically link to the standard libraries, FALSE to use them as DLLs")
-    
+
     if(BUILD_SHARED_LIBS AND E2D_USE_STATIC_STD_LIBS)
         message(FATAL_ERROR "BUILD_SHARED_LIBS and E2D_USE_STATIC_STD_LIBS cannot be used together")
     endif()
@@ -86,8 +86,8 @@ if(NOT E2D_BUILD_FRAMEWORKS)
     install(DIRECTORY include/
             DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
             COMPONENT devel
-            FILES_MATCHING PATTERN "*.hpp")
-    
+            FILES_MATCHING PATTERN "*.hpp" PATTERN "*.inl")
+
     if(E2D_GENERATE_PDB)
         install(DIRECTORY ${PROJECT_BINARY_DIR}/lib/
                 DESTINATION ${CMAKE_INSTALL_LIBDIR}
