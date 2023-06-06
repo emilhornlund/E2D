@@ -67,11 +67,18 @@ public:
     void resume();
 
     /**
-     * @brief Returns the elapsed time in ticks since the timer was started or resumed.
+     * @brief Returns the elapsed time in milliseconds since the timer was started or resumed.
      *
      * @return The elapsed time in ticks.
      */
-    std::uint32_t getElapsedTicks() const;
+    std::uint32_t getElapsedTimeAsMilliseconds() const;
+
+    /**
+     * @brief Returns the elapsed time in seconds since the timer was started or resumed.
+     *
+     * @return The elapsed time in seconds.
+     */
+    [[maybe_unused]] double getElapsedTimeAsSeconds() const;
 
     /**
      * @brief Checks if the timer is currently started.

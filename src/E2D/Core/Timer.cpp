@@ -68,7 +68,7 @@ void e2d::Timer::resume()
     }
 }
 
-std::uint32_t e2d::Timer::getElapsedTicks() const
+std::uint32_t e2d::Timer::getElapsedTimeAsMilliseconds() const
 {
     std::uint32_t elapsedTicks = 0;
     if (this->m_started)
@@ -83,6 +83,12 @@ std::uint32_t e2d::Timer::getElapsedTicks() const
         }
     }
     return elapsedTicks;
+}
+
+[[maybe_unused]] double e2d::Timer::getElapsedTimeAsSeconds() const
+{
+    const std::uint32_t elapsedTicksAsMilliseconds = this->getElapsedTimeAsMilliseconds();
+    return static_cast<double>(elapsedTicksAsMilliseconds) / 1000.0;
 }
 
 bool e2d::Timer::isStarted() const

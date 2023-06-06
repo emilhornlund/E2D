@@ -24,9 +24,13 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Core/Timer.hpp>
+
 #include <E2D/Engine/Application.hpp>
 
 #include <SDL.h>
+
+#include <cmath>
 
 #include <iostream>
 #include <utility>
@@ -41,19 +45,52 @@ e2d::Application::~Application() = default;
 
 int e2d::Application::run()
 {
-    if (!initSDL())
+    if (!this->initSDL())
     {
         return -1;
     }
 
+    Timer        targetFrameTimer;
+    double const targetFrameTime = 1.0 / 60.0;
+
+    int    frames      = 0;
+    double elapsedTime = 0.0;
+    double remainder   = 0.0;
+
     this->m_running = true;
     while (this->m_running)
     {
-        handleEvents();
-        render();
+        targetFrameTimer.start();
+        double elapsedFrameTimeAsSeconds = targetFrameTimer.getElapsedTimeAsSeconds();
+
+        this->handleEvents();
+        // TODO: Update game objects with a fixed frame rate of 1/60
+
+        while (elapsedFrameTimeAsSeconds < targetFrameTime - remainder)
+        {
+            elapsedFrameTimeAsSeconds = targetFrameTimer.getElapsedTimeAsSeconds();
+        }
+
+        remainder = elapsedFrameTimeAsSeconds - (targetFrameTime - remainder);
+        if (remainder >= targetFrameTime)
+        {
+            remainder = 0.0;
+        }
+
+        this->render();
+        frames++;
+
+        elapsedTime += elapsedFrameTimeAsSeconds;
+        if (elapsedTime >= 1.0)
+        {
+            int const fps = static_cast<int>(std::round(frames / elapsedTime));
+            std::cout << "fps: " << fps << '\n';
+            frames      = 0;
+            elapsedTime = 0.0;
+        }
     }
 
-    closeSDL();
+    this->closeSDL();
 
     return this->m_exitCode;
 }
