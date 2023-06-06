@@ -1,5 +1,8 @@
 include(FetchContent)
 
+add_subdirectory(install)
+e2d_set_target_warnings(e2d-test-install)
+
 set(CATCH_CONFIG_FAST_COMPILE ON CACHE BOOL "")
 FetchContent_Declare(Catch2
                      GIT_REPOSITORY https://github.com/catchorg/Catch2.git

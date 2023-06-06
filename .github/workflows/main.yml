@@ -74,6 +74,12 @@ jobs:
             ctest --test-dir build --output-on-failure -C ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }}
           fi
 
+      - name: Test Install
+        shell: bash
+        run: |
+          cmake -S test/install -B test/install/build -DE2D_ROOT=./install -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }} ${{matrix.platform.flags}} ${{matrix.config.flags}} ${{matrix.type.flags}}
+          cmake --build test/install/build --config ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }} ${{matrix.platform.suffix}}
+
   format:
     name: Formatting with clang-format-${{ matrix.version }}
     runs-on: ubuntu-22.04
