@@ -17,6 +17,7 @@ target_include_directories(Catch2 SYSTEM INTERFACE ${CATCH2_INCLUDE_DIRS})
 # E2D Core Library Tests
 set(CORE_SRC
     Core/Color.test.cpp
+    Core/Timer.test.cpp
 )
 e2d_add_test(e2d-test-core "${CORE_SRC}" E2D::Core)
 
@@ -28,15 +29,15 @@ e2d_add_test(e2d-test-engine "${ENGINE_SRC}" E2D::Engine)
 
 if(E2D_OS_WINDOWS)
     if(ARCH_32BITS)
-        add_custom_command(TARGET e2d-test-engine PRE_BUILD
+        add_custom_command(TARGET e2d-test-core PRE_BUILD
                            COMMAND ${CMAKE_COMMAND} -E copy_if_different
                            "${PROJECT_SOURCE_DIR}/extlibs/bin/x86/SDL2.dll"
-                           $<TARGET_FILE_DIR:e2d-test-engine>)
+                           $<TARGET_FILE_DIR:e2d-test-core>)
     elseif(ARCH_64BITS)
-        add_custom_command(TARGET e2d-test-engine PRE_BUILD
+        add_custom_command(TARGET e2d-test-core PRE_BUILD
                            COMMAND ${CMAKE_COMMAND} -E copy_if_different
                            "${PROJECT_SOURCE_DIR}/extlibs/bin/x64/SDL2.dll"
-                           $<TARGET_FILE_DIR:e2d-test-engine>)
+                           $<TARGET_FILE_DIR:e2d-test-core>)
     endif()
 endif()
 

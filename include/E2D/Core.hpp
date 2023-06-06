@@ -31,5 +31,6 @@
 
 #include <E2D/Core/Color.hpp>
 #include <E2D/Core/NonCopyable.hpp>
+#include <E2D/Core/Timer.hpp>
 
 #endif //E2D_CORE_HPP

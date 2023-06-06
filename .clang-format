@@ -109,7 +109,7 @@ IncludeCategories:
     Regex: '^<(sdl|catch2)'
   - Priority: 7
     Regex: '^<c(.+)>$'
-SortIncludes: true
+SortIncludes: CaseInsensitive
 SortUsingDeclarations: true
 
 # Penalties
