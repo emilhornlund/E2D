@@ -2,8 +2,8 @@
 # Try to find SDL2 libraries and include paths.
 # Once done this will define
 #
-# SDL2_INCLUDE_DIRS
-# SDL2_LIBRARIES
+# SDL2_INCLUDE_DIR
+# SDL2_LIBRARY
 #
 
 if(NOT SDL2_DIR)

@@ -35,7 +35,7 @@ Before building and running the E2D project, ensure you have the following prere
 - **Operating System:** E2D is supported on Linux, Windows, and macOS.
 - **C++20 Compiler:** E2D requires a compiler that supports the C++20 standard. Supported compilers include GNU C++ (GCC), Clang, MinGW, ClangCL and MSVC (Microsoft Visual C++).
 - **CMake 3.22 or higher:** E2D uses CMake as the build system. Ensure that you have CMake version 3.22 or higher installed on your system. You can download CMake from the [official CMake website](https://cmake.org/download/).
-- **SDL2 Library:** E2D uses the SDL2 library for graphics and input handling. SDL2 is already bundled with E2D for Windows and macOS. For Linux, make sure you have SDL2 installed on your system. Installation instructions for SDL2 can be found in the [official SDL2 documentation](https://www.libsdl.org/download-2.0.php).
+- **SDL2 Library:** E2D uses the SDL2 library for graphics and input handling. SDL2 and its extension libraries are already bundled with E2D for Windows and macOS. For Linux, make sure you have SDL2 and the extension libraries (SDL_image and SDL_ttf) installed on your system. Installation instructions for SDL2 can be found in the [official SDL2 documentation](https://www.libsdl.org/download-2.0.php).
 - **Doxygen (optional):** If you plan on generating the documentation, Doxygen is required. You can install Doxygen using the instructions provided for your specific operating system.
 
 ### Prerequisites Instructions
@@ -114,11 +114,11 @@ To set up the development environment on Linux, follow these steps:
 
    Adjust the command based on the package manager used in your distribution.
 
-3. **SDL2:** Install the SDL2 development package using the package manager for your Linux distribution. For example, on Ubuntu, open a terminal and run the following command:
+3. **SDL2:** Install the SDL2 development package and SDL extension libraries **SDL_image** and **SDL_ttf** using the package manager for your Linux distribution. For example, on Ubuntu, open a terminal and run the following command:
 
    ```shell
    sudo apt-get update
-   sudo apt-get install libsdl2-dev
+   sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
    ```
 
    Adjust the command based on the package manager used in your distribution.

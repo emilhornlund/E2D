@@ -31,17 +31,20 @@ set(ENGINE_SRC
 e2d_add_test(e2d-test-engine "${ENGINE_SRC}" E2D::Engine)
 
 if(E2D_OS_WINDOWS)
-    if(ARCH_32BITS)
+    set(DLL_NAMES SDL2 SDL2_image SDL2_ttf)
+
+    foreach(DLL_NAME ${DLL_NAMES})
+        if(ARCH_32BITS)
+            set(DLL_SOURCE "${PROJECT_SOURCE_DIR}/extlibs/bin/x86/${DLL_NAME}.dll")
+        elseif(ARCH_64BITS)
+            set(DLL_SOURCE "${PROJECT_SOURCE_DIR}/extlibs/bin/x64/${DLL_NAME}.dll")
+        endif()
+
         add_custom_command(TARGET e2d-test-core PRE_BUILD
                            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                           "${PROJECT_SOURCE_DIR}/extlibs/bin/x86/SDL2.dll"
+                           "${DLL_SOURCE}"
                            $<TARGET_FILE_DIR:e2d-test-core>)
-    elseif(ARCH_64BITS)
-        add_custom_command(TARGET e2d-test-core PRE_BUILD
-                           COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                           "${PROJECT_SOURCE_DIR}/extlibs/bin/x64/SDL2.dll"
-                           $<TARGET_FILE_DIR:e2d-test-core>)
-    endif()
+    endforeach()
 endif()
 
 add_custom_target(runtests DEPENDS e2d-test-core e2d-test-engine)

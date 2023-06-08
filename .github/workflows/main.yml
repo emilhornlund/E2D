@@ -42,7 +42,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install ninja-build cmake libsdl2-dev
+          sudo apt-get install ninja-build cmake libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
           ninja --version
           cmake --version
           gcc --version
@@ -78,7 +78,7 @@ jobs:
         shell: bash
         run: |
           cmake -S test/install -B test/install/build -DE2D_ROOT=./install -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }} ${{matrix.platform.flags}} ${{matrix.config.flags}} ${{matrix.type.flags}}
-          cmake --build test/install/build --config ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }} ${{matrix.platform.suffix}}
+          cmake --build test/install/build --config ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }}
 
   format:
     name: Formatting with clang-format-${{ matrix.version }}
@@ -128,7 +128,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install ninja-build cmake libsdl2-dev
+          sudo apt-get install ninja-build cmake libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
 
       - name: Install macOS Dependencies
         if: runner.os == 'macOS'
