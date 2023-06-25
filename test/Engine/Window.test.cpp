@@ -1,5 +1,5 @@
 /**
- * Engine.hpp
+ * Window.test.cpp
  *
  * MIT License
  *
@@ -24,12 +24,24 @@
  * THE SOFTWARE.
  */
 
-#ifndef E2D_ENGINE_HPP
-#define E2D_ENGINE_HPP
-
-#include <E2D/Engine/Export.hpp>
-
-#include <E2D/Engine/Application.hpp>
 #include <E2D/Engine/Window.hpp>
 
-#endif //E2D_ENGINE_HPP
+#include <catch2/catch_test_macros.hpp>
+
+TEST_CASE("Window Creation and Destruction", "[Window]")
+{
+    e2d::Window window;
+
+    SECTION("Create Window")
+    {
+        REQUIRE(window.create("Test Window") == true);
+        REQUIRE(window.isOpened() == true);
+    }
+
+    SECTION("Close Window")
+    {
+        REQUIRE(window.create("Test Window") == true);
+        window.close();
+        REQUIRE(window.isOpened() == false);
+    }
+}

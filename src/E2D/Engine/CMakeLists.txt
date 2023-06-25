@@ -7,6 +7,8 @@ set(SRC
     ${INCROOT}/Application.hpp
     ${SRCROOT}/Application.cpp
     ${INCROOT}/Export.hpp
+    ${INCROOT}/Window.hpp
+    ${SRCROOT}/Window.cpp
 )
 
 e2d_add_library(Engine SOURCES ${SRC})

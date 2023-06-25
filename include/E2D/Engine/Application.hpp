@@ -32,6 +32,7 @@
 #include <E2D/Core/Color.hpp>
 #include <E2D/Core/NonCopyable.hpp>
 
+#include <memory>
 #include <string>
 
 struct SDL_Window;
@@ -42,6 +43,7 @@ struct SDL_Renderer;
  */
 namespace e2d
 {
+class Window;
 
 /**
  * @brief Represents the application class.
@@ -107,11 +109,8 @@ private:
     /// The title of the window.
     const std::string m_windowTitle;
 
-    /// Pointer to the SDL window.
-    SDL_Window* m_window = nullptr;
-
-    /// Pointer to the SDL renderer.
-    SDL_Renderer* m_renderer = nullptr;
+    /// Unique pointer to the window
+    std::unique_ptr<Window> m_window;
 
     /// The background color of the window
     Color m_backgroundColor;

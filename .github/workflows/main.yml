@@ -2,6 +2,9 @@ name: Main
 
 on: [push, pull_request]
 
+env:
+  DISPLAY: ":99" # Display number to use for the X server
+
 jobs:
   build:
     name: ${{ matrix.platform.name }} ${{ matrix.config.name }} ${{ matrix.type.name }}
@@ -63,11 +66,19 @@ jobs:
         shell: bash
         run: cmake --build build --config ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }} --target install
 
+      - name: Prepare Test
+        shell: bash
+        run: |
+            set -e
+            if [ "${{ runner.os }}" == "Linux" ]; then
+              Xvfb $DISPLAY -screen 0 1920x1080x24 > /dev/null 2>&1 &
+            fi
+            mkdir -p build/bin
+
       - name: Test
         shell: bash
         run: |
           set -e
-          mkdir -p build/bin
           if [ "${{ runner.os }}" == "Windows" ]; then
             cmake --build build --target runtests --config ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }}
           else

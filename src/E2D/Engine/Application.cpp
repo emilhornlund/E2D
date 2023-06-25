@@ -27,16 +27,16 @@
 #include <E2D/Core/Timer.hpp>
 
 #include <E2D/Engine/Application.hpp>
+#include <E2D/Engine/Window.hpp>
 
 #include <SDL.h>
-
-#include <cmath>
 
 #include <iostream>
 #include <utility>
 
 e2d::Application::Application(std::string windowTitle) :
 m_windowTitle(std::move(windowTitle)),
+m_window(std::make_unique<Window>()),
 m_backgroundColor(Color::Black)
 {
 }
@@ -53,7 +53,6 @@ int e2d::Application::run()
     Timer        targetFrameTimer;
     double const targetFrameTime = 1.0 / 60.0;
 
-    int    frames      = 0;
     double elapsedTime = 0.0;
     double remainder   = 0.0;
 
@@ -78,14 +77,10 @@ int e2d::Application::run()
         }
 
         this->render();
-        frames++;
 
         elapsedTime += elapsedFrameTimeAsSeconds;
         if (elapsedTime >= 1.0)
         {
-            int const fps = static_cast<int>(std::round(frames / elapsedTime));
-            std::cout << "fps: " << fps << '\n';
-            frames      = 0;
             elapsedTime = 0.0;
         }
     }
@@ -114,42 +109,17 @@ bool e2d::Application::initSDL()
         return false;
     }
 
-    this->m_window = SDL_CreateWindow(this->m_windowTitle.c_str(),
-                                      SDL_WINDOWPOS_UNDEFINED,
-                                      SDL_WINDOWPOS_UNDEFINED,
-                                      800,
-                                      600,
-                                      SDL_WINDOW_SHOWN);
-    if (this->m_window == nullptr)
+    if (!this->m_window->create(this->m_windowTitle))
     {
         std::cerr << "Failed to create window: " << SDL_GetError() << std::endl;
         return false;
     }
-
-    this->m_renderer = SDL_CreateRenderer(this->m_window, -1, SDL_RENDERER_ACCELERATED);
-    if (this->m_renderer == nullptr)
-    {
-        std::cerr << "Failed to create renderer: " << SDL_GetError() << std::endl;
-        return false;
-    }
-
     return true;
 }
 
 void e2d::Application::closeSDL()
 {
-    if (this->m_renderer != nullptr)
-    {
-        SDL_DestroyRenderer(this->m_renderer);
-        this->m_renderer = nullptr;
-    }
-
-    if (this->m_window != nullptr)
-    {
-        SDL_DestroyWindow(this->m_window);
-        this->m_window = nullptr;
-    }
-
+    this->m_window->close();
     SDL_Quit();
 }
 
@@ -167,16 +137,11 @@ void e2d::Application::handleEvents()
 
 void e2d::Application::render()
 {
-    SDL_SetRenderDrawColor(this->m_renderer,
-                           this->m_backgroundColor.r,
-                           this->m_backgroundColor.g,
-                           this->m_backgroundColor.b,
-                           this->m_backgroundColor.a);
-    SDL_RenderClear(this->m_renderer);
+    this->m_window->clear(this->m_backgroundColor);
 
     //TODO: render other elements here
 
-    SDL_RenderPresent(this->m_renderer);
+    this->m_window->display();
 }
 
 const e2d::Color& e2d::Application::getBackgroundColor() const
