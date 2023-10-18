@@ -80,34 +80,21 @@ public:
      */
     [[nodiscard]] constexpr std::uint32_t toInteger() const;
 
-    /// The red component
-    std::uint8_t r{};
-    /// The green component
-    std::uint8_t g{};
-    /// The blue component
-    std::uint8_t b{};
-    /// The alpha (opacity) component
-    std::uint8_t a{255};
+    std::uint8_t r{};    //!< The red component
+    std::uint8_t g{};    //!< The green component
+    std::uint8_t b{};    //!< The blue component
+    std::uint8_t a{255}; //!< The alpha (opacity) component
 
     // NOLINTBEGIN(readability-identifier-naming)
-    /// Black predefined color
-    static const Color Black;
-    /// White predefined color
-    static const Color White;
-    /// Red predefined color
-    static const Color Red;
-    /// Green predefined color
-    static const Color Green;
-    /// Blue predefined color
-    static const Color Blue;
-    /// Yellow predefined color
-    static const Color Yellow;
-    /// Magenta predefined color
-    static const Color Magenta;
-    /// Cyan predefined color
-    static const Color Cyan;
-    /// Transparent (Black) predefined color
-    static const Color Transparent;
+    static const Color Black;       //!< Black predefined color
+    static const Color White;       //!< White predefined color
+    static const Color Red;         //!< Red predefined color
+    static const Color Green;       //!< Green predefined color
+    static const Color Blue;        //!< Blue predefined color
+    static const Color Yellow;      //!< Yellow predefined color
+    static const Color Magenta;     //!< Magenta predefined color
+    static const Color Cyan;        //!< Cyan predefined color
+    static const Color Transparent; //!< Transparent (Black) predefined color
     // NOLINTEND(readability-identifier-naming)
 };
 

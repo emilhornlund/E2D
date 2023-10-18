@@ -100,20 +100,11 @@ protected:
     void setBackgroundColor(const Color& backgroundColor);
 
 private:
-    /// The exit code of the application.
-    int m_exitCode = 0;
-
-    /// Flag indicating whether the application is running.
-    bool m_running = false;
-
-    /// The title of the window.
-    const std::string m_windowTitle;
-
-    /// Unique pointer to the window
-    std::unique_ptr<Window> m_window;
-
-    /// The background color of the window
-    Color m_backgroundColor;
+    int                     m_exitCode = 0;     //!< The exit code of the application.
+    bool                    m_running  = false; //!< Flag indicating whether the application is running.
+    const std::string       m_windowTitle;      //!< The title of the window.
+    std::unique_ptr<Window> m_window;           //!< Unique pointer to the window
+    Color                   m_backgroundColor;  //!< The background color of the window
 
     /**
      * @brief Initializes the SDL library and creates the window and renderer.

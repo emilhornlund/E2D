@@ -95,10 +95,10 @@ public:
     bool isPaused() const;
 
 private:
-    std::uint32_t m_startTicks  = 0;     ///< The ticks at the start of the timer.
-    std::uint32_t m_pausedTicks = 0;     ///< The ticks when the timer was paused.
-    bool          m_paused      = false; ///< Flag indicating if the timer is paused.
-    bool          m_started     = false; ///< Flag indicating if the timer is started.
+    std::uint32_t m_startTicks  = 0;     //!< The ticks at the start of the timer.
+    std::uint32_t m_pausedTicks = 0;     //!< The ticks when the timer was paused.
+    bool          m_paused      = false; //!< Flag indicating if the timer is paused.
+    bool          m_started     = false; //!< Flag indicating if the timer is started.
 };
 
 } // namespace e2d
