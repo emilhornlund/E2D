@@ -1,0 +1,17 @@
+{
+  "version": 3,
+  "configurePresets":[
+    {
+      "name": "dev",
+      "binaryDir": "build",
+      "installDir": "${sourceDir}/build/install",
+      "cacheVariables": {
+        "CMAKE_CXX_EXTENSIONS": "OFF",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "E2D_BUILD_EXAMPLES": "ON",
+        "E2D_BUILD_TEST_SUITE": "ON",
+        "WARNINGS_AS_ERRORS": "ON"
+      }
+    }
+  ]
+}

@@ -26,14 +26,14 @@
 
 ## Overview
 
-E2D is a modern 2D game engine written in C++20 that leverages the SDL2 library. Currently, a work in progress, the project aims to provide developers with a powerful and flexible platform to create cross-platform 2D games with ease. With its comprehensive features, intuitive API, and extensive documentation, E2D aims to empower developers to bring their game ideas to life efficiently and deliver captivating gaming experiences.
+E2D is a modern 2D game engine written in C++17 that leverages the SDL2 library. Currently, a work in progress, the project aims to provide developers with a powerful and flexible platform to create cross-platform 2D games with ease. With its comprehensive features, intuitive API, and extensive documentation, E2D aims to empower developers to bring their game ideas to life efficiently and deliver captivating gaming experiences.
 
 ## Prerequisites
 
 Before building and running the E2D project, ensure you have the following prerequisites:
 
 - **Operating System:** E2D is supported on Linux, Windows, and macOS.
-- **C++20 Compiler:** E2D requires a compiler that supports the C++20 standard. Supported compilers include GNU C++ (GCC), Clang, MinGW, ClangCL and MSVC (Microsoft Visual C++).
+- **C++17 Compiler:** E2D requires a compiler that supports the C++17 standard. Supported compilers include GNU C++ (GCC), Clang, MinGW, ClangCL and MSVC (Microsoft Visual C++).
 - **CMake 3.22 or higher:** E2D uses CMake as the build system. Ensure that you have CMake version 3.22 or higher installed on your system. You can download CMake from the [official CMake website](https://cmake.org/download/).
 - **SDL2 Library:** E2D uses the SDL2 library for graphics and input handling. SDL2 and its extension libraries are already bundled with E2D for Windows and macOS. For Linux, make sure you have SDL2 and the extension libraries (SDL_image and SDL_ttf) installed on your system. Installation instructions for SDL2 can be found in the [official SDL2 documentation](https://www.libsdl.org/download-2.0.php).
 - **Doxygen (optional):** If you plan on generating the documentation, Doxygen is required. You can install Doxygen using the instructions provided for your specific operating system.
@@ -44,7 +44,7 @@ Before building and running the E2D project, ensure you have the following prere
 
 To set up the development environment on Windows, follow these steps:
 
-1. **Compiler:** Install one of the following C++20 compilers:
+1. **Compiler:** Install one of the following C++17 compilers:
    - **Visual Studio:** Download and install Visual Studio 2019 or newer from the [official Microsoft website](https://visualstudio.microsoft.com/downloads/). Make sure to select the C++ development workload during the installation process.
    - **MinGW-w64:** Download and install MinGW-w64 from the [official MinGW-w64 website](http://mingw-w64.org/doku.php). Make sure to select the C++ components during the installation process.
 
@@ -64,7 +64,7 @@ To set up the development environment on Windows, follow these steps:
 
 To set up the development environment on macOS, follow these steps:
 
-1. **Compiler:** macOS comes with Clang installed by default, which supports C++20. No additional installation is required.
+1. **Compiler:** macOS comes with Clang installed by default, which supports C++17. No additional installation is required.
 
 2. **CMake:** Install CMake version 3.22 or higher using Homebrew. Open a terminal and run the following command:
 
@@ -88,7 +88,7 @@ To set up the development environment on macOS, follow these steps:
 
 To set up the development environment on Linux, follow these steps:
 
-1. **Compiler:** Install one of the following C++20 compilers:
+1. **Compiler:** Install one of the following C++17 compilers:
    - **GCC (GNU Compiler Collection):** Open a terminal and run the following command to install GCC:
 
      ```shell
