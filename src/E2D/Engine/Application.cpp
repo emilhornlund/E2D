@@ -27,6 +27,7 @@
 #include <E2D/Core/Timer.hpp>
 
 #include <E2D/Engine/Application.hpp>
+#include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/Window.hpp>
 
 #include <SDL.h>
@@ -37,6 +38,7 @@
 e2d::Application::Application(std::string windowTitle) :
 m_windowTitle(std::move(windowTitle)),
 m_window(std::make_unique<Window>()),
+m_renderer(std::make_unique<Renderer>()),
 m_backgroundColor(Color::Black)
 {
 }
@@ -108,10 +110,12 @@ bool e2d::Application::initSDL()
         std::cerr << "Failed to initialize SDL: " << SDL_GetError() << std::endl;
         return false;
     }
-
-    if (!this->m_window->create(this->m_windowTitle))
+    if (!this->m_window->create(this->m_windowTitle.c_str(), 800, 600))
     {
-        std::cerr << "Failed to create window: " << SDL_GetError() << std::endl;
+        return false;
+    }
+    if (!this->m_renderer->create(*this->m_window))
+    {
         return false;
     }
     return true;
@@ -119,7 +123,8 @@ bool e2d::Application::initSDL()
 
 void e2d::Application::closeSDL()
 {
-    this->m_window->close();
+    this->m_window->destroy();
+    this->m_renderer->destroy();
     SDL_Quit();
 }
 
@@ -137,11 +142,7 @@ void e2d::Application::handleEvents()
 
 void e2d::Application::render()
 {
-    this->m_window->clear(this->m_backgroundColor);
-
-    //TODO: render other elements here
-
-    this->m_window->display();
+    this->m_renderer->render(this->m_backgroundColor);
 }
 
 const e2d::Color& e2d::Application::getBackgroundColor() const

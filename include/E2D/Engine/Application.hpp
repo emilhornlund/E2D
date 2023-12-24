@@ -35,15 +35,13 @@
 #include <memory>
 #include <string>
 
-struct SDL_Window;
-struct SDL_Renderer;
-
 /**
  * @brief Namespace for E2D
  */
 namespace e2d
 {
-class Window;
+class Renderer; // Forward declaration of Renderer
+class Window;   // Forward declaration of Window
 
 /**
  * @brief Represents the application class.
@@ -100,11 +98,12 @@ protected:
     void setBackgroundColor(const Color& backgroundColor);
 
 private:
-    int                     m_exitCode = 0;     //!< The exit code of the application.
-    bool                    m_running  = false; //!< Flag indicating whether the application is running.
-    const std::string       m_windowTitle;      //!< The title of the window.
-    std::unique_ptr<Window> m_window;           //!< Unique pointer to the window
-    Color                   m_backgroundColor;  //!< The background color of the window
+    int                       m_exitCode = 0;     //!< The exit code of the application.
+    bool                      m_running  = false; //!< Flag indicating whether the application is running.
+    const std::string         m_windowTitle;      //!< The title of the window.
+    std::unique_ptr<Window>   m_window;           //!< Unique pointer to the window
+    std::unique_ptr<Renderer> m_renderer;         //!< Unique pointer to the renderer
+    Color                     m_backgroundColor;  //!< The background color of the window
 
     /**
      * @brief Initializes the SDL library and creates the window and renderer.

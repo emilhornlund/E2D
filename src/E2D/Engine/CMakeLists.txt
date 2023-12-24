@@ -7,8 +7,14 @@ set(SRC
     ${INCROOT}/Application.hpp
     ${SRCROOT}/Application.cpp
     ${INCROOT}/Export.hpp
+    ${INCROOT}/Renderer.hpp
+    ${SRCROOT}/Renderer.cpp
+    ${SRCROOT}/RendererImpl.hpp
+    ${SRCROOT}/RendererImpl.cpp
     ${INCROOT}/Window.hpp
     ${SRCROOT}/Window.cpp
+    ${SRCROOT}/WindowImpl.hpp
+    ${SRCROOT}/WindowImpl.cpp
 )
 
 e2d_add_library(Engine SOURCES ${SRC})

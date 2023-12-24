@@ -25,64 +25,30 @@
  */
 
 #include <E2D/Engine/Window.hpp>
+#include <E2D/Engine/WindowImpl.hpp>
 
-#include <SDL.h>
-
-#include <iostream>
-
-e2d::Window::Window() = default;
+e2d::Window::Window() : m_windowImpl(std::make_unique<internal::WindowImpl>())
+{
+}
 
 e2d::Window::~Window() = default;
 
-bool e2d::Window::create(const std::string& title)
+bool e2d::Window::create(const char* title, int width, int height)
 {
-    this->m_window = WindowPtr(
-        SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN));
-
-    if (this->m_window == nullptr)
-    {
-        std::cerr << "Failed to create window: " << SDL_GetError() << std::endl;
-        return false;
-    }
-
-    this->m_renderer = RendererPtr(SDL_CreateRenderer(this->m_window.get(), -1, SDL_RENDERER_ACCELERATED));
-    if (this->m_renderer == nullptr)
-    {
-        std::cerr << "Failed to create renderer: " << SDL_GetError() << std::endl;
-        return false;
-    }
-
-    return true;
+    return this->m_windowImpl->create(title, width, height);
 }
 
-void e2d::Window::close()
+bool e2d::Window::isCreated() const
 {
-    this->m_renderer.reset();
-    this->m_window.reset();
+    return this->m_windowImpl->isCreated();
 }
 
-void e2d::Window::display()
+void e2d::Window::destroy()
 {
-    SDL_RenderPresent(this->m_renderer.get());
+    this->m_windowImpl->destroy();
 }
 
-void e2d::Window::clear(const e2d::Color& color)
+void* e2d::Window::getNativeWindowHandle() const
 {
-    SDL_SetRenderDrawColor(this->m_renderer.get(), color.r, color.g, color.b, color.a);
-    SDL_RenderClear(this->m_renderer.get());
-}
-
-[[maybe_unused]] bool e2d::Window::isOpened() const
-{
-    return (this->m_window != nullptr);
-}
-
-void SDLDestroyer::operator()(SDL_Window* window) const
-{
-    SDL_DestroyWindow(window);
-}
-
-void SDLDestroyer::operator()(SDL_Renderer* renderer) const
-{
-    SDL_DestroyRenderer(renderer);
+    return this->m_windowImpl->getWindow();
 }

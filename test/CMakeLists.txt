@@ -28,6 +28,7 @@ e2d_add_test(e2d-test-core "${CORE_SRC}" E2D::Core)
 # E2D Engine Library Tests
 set(ENGINE_SRC
     Engine/Application.test.cpp
+    Engine/Renderer.test.cpp
     Engine/Window.test.cpp
 )
 e2d_add_test(e2d-test-engine "${ENGINE_SRC}" E2D::Engine)
