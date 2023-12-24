@@ -24,13 +24,18 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Engine/GraphicsSystem.hpp>
 #include <E2D/Engine/Renderer.hpp>
+#include <E2D/Engine/SystemManager.hpp>
 #include <E2D/Engine/Window.hpp>
 
 #include <catch2/catch_test_macros.hpp>
 
-TEST_CASE("Renderer Creation and Destruction", "[Window]")
+TEST_CASE("Renderer Creation and Destruction", "[Renderer]")
 {
+    e2d::SystemManager::getInstance().addSystem<e2d::GraphicsSystem>();
+    e2d::SystemManager::getInstance().initializeAll();
+
     e2d::Window window;
     window.create("Test Window", 800, 600);
 

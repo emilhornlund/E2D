@@ -106,18 +106,6 @@ private:
     Color                     m_backgroundColor;  //!< The background color of the window
 
     /**
-     * @brief Initializes the SDL library and creates the window and renderer.
-     *
-     * @return True if initialization is successful, false otherwise.
-     */
-    bool initSDL();
-
-    /**
-     * @brief Closes the SDL library and destroys the window and renderer.
-     */
-    void closeSDL();
-
-    /**
      * @brief Handles SDL events such as window close event.
      */
     void handleEvents();
