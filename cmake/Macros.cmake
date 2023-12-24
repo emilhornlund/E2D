@@ -40,7 +40,7 @@ macro(e2d_add_library module)
     endif()
     add_library(E2D::${module} ALIAS ${target})
 
-    target_compile_features(${target} PUBLIC cxx_std_20)
+    target_compile_features(${target} PUBLIC cxx_std_17)
 
     set_target_properties(${target} PROPERTIES LINKER_LANGUAGE CXX)
 

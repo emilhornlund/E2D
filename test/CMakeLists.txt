@@ -6,11 +6,12 @@ e2d_set_target_warnings(e2d-test-install)
 set(CATCH_CONFIG_FAST_COMPILE ON CACHE BOOL "")
 FetchContent_Declare(Catch2
                      GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-                     GIT_TAG v3.3.2)
+                     GIT_TAG v3.5.0
+                     GIT_SHALLOW ON)
 FetchContent_MakeAvailable(Catch2)
 include(Catch)
 
-target_compile_features(Catch2 PRIVATE cxx_std_20)
+target_compile_features(Catch2 PRIVATE cxx_std_17)
 
 set_target_properties(Catch2 PROPERTIES COMPILE_OPTIONS "" EXPORT_COMPILE_COMMANDS OFF)
 set_target_properties(Catch2WithMain PROPERTIES EXPORT_COMPILE_COMMANDS OFF)

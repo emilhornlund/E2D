@@ -1,4 +1,8 @@
-cmake_minimum_required(VERSION 3.22)
+if(CMAKE_HOST_WIN32)
+    cmake_minimum_required(VERSION 3.24)
+else()
+    cmake_minimum_required(VERSION 3.22)
+endif()
 
 macro(e2d_set_option var default type docstring)
     if(NOT DEFINED ${var})
@@ -9,7 +13,7 @@ endmacro()
 
 e2d_set_option(CMAKE_BUILD_TYPE Release STRING "Choose the type of build (Debug or Release)")
 
-project(E2D VERSION 1.0.0)
+project(E2D VERSION 1.0.0 LANGUAGES C CXX)
 
 include(cmake/Config.cmake)
 
@@ -108,7 +112,7 @@ else()
 
     add_library(E2D ${E2D_SOURCES})
 
-    target_compile_features(E2D PUBLIC cxx_std_20)
+    target_compile_features(E2D PUBLIC cxx_std_17)
 
     e2d_set_stdlib(E2D)
 
@@ -182,7 +186,7 @@ e2d_export_targets()
 
 set(CPACK_PACKAGE_NAME "E2D")
 set(CPACK_PACKAGE_VENDOR "Emil Hörnlund")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "E2D is a 2D game engine written in C++20 using SDL2")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "E2D is a 2D game engine written in C++17 using SDL2")
 set(CPACK_PACKAGE_FILE_NAME "E2D-${PROJECT_VERSION}-${CMAKE_CXX_COMPILER_ID}-${CMAKE_CXX_COMPILER_VERSION}-${CMAKE_BUILD_TYPE}")
 set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
