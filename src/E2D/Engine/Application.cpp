@@ -27,7 +27,10 @@
 #include <E2D/Core/Timer.hpp>
 
 #include <E2D/Engine/Application.hpp>
+#include <E2D/Engine/GraphicsSystem.hpp>
 #include <E2D/Engine/Renderer.hpp>
+#include <E2D/Engine/SystemManager.hpp>
+#include <E2D/Engine/TextRenderingSystem.hpp>
 #include <E2D/Engine/Window.hpp>
 
 #include <SDL.h>
@@ -47,7 +50,17 @@ e2d::Application::~Application() = default;
 
 int e2d::Application::run()
 {
-    if (!this->initSDL())
+    SystemManager::getInstance().addSystem<GraphicsSystem>();
+    SystemManager::getInstance().addSystem<TextRenderingSystem>();
+    if (!SystemManager::getInstance().initializeAll())
+    {
+        return -1;
+    }
+    if (!this->m_window->create(this->m_windowTitle.c_str(), 800, 600))
+    {
+        return -1;
+    }
+    if (!this->m_renderer->create(*this->m_window))
     {
         return -1;
     }
@@ -87,7 +100,10 @@ int e2d::Application::run()
         }
     }
 
-    this->closeSDL();
+    this->m_window->destroy();
+    this->m_renderer->destroy();
+
+    SystemManager::getInstance().shutdownAll();
 
     return this->m_exitCode;
 }
@@ -101,31 +117,6 @@ void e2d::Application::quit(int exitCode)
 {
     this->m_exitCode = exitCode;
     this->m_running  = false;
-}
-
-bool e2d::Application::initSDL()
-{
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
-        std::cerr << "Failed to initialize SDL: " << SDL_GetError() << std::endl;
-        return false;
-    }
-    if (!this->m_window->create(this->m_windowTitle.c_str(), 800, 600))
-    {
-        return false;
-    }
-    if (!this->m_renderer->create(*this->m_window))
-    {
-        return false;
-    }
-    return true;
-}
-
-void e2d::Application::closeSDL()
-{
-    this->m_window->destroy();
-    this->m_renderer->destroy();
-    SDL_Quit();
 }
 
 void e2d::Application::handleEvents()

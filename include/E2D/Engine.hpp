@@ -30,6 +30,11 @@
 #include <E2D/Engine/Export.hpp>
 
 #include <E2D/Engine/Application.hpp>
+#include <E2D/Engine/GraphicsSystem.hpp>
+#include <E2D/Engine/Renderer.hpp>
+#include <E2D/Engine/System.hpp>
+#include <E2D/Engine/SystemManager.hpp>
+#include <E2D/Engine/TextRenderingSystem.hpp>
 #include <E2D/Engine/Window.hpp>
 
 #endif //E2D_ENGINE_HPP

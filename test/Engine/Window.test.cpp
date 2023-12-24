@@ -24,12 +24,17 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Engine/GraphicsSystem.hpp>
+#include <E2D/Engine/SystemManager.hpp>
 #include <E2D/Engine/Window.hpp>
 
 #include <catch2/catch_test_macros.hpp>
 
 TEST_CASE("Window Creation and Destruction", "[Window]")
 {
+    e2d::SystemManager::getInstance().addSystem<e2d::GraphicsSystem>();
+    e2d::SystemManager::getInstance().initializeAll();
+
     e2d::Window window;
 
     SECTION("Create Window")
