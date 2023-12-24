@@ -35,18 +35,6 @@
 #include <memory>
 #include <string>
 
-struct SDL_Window;
-struct SDL_Renderer;
-
-struct SDLDestroyer
-{
-    void operator()(SDL_Window* window) const;
-    void operator()(SDL_Renderer* renderer) const;
-};
-
-using WindowPtr   = std::unique_ptr<SDL_Window, SDLDestroyer>;
-using RendererPtr = std::unique_ptr<SDL_Renderer, SDLDestroyer>;
-
 /**
  * @brief Namespace for E2D
  */
@@ -54,75 +42,72 @@ namespace e2d
 {
 
 /**
- * @brief Represents a window and renderer.
+ * @brief Namespace for E2D internal
+ */
+namespace internal
+{
+class WindowImpl; // Forward declaration of WindowImpl
+}
+
+/**
+ * @class Window
+ * @brief Represents a graphical window.
  *
- * The Window class provides a wrapper around a window and renderer.
- * It manages the lifetime of these resources using smart pointers.
+ * This class provides functionalities to create, manage, and interact with a graphical window.
+ * It abstracts the underlying implementation details and provides a simple interface for window management.
  */
 class E2D_ENGINE_API Window final : NonCopyable
 {
 public:
     /**
-     * @brief Default constructor.
+     * @brief Default constructor for Window.
      *
-     * Constructs a Window object.
+     * Initializes a new Window object.
      */
     Window();
 
     /**
-     * @brief Destructor.
+     * @brief Destructor for Window.
      *
-     * Destroys the Window object.
+     * Cleans up resources used by the Window object.
      */
     ~Window();
 
     /**
-     * @brief Creates a window and renderer.
-     *
-     * Creates a window and renderer with the specified title.
+     * @brief Creates a window with the specified properties.
      *
      * @param title The title of the window.
+     * @param width The width of the window in pixels.
+     * @param height The height of the window in pixels.
      * @return True if the creation was successful, false otherwise.
      */
-    bool create(const std::string& title);
+    bool create(const char* title, int width, int height);
 
     /**
-     * @brief Closes the window and renderer.
+     * @brief Checks if the window is created and valid.
      *
-     * Releases the ownership of the window and renderer resources.
-     * The destruction of the resources is handled automatically by the smart pointers.
+     * @return True if the window is created, false otherwise.
      */
-    void close();
+    [[maybe_unused]] bool isCreated() const;
 
     /**
-     * @brief Clears the renderer with a color.
-     *
-     * Clears the renderer with the specified color.
-     *
-     * @param color The color to clear the renderer with.
+     * @brief Destroys the window, freeing its resources.
      */
-    [[maybe_unused]] bool isOpened() const;
+    void destroy();
 
     /**
-     * @brief Clears the renderer with a color.
+     * @brief Retrieves a handle to the native window.
      *
-     * Clears the renderer with the specified color.
+     * This function is used internally to link the window with other components.
      *
-     * @param color The color to clear the renderer with.
+     * @return A pointer to the native window handle.
      */
-    void clear(const Color& color);
-
-    /**
-     * @brief Presents the renderer.
-     *
-     * Presents the renderer, displaying the rendered content on the window.
-     */
-    void display();
+    void* getNativeWindowHandle() const;
 
 private:
-    WindowPtr   m_window;   //!< Pointer to the SDL window.
-    RendererPtr m_renderer; //!< Pointer to the SDL renderer.
-};
+    std::unique_ptr<internal::WindowImpl> m_windowImpl; //!< Pointer to the window implementation.
+
+}; // class Window
 
 } // namespace e2d
 

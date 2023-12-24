@@ -24,24 +24,28 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/Window.hpp>
 
 #include <catch2/catch_test_macros.hpp>
 
-TEST_CASE("Window Creation and Destruction", "[Window]")
+TEST_CASE("Renderer Creation and Destruction", "[Window]")
 {
     e2d::Window window;
+    window.create("Test Window", 800, 600);
 
-    SECTION("Create Window")
+    e2d::Renderer renderer;
+
+    SECTION("Create Renderer")
     {
-        REQUIRE(window.create("Test Window", 800, 600) == true);
-        REQUIRE(window.isCreated() == true);
+        REQUIRE(renderer.create(window) == true);
+        REQUIRE(renderer.isCreated() == true);
     }
 
-    SECTION("Destroy Window")
+    SECTION("Destroy Renderer")
     {
-        REQUIRE(window.create("Test Window", 800, 600) == true);
-        window.destroy();
-        REQUIRE(window.isCreated() == false);
+        REQUIRE(renderer.create(window) == true);
+        renderer.destroy();
+        REQUIRE(renderer.isCreated() == false);
     }
 }
