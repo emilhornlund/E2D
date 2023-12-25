@@ -31,7 +31,9 @@
 
 #include <E2D/Engine/Application.hpp>
 #include <E2D/Engine/GraphicsSystem.hpp>
+#include <E2D/Engine/Renderable.hpp>
 #include <E2D/Engine/Renderer.hpp>
+#include <E2D/Engine/Sprite.hpp>
 #include <E2D/Engine/System.hpp>
 #include <E2D/Engine/SystemManager.hpp>
 #include <E2D/Engine/TextRenderingSystem.hpp>

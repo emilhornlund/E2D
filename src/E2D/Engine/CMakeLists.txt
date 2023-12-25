@@ -9,10 +9,15 @@ set(SRC
     ${INCROOT}/Export.hpp
     ${INCROOT}/GraphicsSystem.hpp
     ${SRCROOT}/GraphicsSystem.cpp
+    ${INCROOT}/Renderable.hpp
     ${INCROOT}/Renderer.hpp
     ${SRCROOT}/Renderer.cpp
     ${SRCROOT}/RendererImpl.hpp
     ${SRCROOT}/RendererImpl.cpp
+    ${SRCROOT}/RenderQueue.hpp
+    ${SRCROOT}/RenderQueue.cpp
+    ${INCROOT}/Sprite.hpp
+    ${SRCROOT}/Sprite.cpp
     ${INCROOT}/System.hpp
     ${INCROOT}/SystemManager.hpp
     ${SRCROOT}/SystemManager.cpp

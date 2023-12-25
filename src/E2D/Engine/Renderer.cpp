@@ -24,11 +24,15 @@
 * THE SOFTWARE.
 */
 
+#include <E2D/Engine/Renderable.hpp>
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/RendererImpl.hpp>
+#include <E2D/Engine/RenderQueue.hpp>
 #include <E2D/Engine/Window.hpp>
 
-e2d::Renderer::Renderer() : m_rendererImpl(std::make_unique<internal::RendererImpl>())
+e2d::Renderer::Renderer() :
+m_rendererImpl(std::make_unique<internal::RendererImpl>()),
+m_renderQueue(std::make_unique<internal::RenderQueue>())
 {
 }
 
@@ -49,9 +53,25 @@ void e2d::Renderer::destroy()
     this->m_rendererImpl->destroy();
 }
 
+void e2d::Renderer::draw(const e2d::Renderable* renderable)
+{
+    this->m_renderQueue->push(renderable);
+}
+
 void e2d::Renderer::render(const e2d::Color& drawColor) const
 {
-    this->m_rendererImpl->render(drawColor);
+    this->m_rendererImpl->clear(drawColor);
+
+    while (!this->m_renderQueue->isEmpty())
+    {
+        const Renderable* renderable = this->m_renderQueue->pop();
+        if (renderable)
+        {
+            renderable->render(*this);
+        }
+    }
+
+    this->m_rendererImpl->display();
 }
 
 void* e2d::Renderer::getNativeRendererHandle() const

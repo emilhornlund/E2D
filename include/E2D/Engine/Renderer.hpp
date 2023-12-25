@@ -39,7 +39,8 @@
  */
 namespace e2d
 {
-class Window; // Forward declaration of Window
+class Renderable; // Forward declaration of Renderable
+class Window;     // Forward declaration of Window
 
 /**
  * @brief Namespace for E2D internal
@@ -47,14 +48,18 @@ class Window; // Forward declaration of Window
 namespace internal
 {
 class RendererImpl; // Forward declaration of RendererImpl
-}
+class RenderQueue;  // Forward declaration of RenderQueue
+} // namespace internal
 
 /**
  * @class Renderer
- * @brief Represents a rendering context for drawing graphics.
+ * @brief Handles the rendering process for graphical objects.
  *
- * This class provides functionalities for rendering graphics onto a linked window.
- * It offers a simplified interface for drawing operations.
+ * The Renderer class is responsible for managing and executing the rendering process
+ * of Renderable objects within the E2D Engine. It maintains a render queue to sort
+ * and render objects based on their render priority. The Renderer class provides
+ * functions for adding Renderable objects to the queue and for performing the actual
+ * rendering process to display the content on the screen.
  */
 class E2D_ENGINE_API Renderer final : NonCopyable
 {
@@ -94,6 +99,17 @@ public:
     void destroy();
 
     /**
+     * @brief Adds a Renderable object to the render queue.
+     *
+     * This method adds the given Renderable object to the render queue. The object
+     * will be rendered in order based on its render priority when the render
+     * method is called.
+     *
+     * @param renderable Pointer to the Renderable object to be added to the queue.
+     */
+    void draw(const Renderable* renderable);
+
+    /**
      * @brief Renders content to the window using the specified color.
      *
      * @param drawColor The color to clear the screen with before rendering.
@@ -111,6 +127,7 @@ public:
 
 private:
     std::unique_ptr<internal::RendererImpl> m_rendererImpl; //!< Pointer to the renderer implementation.
+    std::unique_ptr<internal::RenderQueue>  m_renderQueue;  //!< Pointer to the render queue.
 
 }; // class Renderer
 
