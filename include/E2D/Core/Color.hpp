@@ -24,12 +24,7 @@
  * THE SOFTWARE.
  */
 
-#ifndef E2D_CORE_COLOR_HPP
-#define E2D_CORE_COLOR_HPP
-
-#include <E2D/Core/Export.hpp>
-
-#include <E2D/Core/NonCopyable.hpp>
+#pragma once
 
 #include <cstdint>
 
@@ -218,5 +213,3 @@ constexpr Color& operator*=(Color& left, const Color& right);
 #include <E2D/Core/Color.inl>
 
 } // namespace e2d
-
-#endif //E2D_CORE_COLOR_HPP
