@@ -10,6 +10,8 @@ set(SRC
     ${INCROOT}/NonCopyable.hpp
     ${INCROOT}/Timer.hpp
     ${SRCROOT}/Timer.cpp
+    ${INCROOT}/Vector2.hpp
+    ${INCROOT}/Vector2.inl
 )
 
 e2d_add_library(Core SOURCES ${SRC})

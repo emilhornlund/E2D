@@ -22,6 +22,7 @@ target_include_directories(Catch2 SYSTEM INTERFACE ${CATCH2_INCLUDE_DIRS})
 set(CORE_SRC
     Core/Color.test.cpp
     Core/Timer.test.cpp
+    Core/Vector2.test.cpp
 )
 e2d_add_test(e2d-test-core "${CORE_SRC}" E2D::Core)
 
