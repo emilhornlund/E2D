@@ -139,7 +139,7 @@ macro(e2d_add_library module)
 endmacro()
 
 macro(e2d_add_example target)
-    cmake_parse_arguments(THIS "" "" "SOURCES;DEPENDS" ${ARGN})
+    cmake_parse_arguments(THIS "" "" "SOURCES;DEPENDS;RESOURCES" ${ARGN})
     if(NOT "${THIS_UNPARSED_ARGUMENTS}" STREQUAL "")
         message(FATAL_ERROR "Extra unparsed arguments when calling e2d_add_example: ${THIS_UNPARSED_ARGUMENTS}")
     endif()
@@ -160,6 +160,18 @@ macro(e2d_add_example target)
 
     if(THIS_DEPENDS)
         target_link_libraries(${target} PRIVATE ${THIS_DEPENDS})
+    endif()
+
+    if(THIS_RESOURCES)
+        foreach(RESOURCE_FILE IN LISTS THIS_RESOURCES)
+            get_filename_component(RES_NAME ${RESOURCE_FILE} NAME)
+            add_custom_command(
+                    TARGET ${target} PRE_BUILD
+                    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                    ${RESOURCE_FILE}
+                    $<TARGET_FILE_DIR:${target}>/${RES_NAME}
+                    COMMENT "Copying resource file: ${RESOURCE_FILE}")
+        endforeach()
     endif()
 endmacro()
 

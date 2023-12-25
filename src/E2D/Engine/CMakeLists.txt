@@ -7,8 +7,14 @@ set(SRC
     ${INCROOT}/Application.hpp
     ${SRCROOT}/Application.cpp
     ${INCROOT}/Export.hpp
+    ${INCROOT}/Entity.hpp
+    ${SRCROOT}/Entity.cpp
     ${INCROOT}/GraphicsSystem.hpp
     ${SRCROOT}/GraphicsSystem.cpp
+    ${INCROOT}/Object.hpp
+    ${SRCROOT}/Object.cpp
+    ${INCROOT}/ObjectRegistry.hpp
+    ${SRCROOT}/ObjectRegistry.cpp
     ${INCROOT}/Renderable.hpp
     ${INCROOT}/Renderer.hpp
     ${SRCROOT}/Renderer.cpp

@@ -30,7 +30,10 @@
 #include <E2D/Engine/Export.hpp>
 
 #include <E2D/Engine/Application.hpp>
+#include <E2D/Engine/Entity.hpp>
 #include <E2D/Engine/GraphicsSystem.hpp>
+#include <E2D/Engine/Object.hpp>
+#include <E2D/Engine/ObjectRegistry.hpp>
 #include <E2D/Engine/Renderable.hpp>
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/Sprite.hpp>

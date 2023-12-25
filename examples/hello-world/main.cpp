@@ -25,20 +25,56 @@
  */
 
 #include <E2D/Engine/Application.hpp>
+#include <E2D/Engine/ObjectRegistry.hpp>
+#include <E2D/Engine/Renderer.hpp>
+#include <E2D/Engine/Sprite.hpp>
+#include <E2D/Engine/Texture.hpp>
+
+#include <utility>
+
+class MySprite final : public e2d::Sprite
+{
+public:
+    MySprite() : e2d::Sprite("MySprite")
+    {
+    }
+
+    int getRenderPriority() const final
+    {
+        return 0;
+    }
+
+    void fixedUpdate() final
+    {
+    }
+
+    void variableUpdate(double) final
+    {
+    }
+};
 
 class HelloWorldApplication final : public e2d::Application
 {
 public:
-    HelloWorldApplication();
+    HelloWorldApplication() : e2d::Application("Hello World Example")
+    {
+    }
 
-    ~HelloWorldApplication() final;
+    ~HelloWorldApplication() final = default;
+
+    void onRunning() final
+    {
+        e2d::Application::onRunning();
+
+        const auto texture = std::make_shared<e2d::Texture>();
+        texture->loadTexture(this->getRenderer(), "gabe-idle-run.png");
+
+        auto sprite = std::make_unique<MySprite>();
+        sprite->setTexture(texture);
+
+        this->getObjectRegistry().addObject(std::move(sprite));
+    }
 };
-
-HelloWorldApplication::HelloWorldApplication() : e2d::Application("Hello World Example")
-{
-}
-
-HelloWorldApplication::~HelloWorldApplication() = default;
 
 int main()
 {

@@ -31,7 +31,7 @@
 
 #include <E2D/Core/NonCopyable.hpp>
 
-#include <E2D/Engine/Renderable.hpp>
+#include <E2D/Engine/Entity.hpp>
 
 #include <memory>
 
@@ -47,27 +47,26 @@ class Texture;  // Forward declaration of Texture
  * @class Sprite
  * @brief Represents a 2D graphical object.
  *
- * The Sprite class is a concrete implementation of the Renderable interface.
- * It represents a 2D graphical object that can be rendered on the screen.
- * Each Sprite object maintains a texture that defines its visual appearance.
- * Sprites have render priorities that determine their rendering order.
+ * Sprite is a concrete implementation of the Renderable and Object interfaces.
+ * It represents a 2D graphical object that can be rendered on the screen,
+ * having its own texture and render priority.
  */
-class E2D_ENGINE_API Sprite final : public Renderable
+class E2D_ENGINE_API Sprite : public Entity
 {
 public:
     /**
-     * @brief Default constructor for Sprite.
+     * @brief Constructs a Sprite object with a specific identifier.
      *
-     * Constructs a Sprite object.
+     * @param identifier A string representing the unique identifier of the sprite.
      */
-    Sprite();
+    explicit Sprite(const std::string& identifier);
 
     /**
      * @brief Destructor for Sprite.
      *
      * Destroys the Sprite object, releasing its resources.
      */
-    ~Sprite() final;
+    ~Sprite() override = 0;
 
     /**
      * @brief Retrieves the texture of the sprite.
@@ -97,7 +96,7 @@ public:
      *
      * @return int The render priority of the sprite.
      */
-    int getRenderPriority() const final;
+    int getRenderPriority() const override = 0;
 
     /**
      * @brief Renders the sprite using the provided renderer.

@@ -40,11 +40,17 @@
  */
 namespace e2d
 {
-class Renderer; // Forward declaration of Renderer
-class Window;   // Forward declaration of Window
+class ObjectRegistry; // Forward declaration of ObjectRegistry
+class Renderer;       // Forward declaration of Renderer
+class Window;         // Forward declaration of Window
 
 /**
- * @brief Represents the application class.
+ * @class Application
+ * @brief Core class for managing the application lifecycle in the E2D Engine.
+ *
+ * Application serves as the central class for E2D engine applications. It manages the main
+ * game loop, event handling, and provides access to the renderer and object registry.
+ * Derived classes can override specific methods to implement custom application logic.
  */
 class E2D_ENGINE_API Application : NonCopyable
 {
@@ -84,6 +90,20 @@ public:
 
 protected:
     /**
+     * @brief Gets the Renderer instance used by the application.
+     *
+     * @return A reference to the Renderer.
+     */
+    Renderer& getRenderer() const;
+
+    /**
+     * @brief Gets the ObjectRegistry instance used by the application.
+     *
+     * @return A reference to the ObjectRegistry.
+     */
+    ObjectRegistry& getObjectRegistry() const;
+
+    /**
      * @brief Get the background color of the window
      *
      * @return The background color
@@ -97,13 +117,22 @@ protected:
      */
     void setBackgroundColor(const Color& backgroundColor);
 
+    /**
+     * @brief Called when the application starts running.
+     *
+     * Override this method in derived classes to implement custom logic that should
+     * occur when the application begins running.
+     */
+    virtual void onRunning();
+
 private:
-    int                       m_exitCode = 0;     //!< The exit code of the application.
-    bool                      m_running  = false; //!< Flag indicating whether the application is running.
-    const std::string         m_windowTitle;      //!< The title of the window.
-    std::unique_ptr<Window>   m_window;           //!< Unique pointer to the window
-    std::unique_ptr<Renderer> m_renderer;         //!< Unique pointer to the renderer
-    Color                     m_backgroundColor;  //!< The background color of the window
+    int                             m_exitCode = 0;     //!< The exit code of the application.
+    bool                            m_running  = false; //!< Flag indicating whether the application is running.
+    const std::string               m_windowTitle;      //!< The title of the window.
+    std::unique_ptr<Window>         m_window;           //!< Unique pointer to the window.
+    std::unique_ptr<Renderer>       m_renderer;         //!< Unique pointer to the renderer.
+    std::unique_ptr<ObjectRegistry> m_objectRegistry;   //!< Unique pointer to the object registry.
+    Color                           m_backgroundColor;  //!< The background color of the window
 
     /**
      * @brief Handles SDL events such as window close event.
