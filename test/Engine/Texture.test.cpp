@@ -1,5 +1,5 @@
 /**
- * Renderer.test.cpp
+ * Texture.test.cpp
  *
  * MIT License
  *
@@ -27,45 +27,49 @@
 #include <E2D/Engine/GraphicsSystem.hpp>
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/SystemManager.hpp>
+#include <E2D/Engine/Texture.hpp>
 #include <E2D/Engine/Window.hpp>
 
 #include <catch2/catch_test_macros.hpp>
 
-class RendererTest
+class TextureTest
 {
 public:
-    RendererTest()
+    TextureTest()
     {
         // Setup (runs before each SECTION)
         e2d::SystemManager::getInstance().addSystem<e2d::GraphicsSystem>();
         e2d::SystemManager::getInstance().initializeAll();
         window.create("Test Window", 800, 600);
+        renderer.create(window);
     }
 
-    ~RendererTest()
+    ~TextureTest()
     {
         // Teardown (runs after each SECTION)
+        renderer.destroy();
         window.destroy();
         e2d::SystemManager::getInstance().shutdownAll();
     }
 
-    e2d::Window window;
+    e2d::Window   window;
+    e2d::Renderer renderer;
 };
 
-TEST_CASE_METHOD(RendererTest, "Renderer Creation and Destruction", "[Renderer]")
+TEST_CASE_METHOD(TextureTest, "Texture Loading and Destruction", "[Texture]")
 {
-    e2d::Renderer renderer;
+    e2d::Texture texture;
 
-    SECTION("Create Renderer")
+    SECTION("Load Texture")
     {
-        REQUIRE(renderer.create(window) == true);
-        REQUIRE(renderer.isCreated() == true);
+        REQUIRE(texture.loadTexture(renderer, "resources/hello-world.png") == true);
+        REQUIRE(texture.isLoaded() == true);
     }
 
-    SECTION("Destroy Renderer")
+    SECTION("Destroy Texture")
     {
-        REQUIRE(renderer.create(window) == true);
-        renderer.destroy();
-        REQUIRE(renderer.isCreated() == false);
+        REQUIRE(texture.loadTexture(renderer, "resources/hello-world.png") == true);
+        texture.destroy();
+        REQUIRE(texture.isLoaded() == false);
     }
 }

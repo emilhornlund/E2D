@@ -1,5 +1,5 @@
 /**
-* Renderer.cpp
+* Texture.cpp
 *
 * MIT License
 *
@@ -25,36 +25,33 @@
 */
 
 #include <E2D/Engine/Renderer.hpp>
-#include <E2D/Engine/RendererImpl.hpp>
-#include <E2D/Engine/Window.hpp>
+#include <E2D/Engine/Texture.hpp>
+#include <E2D/Engine/TextureImpl.hpp>
 
-e2d::Renderer::Renderer() : m_rendererImpl(std::make_unique<internal::RendererImpl>())
+#include <SDL.h>
+
+e2d::Texture::Texture() : m_textureImpl(std::make_unique<internal::TextureImpl>())
 {
 }
 
-e2d::Renderer::~Renderer() = default;
+e2d::Texture::~Texture() = default;
 
-bool e2d::Renderer::create(const e2d::Window& window)
+bool e2d::Texture::loadTexture(const e2d::Renderer& renderer, const std::string& file)
 {
-    return this->m_rendererImpl->create(static_cast<SDL_Window*>(window.getNativeWindowHandle()));
+    return this->m_textureImpl->loadTexture(static_cast<SDL_Renderer*>(renderer.getNativeRendererHandle()), file.c_str());
 }
 
-bool e2d::Renderer::isCreated() const
+bool e2d::Texture::isLoaded() const
 {
-    return this->m_rendererImpl->isCreated();
+    return this->m_textureImpl->isLoaded();
 }
 
-void e2d::Renderer::destroy()
+void e2d::Texture::destroy()
 {
-    this->m_rendererImpl->destroy();
+    this->m_textureImpl->destroy();
 }
 
-void e2d::Renderer::render(const e2d::Color& drawColor) const
+void* e2d::Texture::getNativeTextureHandle() const
 {
-    this->m_rendererImpl->render(drawColor);
-}
-
-void* e2d::Renderer::getNativeRendererHandle() const
-{
-    return this->m_rendererImpl->getRenderer();
+    return this->m_textureImpl->getTexture();
 }

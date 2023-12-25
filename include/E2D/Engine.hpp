@@ -35,6 +35,7 @@
 #include <E2D/Engine/System.hpp>
 #include <E2D/Engine/SystemManager.hpp>
 #include <E2D/Engine/TextRenderingSystem.hpp>
+#include <E2D/Engine/Texture.hpp>
 #include <E2D/Engine/Window.hpp>
 
 #endif //E2D_ENGINE_HPP

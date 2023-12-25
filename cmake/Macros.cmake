@@ -175,7 +175,7 @@ function(e2d_add_test target SOURCES DEPENDS)
     e2d_set_target_warnings(${target})
     e2d_set_public_symbols_hidden(${target})
 
-    catch_discover_tests(${target})
+    catch_discover_tests(${target} WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR})
 endfunction()
 
 function(e2d_find_package)

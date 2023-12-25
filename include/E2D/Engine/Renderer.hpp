@@ -100,6 +100,15 @@ public:
      */
     void render(const Color& drawColor) const;
 
+    /**
+     * @brief Retrieves a handle to the native renderer.
+     *
+     * This function is used internally to link the renderer with other components.
+     *
+     * @return A pointer to the native renderer handle.
+     */
+    void* getNativeRendererHandle() const;
+
 private:
     std::unique_ptr<internal::RendererImpl> m_rendererImpl; //!< Pointer to the renderer implementation.
 
