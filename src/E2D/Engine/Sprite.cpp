@@ -1,5 +1,5 @@
 /**
-* RendererImpl.cpp
+* Sprite.cpp
 *
 * MIT License
 *
@@ -24,57 +24,38 @@
 * THE SOFTWARE.
 */
 
-#include <E2D/Engine/RendererImpl.hpp>
+#include <E2D/Engine/Renderer.hpp>
+#include <E2D/Engine/Sprite.hpp>
+#include <E2D/Engine/Texture.hpp>
 
 #include <SDL.h>
 
-#include <iostream>
+e2d::Sprite::Sprite() = default;
 
-e2d::internal::RendererImpl::RendererImpl() = default;
+e2d::Sprite::~Sprite() = default;
 
-e2d::internal::RendererImpl::~RendererImpl()
+std::shared_ptr<e2d::Texture> e2d::Sprite::getTexture() const
 {
-    this->destroy();
+    return this->m_texture;
 }
 
-bool e2d::internal::RendererImpl::create(SDL_Window* window)
+void e2d::Sprite::setTexture(const std::shared_ptr<Texture>& texture)
 {
-    this->m_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    if (this->m_renderer == nullptr)
+    this->m_texture = texture;
+}
+
+int e2d::Sprite::getRenderPriority() const
+{
+    return 0;
+}
+
+void e2d::Sprite::render(const e2d::Renderer& renderer) const
+{
+    if (this->m_texture)
     {
-        std::cerr << "Failed to create renderer: " << SDL_GetError() << '\n';
-        return false;
+        SDL_RenderCopy(static_cast<SDL_Renderer*>(renderer.getNativeRendererHandle()),
+                       static_cast<SDL_Texture*>(this->m_texture->getNativeTextureHandle()),
+                       nullptr,
+                       nullptr);
     }
-    return true;
-}
-
-bool e2d::internal::RendererImpl::isCreated() const
-{
-    return this->m_renderer != nullptr;
-}
-
-
-void e2d::internal::RendererImpl::destroy()
-{
-    if (this->m_renderer)
-    {
-        SDL_DestroyRenderer(this->m_renderer);
-        this->m_renderer = nullptr;
-    }
-}
-
-SDL_Renderer* e2d::internal::RendererImpl::getRenderer() const
-{
-    return this->m_renderer;
-}
-
-void e2d::internal::RendererImpl::clear(const e2d::Color& drawColor)
-{
-    SDL_SetRenderDrawColor(this->m_renderer, drawColor.r, drawColor.g, drawColor.b, drawColor.a);
-    SDL_RenderClear(this->m_renderer);
-}
-
-void e2d::internal::RendererImpl::display()
-{
-    SDL_RenderPresent(this->m_renderer);
 }

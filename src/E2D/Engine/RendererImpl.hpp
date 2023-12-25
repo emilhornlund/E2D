@@ -95,11 +95,25 @@ public:
     SDL_Renderer* getRenderer() const;
 
     /**
-     * @brief Executes the rendering process using a specified color.
+     * @brief Clears the screen with a specified color.
+     *
+     * This method sets the renderer's drawing color to the specified Color object,
+     * and then clears the rendering target with this color. It is typically used
+     * to reset the screen before drawing new graphics in each frame of a rendering loop.
      *
      * @param drawColor The color used for clearing the screen before rendering.
      */
-    void render(const Color& drawColor) const;
+    void clear(const Color& drawColor);
+
+    /**
+     * @brief Presents the rendered content on the screen.
+     *
+     * This method updates the screen with any rendering performed since the last call.
+     * It should be called after all rendering operations are completed for the current frame,
+     * effectively displaying the rendered content on the screen. This is typically the last
+     * function called in a rendering loop.
+     */
+    void display();
 
 private:
     SDL_Renderer* m_renderer{nullptr}; //!< Pointer to the SDL_Renderer object.

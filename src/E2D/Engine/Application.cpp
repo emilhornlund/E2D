@@ -91,7 +91,9 @@ int e2d::Application::run()
             remainder = 0.0;
         }
 
-        this->render();
+        // TODO: Draw all objects
+
+        this->m_renderer->render(this->m_backgroundColor);
 
         elapsedTime += elapsedFrameTimeAsSeconds;
         if (elapsedTime >= 1.0)
@@ -129,11 +131,6 @@ void e2d::Application::handleEvents()
             this->quit();
         }
     }
-}
-
-void e2d::Application::render()
-{
-    this->m_renderer->render(this->m_backgroundColor);
 }
 
 const e2d::Color& e2d::Application::getBackgroundColor() const

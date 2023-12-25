@@ -110,11 +110,6 @@ private:
      */
     void handleEvents();
 
-    /**
-     * @brief Renders the application content.
-     */
-    void render();
-
 }; //Application class
 
 } // namespace e2d

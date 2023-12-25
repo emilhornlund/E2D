@@ -170,6 +170,10 @@ function(e2d_add_test target SOURCES DEPENDS)
 
     set_target_properties(${target} PROPERTIES FOLDER "Tests")
 
+    target_include_directories(${target}
+            PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+            PRIVATE ${PROJECT_SOURCE_DIR}/src)
+
     target_link_libraries(${target} PRIVATE ${DEPENDS} Catch2::Catch2WithMain)
 
     e2d_set_target_warnings(${target})
