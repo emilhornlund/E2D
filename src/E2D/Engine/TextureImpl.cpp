@@ -1,5 +1,5 @@
 /**
-* Renderer.cpp
+* TextureImpl.cpp
 *
 * MIT License
 *
@@ -24,37 +24,50 @@
 * THE SOFTWARE.
 */
 
-#include <E2D/Engine/Renderer.hpp>
-#include <E2D/Engine/RendererImpl.hpp>
-#include <E2D/Engine/Window.hpp>
+#include <E2D/Engine/TextureImpl.hpp>
 
-e2d::Renderer::Renderer() : m_rendererImpl(std::make_unique<internal::RendererImpl>())
+// NOLINTBEGIN
+#include <cstring> //unused, but must be included before SDL on macOS (bug?)
+// NOLINTEND
+
+#include <SDL.h>
+#include <SDL_image.h>
+
+#include <iostream>
+
+e2d::internal::TextureImpl::TextureImpl() = default;
+
+e2d::internal::TextureImpl::~TextureImpl()
 {
+    this->destroy();
 }
 
-e2d::Renderer::~Renderer() = default;
-
-bool e2d::Renderer::create(const e2d::Window& window)
+bool e2d::internal::TextureImpl::loadTexture(SDL_Renderer* renderer, const char* file)
 {
-    return this->m_rendererImpl->create(static_cast<SDL_Window*>(window.getNativeWindowHandle()));
+    this->m_texture = IMG_LoadTexture(renderer, file);
+    if (this->m_texture == nullptr)
+    {
+        std::cerr << "Failed to load texture: " << SDL_GetError() << '\n';
+        return false;
+    }
+    return true;
 }
 
-bool e2d::Renderer::isCreated() const
+bool e2d::internal::TextureImpl::isLoaded() const
 {
-    return this->m_rendererImpl->isCreated();
+    return this->m_texture != nullptr;
 }
 
-void e2d::Renderer::destroy()
+void e2d::internal::TextureImpl::destroy()
 {
-    this->m_rendererImpl->destroy();
+    if (this->m_texture)
+    {
+        SDL_DestroyTexture(this->m_texture);
+        this->m_texture = nullptr;
+    }
 }
 
-void e2d::Renderer::render(const e2d::Color& drawColor) const
+SDL_Texture* e2d::internal::TextureImpl::getTexture() const
 {
-    this->m_rendererImpl->render(drawColor);
-}
-
-void* e2d::Renderer::getNativeRendererHandle() const
-{
-    return this->m_rendererImpl->getRenderer();
+    return this->m_texture;
 }

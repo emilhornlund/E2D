@@ -30,11 +30,25 @@
 
 #include <catch2/catch_test_macros.hpp>
 
-TEST_CASE("Window Creation and Destruction", "[Window]")
+class WindowTest
 {
-    e2d::SystemManager::getInstance().addSystem<e2d::GraphicsSystem>();
-    e2d::SystemManager::getInstance().initializeAll();
+public:
+    WindowTest()
+    {
+        // Setup (runs before each SECTION)
+        e2d::SystemManager::getInstance().addSystem<e2d::GraphicsSystem>();
+        e2d::SystemManager::getInstance().initializeAll();
+    }
 
+    ~WindowTest()
+    {
+        // Teardown (runs after each SECTION)
+        e2d::SystemManager::getInstance().shutdownAll();
+    }
+};
+
+TEST_CASE_METHOD(WindowTest, "Window Creation and Destruction", "[Window]")
+{
     e2d::Window window;
 
     SECTION("Create Window")

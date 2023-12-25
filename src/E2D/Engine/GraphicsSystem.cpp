@@ -53,4 +53,5 @@ bool e2d::GraphicsSystem::initialize()
 void e2d::GraphicsSystem::shutdown()
 {
     SDL_Quit();
+    IMG_Quit();
 }

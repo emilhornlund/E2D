@@ -29,6 +29,7 @@ e2d_add_test(e2d-test-core "${CORE_SRC}" E2D::Core)
 set(ENGINE_SRC
     Engine/Application.test.cpp
     Engine/Renderer.test.cpp
+    Engine/Texture.test.cpp
     Engine/Window.test.cpp
 )
 e2d_add_test(e2d-test-engine "${ENGINE_SRC}" E2D::Engine)

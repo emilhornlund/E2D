@@ -6,9 +6,9 @@ set(SRCROOT ${PROJECT_SOURCE_DIR}/src/E2D/Engine)
 set(SRC
     ${INCROOT}/Application.hpp
     ${SRCROOT}/Application.cpp
+    ${INCROOT}/Export.hpp
     ${INCROOT}/GraphicsSystem.hpp
     ${SRCROOT}/GraphicsSystem.cpp
-    ${INCROOT}/Export.hpp
     ${INCROOT}/Renderer.hpp
     ${SRCROOT}/Renderer.cpp
     ${SRCROOT}/RendererImpl.hpp
@@ -18,6 +18,10 @@ set(SRC
     ${SRCROOT}/SystemManager.cpp
     ${INCROOT}/TextRenderingSystem.hpp
     ${SRCROOT}/TextRenderingSystem.cpp
+    ${INCROOT}/Texture.hpp
+    ${SRCROOT}/Texture.cpp
+    ${SRCROOT}/TextureImpl.hpp
+    ${SRCROOT}/TextureImpl.cpp
     ${INCROOT}/Window.hpp
     ${SRCROOT}/Window.cpp
     ${SRCROOT}/WindowImpl.hpp
