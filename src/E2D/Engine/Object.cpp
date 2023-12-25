@@ -1,5 +1,5 @@
 /**
-* Sprite.cpp
+* Object.cpp
 *
 * MIT License
 *
@@ -24,40 +24,17 @@
 * THE SOFTWARE.
 */
 
-#include <E2D/Engine/Renderer.hpp>
-#include <E2D/Engine/Sprite.hpp>
-#include <E2D/Engine/Texture.hpp>
+#include <E2D/Engine/Object.hpp>
 
-#include <SDL.h>
+#include <utility>
 
-e2d::Sprite::Sprite(const std::string& identifier) : e2d::Entity(identifier)
+e2d::Object::Object(std::string identifier) : m_identifier(std::move(identifier))
 {
 }
 
-e2d::Sprite::~Sprite() = default;
+e2d::Object::~Object() = default;
 
-std::shared_ptr<e2d::Texture> e2d::Sprite::getTexture() const
+const std::string& e2d::Object::getIdentifier() const
 {
-    return this->m_texture;
-}
-
-void e2d::Sprite::setTexture(const std::shared_ptr<Texture>& texture)
-{
-    this->m_texture = texture;
-}
-
-int e2d::Sprite::getRenderPriority() const
-{
-    return 0;
-}
-
-void e2d::Sprite::render(const e2d::Renderer& renderer) const
-{
-    if (this->m_texture)
-    {
-        SDL_RenderCopy(static_cast<SDL_Renderer*>(renderer.getNativeRendererHandle()),
-                       static_cast<SDL_Texture*>(this->m_texture->getNativeTextureHandle()),
-                       nullptr,
-                       nullptr);
-    }
+    return this->m_identifier;
 }

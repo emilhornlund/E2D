@@ -27,7 +27,10 @@
 #include <E2D/Core/Timer.hpp>
 
 #include <E2D/Engine/Application.hpp>
+#include <E2D/Engine/Entity.hpp>
 #include <E2D/Engine/GraphicsSystem.hpp>
+#include <E2D/Engine/Object.hpp>
+#include <E2D/Engine/ObjectRegistry.hpp>
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/SystemManager.hpp>
 #include <E2D/Engine/TextRenderingSystem.hpp>
@@ -35,13 +38,13 @@
 
 #include <SDL.h>
 
-#include <iostream>
 #include <utility>
 
 e2d::Application::Application(std::string windowTitle) :
 m_windowTitle(std::move(windowTitle)),
 m_window(std::make_unique<Window>()),
 m_renderer(std::make_unique<Renderer>()),
+m_objectRegistry(std::make_unique<ObjectRegistry>()),
 m_backgroundColor(Color::Black)
 {
 }
@@ -72,17 +75,29 @@ int e2d::Application::run()
     double remainder   = 0.0;
 
     this->m_running = true;
+    this->onRunning();
+
     while (this->m_running)
     {
         targetFrameTimer.start();
         double elapsedFrameTimeAsSeconds = targetFrameTimer.getElapsedTimeAsSeconds();
 
         this->handleEvents();
-        // TODO: Update game objects with a fixed frame rate of 1/60
+        for (const auto& object : this->m_objectRegistry->getAllObjects())
+        {
+            object->fixedUpdate();
+        }
 
         while (elapsedFrameTimeAsSeconds < targetFrameTime - remainder)
         {
-            elapsedFrameTimeAsSeconds = targetFrameTimer.getElapsedTimeAsSeconds();
+            const auto currentTime    = targetFrameTimer.getElapsedTimeAsSeconds();
+            const auto deltaTime      = currentTime - elapsedFrameTimeAsSeconds;
+            elapsedFrameTimeAsSeconds = currentTime;
+
+            for (const auto& object : this->m_objectRegistry->getAllObjects())
+            {
+                object->variableUpdate(deltaTime);
+            }
         }
 
         remainder = elapsedFrameTimeAsSeconds - (targetFrameTime - remainder);
@@ -91,7 +106,10 @@ int e2d::Application::run()
             remainder = 0.0;
         }
 
-        // TODO: Draw all objects
+        for (const auto& entity : this->m_objectRegistry->getAllObjectsOfType<Entity>())
+        {
+            this->m_renderer->draw(entity);
+        }
 
         this->m_renderer->render(this->m_backgroundColor);
 
@@ -133,6 +151,16 @@ void e2d::Application::handleEvents()
     }
 }
 
+e2d::Renderer& e2d::Application::getRenderer() const
+{
+    return *this->m_renderer;
+}
+
+e2d::ObjectRegistry& e2d::Application::getObjectRegistry() const
+{
+    return *this->m_objectRegistry;
+}
+
 const e2d::Color& e2d::Application::getBackgroundColor() const
 {
     return this->m_backgroundColor;
@@ -141,4 +169,8 @@ const e2d::Color& e2d::Application::getBackgroundColor() const
 void e2d::Application::setBackgroundColor(const e2d::Color& backgroundColor)
 {
     this->m_backgroundColor = backgroundColor;
+}
+
+void e2d::Application::onRunning()
+{
 }
