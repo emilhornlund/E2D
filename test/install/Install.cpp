@@ -38,12 +38,44 @@ public:
     ~InstallApplication() final = default;
 };
 
+class InstallSprite final : public e2d::Sprite
+{
+public:
+    InstallSprite() : e2d::Sprite("MySprite")
+    {
+    }
+
+    void fixedUpdate() final
+    {
+    }
+    void variableUpdate(double deltaTime) final
+    {
+        (void)deltaTime;
+    }
+    int getRenderPriority() const final
+    {
+        return 0;
+    }
+};
+
 int main()
 {
     // Core
-    [[maybe_unused]] const e2d::Color color;
-    [[maybe_unused]] const e2d::Timer timer;
+    [[maybe_unused]] const e2d::Color      color;
+    [[maybe_unused]] const e2d::DoubleRect doubleRect;
+    [[maybe_unused]] const e2d::FloatRect  floatRect;
+    [[maybe_unused]] const e2d::IntRect    intRect;
+    [[maybe_unused]] const e2d::Timer      timer;
+    [[maybe_unused]] const e2d::Vector2d   doubleVector;
+    [[maybe_unused]] const e2d::Vector2f   floatVector;
+    [[maybe_unused]] const e2d::Vector2i   intVector;
+    [[maybe_unused]] const e2d::Vector2u   unsignedVector;
 
     // Engine
-    [[maybe_unused]] const InstallApplication application;
+    [[maybe_unused]] const InstallApplication  application;
+    [[maybe_unused]] const InstallSprite       sprite;
+    [[maybe_unused]] const e2d::ObjectRegistry objectRegistry;
+    [[maybe_unused]] const e2d::Renderer       renderer;
+    [[maybe_unused]] const e2d::Texture        texture;
+    [[maybe_unused]] const e2d::Window         window;
 }
