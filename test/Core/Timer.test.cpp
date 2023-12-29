@@ -30,89 +30,92 @@
 
 #include <thread>
 
-TEST_CASE("Timer starts and returns elapsed time", "[Timer]")
+TEST_CASE("Timer Tests", "[Timer]")
 {
-    e2d::Timer timer;
+    SECTION("Timer starts and returns elapsed time", "[Timer]")
+    {
+        e2d::Timer timer;
 
-    timer.start();
-    const std::uint32_t elapsedTime = timer.getElapsedTimeAsMilliseconds();
+        timer.start();
+        const std::uint32_t elapsedTime = timer.getElapsedTimeAsMilliseconds();
 
-    REQUIRE(elapsedTime == 0);
-}
+        REQUIRE(elapsedTime == 0);
+    }
 
-TEST_CASE("Timer pauses and resumes correctly", "[Timer]")
-{
-    e2d::Timer timer;
+    SECTION("Timer pauses and resumes correctly", "[Timer]")
+    {
+        e2d::Timer timer;
 
-    timer.start();
-    const std::uint32_t elapsedTimeBeforePause = timer.getElapsedTimeAsMilliseconds();
+        timer.start();
+        const std::uint32_t elapsedTimeBeforePause = timer.getElapsedTimeAsMilliseconds();
 
-    // Simulate the passage of time
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        // Simulate the passage of time
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-    timer.pause();
+        timer.pause();
 
-    // Simulate the passage of time while the timer is paused
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        // Simulate the passage of time while the timer is paused
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-    timer.resume();
-    const std::uint32_t elapsedTimeAfterResume = timer.getElapsedTimeAsMilliseconds();
+        timer.resume();
+        const std::uint32_t elapsedTimeAfterResume = timer.getElapsedTimeAsMilliseconds();
 
-    REQUIRE(elapsedTimeBeforePause < elapsedTimeAfterResume);
-}
+        REQUIRE(elapsedTimeBeforePause < elapsedTimeAfterResume);
+    }
 
-TEST_CASE("Timer stops and resets correctly", "[Timer]")
-{
-    e2d::Timer timer;
+    SECTION("Timer stops and resets correctly", "[Timer]")
+    {
+        e2d::Timer timer;
 
-    timer.start();
+        timer.start();
 
-    // Simulate the passage of time
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        // Simulate the passage of time
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-    timer.stop();
-    const std::uint32_t elapsedTimeAfterStop = timer.getElapsedTimeAsMilliseconds();
+        timer.stop();
+        const std::uint32_t elapsedTimeAfterStop = timer.getElapsedTimeAsMilliseconds();
 
-    REQUIRE(timer.isStarted() == false);
-    REQUIRE(timer.isPaused() == false);
-    REQUIRE(elapsedTimeAfterStop == 0);
-}
+        REQUIRE(timer.isStarted() == false);
+        REQUIRE(timer.isPaused() == false);
+        REQUIRE(elapsedTimeAfterStop == 0);
+    }
 
-TEST_CASE("Timer can be started, paused, and resumed multiple times", "[Timer]")
-{
-    e2d::Timer timer;
+    SECTION("Timer can be started, paused, and resumed multiple times", "[Timer]")
+    {
+        e2d::Timer timer;
 
-    timer.start();
-    const std::uint32_t elapsedTimeSinceStart = timer.getElapsedTimeAsMilliseconds();
+        timer.start();
+        const std::uint32_t elapsedTimeSinceStart = timer.getElapsedTimeAsMilliseconds();
 
-    // Simulate the passage of time
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        // Simulate the passage of time
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-    timer.pause();
-    const std::uint32_t elapsedTimeAfterPause1 = timer.getElapsedTimeAsMilliseconds();
+        timer.pause();
+        const std::uint32_t elapsedTimeAfterPause1 = timer.getElapsedTimeAsMilliseconds();
 
-    // Simulate the passage of time while the timer is paused
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        // Simulate the passage of time while the timer is paused
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-    const std::uint32_t elapsedTimeAfterPause2 = timer.getElapsedTimeAsMilliseconds();
+        const std::uint32_t elapsedTimeAfterPause2 = timer.getElapsedTimeAsMilliseconds();
 
-    timer.resume();
-    const std::uint32_t elapsedTimeAfterResume1 = timer.getElapsedTimeAsMilliseconds();
+        timer.resume();
+        const std::uint32_t elapsedTimeAfterResume1 = timer.getElapsedTimeAsMilliseconds();
 
-    // Simulate the passage of time
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        // Simulate the passage of time
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-    timer.pause();
-    const std::uint32_t elapsedTimeAfterPause3 = timer.getElapsedTimeAsMilliseconds();
+        timer.pause();
+        const std::uint32_t elapsedTimeAfterPause3 = timer.getElapsedTimeAsMilliseconds();
 
-    // Simulate the passage of time while the timer is paused
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        // Simulate the passage of time while the timer is paused
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-    timer.resume();
-    const std::uint32_t elapsedTimeAfterResume2 = timer.getElapsedTimeAsMilliseconds();
+        timer.resume();
+        const std::uint32_t elapsedTimeAfterResume2 = timer.getElapsedTimeAsMilliseconds();
 
-    REQUIRE(elapsedTimeSinceStart < elapsedTimeAfterPause1);
-    REQUIRE(elapsedTimeAfterPause1 == elapsedTimeAfterPause2);
-    REQUIRE(elapsedTimeAfterResume1 < elapsedTimeAfterPause3);
-    REQUIRE(elapsedTimeAfterPause3 <= elapsedTimeAfterResume2);
+        REQUIRE(elapsedTimeSinceStart < elapsedTimeAfterPause1);
+        REQUIRE(elapsedTimeAfterPause1 == elapsedTimeAfterPause2);
+        REQUIRE(elapsedTimeAfterResume1 < elapsedTimeAfterPause3);
+        REQUIRE(elapsedTimeAfterPause3 <= elapsedTimeAfterResume2);
+    }
 }

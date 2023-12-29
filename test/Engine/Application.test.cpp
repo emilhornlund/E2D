@@ -38,8 +38,11 @@ public:
     ~TestApplication() final = default;
 };
 
-TEST_CASE("Default constructor")
+TEST_CASE("Application Tests", "[Application]")
 {
-    const TestApplication application;
-    REQUIRE_FALSE(application.isRunning());
+    SECTION("Default constructor")
+    {
+        const TestApplication application;
+        REQUIRE_FALSE(application.isRunning());
+    }
 }
