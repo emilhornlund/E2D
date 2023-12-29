@@ -21,6 +21,7 @@ target_include_directories(Catch2 SYSTEM INTERFACE ${CATCH2_INCLUDE_DIRS})
 # E2D Core Library Tests
 set(CORE_SRC
     Core/Color.test.cpp
+    Core/Rect.test.cpp
     Core/Timer.test.cpp
     Core/Vector2.test.cpp
 )
