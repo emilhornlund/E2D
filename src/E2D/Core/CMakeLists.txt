@@ -8,6 +8,8 @@ set(SRC
     ${INCROOT}/Color.inl
     ${INCROOT}/Export.hpp
     ${INCROOT}/NonCopyable.hpp
+    ${INCROOT}/Rect.hpp
+    ${INCROOT}/Rect.inl
     ${INCROOT}/Timer.hpp
     ${SRCROOT}/Timer.cpp
     ${INCROOT}/Vector2.hpp
