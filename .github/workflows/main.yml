@@ -115,11 +115,6 @@ jobs:
           mkdir -p build/bin
 
       - name: Test
-        if: runner.os == 'Windows'
-        run: cmake --build build --target runtests --config ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }}
-
-      - name: Test
-        if: runner.os != 'Windows'
         run: ctest --test-dir build --output-on-failure -C ${{ matrix.type.name == 'Debug' && 'Debug' || 'Release' }} --repeat until-pass:3
 
       - name: Test Install
