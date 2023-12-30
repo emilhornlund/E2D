@@ -22,6 +22,8 @@ set(SRC
     ${SRCROOT}/RendererImpl.cpp
     ${SRCROOT}/RenderQueue.hpp
     ${SRCROOT}/RenderQueue.cpp
+    ${SRCROOT}/SDLRenderUtils.hpp
+    ${SRCROOT}/SDLRenderUtils.cpp
     ${INCROOT}/Sprite.hpp
     ${SRCROOT}/Sprite.cpp
     ${INCROOT}/System.hpp

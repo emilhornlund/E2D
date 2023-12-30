@@ -71,6 +71,11 @@ public:
 
         auto sprite = std::make_unique<MySprite>();
         sprite->setTexture(texture);
+        sprite->setTextureRect(e2d::IntRect({0, 0}, {24, 24}));
+        sprite->setPosition({60, 60});
+        sprite->setOrigin({12, 12});
+        sprite->setScale({5, 5});
+        sprite->setRotation(0);
 
         this->getObjectRegistry().addObject(std::move(sprite));
     }
