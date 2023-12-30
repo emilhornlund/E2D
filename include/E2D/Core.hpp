@@ -32,6 +32,7 @@
 #include <E2D/Core/Color.hpp>
 #include <E2D/Core/NonCopyable.hpp>
 #include <E2D/Core/Rect.hpp>
+#include <E2D/Core/System.hpp>
 #include <E2D/Core/Timer.hpp>
 #include <E2D/Core/Vector2.hpp>
 

@@ -24,9 +24,9 @@
  * THE SOFTWARE.
  */
 
-#include <E2D/Engine/GraphicsSystem.hpp>
+#include <E2D/Core/System.hpp>
+
 #include <E2D/Engine/Renderer.hpp>
-#include <E2D/Engine/SystemManager.hpp>
 #include <E2D/Engine/Window.hpp>
 
 #include <catch2/catch_test_macros.hpp>
@@ -37,8 +37,7 @@ public:
     RendererTest()
     {
         // Setup (runs before each SECTION)
-        e2d::SystemManager::getInstance().addSystem<e2d::GraphicsSystem>();
-        e2d::SystemManager::getInstance().initializeAll();
+        e2d::System::initialize();
         window.create("Test Window", 800, 600);
     }
 
@@ -46,7 +45,7 @@ public:
     {
         // Teardown (runs after each SECTION)
         window.destroy();
-        e2d::SystemManager::getInstance().shutdownAll();
+        e2d::System::shutdown();
     }
 
     e2d::Window window;

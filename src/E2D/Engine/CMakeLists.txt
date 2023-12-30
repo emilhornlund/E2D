@@ -9,8 +9,6 @@ set(SRC
     ${INCROOT}/Export.hpp
     ${INCROOT}/Entity.hpp
     ${SRCROOT}/Entity.cpp
-    ${INCROOT}/GraphicsSystem.hpp
-    ${SRCROOT}/GraphicsSystem.cpp
     ${INCROOT}/Object.hpp
     ${SRCROOT}/Object.cpp
     ${INCROOT}/ObjectRegistry.hpp
@@ -26,11 +24,6 @@ set(SRC
     ${SRCROOT}/SDLRenderUtils.cpp
     ${INCROOT}/Sprite.hpp
     ${SRCROOT}/Sprite.cpp
-    ${INCROOT}/System.hpp
-    ${INCROOT}/SystemManager.hpp
-    ${SRCROOT}/SystemManager.cpp
-    ${INCROOT}/TextRenderingSystem.hpp
-    ${SRCROOT}/TextRenderingSystem.cpp
     ${INCROOT}/Texture.hpp
     ${SRCROOT}/Texture.cpp
     ${SRCROOT}/TextureImpl.hpp
