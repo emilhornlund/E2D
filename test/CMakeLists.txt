@@ -26,6 +26,7 @@ set(CORE_SRC
     Core/Vector2.test.cpp
 )
 e2d_add_test(e2d-test-core "${CORE_SRC}" E2D::Core)
+target_link_libraries(e2d-test-core PRIVATE SDL2 SDL2_IMAGE SDL2_TTF)
 
 # E2D Engine Library Tests
 set(ENGINE_SRC
@@ -33,10 +34,12 @@ set(ENGINE_SRC
     Engine/ObjectRegistry.test.cpp
     Engine/Renderer.test.cpp
     Engine/RendererQueue.test.cpp
+    Engine/SDLRenderUtils.test.cpp
     Engine/Texture.test.cpp
     Engine/Window.test.cpp
 )
 e2d_add_test(e2d-test-engine "${ENGINE_SRC}" E2D::Engine)
+target_link_libraries(e2d-test-engine PRIVATE SDL2 SDL2_IMAGE SDL2_TTF)
 
 if(E2D_OS_WINDOWS)
     set(DLL_NAMES SDL2 SDL2_image SDL2_ttf)
