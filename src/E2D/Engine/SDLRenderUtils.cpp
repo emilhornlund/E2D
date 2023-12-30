@@ -1,5 +1,5 @@
 /**
-* SDLRenderUtils.hpp
+* SDLRenderUtils.cpp
 *
 * MIT License
 *

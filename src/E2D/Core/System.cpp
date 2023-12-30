@@ -1,5 +1,5 @@
 /**
-* TextRenderingSystem.cpp
+* System.cpp
 *
 * MIT License
 *
@@ -24,28 +24,15 @@
 * THE SOFTWARE.
 */
 
-#include <E2D/Engine/TextRenderingSystem.hpp>
+#include <E2D/Core/SDLInitializer.hpp>
+#include <E2D/Core/System.hpp>
 
-// NOLINTBEGIN
-#include <cstring> //unused, but must be included before SDL on macOS (bug?)
-// NOLINTEND
-
-#include <SDL.h>
-#include <SDL_ttf.h>
-
-#include <iostream>
-
-bool e2d::TextRenderingSystem::initialize()
+bool e2d::System::initialize()
 {
-    if (TTF_Init() != 0)
-    {
-        std::cerr << "Failed to initialize SDL text rendering system: " << SDL_GetError() << '\n';
-        return false;
-    }
-    return true;
+    return internal::SDLInitializer::initialize();
 }
 
-void e2d::TextRenderingSystem::shutdown()
+void e2d::System::shutdown()
 {
-    TTF_Quit();
+    internal::SDLInitializer::shutdown();
 }

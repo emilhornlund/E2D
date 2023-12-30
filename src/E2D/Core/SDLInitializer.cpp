@@ -1,5 +1,5 @@
 /**
-* GraphicsSystem.cpp
+* SDLInitializer.cpp
 *
 * MIT License
 *
@@ -24,7 +24,7 @@
 * THE SOFTWARE.
 */
 
-#include <E2D/Engine/GraphicsSystem.hpp>
+#include <E2D/Core/SDLInitializer.hpp>
 
 // NOLINTBEGIN
 #include <cstring> //unused, but must be included before SDL on macOS (bug?)
@@ -32,12 +32,13 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 
 #include <iostream>
 
-bool e2d::GraphicsSystem::initialize()
+bool e2d::internal::SDLInitializer::initialize()
 {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0)
+    if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
         std::cerr << "Failed to initialize SDL video system: " << SDL_GetError() << '\n';
         return false;
@@ -47,11 +48,17 @@ bool e2d::GraphicsSystem::initialize()
         std::cerr << "Failed to initialize SDL image system: " << SDL_GetError() << '\n';
         return false;
     }
+    if (TTF_Init() != 0)
+    {
+        std::cerr << "Failed to initialize SDL text rendering system: " << SDL_GetError() << '\n';
+        return false;
+    }
     return true;
 }
 
-void e2d::GraphicsSystem::shutdown()
+void e2d::internal::SDLInitializer::shutdown()
 {
-    SDL_Quit();
+    TTF_Quit();
     IMG_Quit();
+    SDL_Quit();
 }

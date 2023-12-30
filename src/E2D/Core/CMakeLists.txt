@@ -10,6 +10,10 @@ set(SRC
     ${INCROOT}/NonCopyable.hpp
     ${INCROOT}/Rect.hpp
     ${INCROOT}/Rect.inl
+    ${SRCROOT}/SDLInitializer.hpp
+    ${SRCROOT}/SDLInitializer.cpp
+    ${INCROOT}/System.hpp
+    ${SRCROOT}/System.cpp
     ${INCROOT}/Timer.hpp
     ${SRCROOT}/Timer.cpp
     ${INCROOT}/Vector2.hpp
@@ -18,7 +22,7 @@ set(SRC
 
 e2d_add_library(Core SOURCES ${SRC})
 
-target_link_libraries(${TARGET} PRIVATE SDL2)
+target_link_libraries(${TARGET} PRIVATE SDL2 SDL2_IMAGE SDL2_TTF)
 
 if(E2D_OS_WINDOWS)
     if(ARCH_32BITS)

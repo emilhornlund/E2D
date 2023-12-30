@@ -24,16 +24,14 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Core/System.hpp>
 #include <E2D/Core/Timer.hpp>
 
 #include <E2D/Engine/Application.hpp>
 #include <E2D/Engine/Entity.hpp>
-#include <E2D/Engine/GraphicsSystem.hpp>
 #include <E2D/Engine/Object.hpp>
 #include <E2D/Engine/ObjectRegistry.hpp>
 #include <E2D/Engine/Renderer.hpp>
-#include <E2D/Engine/SystemManager.hpp>
-#include <E2D/Engine/TextRenderingSystem.hpp>
 #include <E2D/Engine/Window.hpp>
 
 #include <SDL.h>
@@ -53,9 +51,7 @@ e2d::Application::~Application() = default;
 
 int e2d::Application::run()
 {
-    SystemManager::getInstance().addSystem<GraphicsSystem>();
-    SystemManager::getInstance().addSystem<TextRenderingSystem>();
-    if (!SystemManager::getInstance().initializeAll())
+    if (!System::initialize())
     {
         return -1;
     }
@@ -123,7 +119,7 @@ int e2d::Application::run()
     this->m_window->destroy();
     this->m_renderer->destroy();
 
-    SystemManager::getInstance().shutdownAll();
+    System::shutdown();
 
     return this->m_exitCode;
 }
