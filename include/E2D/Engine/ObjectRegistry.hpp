@@ -37,12 +37,7 @@
 #include <vector>
 
 /**
- * @class ObjectRegistry
- * @brief Manages a registry of all game objects in the E2D Engine.
- *
- * ObjectRegistry is responsible for managing the lifecycle of all game objects. It provides
- * methods to add, retrieve, and remove objects from the game. The registry can also return
- * all objects or objects of a specific type.
+ * @brief Namespace for E2D
  */
 namespace e2d
 {
@@ -50,7 +45,11 @@ class Object; // Forward declaration of Object
 
 /**
  * @class ObjectRegistry
- * @brief
+ * @brief Manages a registry of all game objects in the E2D Engine.
+ *
+ * ObjectRegistry is responsible for managing the lifecycle of all game objects. It provides
+ * methods to add, retrieve, and remove objects from the game. The registry can also return
+ * all objects or objects of a specific type.
  */
 class E2D_ENGINE_API ObjectRegistry final : NonCopyable
 {

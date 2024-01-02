@@ -30,6 +30,7 @@
 #include <E2D/Engine/Export.hpp>
 
 #include <E2D/Core/NonCopyable.hpp>
+#include <E2D/Core/Vector2.hpp>
 
 #include <memory>
 #include <string>
@@ -90,6 +91,17 @@ public:
      * @brief Destroys the texture, freeing associated resources.
      */
     void destroy();
+
+    /**
+     * @brief Retrieves the size of the texture.
+     *
+     * This method returns the dimensions of the texture as a Vector2i,
+     * where x represents the width and y represents the height of the texture.
+     * If the texture is not loaded, this method returns a vector with zero values.
+     *
+     * @return const Vector2i& Reference to a Vector2i object representing the texture's size.
+     */
+    const Vector2i& getSize() const;
 
     /**
      * @brief Retrieves a handle to the native texture object.

@@ -30,6 +30,7 @@
 #include <E2D/Engine/Export.hpp>
 
 #include <E2D/Core/NonCopyable.hpp>
+#include <E2D/Core/Vector2.hpp>
 
 struct SDL_Renderer; // Forward declaration of SDL_Renderer
 struct SDL_Texture;  // Forward declaration of SDL_Texture
@@ -86,6 +87,18 @@ public:
     void destroy();
 
     /**
+     * @brief Retrieves the size of the internal SDL texture.
+     *
+     * This method returns the dimensions of the underlying SDL texture.
+     * It queries the texture's width and height, storing them in a Vector2i.
+     * If the texture is not loaded or the query fails, the method returns
+     * a vector with zero values.
+     *
+     * @return const e2d::Vector2i& Reference to a Vector2i object representing the texture's size.
+     */
+    const e2d::Vector2i& getSize() const;
+
+    /**
      * @brief Retrieves the native SDL texture object.
      *
      * @return Pointer to the underlying SDL_Texture object.
@@ -93,7 +106,8 @@ public:
     SDL_Texture* getTexture() const;
 
 private:
-    SDL_Texture* m_texture{nullptr}; //!< Pointer to the SDL_Texture object.
+    SDL_Texture*  m_texture{nullptr}; //!< Pointer to the SDL_Texture object.
+    e2d::Vector2i m_textureSize;      //!< Stores the dimensions of the SDL_Texture object.
 
 }; // class TextureImpl
 

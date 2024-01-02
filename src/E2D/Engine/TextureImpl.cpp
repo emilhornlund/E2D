@@ -50,6 +50,12 @@ bool e2d::internal::TextureImpl::loadTexture(SDL_Renderer* renderer, const char*
         std::cerr << "Failed to load texture: " << SDL_GetError() << '\n';
         return false;
     }
+    if (SDL_QueryTexture(this->m_texture, nullptr, nullptr, &this->m_textureSize.x, &this->m_textureSize.y) != 0)
+    {
+        std::cerr << "Failed to query texture: " << SDL_GetError() << '\n';
+        this->destroy();
+        return false;
+    }
     return true;
 }
 
@@ -63,8 +69,14 @@ void e2d::internal::TextureImpl::destroy()
     if (this->m_texture)
     {
         SDL_DestroyTexture(this->m_texture);
-        this->m_texture = nullptr;
+        this->m_texture     = nullptr;
+        this->m_textureSize = {0, 0};
     }
+}
+
+const e2d::Vector2i& e2d::internal::TextureImpl::getSize() const
+{
+    return this->m_textureSize;
 }
 
 SDL_Texture* e2d::internal::TextureImpl::getTexture() const

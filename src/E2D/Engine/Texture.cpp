@@ -51,6 +51,11 @@ void e2d::Texture::destroy()
     this->m_textureImpl->destroy();
 }
 
+const e2d::Vector2i& e2d::Texture::getSize() const
+{
+    return this->m_textureImpl->getSize();
+}
+
 void* e2d::Texture::getNativeTextureHandle() const
 {
     return this->m_textureImpl->getTexture();
