@@ -61,8 +61,12 @@ TEST_CASE_METHOD(TextureTest, "Texture Loading and Destruction", "[Texture]")
 
     SECTION("Load Texture")
     {
+        REQUIRE(texture.getSize() == e2d::Vector2i{0, 0});
+
         REQUIRE(texture.loadTexture(renderer, "resources/hello-world.png") == true);
         REQUIRE(texture.isLoaded() == true);
+
+        REQUIRE(texture.getSize() == e2d::Vector2i{320, 240});
     }
 
     SECTION("Destroy Texture")
@@ -70,5 +74,7 @@ TEST_CASE_METHOD(TextureTest, "Texture Loading and Destruction", "[Texture]")
         REQUIRE(texture.loadTexture(renderer, "resources/hello-world.png") == true);
         texture.destroy();
         REQUIRE(texture.isLoaded() == false);
+
+        REQUIRE(texture.getSize() == e2d::Vector2i{0, 0});
     }
 }
