@@ -31,9 +31,11 @@ target_link_libraries(e2d-test-core PRIVATE SDL2 SDL2_IMAGE SDL2_TTF)
 # E2D Engine Library Tests
 set(ENGINE_SRC
     Engine/Application.test.cpp
+    Engine/Event.test.cpp
     Engine/ObjectRegistry.test.cpp
     Engine/Renderer.test.cpp
     Engine/RendererQueue.test.cpp
+    Engine/SDLKeyboardUtils.test.cpp
     Engine/SDLRenderUtils.test.cpp
     Engine/Texture.test.cpp
     Engine/Window.test.cpp

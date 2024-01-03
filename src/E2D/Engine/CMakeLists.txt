@@ -6,9 +6,12 @@ set(SRCROOT ${PROJECT_SOURCE_DIR}/src/E2D/Engine)
 set(SRC
     ${INCROOT}/Application.hpp
     ${SRCROOT}/Application.cpp
-    ${INCROOT}/Export.hpp
     ${INCROOT}/Entity.hpp
     ${SRCROOT}/Entity.cpp
+    ${INCROOT}/Event.hpp
+    ${SRCROOT}/Event.cpp
+    ${INCROOT}/Export.hpp
+    ${INCROOT}/Keyboard.hpp
     ${INCROOT}/Object.hpp
     ${SRCROOT}/Object.cpp
     ${INCROOT}/ObjectRegistry.hpp
@@ -20,6 +23,8 @@ set(SRC
     ${SRCROOT}/RendererImpl.cpp
     ${SRCROOT}/RenderQueue.hpp
     ${SRCROOT}/RenderQueue.cpp
+    ${SRCROOT}/SDLKeyboardUtils.hpp
+    ${SRCROOT}/SDLKeyboardUtils.cpp
     ${SRCROOT}/SDLRenderUtils.hpp
     ${SRCROOT}/SDLRenderUtils.cpp
     ${INCROOT}/Sprite.hpp
