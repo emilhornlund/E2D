@@ -29,12 +29,11 @@
 
 #include <E2D/Engine/Application.hpp>
 #include <E2D/Engine/Entity.hpp>
+#include <E2D/Engine/Event.hpp>
 #include <E2D/Engine/Object.hpp>
 #include <E2D/Engine/ObjectRegistry.hpp>
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/Window.hpp>
-
-#include <SDL.h>
 
 #include <utility>
 
@@ -78,7 +77,15 @@ int e2d::Application::run()
         targetFrameTimer.start();
         double elapsedFrameTimeAsSeconds = targetFrameTimer.getElapsedTimeAsSeconds();
 
-        this->handleEvents();
+        e2d::Event event{};
+        while (pollEvent(event))
+        {
+            if (event.type == Event::EventType::Quit)
+            {
+                this->quit();
+            }
+        }
+
         for (const auto& object : this->m_objectRegistry->getAllObjects())
         {
             object->fixedUpdate();
@@ -133,18 +140,6 @@ void e2d::Application::quit(int exitCode)
 {
     this->m_exitCode = exitCode;
     this->m_running  = false;
-}
-
-void e2d::Application::handleEvents()
-{
-    SDL_Event event;
-    while (SDL_PollEvent(&event))
-    {
-        if (event.type == SDL_QUIT)
-        {
-            this->quit();
-        }
-    }
 }
 
 e2d::Renderer& e2d::Application::getRenderer() const

@@ -46,11 +46,10 @@ class Window;         // Forward declaration of Window
 
 /**
  * @class Application
- * @brief Core class for managing the application lifecycle in the E2D Engine.
+ * @brief Core class for managing the application lifecycle in the E2D Engine, handling initialization, main loop, and shutdown.
  *
  * Application serves as the central class for E2D engine applications. It manages the main
  * game loop, event handling, and provides access to the renderer and object registry.
- * Derived classes can override specific methods to implement custom application logic.
  */
 class E2D_ENGINE_API Application : NonCopyable
 {
@@ -132,12 +131,7 @@ private:
     std::unique_ptr<Window>         m_window;           //!< Unique pointer to the window.
     std::unique_ptr<Renderer>       m_renderer;         //!< Unique pointer to the renderer.
     std::unique_ptr<ObjectRegistry> m_objectRegistry;   //!< Unique pointer to the object registry.
-    Color                           m_backgroundColor;  //!< The background color of the window
-
-    /**
-     * @brief Handles SDL events such as window close event.
-     */
-    void handleEvents();
+    Color                           m_backgroundColor;  //!< The background color of the window.
 
 }; //Application class
 

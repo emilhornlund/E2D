@@ -42,7 +42,7 @@ public:
     ~WindowTest()
     {
         // Teardown (runs after each SECTION)
-        e2d::System::initialize();
+        e2d::System::shutdown();
     }
 };
 
