@@ -538,18 +538,3 @@ e2d::Keyboard::Scancode e2d::internal::toScancode(const SDL_Scancode& sdlScanCod
             return Keyboard::Scancode::Unknown; // Unknown scancode
     }
 }
-
-e2d::Event::KeyEvent e2d::internal::toKeyEvent(const SDL_Event& sdlEvent)
-{
-    e2d::Event::KeyEvent keyEvent;
-    if (sdlEvent.type == SDL_KEYDOWN || sdlEvent.type == SDL_KEYUP)
-    {
-        keyEvent.code     = toKeyCode(sdlEvent.key.keysym.sym);
-        keyEvent.scancode = toScancode(sdlEvent.key.keysym.scancode);
-        keyEvent.alt      = (sdlEvent.key.keysym.mod & KMOD_ALT) != 0;
-        keyEvent.control  = (sdlEvent.key.keysym.mod & KMOD_CTRL) != 0;
-        keyEvent.shift    = (sdlEvent.key.keysym.mod & KMOD_SHIFT) != 0;
-        keyEvent.system   = (sdlEvent.key.keysym.mod & KMOD_GUI) != 0;
-    }
-    return keyEvent;
-}
