@@ -59,22 +59,40 @@ struct Event
     };
 
     /**
+     * @struct SizeEvent
+     * @brief Represents an event related to the resizing of a window.
+     *
+     * This structure is used to store information about window resize events,
+     * including the new dimensions of the window after the resize operation.
+     */
+    struct SizeEvent
+    {
+        unsigned int width  = 0; //!< New width of the window, in pixels.
+        unsigned int height = 0; //!< New height of the window, in pixels.
+    };
+
+    /**
      * @enum EventType
      * @brief Enumerates the types of events that can be processed by the E2D engine.
+     *
+     * This enum defines the various event types that the E2D engine can process, including
+     * keyboard inputs, window events, and system commands like quitting the application.
      */
     enum EventType
     {
         Unknown,     //!< Represents an unknown event.
         KeyPressed,  //!< Represents a key press event.
         KeyReleased, //!< Represents a key release event.
-        Quit         //!< Represents a quit event, typically triggered by closing the application window.
+        Resized,     //!< Represents a window resize event.
+        Quit,        //!< Represents a quit event, typically triggered by closing the application window.
     };
 
     EventType type{}; //!< Type of the event, indicating what kind of event occurred.
 
     union
     {
-        KeyEvent key; //!< Specific details for a keyboard event, valid when type is KeyPressed or KeyReleased.
+        KeyEvent  key;  //!< Specific details for a keyboard event, valid when type is KeyPressed or KeyReleased.
+        SizeEvent size; //!< Specific details for a window resize event, valid when type is Resized.
     };
 };
 

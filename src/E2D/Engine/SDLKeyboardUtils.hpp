@@ -60,19 +60,6 @@ E2D_ENGINE_API Keyboard::Key toKeyCode(const SDL_Keycode& sdlKeyCode);
  */
 E2D_ENGINE_API Keyboard::Scancode toScancode(const SDL_Scancode& sdlScanCode);
 
-/**
- * @brief Translates an SDL_Event to an E2D KeyEvent.
- *
- * This function is responsible for converting SDL keyboard events (SDL_Event) into
- * the E2D engine's KeyEvent format. It extracts the key code, scancode, and modifier
- * state (like Alt, Control, Shift, System) from the SDL event and populates an
- * E2D KeyEvent structure.
- *
- * @param sdlEvent The SDL_Event to be translated.
- * @return An E2D KeyEvent structure containing information about the keyboard event.
- */
-E2D_ENGINE_API Event::KeyEvent toKeyEvent(const SDL_Event& sdlEvent);
-
 } // namespace e2d::internal
 
 #endif //E2D_ENGINE_SDL_KEYBOARD_UTILS_HPP

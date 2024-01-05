@@ -137,6 +137,22 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         REQUIRE(actualEvent.key.system == true);
     }
 
+    SECTION("Handle Window Resize Event")
+    {
+        sdlEvent.type         = SDL_WINDOWEVENT;
+        sdlEvent.window.event = SDL_WINDOWEVENT_SIZE_CHANGED;
+        sdlEvent.window.data1 = 800;
+        sdlEvent.window.data2 = 600;
+
+        SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
+        SDL_PushEvent(&sdlEvent);
+
+        wasPolled = e2d::pollEvent(actualEvent);
+
+        REQUIRE(wasPolled == true);
+        REQUIRE(actualEvent.type == e2d::Event::Resized);
+    }
+
     SECTION("Handle Quit Event")
     {
         sdlEvent.type = SDL_QUIT;

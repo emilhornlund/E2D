@@ -80,7 +80,7 @@ int e2d::Application::run()
         e2d::Event event{};
         while (pollEvent(event))
         {
-            if (event.type == Event::EventType::Quit)
+            if (event.type == Event::Quit)
             {
                 this->quit();
             }
