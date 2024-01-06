@@ -75,16 +75,24 @@ struct Event
      * @enum EventType
      * @brief Enumerates the types of events that can be processed by the E2D engine.
      *
-     * This enum defines the various event types that the E2D engine can process, including
-     * keyboard inputs, window events, and system commands like quitting the application.
+     * This enum defines the various event types that the E2D engine can handle. It includes
+     * system events like window closing, resizing, focus changes, and key events.
      */
     enum EventType
     {
-        Unknown,     //!< Represents an unknown event.
-        KeyPressed,  //!< Represents a key press event.
-        KeyReleased, //!< Represents a key release event.
-        Resized,     //!< Represents a window resize event.
-        Quit,        //!< Represents a quit event, typically triggered by closing the application window.
+        Unknown,      //!< Represents an unknown event.
+        Closed,       //!< Represents a window close event.
+        Resized,      //!< Represents a window resize event.
+        LostFocus,    //!< Represents an event where the window loses focus.
+        GainedFocus,  //!< Represents an event where the window gains focus.
+        Minimized,    //!< Represents an event where the window is minimized.
+        Maximized,    //!< Represents an event where the window is maximized.
+        Restored,     //!< Represents an event where the window is restored from minimized or maximized state.
+        KeyPressed,   //!< Represents a key press event.
+        KeyReleased,  //!< Represents a key release event.
+        MouseEntered, //!< Represents an event where the mouse enters the window boundaries.
+        MouseLeft,    //!< Represents an event where the mouse leaves the window boundaries.
+        Quit,         //!< Represents a quit event, typically triggered by closing the application window.
     };
 
     EventType type{}; //!< Type of the event, indicating what kind of event occurred.

@@ -137,6 +137,20 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         REQUIRE(actualEvent.key.system == true);
     }
 
+    SECTION("Handle Window Close Event")
+    {
+        sdlEvent.type         = SDL_WINDOWEVENT;
+        sdlEvent.window.event = SDL_WINDOWEVENT_CLOSE;
+
+        SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
+        SDL_PushEvent(&sdlEvent);
+
+        wasPolled = e2d::pollEvent(actualEvent);
+
+        REQUIRE(wasPolled == true);
+        REQUIRE(actualEvent.type == e2d::Event::Closed);
+    }
+
     SECTION("Handle Window Resize Event")
     {
         sdlEvent.type         = SDL_WINDOWEVENT;
@@ -151,6 +165,106 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
 
         REQUIRE(wasPolled == true);
         REQUIRE(actualEvent.type == e2d::Event::Resized);
+        REQUIRE(actualEvent.size.width == 800);
+        REQUIRE(actualEvent.size.height == 600);
+    }
+
+    SECTION("Handle Window Focus Lost Event")
+    {
+        sdlEvent.type         = SDL_WINDOWEVENT;
+        sdlEvent.window.event = SDL_WINDOWEVENT_FOCUS_LOST;
+
+        SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
+        SDL_PushEvent(&sdlEvent);
+
+        wasPolled = e2d::pollEvent(actualEvent);
+
+        REQUIRE(wasPolled == true);
+        REQUIRE(actualEvent.type == e2d::Event::LostFocus);
+    }
+
+    SECTION("Handle Window Focus Gained Event")
+    {
+        sdlEvent.type         = SDL_WINDOWEVENT;
+        sdlEvent.window.event = SDL_WINDOWEVENT_FOCUS_GAINED;
+
+        SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
+        SDL_PushEvent(&sdlEvent);
+
+        wasPolled = e2d::pollEvent(actualEvent);
+
+        REQUIRE(wasPolled == true);
+        REQUIRE(actualEvent.type == e2d::Event::GainedFocus);
+    }
+
+    SECTION("Handle Window Minimized Event")
+    {
+        sdlEvent.type         = SDL_WINDOWEVENT;
+        sdlEvent.window.event = SDL_WINDOWEVENT_MINIMIZED;
+
+        SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
+        SDL_PushEvent(&sdlEvent);
+
+        wasPolled = e2d::pollEvent(actualEvent);
+
+        REQUIRE(wasPolled == true);
+        REQUIRE(actualEvent.type == e2d::Event::Minimized);
+    }
+
+    SECTION("Handle Window Maximized Event")
+    {
+        sdlEvent.type         = SDL_WINDOWEVENT;
+        sdlEvent.window.event = SDL_WINDOWEVENT_MAXIMIZED;
+
+        SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
+        SDL_PushEvent(&sdlEvent);
+
+        wasPolled = e2d::pollEvent(actualEvent);
+
+        REQUIRE(wasPolled == true);
+        REQUIRE(actualEvent.type == e2d::Event::Maximized);
+    }
+
+    SECTION("Handle Window Restored Event")
+    {
+        sdlEvent.type         = SDL_WINDOWEVENT;
+        sdlEvent.window.event = SDL_WINDOWEVENT_RESTORED;
+
+        SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
+        SDL_PushEvent(&sdlEvent);
+
+        wasPolled = e2d::pollEvent(actualEvent);
+
+        REQUIRE(wasPolled == true);
+        REQUIRE(actualEvent.type == e2d::Event::Restored);
+    }
+
+    SECTION("Handle Window Mouse Entered Event")
+    {
+        sdlEvent.type         = SDL_WINDOWEVENT;
+        sdlEvent.window.event = SDL_WINDOWEVENT_ENTER;
+
+        SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
+        SDL_PushEvent(&sdlEvent);
+
+        wasPolled = e2d::pollEvent(actualEvent);
+
+        REQUIRE(wasPolled == true);
+        REQUIRE(actualEvent.type == e2d::Event::MouseEntered);
+    }
+
+    SECTION("Handle Window Mouse Left Event")
+    {
+        sdlEvent.type         = SDL_WINDOWEVENT;
+        sdlEvent.window.event = SDL_WINDOWEVENT_LEAVE;
+
+        SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
+        SDL_PushEvent(&sdlEvent);
+
+        wasPolled = e2d::pollEvent(actualEvent);
+
+        REQUIRE(wasPolled == true);
+        REQUIRE(actualEvent.type == e2d::Event::MouseLeft);
     }
 
     SECTION("Handle Quit Event")

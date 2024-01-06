@@ -109,10 +109,34 @@ bool toWindowEvent(const SDL_Event& sdlEvent, e2d::Event& event)
     {
         switch (sdlEvent.window.event)
         {
+            case SDL_WINDOWEVENT_CLOSE:
+                event.type = e2d::Event::Closed;
+                return true;
             case SDL_WINDOWEVENT_SIZE_CHANGED:
                 event.type        = e2d::Event::Resized;
                 event.size.width  = static_cast<unsigned int>(sdlEvent.window.data1);
                 event.size.height = static_cast<unsigned int>(sdlEvent.window.data2);
+                return true;
+            case SDL_WINDOWEVENT_FOCUS_LOST:
+                event.type = e2d::Event::LostFocus;
+                return true;
+            case SDL_WINDOWEVENT_FOCUS_GAINED:
+                event.type = e2d::Event::GainedFocus;
+                return true;
+            case SDL_WINDOWEVENT_MINIMIZED:
+                event.type = e2d::Event::Minimized;
+                return true;
+            case SDL_WINDOWEVENT_MAXIMIZED:
+                event.type = e2d::Event::Maximized;
+                return true;
+            case SDL_WINDOWEVENT_RESTORED:
+                event.type = e2d::Event::Restored;
+                return true;
+            case SDL_WINDOWEVENT_ENTER:
+                event.type = e2d::Event::MouseEntered;
+                return true;
+            case SDL_WINDOWEVENT_LEAVE:
+                event.type = e2d::Event::MouseLeft;
                 return true;
             default:
                 break;
