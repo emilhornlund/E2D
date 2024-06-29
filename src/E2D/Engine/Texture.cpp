@@ -44,10 +44,22 @@ bool e2d::Texture::loadFromFile(const std::string& filepath)
     throw std::runtime_error("This loadFromFile method should not be used.");
 }
 
+bool e2d::Texture::loadFromMemory(const void* data, std::size_t size)
+{
+    (void)data; // Explicitly mark as unused
+    (void)size; // Explicitly mark as unused
+    throw std::runtime_error("This loadFromMemory method should not be used.");
+}
+
 bool e2d::Texture::loadFromFile(const std::string& filepath, const Renderer& renderer)
 {
     return this->m_textureImpl->loadTexture(static_cast<SDL_Renderer*>(renderer.getNativeRendererHandle()),
                                             filepath.c_str());
+}
+
+bool e2d::Texture::loadFromMemory(const void* data, std::size_t size, const Renderer& renderer)
+{
+    return this->m_textureImpl->loadFromMemory(static_cast<SDL_Renderer*>(renderer.getNativeRendererHandle()), data, size);
 }
 
 bool e2d::Texture::isLoaded() const

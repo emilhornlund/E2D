@@ -83,6 +83,18 @@ public:
     bool loadFromFile(const std::string& filepath, const Renderer& renderer);
 
     /**
+     * @brief Loads the texture from memory.
+     *
+     * This method loads the texture from a block of memory using the provided renderer.
+     *
+     * @param data Pointer to the memory block containing the texture data.
+     * @param size Size of the memory block in bytes.
+     * @param renderer The renderer used to load the texture.
+     * @return true if the texture is successfully loaded from memory, false otherwise.
+     */
+    bool loadFromMemory(const void* data, std::size_t size, const Renderer& renderer);
+
+    /**
      * @brief Checks if the texture is loaded and valid.
      *
      * @return True if the texture is loaded, false otherwise.
@@ -116,12 +128,25 @@ public:
 
 private:
     /**
-     * @brief
+     * @brief Loads the texture from a file.
      *
-     * @param filepath
-     * @return
+     * This method loads the texture from a file.
+     *
+     * @param filepath The path to the texture file.
+     * @return true if the texture is successfully loaded from memory, false otherwise.
      */
     bool loadFromFile(const std::string& filepath) final;
+
+    /**
+     * @brief Loads the texture from memory.
+     *
+     * This method loads the texture from a block of memory.
+     *
+     * @param data Pointer to the memory block containing the texture data.
+     * @param size Size of the memory block in bytes.
+     * @return true if the texture is successfully loaded from memory, false otherwise.
+     */
+    bool loadFromMemory(const void* data, std::size_t size) final;
 
     std::unique_ptr<internal::TextureImpl> m_textureImpl; //!< Pointer to the texture implementation.
 

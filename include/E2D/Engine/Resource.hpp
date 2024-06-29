@@ -64,6 +64,17 @@ public:
      */
     virtual bool loadFromFile(const std::string& filepath) = 0;
 
+    /**
+     * @brief Loads the resource from memory.
+     *
+     * This method must be implemented by all derived resource classes.
+     *
+     * @param data Pointer to the memory block containing the resource data.
+     * @param size Size of the memory block in bytes.
+     * @return true if the resource is successfully loaded from memory, false otherwise.
+     */
+    virtual bool loadFromMemory(const void* data, std::size_t size) = 0;
+
 }; // Resource class
 
 inline Resource::~Resource() = default; // NOLINT(readability-redundant-inline-specifier)

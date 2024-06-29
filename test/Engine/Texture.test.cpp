@@ -24,6 +24,8 @@
  * THE SOFTWARE.
  */
 
+#include "helloworld.bin.hpp"
+
 #include <E2D/Core/System.hpp>
 
 #include <E2D/Engine/Renderer.hpp>
@@ -59,7 +61,7 @@ TEST_CASE_METHOD(TextureTest, "Texture Loading and Destruction", "[Texture]")
 {
     e2d::Texture texture;
 
-    SECTION("Load Texture")
+    SECTION("Load and destroy Texture from file")
     {
         REQUIRE(texture.getSize() == e2d::Vector2i{0, 0});
 
@@ -67,11 +69,22 @@ TEST_CASE_METHOD(TextureTest, "Texture Loading and Destruction", "[Texture]")
         REQUIRE(texture.isLoaded() == true);
 
         REQUIRE(texture.getSize() == e2d::Vector2i{320, 240});
+
+        texture.destroy();
+        REQUIRE(texture.isLoaded() == false);
+
+        REQUIRE(texture.getSize() == e2d::Vector2i{0, 0});
     }
 
-    SECTION("Destroy Texture")
+    SECTION("Load and destroy Texture from memory")
     {
-        REQUIRE(texture.loadFromFile("resources/hello-world.png", renderer) == true);
+        REQUIRE(texture.getSize() == e2d::Vector2i{0, 0});
+
+        REQUIRE(texture.loadFromMemory(helloworld_data, helloworld_data_length, renderer) == true);
+        REQUIRE(texture.isLoaded() == true);
+
+        REQUIRE(texture.getSize() == e2d::Vector2i{320, 240});
+
         texture.destroy();
         REQUIRE(texture.isLoaded() == false);
 

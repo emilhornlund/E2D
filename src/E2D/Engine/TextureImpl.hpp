@@ -32,6 +32,8 @@
 #include <E2D/Core/NonCopyable.hpp>
 #include <E2D/Core/Vector2.hpp>
 
+#include <cstddef>
+
 struct SDL_Renderer; // Forward declaration of SDL_Renderer
 struct SDL_Texture;  // Forward declaration of SDL_Texture
 
@@ -73,6 +75,18 @@ public:
      * @return True if the texture is successfully loaded, false otherwise.
      */
     bool loadTexture(SDL_Renderer* renderer, const char* file);
+
+    /**
+     * @brief Loads the texture from memory.
+     *
+     * This method loads the texture from a block of memory using the provided SDL renderer.
+     *
+     * @param renderer Pointer to the SDL renderer.
+     * @param data Pointer to the memory block containing the texture data.
+     * @param size Size of the memory block in bytes.
+     * @return true if the texture is successfully loaded from memory, false otherwise.
+     */
+    bool loadFromMemory(SDL_Renderer* renderer, const void* data, std::size_t size);
 
     /**
      * @brief Checks if the texture is loaded and valid.

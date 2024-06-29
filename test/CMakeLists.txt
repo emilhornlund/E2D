@@ -32,6 +32,7 @@ target_link_libraries(e2d-test-core PRIVATE SDL2 SDL2_IMAGE SDL2_TTF)
 set(ENGINE_SRC
     Engine/Application.test.cpp
     Engine/Event.test.cpp
+    Engine/helloworld.bin.hpp
     Engine/ObjectRegistry.test.cpp
     Engine/Renderer.test.cpp
     Engine/RendererQueue.test.cpp

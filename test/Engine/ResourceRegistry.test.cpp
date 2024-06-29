@@ -24,6 +24,8 @@
 * THE SOFTWARE.
 */
 
+#include "helloworld.bin.hpp"
+
 #include <E2D/Core/System.hpp>
 
 #include <E2D/Engine/Renderer.hpp>
@@ -41,6 +43,13 @@ public:
     bool loadFromFile(const std::string& filepath) final
     {
         return !filepath.empty();
+    }
+
+    bool loadFromMemory(const void* data, std::size_t size) final
+    {
+        (void)data;
+        (void)size;
+        return false;
     }
 
     int mTest{123};
@@ -102,7 +111,7 @@ TEST_CASE_METHOD(ResourceRegistryTest, "ResourceRegistry Tests", "[ResourceRegis
         REQUIRE_THROWS(resourceRegistry.get<DummyFileResource>("MyDummyFileResource"));
     }
 
-    SECTION("A texture resource was loaded and retrieved successfully")
+    SECTION("A texture resource was loaded from file and retrieved successfully")
     {
         REQUIRE(resourceRegistry.loadTextureFromFile("HelloWorld", "resources/hello-world.png"));
 
@@ -115,12 +124,25 @@ TEST_CASE_METHOD(ResourceRegistryTest, "ResourceRegistry Tests", "[ResourceRegis
         REQUIRE(helloWorldTextureResource->getSize() == e2d::Vector2i{320, 240});
     }
 
-    SECTION("A texture resource was loaded unsuccessfully")
+    SECTION("A texture resource was loaded from file unsuccessfully")
     {
         REQUIRE_FALSE(resourceRegistry.loadTextureFromFile("HelloWorld", ""));
 
         REQUIRE_FALSE(resourceRegistry.exists<e2d::Texture>("HelloWorld"));
 
         REQUIRE_THROWS(resourceRegistry.get<e2d::Texture>("HelloWorld"));
+    }
+
+    SECTION("A texture resource was loaded from memory and retrieved successfully")
+    {
+        REQUIRE(resourceRegistry.loadTextureFromMemory("HelloWorld", helloworld_data, helloworld_data_length));
+
+        REQUIRE(resourceRegistry.exists<e2d::Texture>("HelloWorld"));
+
+        auto helloWorldTextureResource = resourceRegistry.get<e2d::Texture>("HelloWorld");
+
+        REQUIRE_FALSE(helloWorldTextureResource == nullptr);
+        REQUIRE(helloWorldTextureResource->isLoaded() == true);
+        REQUIRE(helloWorldTextureResource->getSize() == e2d::Vector2i{320, 240});
     }
 }

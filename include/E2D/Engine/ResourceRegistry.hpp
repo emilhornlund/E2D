@@ -177,13 +177,41 @@ public:
     bool loadFromFile(const std::string& identifier, const std::string& filepath, Args&&... args);
 
     /**
+     * @brief Loads a resource of type T from memory.
+     *
+     * @tparam T The type of the resource.
+     * @tparam Args Additional arguments required for loading the resource.
+     * @param identifier The identifier for the resource.
+     * @param data Pointer to the memory block containing the resource data.
+     * @param size Size of the memory block in bytes.
+     * @param args Additional arguments required for loading the resource.
+     * @return true if the resource is successfully loaded, false otherwise.
+     */
+    template <typename T, typename... Args>
+    bool loadFromMemory(const std::string& identifier, const void* data, std::size_t size, Args&&... args);
+
+    /**
      * @brief Loads a texture from a file.
+     *
+     * This method loads a texture from a file and associates it with an identifier.
      *
      * @param identifier The identifier to associate with the texture.
      * @param filepath The path to the texture file.
      * @return True if the texture is loaded successfully, false otherwise.
      */
     bool loadTextureFromFile(const std::string& identifier, const std::string& filepath);
+
+    /**
+     * @brief Loads a texture from a block.
+     *
+     * This method loads a texture from a block of memory and associates it with an identifier.
+     *
+     * @param identifier The identifier for the texture.
+     * @param data Pointer to the memory block containing the texture data.
+     * @param size Size of the memory block in bytes.
+     * @return True if the texture is loaded successfully, false otherwise.
+     */
+    bool loadTextureFromMemory(const std::string& identifier, const void* data, std::size_t size);
 
 private:
     std::reference_wrapper<const e2d::Renderer>                 m_renderer; //!< Reference to the renderer.
@@ -236,6 +264,30 @@ bool ResourceRegistry::loadFromFile(const std::string& identifier,
         else
         {
             std::cerr << "Unable to load `" << identifier << "` from file `" << filepath << "`" << '\n';
+        }
+    }
+    return false;
+}
+
+template <typename T, typename... Args>
+bool e2d::ResourceRegistry::loadFromMemory(const std::string& identifier,
+                                           const void*        data,
+                                           std::size_t        size,
+                                           Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
+{
+    static_assert(std::is_base_of<Resource, T>::value, "T must be derived from Resource");
+    if (!this->exists<T>(identifier))
+    {
+        auto resource    = std::make_unique<TResource<T>>(identifier);
+        resource->mValue = std::make_shared<T>();
+        if (resource->mValue->loadFromMemory(data, size, std::forward<Args>(args)...))
+        {
+            this->m_resources.insert(std::make_pair(identifier, std::move(resource)));
+            return true;
+        }
+        else
+        {
+            std::cerr << "Unable to load `" << identifier << "` from memory" << '\n';
         }
     }
     return false;

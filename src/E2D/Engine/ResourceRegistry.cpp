@@ -40,6 +40,11 @@ bool e2d::ResourceRegistry::loadTextureFromFile(const std::string& identifier, c
     return this->loadFromFile<e2d::Texture>(identifier, filepath, this->m_renderer.get());
 }
 
+bool e2d::ResourceRegistry::loadTextureFromMemory(const std::string& identifier, const void* data, std::size_t size)
+{
+    return this->loadFromMemory<e2d::Texture>(identifier, data, size, this->m_renderer.get());
+}
+
 e2d::ResourceRegistry::IResource::IResource(std::string type, std::string identifier) :
 m_type(std::move(type)),
 m_identifier(std::move(identifier))
