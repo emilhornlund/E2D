@@ -1,5 +1,5 @@
 /**
-* Texture.cpp
+* ResourceRegistry.cpp
 *
 * MIT License
 *
@@ -24,48 +24,34 @@
 * THE SOFTWARE.
 */
 
-#include <E2D/Engine/Renderer.hpp>
+#include <E2D/Engine/ResourceRegistry.hpp>
 #include <E2D/Engine/Texture.hpp>
-#include <E2D/Engine/TextureImpl.hpp>
 
-#include <SDL.h>
+#include <utility>
 
-#include <stdexcept>
-
-e2d::Texture::Texture() : m_textureImpl(std::make_unique<internal::TextureImpl>())
+e2d::ResourceRegistry::ResourceRegistry(const e2d::Renderer& renderer) : m_renderer(renderer)
 {
 }
 
-e2d::Texture::~Texture() = default;
+e2d::ResourceRegistry::~ResourceRegistry() = default;
 
-bool e2d::Texture::loadFromFile(const std::string& filepath)
+bool e2d::ResourceRegistry::loadTextureFromFile(const std::string& identifier, const std::string& filepath)
 {
-    (void)filepath; // Explicitly mark as unused
-    throw std::runtime_error("This loadFromFile method should not be used.");
+    return this->loadFromFile<e2d::Texture>(identifier, filepath, this->m_renderer.get());
 }
 
-bool e2d::Texture::loadFromFile(const std::string& filepath, const Renderer& renderer)
+e2d::ResourceRegistry::IResource::IResource(std::string type, std::string identifier) :
+m_type(std::move(type)),
+m_identifier(std::move(identifier))
 {
-    return this->m_textureImpl->loadTexture(static_cast<SDL_Renderer*>(renderer.getNativeRendererHandle()),
-                                            filepath.c_str());
 }
 
-bool e2d::Texture::isLoaded() const
+const std::string& e2d::ResourceRegistry::IResource::getType() const
 {
-    return this->m_textureImpl->isLoaded();
+    return this->m_type;
 }
 
-void e2d::Texture::destroy()
+const std::string& e2d::ResourceRegistry::IResource::getIdentifier() const
 {
-    this->m_textureImpl->destroy();
-}
-
-const e2d::Vector2i& e2d::Texture::getSize() const
-{
-    return this->m_textureImpl->getSize();
-}
-
-void* e2d::Texture::getNativeTextureHandle() const
-{
-    return this->m_textureImpl->getTexture();
+    return this->m_identifier;
 }

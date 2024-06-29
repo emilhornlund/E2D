@@ -1,5 +1,5 @@
 /**
-* Texture.cpp
+* Resource.hpp
 *
 * MIT License
 *
@@ -24,48 +24,50 @@
 * THE SOFTWARE.
 */
 
-#include <E2D/Engine/Renderer.hpp>
-#include <E2D/Engine/Texture.hpp>
-#include <E2D/Engine/TextureImpl.hpp>
+#ifndef E2D_ENGINE_RESOURCE_HPP
+#define E2D_ENGINE_RESOURCE_HPP
 
-#include <SDL.h>
+#include <E2D/Engine/Export.hpp>
 
-#include <stdexcept>
+#include <E2D/Core/NonCopyable.hpp>
 
-e2d::Texture::Texture() : m_textureImpl(std::make_unique<internal::TextureImpl>())
+#include <string>
+
+/**
+ * @brief Namespace for E2D
+ */
+namespace e2d
 {
-}
 
-e2d::Texture::~Texture() = default;
-
-bool e2d::Texture::loadFromFile(const std::string& filepath)
+/**
+ * @class Resource
+ *
+ * @brief Abstract base class for all resource types in the E2D engine.
+ *
+ * The Resource class provides a common interface for all resources managed by the engine.
+ */
+class E2D_ENGINE_API Resource : NonCopyable
 {
-    (void)filepath; // Explicitly mark as unused
-    throw std::runtime_error("This loadFromFile method should not be used.");
-}
+public:
+    /**
+     * @brief Pure virtual destructor for Resource.
+     */
+    virtual ~Resource() = 0;
 
-bool e2d::Texture::loadFromFile(const std::string& filepath, const Renderer& renderer)
-{
-    return this->m_textureImpl->loadTexture(static_cast<SDL_Renderer*>(renderer.getNativeRendererHandle()),
-                                            filepath.c_str());
-}
+    /**
+     * @brief Loads the resource from a file.
+     *
+     * This method must be implemented by all derived resource classes.
+     *
+     * @param filepath The path to the resource file.
+     * @return True if the resource is loaded successfully, false otherwise.
+     */
+    virtual bool loadFromFile(const std::string& filepath) = 0;
 
-bool e2d::Texture::isLoaded() const
-{
-    return this->m_textureImpl->isLoaded();
-}
+}; // Resource class
 
-void e2d::Texture::destroy()
-{
-    this->m_textureImpl->destroy();
-}
+inline Resource::~Resource() = default; // NOLINT(readability-redundant-inline-specifier)
 
-const e2d::Vector2i& e2d::Texture::getSize() const
-{
-    return this->m_textureImpl->getSize();
-}
+} // namespace e2d
 
-void* e2d::Texture::getNativeTextureHandle() const
-{
-    return this->m_textureImpl->getTexture();
-}
+#endif //E2D_ENGINE_RESOURCE_HPP

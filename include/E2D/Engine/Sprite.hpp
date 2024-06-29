@@ -80,7 +80,7 @@ public:
      *
      * @return std::shared_ptr<Texture> Shared pointer to the sprite's texture or null if none is set.
      */
-    std::shared_ptr<Texture> getTexture() const;
+    std::shared_ptr<const e2d::Texture> getTexture() const;
 
     /**
      * @brief Sets the texture of the sprite.
@@ -90,7 +90,7 @@ public:
      *
      * @param texture Shared pointer to the new Texture object.
      */
-    void setTexture(const std::shared_ptr<Texture>& texture);
+    void setTexture(const std::shared_ptr<const Texture>& texture);
 
     /**
      * @brief Retrieves the texture rectangle of the sprite.
@@ -195,12 +195,12 @@ public:
     void render(const Renderer& renderer) const final;
 
 private:
-    std::shared_ptr<Texture> m_texture;     //!< Pointer to the sprite's texture. Used for rendering the sprite.
-    IntRect                  m_textureRect; //!< The texture rectangle defining the area of the texture to be rendered.
-    Vector2f                 m_position;    //!< The position of the sprite in the world or screen space.
-    Vector2f                 m_origin;      //!< The origin point of the sprite, used as a pivot for transformations.
-    Vector2f                 m_scale;       //!< The scaling factors of the sprite in the x and y directions.
-    double                   m_rotation{0}; //!< The rotation angle of the sprite in degrees.
+    std::shared_ptr<const Texture> m_texture; //!< Pointer to the sprite's texture. Used for rendering the sprite.
+    IntRect  m_textureRect; //!< The texture rectangle defining the area of the texture to be rendered.
+    Vector2f m_position;    //!< The position of the sprite in the world or screen space.
+    Vector2f m_origin;      //!< The origin point of the sprite, used as a pivot for transformations.
+    Vector2f m_scale;       //!< The scaling factors of the sprite in the x and y directions.
+    double   m_rotation{0}; //!< The rotation angle of the sprite in degrees.
 
 }; // class Sprite
 

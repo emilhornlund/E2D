@@ -33,6 +33,7 @@
 #include <E2D/Engine/Object.hpp>
 #include <E2D/Engine/ObjectRegistry.hpp>
 #include <E2D/Engine/Renderer.hpp>
+#include <E2D/Engine/ResourceRegistry.hpp>
 #include <E2D/Engine/Window.hpp>
 
 #include <utility>
@@ -42,6 +43,7 @@ m_windowTitle(std::move(windowTitle)),
 m_window(std::make_unique<Window>()),
 m_renderer(std::make_unique<Renderer>()),
 m_objectRegistry(std::make_unique<ObjectRegistry>()),
+m_resourceRegistry(std::make_unique<ResourceRegistry>(*this->m_renderer)),
 m_backgroundColor(Color::Black)
 {
 }
@@ -150,6 +152,11 @@ e2d::Renderer& e2d::Application::getRenderer() const
 e2d::ObjectRegistry& e2d::Application::getObjectRegistry() const
 {
     return *this->m_objectRegistry;
+}
+
+e2d::ResourceRegistry& e2d::Application::getResourceRegistry() const
+{
+    return *this->m_resourceRegistry;
 }
 
 const e2d::Color& e2d::Application::getBackgroundColor() const

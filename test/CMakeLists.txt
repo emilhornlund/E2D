@@ -35,6 +35,7 @@ set(ENGINE_SRC
     Engine/ObjectRegistry.test.cpp
     Engine/Renderer.test.cpp
     Engine/RendererQueue.test.cpp
+    Engine/ResourceRegistry.test.cpp
     Engine/SDLKeyboardUtils.test.cpp
     Engine/SDLRenderUtils.test.cpp
     Engine/Texture.test.cpp

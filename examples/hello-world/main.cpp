@@ -27,6 +27,7 @@
 #include <E2D/Engine/Application.hpp>
 #include <E2D/Engine/ObjectRegistry.hpp>
 #include <E2D/Engine/Renderer.hpp>
+#include <E2D/Engine/ResourceRegistry.hpp>
 #include <E2D/Engine/Sprite.hpp>
 #include <E2D/Engine/Texture.hpp>
 
@@ -66,8 +67,12 @@ public:
     {
         e2d::Application::onRunning();
 
-        const auto texture = std::make_shared<e2d::Texture>();
-        texture->loadTexture(this->getRenderer(), "gabe-idle-run.png");
+        if (!this->getResourceRegistry().loadTextureFromFile("Hero", "gabe-idle-run.png"))
+        {
+            std::cerr << "Failed to load texture: gabe-idle-run.png" << std::endl;
+            return;
+        }
+        const auto texture = this->getResourceRegistry().get<e2d::Texture>("Hero");
 
         auto sprite = std::make_unique<MySprite>();
         sprite->setTexture(texture);

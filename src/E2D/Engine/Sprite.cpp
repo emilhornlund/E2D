@@ -37,12 +37,12 @@ e2d::Sprite::Sprite(const std::string& identifier) : e2d::Entity(identifier), m_
 
 e2d::Sprite::~Sprite() = default;
 
-std::shared_ptr<e2d::Texture> e2d::Sprite::getTexture() const
+std::shared_ptr<const e2d::Texture> e2d::Sprite::getTexture() const
 {
     return this->m_texture;
 }
 
-void e2d::Sprite::setTexture(const std::shared_ptr<Texture>& texture)
+void e2d::Sprite::setTexture(const std::shared_ptr<const Texture>& texture)
 {
     this->m_texture = texture;
 }

@@ -32,6 +32,8 @@
 #include <E2D/Core/NonCopyable.hpp>
 #include <E2D/Core/Vector2.hpp>
 
+#include <E2D/Engine/Resource.hpp>
+
 #include <memory>
 #include <string>
 
@@ -54,7 +56,7 @@ class TextureImpl; // Forward declaration of TextureImpl
  * The Texture class encapsulates the functionality for loading and handling texture resources.
  * It abstracts the underlying implementation to provide an easy-to-use interface for textures.
  */
-class E2D_ENGINE_API Texture final : NonCopyable
+class E2D_ENGINE_API Texture final : Resource
 {
 public:
     /**
@@ -69,16 +71,16 @@ public:
      *
      * Destroys the Texture object, releasing its resources.
      */
-    ~Texture();
+    ~Texture() final;
 
     /**
-     * @brief Loads a texture from a file using a specific renderer.
+     * @brief Loads a texture from a filepath using a specific renderer.
      *
+     * @param filepath Path to the texture filepath.
      * @param renderer Reference to the Renderer object used to load the texture.
-     * @param file Path to the texture file.
      * @return True if the texture is loaded successfully, false otherwise.
      */
-    bool loadTexture(const Renderer& renderer, const std::string& file);
+    bool loadFromFile(const std::string& filepath, const Renderer& renderer);
 
     /**
      * @brief Checks if the texture is loaded and valid.
@@ -113,6 +115,14 @@ public:
     void* getNativeTextureHandle() const;
 
 private:
+    /**
+     * @brief
+     *
+     * @param filepath
+     * @return
+     */
+    bool loadFromFile(const std::string& filepath) final;
+
     std::unique_ptr<internal::TextureImpl> m_textureImpl; //!< Pointer to the texture implementation.
 
 }; // class Texture

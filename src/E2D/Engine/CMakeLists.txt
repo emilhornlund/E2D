@@ -23,6 +23,9 @@ set(SRC
     ${SRCROOT}/RendererImpl.cpp
     ${SRCROOT}/RenderQueue.hpp
     ${SRCROOT}/RenderQueue.cpp
+    ${INCROOT}/Resource.hpp
+    ${INCROOT}/ResourceRegistry.hpp
+    ${SRCROOT}/ResourceRegistry.cpp
     ${SRCROOT}/SDLKeyboardUtils.hpp
     ${SRCROOT}/SDLKeyboardUtils.cpp
     ${SRCROOT}/SDLRenderUtils.hpp
