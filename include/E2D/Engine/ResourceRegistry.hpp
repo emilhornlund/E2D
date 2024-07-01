@@ -1,28 +1,28 @@
 /**
-* ResourceRegistry.hpp
-*
-* MIT License
-*
-* Copyright (c) 2023 Emil Hörnlund
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*/
+ * ResourceRegistry.hpp
+ *
+ * MIT License
+ *
+ * Copyright (c) 2023 Emil Hörnlund
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 #ifndef E2D_ENGINE_RESOURCEREGISTRY_HPP
 #define E2D_ENGINE_RESOURCEREGISTRY_HPP
@@ -47,7 +47,7 @@
  */
 namespace e2d
 {
-class Renderer; // Forward declaration of Renderer
+class Application; // Forward declaration of Application
 
 /**
  * @class ResourceRegistry
@@ -132,11 +132,13 @@ private:
 
 public:
     /**
-     * @brief Constructs a ResourceRegistry with the given renderer.
+     * @brief Default constructor for ObjectRegistry.
      *
-     * @param renderer A reference to the renderer used for resource loading.
+     * Initializes a new instance of the ObjectRegistry class.
+     *
+     * @param application Raw pointer to the application
      */
-    explicit ResourceRegistry(const e2d::Renderer& renderer);
+    explicit ResourceRegistry(Application* application);
 
     /**
      * @brief Destroys the ResourceRegistry.
@@ -190,109 +192,14 @@ public:
     template <typename T, typename... Args>
     bool loadFromMemory(const std::string& identifier, const void* data, std::size_t size, Args&&... args);
 
-    /**
-     * @brief Loads a texture from a file.
-     *
-     * This method loads a texture from a file and associates it with an identifier.
-     *
-     * @param identifier The identifier to associate with the texture.
-     * @param filepath The path to the texture file.
-     * @return True if the texture is loaded successfully, false otherwise.
-     */
-    bool loadTextureFromFile(const std::string& identifier, const std::string& filepath);
-
-    /**
-     * @brief Loads a texture from a block.
-     *
-     * This method loads a texture from a block of memory and associates it with an identifier.
-     *
-     * @param identifier The identifier for the texture.
-     * @param data Pointer to the memory block containing the texture data.
-     * @param size Size of the memory block in bytes.
-     * @return True if the texture is loaded successfully, false otherwise.
-     */
-    bool loadTextureFromMemory(const std::string& identifier, const void* data, std::size_t size);
-
 private:
-    std::reference_wrapper<const e2d::Renderer>                 m_renderer; //!< Reference to the renderer.
+    Application* m_application; //!< Raw pointer to the application, non-owning.
     std::unordered_map<std::string, std::unique_ptr<IResource>> m_resources; //!< Container for storing resources by their identifiers.
 
 }; // class ResourceRegistry
 
-template <class T>
-ResourceRegistry::TResource<T>::TResource(const std::string& identifier) : IResource(typeid(T).name(), identifier)
-{
-}
-
-template <typename T>
-bool ResourceRegistry::exists(const std::string& identifier) const
-{
-    auto it = this->m_resources.find(identifier);
-    return it != this->m_resources.end() && it->second->getType() == typeid(T).name();
-}
-
-template <typename T>
-std::shared_ptr<const T> ResourceRegistry::get(const std::string& identifier) const
-{
-    auto it = this->m_resources.find(identifier);
-    if (it != this->m_resources.end() && it->second->getType() == typeid(T).name())
-    {
-        auto resource = dynamic_cast<TResource<T>*>(it->second.get());
-        if (resource)
-        {
-            return resource->mValue;
-        }
-    }
-    throw std::runtime_error("The resource `" + identifier + "` has not been loaded.");
-}
-
-template <typename T, typename... Args>
-bool ResourceRegistry::loadFromFile(const std::string& identifier,
-                                    const std::string& filepath,
-                                    Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
-{
-    static_assert(std::is_base_of<Resource, T>::value, "T must be derived from Resource");
-    if (!this->exists<T>(identifier))
-    {
-        auto resource    = std::make_unique<TResource<T>>(identifier);
-        resource->mValue = std::make_shared<T>();
-        if (resource->mValue->loadFromFile(filepath, std::forward<Args>(args)...))
-        {
-            this->m_resources.insert(std::make_pair(identifier, std::move(resource)));
-            return true;
-        }
-        else
-        {
-            std::cerr << "Unable to load `" << identifier << "` from file `" << filepath << "`" << '\n';
-        }
-    }
-    return false;
-}
-
-template <typename T, typename... Args>
-bool e2d::ResourceRegistry::loadFromMemory(const std::string& identifier,
-                                           const void*        data,
-                                           std::size_t        size,
-                                           Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
-{
-    static_assert(std::is_base_of<Resource, T>::value, "T must be derived from Resource");
-    if (!this->exists<T>(identifier))
-    {
-        auto resource    = std::make_unique<TResource<T>>(identifier);
-        resource->mValue = std::make_shared<T>();
-        if (resource->mValue->loadFromMemory(data, size, std::forward<Args>(args)...))
-        {
-            this->m_resources.insert(std::make_pair(identifier, std::move(resource)));
-            return true;
-        }
-        else
-        {
-            std::cerr << "Unable to load `" << identifier << "` from memory" << '\n';
-        }
-    }
-    return false;
-}
-
 } // namespace e2d
+
+#include <E2D/Engine/ResourceRegistry.inl>
 
 #endif //E2D_ENGINE_RESOURCEREGISTRY_HPP

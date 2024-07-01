@@ -28,6 +28,7 @@
 
 #include <E2D/Core/System.hpp>
 
+#include <E2D/Engine/Application.hpp>
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/ResourceRegistry.hpp>
 #include <E2D/Engine/Texture.hpp>
@@ -55,6 +56,16 @@ public:
     int mTest{123};
 };
 
+class ResourceRegistryTestApplication final : public e2d::Application
+{
+public:
+    ResourceRegistryTestApplication() : e2d::Application("ResourceRegistryTestApp")
+    {
+    }
+
+    ~ResourceRegistryTestApplication() final = default;
+};
+
 class ResourceRegistryTest
 {
 public:
@@ -62,25 +73,24 @@ public:
     {
         // Setup (runs before each SECTION)
         e2d::System::initialize();
-        window.create("Test Window", 800, 600);
-        renderer.create(window);
+        application.getWindow().create("Test Window", 800, 600);
+        application.getRenderer().create(application.getWindow());
     }
 
     ~ResourceRegistryTest()
     {
         // Teardown (runs after each SECTION)
-        renderer.destroy();
-        window.destroy();
+        application.getRenderer().destroy();
+        application.getWindow().destroy();
         e2d::System::shutdown();
     }
 
-    e2d::Window   window;
-    e2d::Renderer renderer;
+    ResourceRegistryTestApplication application;
 };
 
 TEST_CASE_METHOD(ResourceRegistryTest, "ResourceRegistry Tests", "[ResourceRegistry]")
 {
-    e2d::ResourceRegistry resourceRegistry(renderer);
+    e2d::ResourceRegistry resourceRegistry(&application);
 
     SECTION("A resource does not exist initially")
     {
@@ -113,7 +123,7 @@ TEST_CASE_METHOD(ResourceRegistryTest, "ResourceRegistry Tests", "[ResourceRegis
 
     SECTION("A texture resource was loaded from file and retrieved successfully")
     {
-        REQUIRE(resourceRegistry.loadTextureFromFile("HelloWorld", "resources/hello-world.png"));
+        REQUIRE(resourceRegistry.loadFromFile<e2d::Texture>("HelloWorld", "resources/hello-world.png"));
 
         REQUIRE(resourceRegistry.exists<e2d::Texture>("HelloWorld"));
 
@@ -126,7 +136,7 @@ TEST_CASE_METHOD(ResourceRegistryTest, "ResourceRegistry Tests", "[ResourceRegis
 
     SECTION("A texture resource was loaded from file unsuccessfully")
     {
-        REQUIRE_FALSE(resourceRegistry.loadTextureFromFile("HelloWorld", ""));
+        REQUIRE_FALSE(resourceRegistry.loadFromFile<e2d::Texture>("HelloWorld", ""));
 
         REQUIRE_FALSE(resourceRegistry.exists<e2d::Texture>("HelloWorld"));
 
@@ -135,7 +145,7 @@ TEST_CASE_METHOD(ResourceRegistryTest, "ResourceRegistry Tests", "[ResourceRegis
 
     SECTION("A texture resource was loaded from memory and retrieved successfully")
     {
-        REQUIRE(resourceRegistry.loadTextureFromMemory("HelloWorld", helloworld_data, helloworld_data_length));
+        REQUIRE(resourceRegistry.loadFromMemory<e2d::Texture>("HelloWorld", helloworld_data, helloworld_data_length));
 
         REQUIRE(resourceRegistry.exists<e2d::Texture>("HelloWorld"));
 

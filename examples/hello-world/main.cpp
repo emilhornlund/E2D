@@ -65,7 +65,7 @@ public:
     {
         e2d::Application::onRunning();
 
-        if (!this->getResourceRegistry().loadTextureFromFile("Hero", "gabe-idle-run.png"))
+        if (!this->getResourceRegistry().loadFromFile<e2d::Texture>("Hero", "gabe-idle-run.png"))
         {
             std::cerr << "Failed to load texture: gabe-idle-run.png" << std::endl;
             return;

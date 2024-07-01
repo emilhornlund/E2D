@@ -43,7 +43,7 @@ m_windowTitle(std::move(windowTitle)),
 m_window(std::make_unique<Window>()),
 m_renderer(std::make_unique<Renderer>()),
 m_objectRegistry(std::make_unique<ObjectRegistry>(this)),
-m_resourceRegistry(std::make_unique<ResourceRegistry>(*this->m_renderer)),
+m_resourceRegistry(std::make_unique<ResourceRegistry>(this)),
 m_backgroundColor(Color::Black)
 {
 }
@@ -142,6 +142,11 @@ void e2d::Application::quit(int exitCode)
 {
     this->m_exitCode = exitCode;
     this->m_running  = false;
+}
+
+e2d::Window& e2d::Application::getWindow() const
+{
+    return *this->m_window;
 }
 
 e2d::Renderer& e2d::Application::getRenderer() const

@@ -88,7 +88,13 @@ public:
      */
     void quit(int exitCode = 0);
 
-protected:
+    /**
+     * @brief Gets the Window instance used by the application.
+     *
+     * @return A reference to the Window.
+     */
+    Window& getWindow() const;
+
     /**
      * @brief Gets the Renderer instance used by the application.
      *
@@ -124,6 +130,7 @@ protected:
      */
     void setBackgroundColor(const Color& backgroundColor);
 
+protected:
     /**
      * @brief Called when the application starts running.
      *

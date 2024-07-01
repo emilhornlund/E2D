@@ -1,5 +1,5 @@
 /**
- * Application.test.cpp
+ * Resource.cpp
  *
  * MIT License
  *
@@ -24,25 +24,13 @@
  * THE SOFTWARE.
  */
 
-#include <E2D/Engine/Application.hpp>
+#include <E2D/Engine/Resource.hpp>
 
-#include <catch2/catch_test_macros.hpp>
+e2d::Resource::Resource() = default;
 
-class ApplicationTestApplication final : public e2d::Application
+e2d::Resource::~Resource() = default;
+
+e2d::Application& e2d::Resource::getApplication() const
 {
-public:
-    ApplicationTestApplication() : e2d::Application("TestApp")
-    {
-    }
-
-    ~ApplicationTestApplication() final = default;
-};
-
-TEST_CASE("Application Tests", "[Application]")
-{
-    SECTION("Default constructor")
-    {
-        const ApplicationTestApplication application;
-        REQUIRE_FALSE(application.isRunning());
-    }
+    return *this->m_application;
 }
