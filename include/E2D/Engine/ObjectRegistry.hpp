@@ -1,28 +1,28 @@
 /**
-* ObjectRegistry.hpp
-*
-* MIT License
-*
-* Copyright (c) 2023 Emil Hörnlund
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*/
+ * ObjectRegistry.hpp
+ *
+ * MIT License
+ *
+ * Copyright (c) 2023 Emil Hörnlund
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 #ifndef E2D_ENGINE_OBJECT_REGISTRY_HPP
 #define E2D_ENGINE_OBJECT_REGISTRY_HPP
@@ -30,6 +30,8 @@
 #include <E2D/Engine/Export.hpp>
 
 #include <E2D/Core/NonCopyable.hpp>
+
+#include <E2D/Engine/Object.hpp>
 
 #include <memory>
 #include <string>
@@ -41,7 +43,7 @@
  */
 namespace e2d
 {
-class Object; // Forward declaration of Object
+class Application; // Forward declaration of Application
 
 /**
  * @class ObjectRegistry
@@ -59,7 +61,7 @@ public:
      *
      * Initializes a new instance of the ObjectRegistry class.
      */
-    ObjectRegistry();
+    explicit ObjectRegistry(Application* application);
 
     /**
      * @brief Destructor for ObjectRegistry.
@@ -69,16 +71,21 @@ public:
     ~ObjectRegistry();
 
     /**
-     * @brief Adds an object to the registry.
+     * @brief Creates and registers an object of type T.
      *
-     * This method adds a unique_ptr to an Object to the registry. Each object must have
-     * a unique identifier.
+     * This method constructs an object of type T with the provided arguments and
+     * registers it in the object registry. The object must derive from the base
+     * class Object. If an object with the same identifier already exists in the
+     * registry, an exception is thrown.
      *
-     * @param object The unique_ptr to the Object to add.
-     * @return True if the object was added successfully, false if an object with the same
-     *         identifier already exists in the registry.
+     * @tparam T The type of the object to be created. Must derive from Object.
+     * @tparam Args Variadic template parameter pack for the constructor arguments of T.
+     * @param args Arguments to be forwarded to the constructor of T.
+     * @return A reference to the newly created object of type T.
+     * @throws std::runtime_error If an object with the same identifier already exists.
      */
-    bool addObject(std::unique_ptr<Object> object);
+    template <typename T, typename... Args>
+    T& createObject(Args&&... args);
 
     /**
      * @brief Retrieves an object from the registry based on its identifier.
@@ -113,26 +120,13 @@ public:
     std::vector<T*> getAllObjectsOfType() const;
 
 private:
+    Application* m_application;                                         //!< Raw pointer to the application, non-owning.
     std::unordered_map<std::string, std::unique_ptr<Object>> m_objects; //!< Map storing all objects by their unique identifiers.
 
 }; // class ObjectRegistry
 
-template <typename T>
-std::vector<T*> e2d::ObjectRegistry::getAllObjectsOfType() const
-{
-    static_assert(std::is_base_of<Object, T>::value, "T must be a descendant of Object");
-    std::vector<T*> objectsOfType;
-    for (const auto& pair : m_objects)
-    {
-        T* castedObject = dynamic_cast<T*>(pair.second.get());
-        if (castedObject)
-        {
-            objectsOfType.push_back(castedObject);
-        }
-    }
-    return objectsOfType;
-}
-
 } // namespace e2d
+
+#include <E2D/Engine/ObjectRegistry.inl>
 
 #endif //E2D_ENGINE_OBJECT_REGISTRY_HPP

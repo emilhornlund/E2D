@@ -38,3 +38,8 @@ const std::string& e2d::Object::getIdentifier() const
 {
     return this->m_identifier;
 }
+
+e2d::Application& e2d::Object::getApplication() const
+{
+    return *this->m_application;
+}

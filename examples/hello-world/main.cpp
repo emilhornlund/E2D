@@ -31,8 +31,6 @@
 #include <E2D/Engine/Sprite.hpp>
 #include <E2D/Engine/Texture.hpp>
 
-#include <utility>
-
 class MySprite final : public e2d::Sprite
 {
 public:
@@ -74,15 +72,13 @@ public:
         }
         const auto texture = this->getResourceRegistry().get<e2d::Texture>("Hero");
 
-        auto sprite = std::make_unique<MySprite>();
-        sprite->setTexture(texture);
-        sprite->setTextureRect(e2d::IntRect({0, 0}, {24, 24}));
-        sprite->setPosition({60, 60});
-        sprite->setOrigin({12, 12});
-        sprite->setScale({5, 5});
-        sprite->setRotation(0);
-
-        this->getObjectRegistry().addObject(std::move(sprite));
+        auto& sprite = this->getObjectRegistry().createObject<MySprite>();
+        sprite.setTexture(texture);
+        sprite.setTextureRect(e2d::IntRect({0, 0}, {24, 24}));
+        sprite.setPosition({60, 60});
+        sprite.setOrigin({12, 12});
+        sprite.setScale({5, 5});
+        sprite.setRotation(0);
     }
 };
 

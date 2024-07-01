@@ -76,6 +76,7 @@ function(e2d_set_target_warnings target)
     if(E2D_COMPILER_CLANG OR E2D_COMPILER_CLANG_CL)
         target_compile_options(${target} PRIVATE
             -Wno-unknown-warning-option # do not warn on GCC-specific warning diagnostic pragmas
+            -Wno-unused-private-field # do not warn about about unused private fields
         )
     endif()
 

@@ -1,5 +1,5 @@
 /**
- * RendererQueue.test.cpp
+ * ObjectRegistry.test.cpp
  *
  * MIT License
  *
@@ -70,12 +70,11 @@ public:
 
 TEST_CASE("ObjectRegistry Tests", "[ObjectRegistry]")
 {
-    e2d::ObjectRegistry objectRegistry;
+    e2d::ObjectRegistry objectRegistry(nullptr);
 
     SECTION("Adding and Retrieving Objects")
     {
-        auto mySprite = std::make_unique<MySprite>("Sprite1");
-        REQUIRE(objectRegistry.addObject(std::move(mySprite)) == true);
+        objectRegistry.createObject<MySprite>("Sprite1");
 
         e2d::Object* retrievedObject = objectRegistry.getObject("Sprite1");
         REQUIRE(retrievedObject != nullptr);
@@ -84,17 +83,15 @@ TEST_CASE("ObjectRegistry Tests", "[ObjectRegistry]")
 
     SECTION("Preventing Duplicate Identifiers")
     {
-        auto sprite1 = std::make_unique<MySprite>("Sprite2");
-        REQUIRE(objectRegistry.addObject(std::move(sprite1)) == true);
+        objectRegistry.createObject<MySprite>("Sprite2");
 
-        auto duplicateSprite = std::make_unique<MySprite>("Sprite2");
-        REQUIRE(objectRegistry.addObject(std::move(duplicateSprite)) == false);
+        REQUIRE_THROWS(objectRegistry.createObject<MySprite>("Sprite2"));
     }
 
     SECTION("Removing Objects")
     {
-        auto spriteToRemove = std::make_unique<MySprite>("Sprite3");
-        objectRegistry.addObject(std::move(spriteToRemove));
+        objectRegistry.createObject<MySprite>("Sprite3");
+
         REQUIRE(objectRegistry.removeObject("Sprite3") == true);
 
         REQUIRE(objectRegistry.getObject("Sprite3") == nullptr);
@@ -102,11 +99,8 @@ TEST_CASE("ObjectRegistry Tests", "[ObjectRegistry]")
 
     SECTION("Listing All Objects")
     {
-        auto sprite1 = std::make_unique<MySprite>("Sprite4");
-        auto sprite2 = std::make_unique<MySprite>("Sprite5");
-
-        objectRegistry.addObject(std::move(sprite1));
-        objectRegistry.addObject(std::move(sprite2));
+        objectRegistry.createObject<MySprite>("Sprite4");
+        objectRegistry.createObject<MySprite>("Sprite5");
 
         auto allObjects = objectRegistry.getAllObjects();
         REQUIRE(allObjects.size() == 2);
@@ -114,13 +108,11 @@ TEST_CASE("ObjectRegistry Tests", "[ObjectRegistry]")
 
     SECTION("Retrieving Objects of Specific Type")
     {
-        auto sprite1 = std::make_unique<MySprite>("TypeSprite1");
-        auto sprite2 = std::make_unique<MySprite>("TypeSprite2");
-        objectRegistry.addObject(std::move(sprite1));
-        objectRegistry.addObject(std::move(sprite2));
+        objectRegistry.createObject<MySprite>("TypeSprite1");
+        objectRegistry.createObject<MySprite>("TypeSprite2");
 
+        objectRegistry.createObject<MyObject>("NonSprite");
         auto nonSprite = std::make_unique<MyObject>("NonSprite");
-        objectRegistry.addObject(std::move(nonSprite));
 
         auto sprites = objectRegistry.getAllObjectsOfType<MySprite>();
         REQUIRE(sprites.size() == 2);

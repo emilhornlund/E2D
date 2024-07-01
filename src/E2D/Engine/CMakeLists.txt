@@ -15,6 +15,7 @@ set(SRC
     ${INCROOT}/Object.hpp
     ${SRCROOT}/Object.cpp
     ${INCROOT}/ObjectRegistry.hpp
+    ${INCROOT}/ObjectRegistry.inl
     ${SRCROOT}/ObjectRegistry.cpp
     ${INCROOT}/Renderable.hpp
     ${INCROOT}/Renderer.hpp

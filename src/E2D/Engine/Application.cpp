@@ -42,7 +42,7 @@ e2d::Application::Application(std::string windowTitle) :
 m_windowTitle(std::move(windowTitle)),
 m_window(std::make_unique<Window>()),
 m_renderer(std::make_unique<Renderer>()),
-m_objectRegistry(std::make_unique<ObjectRegistry>()),
+m_objectRegistry(std::make_unique<ObjectRegistry>(this)),
 m_resourceRegistry(std::make_unique<ResourceRegistry>(*this->m_renderer)),
 m_backgroundColor(Color::Black)
 {

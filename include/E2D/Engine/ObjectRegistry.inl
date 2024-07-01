@@ -1,5 +1,5 @@
 /**
- * ObjectRegistry.cpp
+ * ObjectRegistry.inl
  *
  * MIT License
  *
@@ -24,42 +24,46 @@
  * THE SOFTWARE.
  */
 
-#include <E2D/Engine/ObjectRegistry.hpp>
+#ifndef E2D_ENGINE_OBJECT_REGISTRY_INL
+#define E2D_ENGINE_OBJECT_REGISTRY_INL
 
-e2d::ObjectRegistry::ObjectRegistry(Application* application) : m_application(application)
+#include <stdexcept>
+
+template <typename T, typename... Args>
+T& e2d::ObjectRegistry::createObject(Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
-}
+    static_assert(std::is_base_of<Object, T>::value, "T must be derived from Object");
 
-e2d::ObjectRegistry::~ObjectRegistry() = default;
+    auto object = std::make_unique<T>(std::forward<Args>(args)...);
 
-e2d::Object* e2d::ObjectRegistry::getObject(const std::string& identifier) const
-{
-    auto it = this->m_objects.find(identifier);
+    const auto& id = object->getIdentifier();
+    const auto  it = this->m_objects.find(id);
     if (it != this->m_objects.end())
     {
-        return it->second.get();
+        throw std::runtime_error("Object `" + id + "` already exists");
     }
-    return nullptr;
+
+    object->m_application = this->m_application;
+    T& ref                = *object;
+    this->m_objects.insert(std::make_pair(id, std::move(object)));
+
+    return ref;
 }
 
-bool e2d::ObjectRegistry::removeObject(const std::string& identifier)
+template <typename T>
+std::vector<T*> e2d::ObjectRegistry::getAllObjectsOfType() const
 {
-    auto it = this->m_objects.find(identifier);
-    if (it != this->m_objects.end())
-    {
-        this->m_objects.erase(it);
-        return true;
-    }
-    return false;
-}
-
-std::vector<e2d::Object*> e2d::ObjectRegistry::getAllObjects() const
-{
-    std::vector<Object*> allObjects;
-    allObjects.reserve(this->m_objects.size());
+    static_assert(std::is_base_of<Object, T>::value, "T must be a descendant of Object");
+    std::vector<T*> objectsOfType;
     for (const auto& pair : this->m_objects)
     {
-        allObjects.push_back(pair.second.get());
+        T* castedObject = dynamic_cast<T*>(pair.second.get());
+        if (castedObject)
+        {
+            objectsOfType.push_back(castedObject);
+        }
     }
-    return allObjects;
+    return objectsOfType;
 }
+
+#endif //E2D_ENGINE_OBJECT_REGISTRY_INL
