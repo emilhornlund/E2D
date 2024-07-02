@@ -4,6 +4,7 @@ set(RSC_ROOT ${PROJECT_SOURCE_DIR}/examples/hello-world)
 
 set(RESOURCES
     ${RSC_ROOT}/gabe-idle-run.png
+    ${RSC_ROOT}/OpenSans.ttf
 )
 
 e2d_add_example(e2d-example-hello-world

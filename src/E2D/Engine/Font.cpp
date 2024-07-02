@@ -1,5 +1,5 @@
 /**
- * Engine.hpp
+ * Font.cpp
  *
  * MIT License
  *
@@ -24,25 +24,26 @@
  * THE SOFTWARE.
  */
 
-#ifndef E2D_ENGINE_HPP
-#define E2D_ENGINE_HPP
-
-#include <E2D/Engine/Export.hpp>
-
-#include <E2D/Engine/Application.hpp>
-#include <E2D/Engine/Entity.hpp>
-#include <E2D/Engine/Event.hpp>
 #include <E2D/Engine/Font.hpp>
-#include <E2D/Engine/Keyboard.hpp>
-#include <E2D/Engine/Object.hpp>
-#include <E2D/Engine/ObjectRegistry.hpp>
-#include <E2D/Engine/Renderable.hpp>
-#include <E2D/Engine/Renderer.hpp>
-#include <E2D/Engine/Resource.hpp>
-#include <E2D/Engine/ResourceRegistry.hpp>
-#include <E2D/Engine/Sprite.hpp>
-#include <E2D/Engine/Text.hpp>
-#include <E2D/Engine/Texture.hpp>
-#include <E2D/Engine/Window.hpp>
+#include <E2D/Engine/FontImpl.hpp>
 
-#endif //E2D_ENGINE_HPP
+e2d::Font::Font() : m_fontImpl(std::make_unique<internal::FontImpl>())
+{
+}
+
+e2d::Font::~Font() = default;
+
+bool e2d::Font::loadFromFile(const std::string& filepath)
+{
+    return this->m_fontImpl->loadFromFile(filepath);
+}
+
+bool e2d::Font::loadFromMemory(const void* data, std::size_t size)
+{
+    return this->m_fontImpl->loadFromMemory(data, size);
+}
+
+void* e2d::Font::getNativeFontHandle(unsigned int fontSize) const
+{
+    return this->m_fontImpl->getFont(fontSize);
+}

@@ -25,10 +25,12 @@
 */
 
 #include "helloworld.bin.hpp"
+#include "opensans.bin.hpp"
 
 #include <E2D/Core/System.hpp>
 
 #include <E2D/Engine/Application.hpp>
+#include <E2D/Engine/Font.hpp>
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/ResourceRegistry.hpp>
 #include <E2D/Engine/Texture.hpp>
@@ -154,5 +156,36 @@ TEST_CASE_METHOD(ResourceRegistryTest, "ResourceRegistry Tests", "[ResourceRegis
         REQUIRE_FALSE(helloWorldTextureResource == nullptr);
         REQUIRE(helloWorldTextureResource->isLoaded() == true);
         REQUIRE(helloWorldTextureResource->getSize() == e2d::Vector2i{320, 240});
+    }
+
+    SECTION("A font resource was loaded from file and retrieved successfully")
+    {
+        REQUIRE(resourceRegistry.loadFromFile<e2d::Font>("OpenSans", "resources/OpenSans.ttf"));
+
+        REQUIRE(resourceRegistry.exists<e2d::Font>("OpenSans"));
+
+        auto resource = resourceRegistry.get<e2d::Font>("OpenSans");
+
+        REQUIRE_FALSE(resource == nullptr);
+    }
+
+    SECTION("A font resource was loaded from file unsuccessfully")
+    {
+        REQUIRE_FALSE(resourceRegistry.loadFromFile<e2d::Font>("OpenSans", ""));
+
+        REQUIRE_FALSE(resourceRegistry.exists<e2d::Font>("OpenSans"));
+
+        REQUIRE_THROWS(resourceRegistry.get<e2d::Font>("OpenSans"));
+    }
+
+    SECTION("A font resource was loaded from memory and retrieved successfully")
+    {
+        REQUIRE(resourceRegistry.loadFromMemory<e2d::Font>("OpenSans", open_sans_data, open_sans_data_length));
+
+        REQUIRE(resourceRegistry.exists<e2d::Font>("OpenSans"));
+
+        auto resource = resourceRegistry.get<e2d::Font>("OpenSans");
+
+        REQUIRE_FALSE(resource == nullptr);
     }
 }

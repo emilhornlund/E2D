@@ -34,6 +34,7 @@ set(ENGINE_SRC
     Engine/Event.test.cpp
     Engine/helloworld.bin.hpp
     Engine/ObjectRegistry.test.cpp
+    Engine/opensans.bin.hpp
     Engine/Renderer.test.cpp
     Engine/RendererQueue.test.cpp
     Engine/ResourceRegistry.test.cpp

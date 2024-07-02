@@ -25,10 +25,12 @@
  */
 
 #include <E2D/Engine/Application.hpp>
+#include <E2D/Engine/Font.hpp>
 #include <E2D/Engine/ObjectRegistry.hpp>
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/ResourceRegistry.hpp>
 #include <E2D/Engine/Sprite.hpp>
+#include <E2D/Engine/Text.hpp>
 #include <E2D/Engine/Texture.hpp>
 
 class MySprite final : public e2d::Sprite
@@ -64,6 +66,19 @@ public:
     void onRunning() final
     {
         e2d::Application::onRunning();
+
+        if (!this->getResourceRegistry().loadFromFile<e2d::Font>("OpenSans", "OpenSans.ttf"))
+        {
+            std::cerr << "Failed to load font: OpenSans.ttf" << std::endl;
+            return;
+        }
+        const auto font = this->getResourceRegistry().get<e2d::Font>("OpenSans");
+
+        auto& text = this->getObjectRegistry().createObject<e2d::Text>("HelloWorldText");
+        text.setFont(font);
+        text.setFontSize(28);
+        text.setString("Hello, World!");
+        text.setPosition({(800 - text.getGlobalBounds().width) / 2, (600 - text.getGlobalBounds().height) / 2});
 
         if (!this->getResourceRegistry().loadFromFile<e2d::Texture>("Hero", "gabe-idle-run.png"))
         {

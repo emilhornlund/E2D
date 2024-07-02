@@ -11,6 +11,10 @@ set(SRC
     ${INCROOT}/Event.hpp
     ${SRCROOT}/Event.cpp
     ${INCROOT}/Export.hpp
+    ${INCROOT}/Font.hpp
+    ${SRCROOT}/Font.cpp
+    ${SRCROOT}/FontImpl.hpp
+    ${SRCROOT}/FontImpl.cpp
     ${INCROOT}/Keyboard.hpp
     ${INCROOT}/Object.hpp
     ${SRCROOT}/Object.cpp
@@ -35,6 +39,10 @@ set(SRC
     ${SRCROOT}/SDLRenderUtils.cpp
     ${INCROOT}/Sprite.hpp
     ${SRCROOT}/Sprite.cpp
+    ${INCROOT}/Text.hpp
+    ${SRCROOT}/Text.cpp
+    ${SRCROOT}/TextImpl.hpp
+    ${SRCROOT}/TextImpl.cpp
     ${INCROOT}/Texture.hpp
     ${SRCROOT}/Texture.cpp
     ${SRCROOT}/TextureImpl.hpp
