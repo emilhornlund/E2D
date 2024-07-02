@@ -6,8 +6,6 @@ set(SRCROOT ${PROJECT_SOURCE_DIR}/src/E2D/Engine)
 set(SRC
     ${INCROOT}/Application.hpp
     ${SRCROOT}/Application.cpp
-    ${INCROOT}/Entity.hpp
-    ${SRCROOT}/Entity.cpp
     ${INCROOT}/Event.hpp
     ${SRCROOT}/Event.cpp
     ${INCROOT}/Export.hpp
@@ -47,6 +45,8 @@ set(SRC
     ${SRCROOT}/Texture.cpp
     ${SRCROOT}/TextureImpl.hpp
     ${SRCROOT}/TextureImpl.cpp
+    ${INCROOT}/Transformable.hpp
+    ${SRCROOT}/Transformable.cpp
     ${INCROOT}/Window.hpp
     ${SRCROOT}/Window.cpp
     ${SRCROOT}/WindowImpl.hpp

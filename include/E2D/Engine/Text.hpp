@@ -32,7 +32,9 @@
 #include <E2D/Core/Rect.hpp>
 #include <E2D/Core/Vector2.hpp>
 
-#include <E2D/Engine/Entity.hpp>
+#include <E2D/Engine/Object.hpp>
+#include <E2D/Engine/Renderable.hpp>
+#include <E2D/Engine/Transformable.hpp>
 
 #include <memory>
 
@@ -51,9 +53,9 @@ class TextImpl; // Forward declaration of TextImpl
 
 /**
  * @class Text
- * @brief Represents a text entity that can be rendered on the screen.
+ * @brief Represents a text entity that can be transformed and rendered on the screen.
  */
-class E2D_ENGINE_API Text : public Entity
+class E2D_ENGINE_API Text : public Object, public Transformable, public Renderable
 {
 public:
     /**
@@ -113,69 +115,6 @@ public:
      * @param font A shared pointer to the new font.
      */
     void setFont(const std::shared_ptr<const Font>& font);
-
-    /**
-     * @brief Retrieves the current position of the text.
-     *
-     * @return The current position as a Vector2f object.
-     */
-    const Vector2f& getPosition() const;
-
-    /**
-     * @brief Sets the position of the text.
-     *
-     * This position represents the location of the text's origin in the world or screen space.
-     *
-     * @param position The Vector2f object representing the new position.
-     */
-    void setPosition(const Vector2f& position);
-
-    /**
-     * @brief Retrieves the origin point of the text.
-     *
-     * @return The current origin as a Vector2f object.
-     */
-    const Vector2f& getOrigin() const;
-
-    /**
-     * @brief Sets the origin point of the text.
-     *
-     * The origin is used as a pivot for transformations such as scaling and rotation.
-     * Setting the origin to the center, for example, will rotate and scale the text around its center.
-     *
-     * @param origin The Vector2f object representing the new origin.
-     */
-    void setOrigin(const Vector2f& origin);
-
-    /**
-     * @brief Retrieves the current scaling factors of the text.
-     *
-     * @return The current scale as a Vector2f object.
-     */
-    const Vector2f& getScale() const;
-
-    /**
-     * @brief Sets the scaling factors of the text.
-     *
-     * Negative scaling factors will flip the text horizontally or vertically.
-     *
-     * @param scale The Vector2f object representing the new scaling factors.
-     */
-    void setScale(const Vector2f& scale);
-
-    /**
-     * @brief Retrieves the current rotation angle of the text in degrees.
-     *
-     * @return The current rotation angle.
-     */
-    double getRotation() const;
-
-    /**
-     * @brief Sets the rotation angle of the text.
-     *
-     * @param angle The new rotation angle in degrees.
-     */
-    void setRotation(double angle);
 
     /**
      * @brief Get the local bounding rectangle of the entity.
@@ -241,10 +180,6 @@ private:
     unsigned int                        m_fontSize{16}; //!< The size of the font.
     std::shared_ptr<const Font>         m_font;         //!< Pointer to the font used for rendering the text.
     std::unique_ptr<internal::TextImpl> m_textImpl;     //!< Pointer to the text implementation.
-    Vector2f                            m_position;     //!< The position of the text in the world or screen space.
-    Vector2f m_origin;      //!< The origin point of the text, used as a pivot for transformations.
-    Vector2f m_scale{1, 1}; //!< The scaling factors of the text in the x and y directions.
-    double   m_rotation{0}; //!< The rotation angle of the text in degrees.
 
 }; // Text class
 

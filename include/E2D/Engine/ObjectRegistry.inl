@@ -53,7 +53,6 @@ T& e2d::ObjectRegistry::createObject(Args&&... args) // NOLINT(cppcoreguidelines
 template <typename T>
 std::vector<T*> e2d::ObjectRegistry::getAllObjectsOfType() const
 {
-    static_assert(std::is_base_of<Object, T>::value, "T must be a descendant of Object");
     std::vector<T*> objectsOfType;
     for (const auto& pair : this->m_objects)
     {

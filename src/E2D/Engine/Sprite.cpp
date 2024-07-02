@@ -31,7 +31,7 @@
 
 #include <SDL.h>
 
-e2d::Sprite::Sprite(const std::string& identifier) : e2d::Entity(identifier), m_scale({1, 1})
+e2d::Sprite::Sprite(const std::string& identifier) : e2d::Object(identifier)
 {
 }
 
@@ -57,46 +57,6 @@ void e2d::Sprite::setTextureRect(const e2d::IntRect& rectangle)
     this->m_textureRect = rectangle;
 }
 
-const e2d::Vector2f& e2d::Sprite::getPosition() const
-{
-    return this->m_position;
-}
-
-void e2d::Sprite::setPosition(const e2d::Vector2f& position)
-{
-    this->m_position = position;
-}
-
-const e2d::Vector2f& e2d::Sprite::getOrigin() const
-{
-    return this->m_origin;
-}
-
-void e2d::Sprite::setOrigin(const e2d::Vector2f& origin)
-{
-    this->m_origin = origin;
-}
-
-const e2d::Vector2f& e2d::Sprite::getScale() const
-{
-    return this->m_scale;
-}
-
-void e2d::Sprite::setScale(const e2d::Vector2f& scale)
-{
-    this->m_scale = scale;
-}
-
-double e2d::Sprite::getRotation() const
-{
-    return this->m_rotation;
-}
-
-void e2d::Sprite::setRotation(double angle)
-{
-    this->m_rotation = angle;
-}
-
 void e2d::Sprite::render(const e2d::Renderer& renderer) const
 {
     if (this->m_texture)
@@ -104,20 +64,20 @@ void e2d::Sprite::render(const e2d::Renderer& renderer) const
         const auto sourceRectangle = internal::toSDLRect(this->m_textureRect);
 
         const auto destinationRectangle = internal::calculateSDLDestinationRect(this->m_textureRect,
-                                                                                this->m_position,
-                                                                                this->m_origin,
-                                                                                this->m_scale);
+                                                                                this->getPosition(),
+                                                                                this->getOrigin(),
+                                                                                this->getScale());
 
         const auto destinationSize = Vector2i{destinationRectangle.w, destinationRectangle.h};
-        const auto rotationPoint = internal::calculateSDLRotationPoint(destinationSize, this->m_origin, this->m_scale);
+        const auto rotationPoint = internal::calculateSDLRotationPoint(destinationSize, this->getOrigin(), this->getScale());
 
-        const auto flip = internal::toSDLRendererFlip(this->m_scale);
+        const auto flip = internal::toSDLRendererFlip(this->getScale());
 
         SDL_RenderCopyEx(static_cast<SDL_Renderer*>(renderer.getNativeRendererHandle()),
                          static_cast<SDL_Texture*>(this->m_texture->getNativeTextureHandle()),
                          &sourceRectangle,
                          &destinationRectangle,
-                         this->m_rotation,
+                         this->getRotation(),
                          &rotationPoint,
                          flip);
     }

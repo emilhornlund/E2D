@@ -1,5 +1,5 @@
 /**
- * Engine.hpp
+ * Transformable.cpp
  *
  * MIT License
  *
@@ -24,25 +24,46 @@
  * THE SOFTWARE.
  */
 
-#ifndef E2D_ENGINE_HPP
-#define E2D_ENGINE_HPP
-
-#include <E2D/Engine/Export.hpp>
-
-#include <E2D/Engine/Application.hpp>
-#include <E2D/Engine/Event.hpp>
-#include <E2D/Engine/Font.hpp>
-#include <E2D/Engine/Keyboard.hpp>
-#include <E2D/Engine/Object.hpp>
-#include <E2D/Engine/ObjectRegistry.hpp>
-#include <E2D/Engine/Renderable.hpp>
-#include <E2D/Engine/Renderer.hpp>
-#include <E2D/Engine/Resource.hpp>
-#include <E2D/Engine/ResourceRegistry.hpp>
-#include <E2D/Engine/Sprite.hpp>
-#include <E2D/Engine/Text.hpp>
-#include <E2D/Engine/Texture.hpp>
 #include <E2D/Engine/Transformable.hpp>
-#include <E2D/Engine/Window.hpp>
 
-#endif //E2D_ENGINE_HPP
+e2d::Transformable::~Transformable() = default;
+
+const e2d::Vector2f& e2d::Transformable::getPosition() const
+{
+    return this->m_position;
+}
+
+void e2d::Transformable::setPosition(const e2d::Vector2f& position)
+{
+    this->m_position = position;
+}
+
+const e2d::Vector2f& e2d::Transformable::getOrigin() const
+{
+    return this->m_origin;
+}
+
+void e2d::Transformable::setOrigin(const e2d::Vector2f& origin)
+{
+    this->m_origin = origin;
+}
+
+const e2d::Vector2f& e2d::Transformable::getScale() const
+{
+    return this->m_scale;
+}
+
+void e2d::Transformable::setScale(const e2d::Vector2f& scale)
+{
+    this->m_scale = scale;
+}
+
+double e2d::Transformable::getRotation() const
+{
+    return this->m_rotation;
+}
+
+void e2d::Transformable::setRotation(double angle)
+{
+    this->m_rotation = angle;
+}

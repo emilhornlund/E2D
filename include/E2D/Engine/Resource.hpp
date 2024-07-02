@@ -86,7 +86,7 @@ public:
 
 protected:
     /**
-     * @brief Gets the application reference for this entity.
+     * @brief Gets the application reference for this resource.
      *
      * @return A reference to the application.
      */

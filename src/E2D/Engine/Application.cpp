@@ -28,10 +28,10 @@
 #include <E2D/Core/Timer.hpp>
 
 #include <E2D/Engine/Application.hpp>
-#include <E2D/Engine/Entity.hpp>
 #include <E2D/Engine/Event.hpp>
 #include <E2D/Engine/Object.hpp>
 #include <E2D/Engine/ObjectRegistry.hpp>
+#include <E2D/Engine/Renderable.hpp>
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/ResourceRegistry.hpp>
 #include <E2D/Engine/Window.hpp>
@@ -111,7 +111,7 @@ int e2d::Application::run()
             remainder = 0.0;
         }
 
-        for (const auto& entity : this->m_objectRegistry->getAllObjectsOfType<Entity>())
+        for (const auto& entity : this->m_objectRegistry->getAllObjectsOfType<Renderable>())
         {
             this->m_renderer->draw(entity);
         }

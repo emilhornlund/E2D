@@ -36,7 +36,7 @@
 #include <SDL.h>
 
 e2d::Text::Text(const std::string& identifier) :
-Entity(identifier),
+Object(identifier),
 m_font(nullptr),
 m_textImpl(std::make_unique<internal::TextImpl>())
 {
@@ -77,52 +77,12 @@ void e2d::Text::setFont(const std::shared_ptr<const Font>& font)
     this->updateNativeTexture();
 }
 
-const e2d::Vector2f& e2d::Text::getPosition() const
-{
-    return this->m_position;
-}
-
-void e2d::Text::setPosition(const e2d::Vector2f& position)
-{
-    this->m_position = position;
-}
-
-const e2d::Vector2f& e2d::Text::getOrigin() const
-{
-    return this->m_origin;
-}
-
-void e2d::Text::setOrigin(const e2d::Vector2f& origin)
-{
-    this->m_origin = origin;
-}
-
-const e2d::Vector2f& e2d::Text::getScale() const
-{
-    return this->m_scale;
-}
-
-void e2d::Text::setScale(const e2d::Vector2f& scale)
-{
-    this->m_scale = scale;
-}
-
-double e2d::Text::getRotation() const
-{
-    return this->m_rotation;
-}
-
-void e2d::Text::setRotation(double angle)
-{
-    this->m_rotation = angle;
-}
-
 e2d::FloatRect e2d::Text::getLocalBounds() const
 {
     const auto destinationRectangle = internal::calculateSDLDestinationRect({{0, 0}, this->m_textImpl->getSize()},
-                                                                            this->m_position,
-                                                                            this->m_origin,
-                                                                            this->m_scale);
+                                                                            this->getPosition(),
+                                                                            this->getOrigin(),
+                                                                            this->getScale());
     return {{static_cast<float>(destinationRectangle.x), static_cast<float>(destinationRectangle.y)},
             {static_cast<float>(destinationRectangle.w), static_cast<float>(destinationRectangle.h)}};
 }
@@ -130,9 +90,9 @@ e2d::FloatRect e2d::Text::getLocalBounds() const
 e2d::FloatRect e2d::Text::getGlobalBounds() const
 {
     const auto destinationRectangle = internal::calculateSDLDestinationRect({{0, 0}, this->m_textImpl->getSize()},
-                                                                            this->m_position,
-                                                                            this->m_origin,
-                                                                            this->m_scale);
+                                                                            this->getPosition(),
+                                                                            this->getOrigin(),
+                                                                            this->getScale());
     return {{static_cast<float>(destinationRectangle.x), static_cast<float>(destinationRectangle.y)},
             {static_cast<float>(destinationRectangle.w), static_cast<float>(destinationRectangle.h)}};
 }
@@ -159,19 +119,21 @@ void e2d::Text::render(const e2d::Renderer& renderer) const
         const IntRect textureRectangle({0, 0}, this->m_textImpl->getSize());
 
         const auto destinationRectangle = internal::calculateSDLDestinationRect(textureRectangle,
-                                                                                this->m_position,
-                                                                                this->m_origin,
-                                                                                this->m_scale);
+                                                                                this->getPosition(),
+                                                                                this->getOrigin(),
+                                                                                this->getScale());
 
-        const auto rotationPoint = internal::calculateSDLRotationPoint(this->m_textImpl->getSize(), this->m_origin, this->m_scale);
+        const auto rotationPoint = internal::calculateSDLRotationPoint(this->m_textImpl->getSize(),
+                                                                       this->getOrigin(),
+                                                                       this->getScale());
 
-        const auto flip = internal::toSDLRendererFlip(this->m_scale);
+        const auto flip = internal::toSDLRendererFlip(this->getScale());
 
         SDL_RenderCopyEx(static_cast<SDL_Renderer*>(renderer.getNativeRendererHandle()),
                          texture,
                          nullptr,
                          &destinationRectangle,
-                         this->m_rotation,
+                         this->getRotation(),
                          &rotationPoint,
                          flip);
     }
