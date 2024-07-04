@@ -117,18 +117,11 @@ public:
     void setFont(const std::shared_ptr<const Font>& font);
 
     /**
-     * @brief Get the local bounding rectangle of the entity.
+     * @brief Get the size of the text entity.
      *
-     * @return Local bounding rectangle of the entity
+     * @return Size of the text entity
      */
-    FloatRect getLocalBounds() const;
-
-    /**
-     * @brief Get the global bounding rectangle of the entity.
-     *
-     * @return Global bounding rectangle of the entity
-     */
-    FloatRect getGlobalBounds() const;
+    Vector2f getSize() const final;
 
     /**
      * @brief Fixed update method for consistent, time-sensitive updates.

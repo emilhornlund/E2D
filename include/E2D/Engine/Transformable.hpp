@@ -30,6 +30,7 @@
 #include <E2D/Engine/Export.hpp>
 
 #include <E2D/Core/NonCopyable.hpp>
+#include <E2D/Core/Rect.hpp>
 #include <E2D/Core/Vector2.hpp>
 
 /**
@@ -110,6 +111,27 @@ public:
      * @param angle The new rotation angle in degrees.
      */
     void setRotation(double angle);
+
+    /**
+     * @brief Get the size of the object.
+     *
+     * @return Size of the object
+     */
+    virtual Vector2f getSize() const = 0;
+
+    /**
+     * @brief Get the local bounding rectangle of the object.
+     *
+     * @return Local bounding rectangle of the object
+     */
+    FloatRect getLocalBounds() const;
+
+    /**
+     * @brief Get the global bounding rectangle of the object.
+     *
+     * @return Global bounding rectangle of the object
+     */
+    FloatRect getGlobalBounds() const;
 
 private:
     Vector2f m_position;    //!< The position of the object in the world or screen space.

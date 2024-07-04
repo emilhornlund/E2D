@@ -77,24 +77,9 @@ void e2d::Text::setFont(const std::shared_ptr<const Font>& font)
     this->updateNativeTexture();
 }
 
-e2d::FloatRect e2d::Text::getLocalBounds() const
+e2d::Vector2f e2d::Text::getSize() const
 {
-    const auto destinationRectangle = internal::calculateSDLDestinationRect({{0, 0}, this->m_textImpl->getSize()},
-                                                                            this->getPosition(),
-                                                                            this->getOrigin(),
-                                                                            this->getScale());
-    return {{static_cast<float>(destinationRectangle.x), static_cast<float>(destinationRectangle.y)},
-            {static_cast<float>(destinationRectangle.w), static_cast<float>(destinationRectangle.h)}};
-}
-
-e2d::FloatRect e2d::Text::getGlobalBounds() const
-{
-    const auto destinationRectangle = internal::calculateSDLDestinationRect({{0, 0}, this->m_textImpl->getSize()},
-                                                                            this->getPosition(),
-                                                                            this->getOrigin(),
-                                                                            this->getScale());
-    return {{static_cast<float>(destinationRectangle.x), static_cast<float>(destinationRectangle.y)},
-            {static_cast<float>(destinationRectangle.w), static_cast<float>(destinationRectangle.h)}};
+    return {static_cast<float>(this->m_textImpl->getSize().x), static_cast<float>(this->m_textImpl->getSize().y)};
 }
 
 void e2d::Text::fixedUpdate()

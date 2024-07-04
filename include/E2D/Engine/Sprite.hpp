@@ -111,6 +111,13 @@ public:
     void setTextureRect(const IntRect& rectangle);
 
     /**
+     * @brief Get the size of the sprite entity.
+     *
+     * @return Size of the sprite entity
+     */
+    Vector2f getSize() const final;
+
+    /**
      * @brief Renders the sprite using the provided renderer and with the applied transformations.
      *
      * This function utilizes internal utilities to calculate the destination rectangle,

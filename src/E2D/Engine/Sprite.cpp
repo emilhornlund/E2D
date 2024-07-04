@@ -57,6 +57,11 @@ void e2d::Sprite::setTextureRect(const e2d::IntRect& rectangle)
     this->m_textureRect = rectangle;
 }
 
+e2d::Vector2f e2d::Sprite::getSize() const
+{
+    return {static_cast<float>(this->m_textureRect.getSize().x), static_cast<float>(this->m_textureRect.getSize().y)};
+}
+
 void e2d::Sprite::render(const e2d::Renderer& renderer) const
 {
     if (this->m_texture)

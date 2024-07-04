@@ -24,7 +24,14 @@
  * THE SOFTWARE.
  */
 
+// NOLINTBEGIN
+#define _USE_MATH_DEFINES
+#include <cmath>
+// NOLINTEND
+
 #include <E2D/Engine/Transformable.hpp>
+
+#include <algorithm>
 
 e2d::Transformable::~Transformable() = default;
 
@@ -66,4 +73,47 @@ double e2d::Transformable::getRotation() const
 void e2d::Transformable::setRotation(double angle)
 {
     this->m_rotation = angle;
+}
+
+e2d::FloatRect e2d::Transformable::getLocalBounds() const
+{
+    return {{0, 0}, this->getSize()};
+}
+
+e2d::FloatRect e2d::Transformable::getGlobalBounds() const
+{
+    Vector2f size = this->getSize();
+
+    // Compute the four corners in local space
+    Vector2f corners[4] = {{0, 0}, {size.x, 0}, {size.x, size.y}, {0, size.y}};
+
+    // Apply scale and origin
+    for (auto& corner : corners)
+    {
+        corner.x = (corner.x - this->m_origin.x) * this->m_scale.x;
+        corner.y = (corner.y - this->m_origin.y) * this->m_scale.y;
+    }
+
+    // Convert rotation to radians
+    const double rotationRadians = this->m_rotation * M_PI / 180.0;
+
+    // Compute the cosine and sine of the rotation
+    const auto cosTheta = static_cast<float>(std::cos(rotationRadians));
+    const auto sinTheta = static_cast<float>(std::sin(rotationRadians));
+
+    // Apply rotation and translation
+    for (auto& corner : corners)
+    {
+        const float x = corner.x * cosTheta - corner.y * sinTheta + this->m_position.x;
+        const float y = corner.x * sinTheta + corner.y * cosTheta + this->m_position.y;
+        corner        = {x, y};
+    }
+
+    // Find the min and max coordinates
+    const float minX = std::min({corners[0].x, corners[1].x, corners[2].x, corners[3].x});
+    const float minY = std::min({corners[0].y, corners[1].y, corners[2].y, corners[3].y});
+    const float maxX = std::max({corners[0].x, corners[1].x, corners[2].x, corners[3].x});
+    const float maxY = std::max({corners[0].y, corners[1].y, corners[2].y, corners[3].y});
+
+    return {{minX, minY}, {maxX - minX, maxY - minY}};
 }
