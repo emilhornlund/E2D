@@ -70,7 +70,7 @@ public:
      *
      * Destroys the Sprite object, releasing its resources.
      */
-    ~Sprite() override = 0;
+    ~Sprite() override;
 
     /**
      * @brief Retrieves the texture of the sprite.
@@ -117,6 +117,28 @@ public:
      */
     Vector2f getSize() const final;
 
+    /**
+     * @brief Fixed update method for consistent, time-sensitive updates.
+     *
+     * This method is called at a consistent rate, typically 60 times per second,
+     * and is used for updates where consistent timing is crucial. This is ideal
+     * for physics updates, collision detection, and other time-sensitive operations
+     * where a fixed time step is necessary to maintain consistent behavior.
+     */
+    void fixedUpdate() override;
+
+    /**
+     * @brief Variable update method for frame-dependent updates.
+     *
+     * This method is called as often as possible, typically every frame, and receives
+     * the time elapsed since the last update as a parameter. Use this method for updates
+     * that can vary with the frame rate, such as animations, general game logic, and
+     * operations that are not time-sensitive. The deltaTime parameter helps in creating
+     * frame rate independent behavior.
+     *
+     * @param deltaTime The time elapsed since the last variable update in seconds.
+     */
+    void variableUpdate(double deltaTime) override;
     /**
      * @brief Renders the sprite using the provided renderer and with the applied transformations.
      *

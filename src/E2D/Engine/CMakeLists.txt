@@ -20,6 +20,7 @@ set(SRC
     ${INCROOT}/ObjectRegistry.inl
     ${SRCROOT}/ObjectRegistry.cpp
     ${INCROOT}/Renderable.hpp
+    ${SRCROOT}/Renderable.cpp
     ${INCROOT}/Renderer.hpp
     ${SRCROOT}/Renderer.cpp
     ${SRCROOT}/RendererImpl.hpp

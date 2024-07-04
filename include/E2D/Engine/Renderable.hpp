@@ -54,18 +54,27 @@ public:
      *
      * Ensures proper destruction of derived classes.
      */
-    virtual ~Renderable() = default;
+    virtual ~Renderable() = 0;
 
     /**
      * @brief Gets the render priority of the object.
      *
-     * This pure virtual function must be implemented by derived classes.
-     * It should return a value indicating the rendering order of the object.
+     * Return a value indicating the rendering order of the object.
      * Objects with higher priority values should be rendered later (on top).
      *
      * @return int The render priority of the object.
      */
-    virtual int getRenderPriority() const = 0;
+    int getRenderPriority() const;
+
+    /**
+     * @brief Sets the render priority of the object.
+     *
+     * Sets a value indicating the rendering order of the object.
+     * Objects with higher priority values should be rendered later (on top).
+     *
+     * @param renderPriority Value indicating the rendering order of the object.
+     */
+    void setRenderPriority(int renderPriority);
 
     /**
      * @brief Renders the object using the given renderer.
@@ -76,6 +85,9 @@ public:
      * @param renderer The renderer to use for rendering.
      */
     virtual void render(const Renderer& renderer) const = 0;
+
+private:
+    int m_renderPriority{0}; //!< Indicates the rendering order of the object
 
 }; // class Renderable
 

@@ -91,11 +91,6 @@ void e2d::Text::variableUpdate(double deltaTime)
     (void)deltaTime;
 }
 
-int e2d::Text::getRenderPriority() const
-{
-    return 0;
-}
-
 void e2d::Text::render(const e2d::Renderer& renderer) const
 {
     auto* texture = this->m_textImpl->getTexture();

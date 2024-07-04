@@ -31,27 +31,6 @@
 
 #include <memory>
 
-class MySprite final : public e2d::Sprite
-{
-public:
-    explicit MySprite(const std::string& identifier) : e2d::Sprite(identifier)
-    {
-    }
-
-    int getRenderPriority() const final
-    {
-        return 0;
-    }
-
-    void fixedUpdate() final
-    {
-    }
-
-    void variableUpdate(double) final
-    {
-    }
-};
-
 class MyObject final : public e2d::Object
 {
 public:
@@ -74,7 +53,7 @@ TEST_CASE("ObjectRegistry Tests", "[ObjectRegistry]")
 
     SECTION("Adding and Retrieving Objects")
     {
-        objectRegistry.createObject<MySprite>("Sprite1");
+        objectRegistry.createObject<e2d::Sprite>("Sprite1");
 
         e2d::Object* retrievedObject = objectRegistry.getObject("Sprite1");
         REQUIRE(retrievedObject != nullptr);
@@ -83,14 +62,14 @@ TEST_CASE("ObjectRegistry Tests", "[ObjectRegistry]")
 
     SECTION("Preventing Duplicate Identifiers")
     {
-        objectRegistry.createObject<MySprite>("Sprite2");
+        objectRegistry.createObject<e2d::Sprite>("Sprite2");
 
-        REQUIRE_THROWS(objectRegistry.createObject<MySprite>("Sprite2"));
+        REQUIRE_THROWS(objectRegistry.createObject<e2d::Sprite>("Sprite2"));
     }
 
     SECTION("Removing Objects")
     {
-        objectRegistry.createObject<MySprite>("Sprite3");
+        objectRegistry.createObject<e2d::Sprite>("Sprite3");
 
         REQUIRE(objectRegistry.removeObject("Sprite3") == true);
 
@@ -99,8 +78,8 @@ TEST_CASE("ObjectRegistry Tests", "[ObjectRegistry]")
 
     SECTION("Listing All Objects")
     {
-        objectRegistry.createObject<MySprite>("Sprite4");
-        objectRegistry.createObject<MySprite>("Sprite5");
+        objectRegistry.createObject<e2d::Sprite>("Sprite4");
+        objectRegistry.createObject<e2d::Sprite>("Sprite5");
 
         auto allObjects = objectRegistry.getAllObjects();
         REQUIRE(allObjects.size() == 2);
@@ -108,13 +87,13 @@ TEST_CASE("ObjectRegistry Tests", "[ObjectRegistry]")
 
     SECTION("Retrieving Objects of Specific Type")
     {
-        objectRegistry.createObject<MySprite>("TypeSprite1");
-        objectRegistry.createObject<MySprite>("TypeSprite2");
+        objectRegistry.createObject<e2d::Sprite>("TypeSprite1");
+        objectRegistry.createObject<e2d::Sprite>("TypeSprite2");
 
         objectRegistry.createObject<MyObject>("NonSprite");
         auto nonSprite = std::make_unique<MyObject>("NonSprite");
 
-        auto sprites = objectRegistry.getAllObjectsOfType<MySprite>();
+        auto sprites = objectRegistry.getAllObjectsOfType<e2d::Sprite>();
         REQUIRE(sprites.size() == 2);
         REQUIRE((sprites[0]->getIdentifier() == "TypeSprite1" || sprites[0]->getIdentifier() == "TypeSprite2"));
         REQUIRE((sprites[1]->getIdentifier() == "TypeSprite1" || sprites[1]->getIdentifier() == "TypeSprite2"));

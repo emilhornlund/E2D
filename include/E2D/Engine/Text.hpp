@@ -147,16 +147,6 @@ public:
     void variableUpdate(double deltaTime) override;
 
     /**
-     * @brief Retrieves the render priority of the text.
-     *
-     * Returns an integer representing the render priority of the text.
-     * Sprites with higher priority values are rendered later (on top of others).
-     *
-     * @return int The render priority of the text.
-     */
-    int getRenderPriority() const override;
-
-    /**
      * @brief Renders the text using the provided renderer.
      *
      * @param renderer The Renderer object used for rendering the text.

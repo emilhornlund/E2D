@@ -38,26 +38,6 @@ public:
     ~InstallApplication() final = default;
 };
 
-class InstallSprite final : public e2d::Sprite
-{
-public:
-    InstallSprite() : e2d::Sprite("MySprite")
-    {
-    }
-
-    void fixedUpdate() final
-    {
-    }
-    void variableUpdate(double deltaTime) final
-    {
-        (void)deltaTime;
-    }
-    int getRenderPriority() const final
-    {
-        return 0;
-    }
-};
-
 int main()
 {
     // Core
@@ -73,7 +53,7 @@ int main()
 
     // Engine
     [[maybe_unused]] const InstallApplication  application;
-    [[maybe_unused]] const InstallSprite       sprite;
+    [[maybe_unused]] const e2d::Sprite         sprite("MySprite");
     [[maybe_unused]] const e2d::ObjectRegistry objectRegistry(nullptr);
     [[maybe_unused]] const e2d::Renderer       renderer;
     [[maybe_unused]] const e2d::Texture        texture;

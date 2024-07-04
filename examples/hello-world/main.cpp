@@ -33,27 +33,6 @@
 #include <E2D/Engine/Text.hpp>
 #include <E2D/Engine/Texture.hpp>
 
-class MySprite final : public e2d::Sprite
-{
-public:
-    MySprite() : e2d::Sprite("MySprite")
-    {
-    }
-
-    int getRenderPriority() const final
-    {
-        return 0;
-    }
-
-    void fixedUpdate() final
-    {
-    }
-
-    void variableUpdate(double) final
-    {
-    }
-};
-
 class HelloWorldApplication final : public e2d::Application
 {
 public:
@@ -87,7 +66,7 @@ public:
         }
         const auto texture = this->getResourceRegistry().get<e2d::Texture>("Hero");
 
-        auto& sprite = this->getObjectRegistry().createObject<MySprite>();
+        auto& sprite = this->getObjectRegistry().createObject<e2d::Sprite>("MySprite");
         sprite.setTexture(texture);
         sprite.setTextureRect(e2d::IntRect({0, 0}, {24, 24}));
         sprite.setPosition({60, 60});

@@ -32,31 +32,22 @@
 class MyRenderable : public e2d::Renderable
 {
 public:
-    explicit MyRenderable(int renderPriority) : m_renderPriority(renderPriority)
-    {
-    }
-
-    int getRenderPriority() const final
-    {
-        return m_renderPriority;
-    }
-
     void render(const e2d::Renderer& renderer) const final
     {
         (void)renderer; // Explicitly mark as unused
     }
-
-private:
-    int m_renderPriority;
 };
 
 TEST_CASE("RenderQueue Functionality", "[RenderQueue]")
 {
     e2d::internal::RenderQueue renderQueue;
 
-    MyRenderable obj1(10);
-    MyRenderable obj2(20);
-    MyRenderable obj3(5);
+    MyRenderable obj1;
+    obj1.setRenderPriority(10);
+    MyRenderable obj2;
+    obj2.setRenderPriority(20);
+    MyRenderable obj3;
+    obj3.setRenderPriority(5);
 
     SECTION("Queue starts empty")
     {
