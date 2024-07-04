@@ -53,7 +53,7 @@ public:
         }
         const auto font = this->getResourceRegistry().get<e2d::Font>("OpenSans");
 
-        auto& text = this->getObjectRegistry().createObject<e2d::Text>("HelloWorldText");
+        auto& text = this->getObjectRegistry().createObject<e2d::Text>();
         text.setFont(font);
         text.setFontSize(28);
         text.setString("Hello, World!");
@@ -66,7 +66,7 @@ public:
         }
         const auto texture = this->getResourceRegistry().get<e2d::Texture>("Hero");
 
-        auto& sprite = this->getObjectRegistry().createObject<e2d::Sprite>("MySprite");
+        auto& sprite = this->getObjectRegistry().createObject<e2d::Sprite>();
         sprite.setTexture(texture);
         sprite.setTextureRect(e2d::IntRect({0, 0}, {24, 24}));
         sprite.setPosition({60, 60});

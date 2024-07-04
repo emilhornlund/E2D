@@ -59,6 +59,11 @@ class E2D_ENGINE_API Sprite : public Object, public Transformable, public Render
 {
 public:
     /**
+     * @brief Default constructor for the Sprite class.
+     */
+    Sprite();
+
+    /**
      * @brief Constructs a Sprite object with a specific identifier.
      *
      * @param identifier A string representing the unique identifier of the sprite.

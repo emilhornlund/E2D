@@ -59,6 +59,11 @@ class E2D_ENGINE_API Text : public Object, public Transformable, public Renderab
 {
 public:
     /**
+     * @brief Default constructor for the Sprite class.
+     */
+    Text();
+
+    /**
      * @brief Default constructor for Text.
      *
      * Constructs a Text object.

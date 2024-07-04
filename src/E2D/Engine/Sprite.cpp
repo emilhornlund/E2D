@@ -31,6 +31,8 @@
 
 #include <SDL.h>
 
+e2d::Sprite::Sprite() = default;
+
 e2d::Sprite::Sprite(const std::string& identifier) : e2d::Object(identifier)
 {
 }

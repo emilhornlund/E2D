@@ -55,6 +55,11 @@ class E2D_ENGINE_API Object : NonCopyable
 
 public:
     /**
+     * @brief Default constructor for the Object class.
+     */
+    Object();
+
+    /**
      * @brief Constructs an Object with a given identifier.
      *
      * @param identifier A string representing the unique identifier of the object.

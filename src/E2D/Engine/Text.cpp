@@ -35,6 +35,10 @@
 
 #include <SDL.h>
 
+e2d::Text::Text() : m_font(nullptr), m_textImpl(std::make_unique<internal::TextImpl>())
+{
+}
+
 e2d::Text::Text(const std::string& identifier) :
 Object(identifier),
 m_font(nullptr),

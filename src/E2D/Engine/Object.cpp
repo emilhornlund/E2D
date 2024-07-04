@@ -25,8 +25,13 @@
 */
 
 #include <E2D/Engine/Object.hpp>
+#include <E2D/Engine/RandomUtils.hpp>
 
 #include <utility>
+
+e2d::Object::Object() : m_identifier(internal::generateRandomAlphabeticSequence(8))
+{
+}
 
 e2d::Object::Object(std::string identifier) : m_identifier(std::move(identifier))
 {
