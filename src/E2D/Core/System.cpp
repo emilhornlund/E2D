@@ -24,15 +24,28 @@
 * THE SOFTWARE.
 */
 
+#include <E2D/Core/Logger.hpp>
 #include <E2D/Core/SDLInitializer.hpp>
 #include <E2D/Core/System.hpp>
 
+e2d::System::System()
+{
+    log::debug("Constructing System");
+}
+
+e2d::System::~System()
+{
+    log::debug("Destructing System");
+}
+
 bool e2d::System::initialize()
 {
+    log::debug("Initializing system");
     return internal::SDLInitializer::initialize();
 }
 
 void e2d::System::shutdown()
 {
+    log::debug("Shutting down system");
     internal::SDLInitializer::shutdown();
 }

@@ -24,6 +24,7 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Core/Logger.hpp>
 #include <E2D/Core/Rect.hpp>
 
 #include <E2D/Engine/Application.hpp>
@@ -37,6 +38,7 @@
 
 e2d::Text::Text() : m_font(nullptr), m_textImpl(std::make_unique<internal::TextImpl>())
 {
+    log::debug("Constructing Text");
 }
 
 e2d::Text::Text(const std::string& identifier) :
@@ -44,9 +46,13 @@ Object(identifier),
 m_font(nullptr),
 m_textImpl(std::make_unique<internal::TextImpl>())
 {
+    log::debug("Constructing Text");
 }
 
-e2d::Text::~Text() = default;
+e2d::Text::~Text()
+{
+    log::debug("Destructing Text");
+}
 
 const std::string& e2d::Text::getString() const
 {

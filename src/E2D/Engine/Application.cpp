@@ -24,6 +24,7 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Core/Logger.hpp>
 #include <E2D/Core/System.hpp>
 #include <E2D/Core/Timer.hpp>
 
@@ -46,22 +47,31 @@ m_objectRegistry(std::make_unique<ObjectRegistry>(this)),
 m_resourceRegistry(std::make_unique<ResourceRegistry>(this)),
 m_backgroundColor(Color::Black)
 {
+    log::debug("Constructing Application");
 }
 
-e2d::Application::~Application() = default;
+e2d::Application::~Application()
+{
+    log::debug("Destructing Application");
+}
 
 int e2d::Application::run()
 {
+    log::info("Starting application");
+
     if (!System::initialize())
     {
+        log::error("Failed to initialize system. Aborting application startup.");
         return -1;
     }
     if (!this->m_window->create(this->m_windowTitle.c_str(), 800, 600))
     {
+        log::error("Failed to create window. Aborting application startup.");
         return -1;
     }
     if (!this->m_renderer->create(*this->m_window))
     {
+        log::error("Failed to create renderer. Aborting application startup.");
         return -1;
     }
 
@@ -125,6 +135,8 @@ int e2d::Application::run()
         }
     }
 
+    log::info("Terminating application");
+
     this->m_window->destroy();
     this->m_renderer->destroy();
 
@@ -176,4 +188,5 @@ void e2d::Application::setBackgroundColor(const e2d::Color& backgroundColor)
 
 void e2d::Application::onRunning()
 {
+    log::info("Application is running");
 }

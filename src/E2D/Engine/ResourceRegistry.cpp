@@ -24,6 +24,8 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/ResourceRegistry.hpp>
 #include <E2D/Engine/Texture.hpp>
 
@@ -31,14 +33,24 @@
 
 e2d::ResourceRegistry::ResourceRegistry(Application* application) : m_application(application)
 {
+    log::debug("Constructing ResourceRegistry");
 }
 
-e2d::ResourceRegistry::~ResourceRegistry() = default;
+e2d::ResourceRegistry::~ResourceRegistry()
+{
+    log::debug("Destructing ResourceRegistry");
+}
 
 e2d::ResourceRegistry::IResource::IResource(std::string type, std::string identifier) :
 m_type(std::move(type)),
 m_identifier(std::move(identifier))
 {
+    log::debug("Constructing IResource of type: '{}' with identifier: '{}'", this->m_type, this->m_identifier);
+}
+
+e2d::ResourceRegistry::IResource::~IResource()
+{
+    log::debug("Destructing IResource of type: '{}' with identifier: '{}'", this->m_type, this->m_identifier);
 }
 
 const std::string& e2d::ResourceRegistry::IResource::getType() const

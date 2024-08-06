@@ -24,14 +24,21 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/Window.hpp>
 #include <E2D/Engine/WindowImpl.hpp>
 
 e2d::Window::Window() : m_windowImpl(std::make_unique<internal::WindowImpl>())
 {
+    log::debug("Constructing Window");
 }
 
-e2d::Window::~Window() = default;
+e2d::Window::~Window()
+{
+    log::debug("Destructing Window");
+}
+
 
 bool e2d::Window::create(const char* title, int width, int height)
 {

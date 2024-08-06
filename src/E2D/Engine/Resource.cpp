@@ -24,11 +24,19 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/Resource.hpp>
 
-e2d::Resource::Resource() = default;
+e2d::Resource::Resource()
+{
+    log::debug("Constructing Resource");
+}
 
-e2d::Resource::~Resource() = default;
+e2d::Resource::~Resource()
+{
+    log::debug("Destructing Resource");
+}
 
 e2d::Application& e2d::Resource::getApplication() const
 {

@@ -27,11 +27,20 @@
 #ifndef E2D_ENGINE_RESOURCE_REGISTRY_INL
 #define E2D_ENGINE_RESOURCE_REGISTRY_INL
 
+#include <E2D/Core/Logger.hpp>
+
 #include <stdexcept>
 
 template <class T>
 e2d::ResourceRegistry::TResource<T>::TResource(const std::string& identifier) : IResource(typeid(T).name(), identifier)
 {
+    log::debug("Constructing TResource with identifier: '{}'", identifier);
+}
+
+template <class T>
+e2d::ResourceRegistry::TResource<T>::TResource::~TResource()
+{
+    log::debug("Destructing TResource");
 }
 
 template <typename T>
@@ -74,7 +83,7 @@ bool e2d::ResourceRegistry::loadFromFile(const std::string& identifier,
         }
         else
         {
-            std::cerr << "Unable to load `" << identifier << "` from file `" << filepath << "`" << '\n';
+            log::error("Failed to load resource with identifier '{}' from file '{}'", identifier, filepath);
         }
     }
     return false;
@@ -99,7 +108,7 @@ bool e2d::ResourceRegistry::loadFromMemory(const std::string& identifier,
         }
         else
         {
-            std::cerr << "Unable to load `" << identifier << "` from memory" << '\n';
+            log::error("Failed to load resource with identifier '{}' from memory", identifier);
         }
     }
     return false;

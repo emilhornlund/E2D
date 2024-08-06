@@ -24,25 +24,30 @@
 * THE SOFTWARE.
 */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/WindowImpl.hpp>
 
 #include <SDL.h>
 
-#include <iostream>
-
-e2d::internal::WindowImpl::WindowImpl() = default;
+e2d::internal::WindowImpl::WindowImpl()
+{
+    log::debug("Constructing WindowImpl");
+}
 
 e2d::internal::WindowImpl::~WindowImpl()
 {
+    log::debug("Destructing WindowImpl");
     this->destroy();
 }
 
 bool e2d::internal::WindowImpl::create(const char* title, int width, int height)
 {
+    log::debug("Creating window with title '{}', width '{}', and height '{}'", title, width, height);
     this->m_window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
     if (this->m_window == nullptr)
     {
-        std::cerr << "Failed to create window: " << SDL_GetError() << '\n';
+        log::error("Failed to create window: '{}'", SDL_GetError());
         return false;
     }
     return true;

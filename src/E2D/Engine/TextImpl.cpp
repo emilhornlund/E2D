@@ -24,17 +24,21 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/TextImpl.hpp>
 
 #include <SDL.h>
 #include <SDL_ttf.h>
 
-#include <iostream>
-
-e2d::internal::TextImpl::TextImpl() = default;
+e2d::internal::TextImpl::TextImpl()
+{
+    log::debug("Constructing TextImpl");
+}
 
 e2d::internal::TextImpl::~TextImpl()
 {
+    log::debug("Destructing TextImpl");
     this->destroy();
 }
 
@@ -42,10 +46,12 @@ void e2d::internal::TextImpl::updateNativeTexture(SDL_Renderer* renderer, TTF_Fo
 {
     if (!font)
     {
+        log::warn("Failed to update font texture. No font supplied.");
         return;
     }
     if (!renderer || text.empty())
     {
+        log::warn("Failed to update font texture. No renderer or text is empty.");
         TTF_CloseFont(font);
         return;
     }
@@ -57,7 +63,7 @@ void e2d::internal::TextImpl::updateNativeTexture(SDL_Renderer* renderer, TTF_Fo
 
         if (SDL_QueryTexture(this->m_texture, nullptr, nullptr, &this->m_textureSize.x, &this->m_textureSize.y) != 0)
         {
-            std::cerr << "Failed to query texture: " << SDL_GetError() << '\n';
+            log::warn("Failed to query texture: '{}'. Destroying text.", SDL_GetError());
             this->destroy();
         }
 

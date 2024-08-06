@@ -24,6 +24,8 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/FontImpl.hpp>
 
 #include <SDL.h>
@@ -32,16 +34,22 @@
 #include <fstream>
 #include <iostream>
 
-e2d::internal::FontImpl::FontImpl() = default;
+e2d::internal::FontImpl::FontImpl()
+{
+    log::debug("Constructing FontImpl");
+}
 
-e2d::internal::FontImpl::~FontImpl() = default;
+e2d::internal::FontImpl::~FontImpl()
+{
+    log::debug("Destructing FontImpl");
+}
 
 bool e2d::internal::FontImpl::loadFromFile(const std::string& filepath)
 {
     std::ifstream file(filepath, std::ios::binary | std::ios::ate);
     if (!file)
     {
-        std::cerr << "Failed to open file: " << filepath << '\n';
+        log::error("Failed to open font file '{}'", filepath);
         return false;
     }
 
@@ -51,7 +59,7 @@ bool e2d::internal::FontImpl::loadFromFile(const std::string& filepath)
     this->m_fontData.resize(static_cast<size_t>(size));
     if (!file.read(reinterpret_cast<char*>(this->m_fontData.data()), size))
     {
-        std::cerr << "Failed to read file: " << filepath << '\n';
+        log::error("Failed to read font file '{}'", filepath);
         this->m_fontData.clear();
         return false;
     }
@@ -70,7 +78,7 @@ TTF_Font* e2d::internal::FontImpl::getFont(unsigned int fontSize) const
     SDL_RWops* rw = SDL_RWFromConstMem(this->m_fontData.data(), static_cast<int>(this->m_fontData.size()));
     if (rw == nullptr)
     {
-        std::cerr << "Failed to create RWops from memory: " << SDL_GetError() << '\n';
+        log::error("Failed to load font from memory: '{}'", SDL_GetError());
         SDL_RWclose(rw);
         return nullptr;
     }
@@ -78,7 +86,7 @@ TTF_Font* e2d::internal::FontImpl::getFont(unsigned int fontSize) const
     auto* font = TTF_OpenFontRW(rw, 1, static_cast<int>(fontSize));
     if (!font)
     {
-        std::cerr << "Failed to load font! TTF_Error: " << TTF_GetError() << '\n';
+        log::error("Failed to load font from memory: '{}'", TTF_GetError());
         SDL_RWclose(rw);
         return nullptr;
     }

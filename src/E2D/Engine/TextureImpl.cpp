@@ -24,6 +24,8 @@
 * THE SOFTWARE.
 */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/TextureImpl.hpp>
 
 // NOLINTBEGIN
@@ -33,12 +35,14 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include <iostream>
-
-e2d::internal::TextureImpl::TextureImpl() = default;
+e2d::internal::TextureImpl::TextureImpl()
+{
+    log::debug("Constructing TextureImpl");
+}
 
 e2d::internal::TextureImpl::~TextureImpl()
 {
+    log::debug("Destructing TextureImpl");
     this->destroy();
 }
 
@@ -47,12 +51,12 @@ bool e2d::internal::TextureImpl::loadTexture(SDL_Renderer* renderer, const char*
     this->m_texture = IMG_LoadTexture(renderer, file);
     if (this->m_texture == nullptr)
     {
-        std::cerr << "Failed to load texture: " << SDL_GetError() << '\n';
+        log::error("Failed to load texture: {}", SDL_GetError());
         return false;
     }
     if (SDL_QueryTexture(this->m_texture, nullptr, nullptr, &this->m_textureSize.x, &this->m_textureSize.y) != 0)
     {
-        std::cerr << "Failed to query texture: " << SDL_GetError() << '\n';
+        log::error("Failed to query texture: '{}'. Destroying texture.", SDL_GetError());
         this->destroy();
         return false;
     }
@@ -64,21 +68,21 @@ bool e2d::internal::TextureImpl::loadFromMemory(SDL_Renderer* renderer, const vo
     SDL_RWops* rw = SDL_RWFromConstMem(data, static_cast<int>(size));
     if (rw == nullptr)
     {
-        std::cerr << "Failed to create RWops from memory: " << SDL_GetError() << '\n';
+        log::error("Failed to load texture from memory: {}", SDL_GetError());
         return false;
     }
 
     this->m_texture = IMG_LoadTexture_RW(renderer, rw, 1);
     if (this->m_texture == nullptr)
     {
-        std::cerr << "Failed to load texture from memory: " << IMG_GetError() << '\n';
+        log::error("Failed to load texture from memory: {}", IMG_GetError());
         SDL_RWclose(rw);
         return false;
     }
 
     if (SDL_QueryTexture(this->m_texture, nullptr, nullptr, &this->m_textureSize.x, &this->m_textureSize.y) != 0)
     {
-        std::cerr << "Failed to query texture: " << SDL_GetError() << '\n';
+        log::error("Failed to query texture: '{}'. Destroying texture.", SDL_GetError());
         this->destroy();
         return false;
     }

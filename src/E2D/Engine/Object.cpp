@@ -24,6 +24,8 @@
 * THE SOFTWARE.
 */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/Object.hpp>
 #include <E2D/Engine/RandomUtils.hpp>
 
@@ -31,10 +33,12 @@
 
 e2d::Object::Object() : m_identifier(internal::generateRandomAlphabeticSequence(8))
 {
+    log::debug("Constructing Object with identifier '{}'", this->m_identifier);
 }
 
 e2d::Object::Object(std::string identifier) : m_identifier(std::move(identifier))
 {
+    log::debug("Constructing Object with identifier '{}'", this->m_identifier);
 }
 
 e2d::Object::~Object() = default;

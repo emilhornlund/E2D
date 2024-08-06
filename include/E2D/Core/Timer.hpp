@@ -47,6 +47,20 @@ class E2D_CORE_API Timer final : NonCopyable
 {
 public:
     /**
+     * @brief Default constructor for Timer.
+     *
+     * Constructs a new instance of the Timer class.
+     */
+    Timer();
+
+    /**
+     * @brief Default destructor for the Timer class.
+     *
+     * Destroys the instance of the Timer class.
+     */
+    ~Timer();
+
+    /**
      * @brief Starts or resumes the timer.
      */
     void start();

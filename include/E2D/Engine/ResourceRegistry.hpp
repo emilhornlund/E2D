@@ -34,7 +34,6 @@
 #include <E2D/Engine/Resource.hpp>
 
 #include <functional>
-#include <iostream>
 #include <memory>
 #include <optional>
 #include <stdexcept>
@@ -81,7 +80,7 @@ private:
         /**
          * @brief Default destructor.
          */
-        virtual ~IResource() = default;
+        virtual ~IResource();
 
         /**
          * @brief Gets the type of the resource.
@@ -116,16 +115,20 @@ private:
     {
     public:
         /**
-         * @brief Constructs a new resource with the specified identifier.
+         * @brief Default constructor for TResource.
+         *
+         * Constructs a new instance of the TResource class.
          *
          * @param identifier The identifier of the resource.
          */
         explicit TResource(const std::string& identifier);
 
         /**
-         * @brief Default destructor.
+         * @brief Default destructor for the TResource class.
+         *
+         * Destroys the instance of the TResource class.
          */
-        ~TResource() final = default;
+        ~TResource() final;
 
         std::shared_ptr<T> mValue; //!< The actual resource of type std::shared_ptr<const T>.
     };

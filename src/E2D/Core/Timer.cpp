@@ -24,6 +24,7 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Core/Logger.hpp>
 #include <E2D/Core/Timer.hpp>
 
 // NOLINTBEGIN
@@ -31,6 +32,16 @@
 // NOLINTEND
 
 #include <SDL.h>
+
+e2d::Timer::Timer()
+{
+    log::debug("Constructing Timer");
+}
+
+e2d::Timer::~Timer()
+{
+    log::debug("Destructing Timer");
+}
 
 void e2d::Timer::start()
 {

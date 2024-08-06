@@ -24,25 +24,30 @@
 * THE SOFTWARE.
 */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/RendererImpl.hpp>
 
 #include <SDL.h>
 
-#include <iostream>
-
-e2d::internal::RendererImpl::RendererImpl() = default;
+e2d::internal::RendererImpl::RendererImpl()
+{
+    log::debug("Constructing RendererImpl");
+}
 
 e2d::internal::RendererImpl::~RendererImpl()
 {
+    log::debug("Destructing RendererImpl");
     this->destroy();
 }
 
 bool e2d::internal::RendererImpl::create(SDL_Window* window)
 {
+    log::debug("Creating renderer");
     this->m_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (this->m_renderer == nullptr)
     {
-        std::cerr << "Failed to create renderer: " << SDL_GetError() << '\n';
+        log::error("Failed to create renderer: {}", SDL_GetError());
         return false;
     }
     return true;

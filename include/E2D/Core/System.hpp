@@ -51,18 +51,16 @@ public:
     /**
      * @brief Default constructor for the System class.
      *
-     * Constructs an instance of the System class. The constructor is defaulted, reflecting that
-     * no specific initializations are needed at object creation.
+     * Constructs an instance of the System class.
      */
-    System() = default;
+    System();
 
     /**
      * @brief Default destructor for the System class.
      *
-     * Destroys the instance of the System class. The destructor is defaulted, reflecting that
-     * no specific clean-up is needed at object destruction.
+     * Destroys the instance of the System class.
      */
-    ~System() = default;
+    ~System();
 
     /**
      * @brief Initializes the engine's core subsystems.

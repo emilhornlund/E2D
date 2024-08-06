@@ -24,11 +24,19 @@
 * THE SOFTWARE.
 */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/RenderQueue.hpp>
 
-e2d::internal::RenderQueue::RenderQueue() = default;
+e2d::internal::RenderQueue::RenderQueue()
+{
+    log::debug("Constructing RenderQueue");
+}
 
-e2d::internal::RenderQueue::~RenderQueue() = default;
+e2d::internal::RenderQueue::~RenderQueue()
+{
+    log::debug("Destructing RenderQueue");
+}
 
 void e2d::internal::RenderQueue::push(const e2d::Renderable* renderable)
 {

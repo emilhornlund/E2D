@@ -24,6 +24,8 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/Application.hpp>
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/Texture.hpp>
@@ -35,9 +37,13 @@
 
 e2d::Texture::Texture() : m_textureImpl(std::make_unique<internal::TextureImpl>())
 {
+    log::debug("Constructing Texture");
 }
 
-e2d::Texture::~Texture() = default;
+e2d::Texture::~Texture()
+{
+    log::debug("Destructing Texture");
+}
 
 bool e2d::Texture::loadFromFile(const std::string& filepath)
 {

@@ -24,6 +24,7 @@
 * THE SOFTWARE.
 */
 
+#include <E2D/Core/Logger.hpp>
 #include <E2D/Core/SDLInitializer.hpp>
 
 // NOLINTBEGIN
@@ -34,23 +35,26 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
-#include <iostream>
-
 bool e2d::internal::SDLInitializer::initialize()
 {
+    log::debug("Initializing SDL core systems");
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
-        std::cerr << "Failed to initialize SDL video system: " << SDL_GetError() << '\n';
+        log::error("Failed to initialize SDL core systems: {}", SDL_GetError());
         return false;
     }
+
+    log::debug("Initializing SDL image system");
     if (IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG) == 0)
     {
-        std::cerr << "Failed to initialize SDL image system: " << SDL_GetError() << '\n';
+        log::error("Failed to initialize SDL image system: {}", SDL_GetError());
         return false;
     }
+
+    log::debug("Initializing SDL text rendering system");
     if (TTF_Init() != 0)
     {
-        std::cerr << "Failed to initialize SDL text rendering system: " << SDL_GetError() << '\n';
+        log::error("Failed to initialize SDL text rendering system: {}", SDL_GetError());
         return false;
     }
     return true;
@@ -58,7 +62,12 @@ bool e2d::internal::SDLInitializer::initialize()
 
 void e2d::internal::SDLInitializer::shutdown()
 {
+    log::debug("Shutting down SDL text rendering system");
     TTF_Quit();
+
+    log::debug("Shutting down SDL image system");
     IMG_Quit();
+
+    log::debug("Shutting down SDL core systems");
     SDL_Quit();
 }

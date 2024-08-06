@@ -24,6 +24,8 @@
 * THE SOFTWARE.
 */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/Renderable.hpp>
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/RendererImpl.hpp>
@@ -34,9 +36,13 @@ e2d::Renderer::Renderer() :
 m_rendererImpl(std::make_unique<internal::RendererImpl>()),
 m_renderQueue(std::make_unique<internal::RenderQueue>())
 {
+    log::debug("Constructing Renderer");
 }
 
-e2d::Renderer::~Renderer() = default;
+e2d::Renderer::~Renderer()
+{
+    log::debug("Destructing Renderer");
+}
 
 bool e2d::Renderer::create(const e2d::Window& window)
 {

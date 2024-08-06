@@ -24,6 +24,8 @@
 * THE SOFTWARE.
 */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/SDLRenderUtils.hpp>
 #include <E2D/Engine/Sprite.hpp>
@@ -31,13 +33,20 @@
 
 #include <SDL.h>
 
-e2d::Sprite::Sprite() = default;
+e2d::Sprite::Sprite() : e2d::Transformable(), e2d::Renderable()
+{
+    log::debug("Constructing Sprite");
+}
 
 e2d::Sprite::Sprite(const std::string& identifier) : e2d::Object(identifier)
 {
+    log::debug("Constructing Sprite with identifier '{}'", identifier);
 }
 
-e2d::Sprite::~Sprite() = default;
+e2d::Sprite::~Sprite()
+{
+    log::debug("Destructing Sprite");
+}
 
 std::shared_ptr<const e2d::Texture> e2d::Sprite::getTexture() const
 {

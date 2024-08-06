@@ -24,14 +24,20 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/Font.hpp>
 #include <E2D/Engine/FontImpl.hpp>
 
 e2d::Font::Font() : m_fontImpl(std::make_unique<internal::FontImpl>())
 {
+    log::debug("Constructing Font");
 }
 
-e2d::Font::~Font() = default;
+e2d::Font::~Font()
+{
+    log::debug("Destructing Font");
+}
 
 bool e2d::Font::loadFromFile(const std::string& filepath)
 {

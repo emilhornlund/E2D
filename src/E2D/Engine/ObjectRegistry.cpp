@@ -24,13 +24,19 @@
  * THE SOFTWARE.
  */
 
+#include <E2D/Core/Logger.hpp>
+
 #include <E2D/Engine/ObjectRegistry.hpp>
 
 e2d::ObjectRegistry::ObjectRegistry(Application* application) : m_application(application)
 {
+    log::debug("Constructing ObjectRegistry");
 }
 
-e2d::ObjectRegistry::~ObjectRegistry() = default;
+e2d::ObjectRegistry::~ObjectRegistry()
+{
+    log::debug("Destructing ObjectRegistry");
+}
 
 e2d::Object* e2d::ObjectRegistry::getObject(const std::string& identifier) const
 {
