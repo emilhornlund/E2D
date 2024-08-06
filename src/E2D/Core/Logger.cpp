@@ -66,6 +66,9 @@ void enableVirtualTerminalProcessing()
 
 e2d::internal::LoggerImpl::LoggerImpl()
 {
+#ifdef E2D_DEBUG
+    this->m_currentLevel = E2D_LOG_LEVEL_DEBUG;
+#endif
     enableVirtualTerminalProcessing();
 }
 
@@ -77,6 +80,11 @@ e2d::internal::LoggerImpl& e2d::internal::LoggerImpl::getInstance()
 
 void e2d::internal::LoggerImpl::logImpl(LogLevel level, const std::string& message)
 {
+    if (level < this->m_currentLevel)
+    {
+        return;
+    }
+
     std::ostringstream logStream;
     logStream << "[" << currentDateTime() << "] " << getColorForLogLevel(level) << padLogLevel(logLevelToString(level))
               << " " << RESET_COLOR << message << "\n";

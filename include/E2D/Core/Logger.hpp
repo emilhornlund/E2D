@@ -139,7 +139,8 @@ private:
      */
     const char* getColorForLogLevel(LogLevel level);
 
-    std::mutex m_mutex; //!< Mutex for synchronizing log access.
+    LogLevel   m_currentLevel{E2D_LOG_LEVEL_INFO}; //!< The current log level.
+    std::mutex m_mutex;                            //!< Mutex for synchronizing log access.
 };
 
 } // namespace internal
