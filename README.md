@@ -1,4 +1,5 @@
-![example workflow](https://github.com/emilhornlund/E2D/actions/workflows/main.yml/badge.svg)
+![main workflow](https://github.com/emilhornlund/E2D/actions/workflows/main.yml/badge.svg)
+![documentation workflow](https://github.com/emilhornlund/E2D/actions/workflows/docs.yml/badge.svg)
 
 # E2D
 
@@ -27,6 +28,8 @@
 ## Overview
 
 E2D is a modern 2D game engine written in C++17 that leverages the SDL2 library. Currently, a work in progress, the project aims to provide developers with a powerful and flexible platform to create cross-platform 2D games with ease. With its comprehensive features, intuitive API, and extensive documentation, E2D aims to empower developers to bring their game ideas to life efficiently and deliver captivating gaming experiences.
+
+For more information, visit the [E2D Documentation](http://e2d.emilhornlund.com).
 
 ## Prerequisites
 

@@ -1,0 +1,7 @@
+# Configuration file for EditorConfig
+# More information is available under http://EditorConfig.org
+
+# Configuration for all files
+[*]
+# Always indent by 2 characters
+indent_size = 2

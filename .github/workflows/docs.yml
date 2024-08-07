@@ -1,0 +1,68 @@
+name: docs
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get CMake and Ninja
+        uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: latest
+          ninjaVersion: latest
+
+      - name: Install Dependencies
+        run: sudo apt-get update && sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev doxygen graphviz
+
+      - name: Configure CMake
+        run: cmake -S . -B build -DE2D_BUILD_DOCS=ON
+
+      - name: Build Documentation
+        run: cmake --build build --target e2d-tools-docs
+
+      - name: Create CNAME file
+        run: echo 'e2d.emilhornlund.com' > build/docs/html/CNAME
+
+      - name: Archive Doxygen output
+        run: |
+          cd build/docs/html
+          zip -r ../../e2d_docs.zip .
+
+      - name: Upload documentation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2d-docs
+          path: build/e2d_docs.zip
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download documentation artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: e2d-docs
+
+      - name: Unzip documentation
+        run: unzip $(pwd)/e2d_docs.zip -d e2d_docs
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: e2d_docs
+          publish_branch: gh-pages
