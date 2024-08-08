@@ -92,10 +92,10 @@ Inheritance diagram for e2d::ResourceRegistry:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0baeedf42c4c60157737f7a5e1c40aa8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1ResourceRegistry.html#a0baeedf42c4c60157737f7a5e1c40aa8">ResourceRegistry</a> (<a class="el" href="classe2d_1_1Application.html">Application</a> *application)</td></tr>
-<tr class="memdesc:a0baeedf42c4c60157737f7a5e1c40aa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for <a class="el" href="classe2d_1_1ObjectRegistry.html" title="Manages a registry of all game objects in the E2D Engine.">ObjectRegistry</a>.  <a href="classe2d_1_1ResourceRegistry.html#a0baeedf42c4c60157737f7a5e1c40aa8">More...</a><br /></td></tr>
+<tr class="memdesc:a0baeedf42c4c60157737f7a5e1c40aa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a> object.  <a href="classe2d_1_1ResourceRegistry.html#a0baeedf42c4c60157737f7a5e1c40aa8">More...</a><br /></td></tr>
 <tr class="separator:a0baeedf42c4c60157737f7a5e1c40aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a702571386d95f862ae0e5c3aae73122e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1ResourceRegistry.html#a702571386d95f862ae0e5c3aae73122e">~ResourceRegistry</a> ()</td></tr>
-<tr class="memdesc:a702571386d95f862ae0e5c3aae73122e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a>.  <a href="classe2d_1_1ResourceRegistry.html#a702571386d95f862ae0e5c3aae73122e">More...</a><br /></td></tr>
+<tr class="memdesc:a702571386d95f862ae0e5c3aae73122e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="classe2d_1_1ResourceRegistry.html#a702571386d95f862ae0e5c3aae73122e">More...</a><br /></td></tr>
 <tr class="separator:a702571386d95f862ae0e5c3aae73122e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa00893514e4192541428a5b54a56c3d4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aa00893514e4192541428a5b54a56c3d4"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classe2d_1_1ResourceRegistry.html#aa00893514e4192541428a5b54a56c3d4">exists</a> (const std::string &amp;identifier) const</td></tr>
@@ -118,7 +118,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p>Manages loading and accessing resources by their identifiers. </p>
 <p>This class is responsible for loading resources from files and providing access to them by their identifiers. It ensures that resources are type-safe and properly managed in memory. </p>
 
-<p class="definition">Definition at line <a class="el" href="ResourceRegistry_8hpp_source.html#l00059">59</a> of file <a class="el" href="ResourceRegistry_8hpp_source.html">ResourceRegistry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ResourceRegistry_8hpp_source.html#l00056">56</a> of file <a class="el" href="ResourceRegistry_8hpp_source.html">ResourceRegistry.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0baeedf42c4c60157737f7a5e1c40aa8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0baeedf42c4c60157737f7a5e1c40aa8">&#9670;&nbsp;</a></span>ResourceRegistry()</h2>
@@ -144,11 +144,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Default constructor for <a class="el" href="classe2d_1_1ObjectRegistry.html" title="Manages a registry of all game objects in the E2D Engine.">ObjectRegistry</a>. </p>
-<p>Initializes a new instance of the <a class="el" href="classe2d_1_1ObjectRegistry.html" title="Manages a registry of all game objects in the E2D Engine.">ObjectRegistry</a> class.</p>
+<p>Constructs a new <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a> object. </p>
+<p>Initializes a new instance of the <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a> class.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">application</td><td>Raw pointer to the application </td></tr>
+    <tr><td class="paramname">application</td><td>Raw pointer to the application. </td></tr>
   </table>
   </dd>
 </dl>
@@ -170,7 +170,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Destroys the <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a>. </p>
+<p>Destructor. </p>
+<p>Ensures proper cleanup of resources upon destruction. </p>
 
 </div>
 </div>
@@ -194,6 +195,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Checks if a resource of type T exists. </p>
+<p>Determines whether a resource with the given identifier exists in the registry.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The type of the resource. </td></tr>
@@ -206,7 +208,7 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the resource exists, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the resource exists, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -229,6 +231,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Retrieves a resource of type T. </p>
+<p>Retrieves the resource with the given identifier from the registry if it exists.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The type of the resource. </td></tr>
@@ -280,6 +283,7 @@ template&lt;typename T , typename... Args&gt; </div>
 </div><div class="memdoc">
 
 <p>Loads a resource of type T from a file. </p>
+<p>Loads the resource from the specified file and registers it with the given identifier.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The type of the resource. </td></tr>
@@ -295,7 +299,7 @@ template&lt;typename T , typename... Args&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the resource is successfully loaded, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the resource is successfully loaded, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -340,6 +344,7 @@ template&lt;typename T , typename... Args&gt; </div>
 </div><div class="memdoc">
 
 <p>Loads a resource of type T from memory. </p>
+<p>Loads the resource from the specified memory block and registers it with the given identifier.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The type of the resource. </td></tr>
@@ -356,7 +361,7 @@ template&lt;typename T , typename... Args&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the resource is successfully loaded, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the resource is successfully loaded, false otherwise. </dd></dl>
 
 </div>
 </div>

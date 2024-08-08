@@ -75,7 +75,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Core class for managing the application lifecycle in the E2D Engine, handling initialization, main loop, and shutdown.  
+<p>Abstract base for managing the lifecycle and main loop of the application.  
  <a href="classe2d_1_1Application.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Application_8hpp_source.html">Application.hpp</a>&gt;</code></p>
@@ -92,10 +92,10 @@ Inheritance diagram for e2d::Application:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aba1b89e1bb2b6ea054e228004e9e1911"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Application.html#aba1b89e1bb2b6ea054e228004e9e1911">Application</a> (std::string windowTitle)</td></tr>
-<tr class="memdesc:aba1b89e1bb2b6ea054e228004e9e1911"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="classe2d_1_1Application.html" title="Core class for managing the application lifecycle in the E2D Engine, handling initialization,...">Application</a> object.  <a href="classe2d_1_1Application.html#aba1b89e1bb2b6ea054e228004e9e1911">More...</a><br /></td></tr>
+<tr class="memdesc:aba1b89e1bb2b6ea054e228004e9e1911"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classe2d_1_1Application.html" title="Abstract base for managing the lifecycle and main loop of the application.">Application</a>.  <a href="classe2d_1_1Application.html#aba1b89e1bb2b6ea054e228004e9e1911">More...</a><br /></td></tr>
 <tr class="separator:aba1b89e1bb2b6ea054e228004e9e1911"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04e2f47f8f8e3cd3807c8ffd12d08aaa"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Application.html#a04e2f47f8f8e3cd3807c8ffd12d08aaa">~Application</a> ()=0</td></tr>
-<tr class="memdesc:a04e2f47f8f8e3cd3807c8ffd12d08aaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for <a class="el" href="classe2d_1_1Application.html" title="Core class for managing the application lifecycle in the E2D Engine, handling initialization,...">Application</a>.  <a href="classe2d_1_1Application.html#a04e2f47f8f8e3cd3807c8ffd12d08aaa">More...</a><br /></td></tr>
+<tr class="memdesc:a04e2f47f8f8e3cd3807c8ffd12d08aaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual destructor.  <a href="classe2d_1_1Application.html#a04e2f47f8f8e3cd3807c8ffd12d08aaa">More...</a><br /></td></tr>
 <tr class="separator:a04e2f47f8f8e3cd3807c8ffd12d08aaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9eef19f459d5cae1b39ef232df0e11c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Application.html#ad9eef19f459d5cae1b39ef232df0e11c">run</a> ()</td></tr>
 <tr class="memdesc:ad9eef19f459d5cae1b39ef232df0e11c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the application.  <a href="classe2d_1_1Application.html#ad9eef19f459d5cae1b39ef232df0e11c">More...</a><br /></td></tr>
@@ -113,16 +113,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a6300250a6a1fa715e663987149b0a648"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="classe2d_1_1Renderer.html" title="Handles the rendering process for graphical objects.">Renderer</a> instance used by the application.  <a href="classe2d_1_1Application.html#a6300250a6a1fa715e663987149b0a648">More...</a><br /></td></tr>
 <tr class="separator:a6300250a6a1fa715e663987149b0a648"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab74ec89ce5504b9300df94c2f2c66058"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classe2d_1_1ObjectRegistry.html">ObjectRegistry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Application.html#ab74ec89ce5504b9300df94c2f2c66058">getObjectRegistry</a> () const</td></tr>
-<tr class="memdesc:ab74ec89ce5504b9300df94c2f2c66058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="classe2d_1_1ObjectRegistry.html" title="Manages a registry of all game objects in the E2D Engine.">ObjectRegistry</a> instance used by the application.  <a href="classe2d_1_1Application.html#ab74ec89ce5504b9300df94c2f2c66058">More...</a><br /></td></tr>
+<tr class="memdesc:ab74ec89ce5504b9300df94c2f2c66058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="classe2d_1_1ObjectRegistry.html" title="Manages a registry of all game objects.">ObjectRegistry</a> instance used by the application.  <a href="classe2d_1_1Application.html#ab74ec89ce5504b9300df94c2f2c66058">More...</a><br /></td></tr>
 <tr class="separator:ab74ec89ce5504b9300df94c2f2c66058"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a403a5c2653e108c1f0ec719f6550e216"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classe2d_1_1ResourceRegistry.html">ResourceRegistry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Application.html#a403a5c2653e108c1f0ec719f6550e216">getResourceRegistry</a> () const</td></tr>
-<tr class="memdesc:a403a5c2653e108c1f0ec719f6550e216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the resource registry instance used by the application.  <a href="classe2d_1_1Application.html#a403a5c2653e108c1f0ec719f6550e216">More...</a><br /></td></tr>
+<tr class="memdesc:a403a5c2653e108c1f0ec719f6550e216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a> instance used by the application.  <a href="classe2d_1_1Application.html#a403a5c2653e108c1f0ec719f6550e216">More...</a><br /></td></tr>
 <tr class="separator:a403a5c2653e108c1f0ec719f6550e216"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4dff14f5e33519e4532bab4d1a6a6ac"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classe2d_1_1Color.html">Color</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Application.html#ad4dff14f5e33519e4532bab4d1a6a6ac">getBackgroundColor</a> () const</td></tr>
-<tr class="memdesc:ad4dff14f5e33519e4532bab4d1a6a6ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the background color of the window.  <a href="classe2d_1_1Application.html#ad4dff14f5e33519e4532bab4d1a6a6ac">More...</a><br /></td></tr>
+<tr class="memdesc:ad4dff14f5e33519e4532bab4d1a6a6ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the background color of the window.  <a href="classe2d_1_1Application.html#ad4dff14f5e33519e4532bab4d1a6a6ac">More...</a><br /></td></tr>
 <tr class="separator:ad4dff14f5e33519e4532bab4d1a6a6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9025c6f0407b225ce6990ac0be098e8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Application.html#a9025c6f0407b225ce6990ac0be098e8d">setBackgroundColor</a> (const <a class="el" href="classe2d_1_1Color.html">Color</a> &amp;backgroundColor)</td></tr>
-<tr class="memdesc:a9025c6f0407b225ce6990ac0be098e8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the background color of the window.  <a href="classe2d_1_1Application.html#a9025c6f0407b225ce6990ac0be098e8d">More...</a><br /></td></tr>
+<tr class="memdesc:a9025c6f0407b225ce6990ac0be098e8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the background color of the window.  <a href="classe2d_1_1Application.html#a9025c6f0407b225ce6990ac0be098e8d">More...</a><br /></td></tr>
 <tr class="separator:a9025c6f0407b225ce6990ac0be098e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -132,10 +132,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:abbaf91ef0d832f6ecd0e1a4b9fc70ced"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Core class for managing the application lifecycle in the E2D Engine, handling initialization, main loop, and shutdown. </p>
-<p><a class="el" href="classe2d_1_1Application.html" title="Core class for managing the application lifecycle in the E2D Engine, handling initialization,...">Application</a> serves as the central class for E2D engine applications. It manages the main game loop, event handling, and provides access to the renderer and object registry. </p>
+<div class="textblock"><p>Abstract base for managing the lifecycle and main loop of the application. </p>
+<p>The <a class="el" href="classe2d_1_1Application.html" title="Abstract base for managing the lifecycle and main loop of the application.">Application</a> class is responsible for initializing the game, handling the main loop, processing events, updating the game state, and rendering frames. It serves as the entry point for the E2D engine and orchestrates the overall flow of the game. </p>
 
-<p class="definition">Definition at line <a class="el" href="Application_8hpp_source.html#l00055">55</a> of file <a class="el" href="Application_8hpp_source.html">Application.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Application_8hpp_source.html#l00053">53</a> of file <a class="el" href="Application_8hpp_source.html">Application.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aba1b89e1bb2b6ea054e228004e9e1911"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aba1b89e1bb2b6ea054e228004e9e1911">&#9670;&nbsp;</a></span>Application()</h2>
@@ -161,10 +161,11 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs an <a class="el" href="classe2d_1_1Application.html" title="Core class for managing the application lifecycle in the E2D Engine, handling initialization,...">Application</a> object. </p>
+<p>Constructs a new <a class="el" href="classe2d_1_1Application.html" title="Abstract base for managing the lifecycle and main loop of the application.">Application</a>. </p>
+<p>Initializes a new instance of the <a class="el" href="classe2d_1_1Application.html" title="Abstract base for managing the lifecycle and main loop of the application.">Application</a> class with the specified window title.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">windowTitle</td><td>The windowTitle of the window </td></tr>
+    <tr><td class="paramname">windowTitle</td><td>The title of the window. </td></tr>
   </table>
   </dd>
 </dl>
@@ -194,7 +195,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Virtual destructor for <a class="el" href="classe2d_1_1Application.html" title="Core class for managing the application lifecycle in the E2D Engine, handling initialization,...">Application</a>. </p>
+<p>Pure virtual destructor. </p>
+<p>Ensures proper cleanup of resources upon destruction. </p>
 
 </div>
 </div>
@@ -214,8 +216,9 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the background color of the window. </p>
-<dl class="section return"><dt>Returns</dt><dd>The background color </dd></dl>
+<p>Gets the background color of the window. </p>
+<p>Retrieves the current background color of the window.</p>
+<dl class="section return"><dt>Returns</dt><dd>The background color. </dd></dl>
 
 </div>
 </div>
@@ -234,8 +237,9 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gets the <a class="el" href="classe2d_1_1ObjectRegistry.html" title="Manages a registry of all game objects in the E2D Engine.">ObjectRegistry</a> instance used by the application. </p>
-<dl class="section return"><dt>Returns</dt><dd>A reference to the <a class="el" href="classe2d_1_1ObjectRegistry.html" title="Manages a registry of all game objects in the E2D Engine.">ObjectRegistry</a>. </dd></dl>
+<p>Gets the <a class="el" href="classe2d_1_1ObjectRegistry.html" title="Manages a registry of all game objects.">ObjectRegistry</a> instance used by the application. </p>
+<p>Provides access to the object registry managed by the application.</p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the <a class="el" href="classe2d_1_1ObjectRegistry.html" title="Manages a registry of all game objects.">ObjectRegistry</a>. </dd></dl>
 
 </div>
 </div>
@@ -255,6 +259,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the <a class="el" href="classe2d_1_1Renderer.html" title="Handles the rendering process for graphical objects.">Renderer</a> instance used by the application. </p>
+<p>Provides access to the renderer instance managed by the application.</p>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the <a class="el" href="classe2d_1_1Renderer.html" title="Handles the rendering process for graphical objects.">Renderer</a>. </dd></dl>
 
 </div>
@@ -274,8 +279,9 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gets the resource registry instance used by the application. </p>
-<dl class="section return"><dt>Returns</dt><dd>A reference to the resource registry. </dd></dl>
+<p>Gets the <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a> instance used by the application. </p>
+<p>Provides access to the resource registry managed by the application.</p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a>. </dd></dl>
 
 </div>
 </div>
@@ -295,6 +301,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the <a class="el" href="classe2d_1_1Window.html" title="Represents a graphical window.">Window</a> instance used by the application. </p>
+<p>Provides access to the window instance managed by the application.</p>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the <a class="el" href="classe2d_1_1Window.html" title="Represents a graphical window.">Window</a>. </dd></dl>
 
 </div>
@@ -364,6 +371,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Quits the application. </p>
+<p>Signals the application to stop running and sets the exit code.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">exitCode</td><td>The exit code of the application (default is 0). </td></tr>
@@ -389,6 +397,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Runs the application. </p>
+<p>Starts the main loop of the application and continues running until the application quits.</p>
 <dl class="section return"><dt>Returns</dt><dd>The exit code of the application. </dd></dl>
 
 </div>
@@ -409,10 +418,11 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the background color of the window. </p>
+<p>Sets the background color of the window. </p>
+<p>Changes the background color of the window to the specified color.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">backgroundColor</td><td>The background color </td></tr>
+    <tr><td class="paramname">backgroundColor</td><td>The new background color. </td></tr>
   </table>
   </dd>
 </dl>

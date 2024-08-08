@@ -82,25 +82,25 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacee2d.html">e2d</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacee2d.html">e2d</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">namespace </span>internal</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">namespace </span>internal</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">class </span>WindowImpl; <span class="comment">// Forward declaration of WindowImpl</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classe2d_1_1Window.html">   59</a></span>&#160;<span class="keyword">class </span>E2D_ENGINE_API <a class="code" href="classe2d_1_1Window.html">Window</a> final : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classe2d_1_1Window.html#a9498d7f4a647b1f87d033b8c1b65a0d1">   67</a></span>&#160;    <a class="code" href="classe2d_1_1Window.html#a9498d7f4a647b1f87d033b8c1b65a0d1">Window</a>();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classe2d_1_1Window.html#a7a18662c78fccd7250af2ab0633b231e">   74</a></span>&#160;    <a class="code" href="classe2d_1_1Window.html#a7a18662c78fccd7250af2ab0633b231e">~Window</a>();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classe2d_1_1Window.html#a80ccba2e85f093501ddf0fe69c10c8f2">   84</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Window.html#a80ccba2e85f093501ddf0fe69c10c8f2">create</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* title, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classe2d_1_1Window.html#a725cabebab54ba28e67c2d0a2569feee">   91</a></span>&#160;    [[maybe_unused]] <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Window.html#a725cabebab54ba28e67c2d0a2569feee">isCreated</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">class </span>WindowImpl; <span class="comment">// Forward declaration of WindowImpl</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classe2d_1_1Window.html">   53</a></span>&#160;<span class="keyword">class </span>E2D_ENGINE_API <a class="code" href="classe2d_1_1Window.html">Window</a> final : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classe2d_1_1Window.html#a9498d7f4a647b1f87d033b8c1b65a0d1">   61</a></span>&#160;    <a class="code" href="classe2d_1_1Window.html#a9498d7f4a647b1f87d033b8c1b65a0d1">Window</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classe2d_1_1Window.html#a7a18662c78fccd7250af2ab0633b231e">   68</a></span>&#160;    <a class="code" href="classe2d_1_1Window.html#a7a18662c78fccd7250af2ab0633b231e">~Window</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classe2d_1_1Window.html#a80ccba2e85f093501ddf0fe69c10c8f2">   80</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Window.html#a80ccba2e85f093501ddf0fe69c10c8f2">create</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* title, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="classe2d_1_1Window.html#a725cabebab54ba28e67c2d0a2569feee">   89</a></span>&#160;    [[maybe_unused]] <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Window.html#a725cabebab54ba28e67c2d0a2569feee">isCreated</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classe2d_1_1Window.html#a0afc703a47cf468181c5cab8907e1bb6">   96</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Window.html#a0afc703a47cf468181c5cab8907e1bb6">destroy</a>();</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
 <div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classe2d_1_1Window.html#a937ea86a22949258f82e38ce7d588680">  105</a></span>&#160;    <span class="keywordtype">void</span>* <a class="code" href="classe2d_1_1Window.html#a937ea86a22949258f82e38ce7d588680">getNativeWindowHandle</a>() <span class="keyword">const</span>;</div>
@@ -113,15 +113,15 @@ $(function() {
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;} <span class="comment">// namespace e2d</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_ENGINE_WINDOW_HPP</span></div>
-<div class="ttc" id="aclasse2d_1_1NonCopyable_html"><div class="ttname"><a href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></div><div class="ttdoc">The NonCopyable class provides a base class to make derived classes non-copyable.</div><div class="ttdef"><b>Definition:</b> <a href="NonCopyable_8hpp_source.html#l00041">NonCopyable.hpp:42</a></div></div>
-<div class="ttc" id="aclasse2d_1_1Window_html"><div class="ttname"><a href="classe2d_1_1Window.html">e2d::Window</a></div><div class="ttdoc">Represents a graphical window.</div><div class="ttdef"><b>Definition:</b> <a href="Window_8hpp_source.html#l00059">Window.hpp:60</a></div></div>
+<div class="ttc" id="aclasse2d_1_1NonCopyable_html"><div class="ttname"><a href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></div><div class="ttdoc">The NonCopyable class provides a base class to make derived classes non-copyable.</div><div class="ttdef"><b>Definition:</b> <a href="NonCopyable_8hpp_source.html#l00043">NonCopyable.hpp:44</a></div></div>
+<div class="ttc" id="aclasse2d_1_1Window_html"><div class="ttname"><a href="classe2d_1_1Window.html">e2d::Window</a></div><div class="ttdoc">Represents a graphical window.</div><div class="ttdef"><b>Definition:</b> <a href="Window_8hpp_source.html#l00053">Window.hpp:54</a></div></div>
 <div class="ttc" id="aclasse2d_1_1Window_html_a0afc703a47cf468181c5cab8907e1bb6"><div class="ttname"><a href="classe2d_1_1Window.html#a0afc703a47cf468181c5cab8907e1bb6">e2d::Window::destroy</a></div><div class="ttdeci">void destroy()</div><div class="ttdoc">Destroys the window, freeing its resources.</div></div>
 <div class="ttc" id="aclasse2d_1_1Window_html_a725cabebab54ba28e67c2d0a2569feee"><div class="ttname"><a href="classe2d_1_1Window.html#a725cabebab54ba28e67c2d0a2569feee">e2d::Window::isCreated</a></div><div class="ttdeci">bool isCreated() const</div><div class="ttdoc">Checks if the window is created and valid.</div></div>
-<div class="ttc" id="aclasse2d_1_1Window_html_a7a18662c78fccd7250af2ab0633b231e"><div class="ttname"><a href="classe2d_1_1Window.html#a7a18662c78fccd7250af2ab0633b231e">e2d::Window::~Window</a></div><div class="ttdeci">~Window()</div><div class="ttdoc">Destructor for Window.</div></div>
+<div class="ttc" id="aclasse2d_1_1Window_html_a7a18662c78fccd7250af2ab0633b231e"><div class="ttname"><a href="classe2d_1_1Window.html#a7a18662c78fccd7250af2ab0633b231e">e2d::Window::~Window</a></div><div class="ttdeci">~Window()</div><div class="ttdoc">Destructor.</div></div>
 <div class="ttc" id="aclasse2d_1_1Window_html_a80ccba2e85f093501ddf0fe69c10c8f2"><div class="ttname"><a href="classe2d_1_1Window.html#a80ccba2e85f093501ddf0fe69c10c8f2">e2d::Window::create</a></div><div class="ttdeci">bool create(const char *title, int width, int height)</div><div class="ttdoc">Creates a window with the specified properties.</div></div>
 <div class="ttc" id="aclasse2d_1_1Window_html_a937ea86a22949258f82e38ce7d588680"><div class="ttname"><a href="classe2d_1_1Window.html#a937ea86a22949258f82e38ce7d588680">e2d::Window::getNativeWindowHandle</a></div><div class="ttdeci">void * getNativeWindowHandle() const</div><div class="ttdoc">Retrieves a handle to the native window.</div></div>
-<div class="ttc" id="aclasse2d_1_1Window_html_a9498d7f4a647b1f87d033b8c1b65a0d1"><div class="ttname"><a href="classe2d_1_1Window.html#a9498d7f4a647b1f87d033b8c1b65a0d1">e2d::Window::Window</a></div><div class="ttdeci">Window()</div><div class="ttdoc">Default constructor for Window.</div></div>
-<div class="ttc" id="anamespacee2d_html"><div class="ttname"><a href="namespacee2d.html">e2d</a></div><div class="ttdoc">Color.hpp.</div><div class="ttdef"><b>Definition:</b> <a href="Color_8hpp_source.html#l00034">Color.hpp:35</a></div></div>
+<div class="ttc" id="aclasse2d_1_1Window_html_a9498d7f4a647b1f87d033b8c1b65a0d1"><div class="ttname"><a href="classe2d_1_1Window.html#a9498d7f4a647b1f87d033b8c1b65a0d1">e2d::Window::Window</a></div><div class="ttdeci">Window()</div><div class="ttdoc">Constructs a new Window object.</div></div>
+<div class="ttc" id="anamespacee2d_html"><div class="ttname"><a href="namespacee2d.html">e2d</a></div><div class="ttdoc">Color.hpp.</div><div class="ttdef"><b>Definition:</b> <a href="Color_8hpp_source.html#l00031">Color.hpp:32</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

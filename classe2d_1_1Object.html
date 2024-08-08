@@ -76,7 +76,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Base class for all game objects in the E2D Engine.  
+<p>Abstract base class for all game objects.  
  <a href="classe2d_1_1Object.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Object_8hpp_source.html">Object.hpp</a>&gt;</code></p>
@@ -95,13 +95,13 @@ Inheritance diagram for e2d::Object:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a36622a40e5653fb979e080c89e4cef1b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Object.html#a36622a40e5653fb979e080c89e4cef1b">Object</a> ()</td></tr>
-<tr class="memdesc:a36622a40e5653fb979e080c89e4cef1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for the <a class="el" href="classe2d_1_1Object.html" title="Base class for all game objects in the E2D Engine.">Object</a> class.  <a href="classe2d_1_1Object.html#a36622a40e5653fb979e080c89e4cef1b">More...</a><br /></td></tr>
+<tr class="memdesc:a36622a40e5653fb979e080c89e4cef1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a> object.  <a href="classe2d_1_1Object.html#a36622a40e5653fb979e080c89e4cef1b">More...</a><br /></td></tr>
 <tr class="separator:a36622a40e5653fb979e080c89e4cef1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1119c36d88e0be4f74970b601098c26"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Object.html#ad1119c36d88e0be4f74970b601098c26">Object</a> (std::string identifier)</td></tr>
-<tr class="memdesc:ad1119c36d88e0be4f74970b601098c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="classe2d_1_1Object.html" title="Base class for all game objects in the E2D Engine.">Object</a> with a given identifier.  <a href="classe2d_1_1Object.html#ad1119c36d88e0be4f74970b601098c26">More...</a><br /></td></tr>
+<tr class="memdesc:ad1119c36d88e0be4f74970b601098c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a> with a given identifier.  <a href="classe2d_1_1Object.html#ad1119c36d88e0be4f74970b601098c26">More...</a><br /></td></tr>
 <tr class="separator:ad1119c36d88e0be4f74970b601098c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab577ad23e874e0f6d31471ed0063a4ed"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Object.html#ab577ad23e874e0f6d31471ed0063a4ed">~Object</a> ()=0</td></tr>
-<tr class="memdesc:ab577ad23e874e0f6d31471ed0063a4ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for <a class="el" href="classe2d_1_1Object.html" title="Base class for all game objects in the E2D Engine.">Object</a>.  <a href="classe2d_1_1Object.html#ab577ad23e874e0f6d31471ed0063a4ed">More...</a><br /></td></tr>
+<tr class="memdesc:ab577ad23e874e0f6d31471ed0063a4ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual destructor.  <a href="classe2d_1_1Object.html#ab577ad23e874e0f6d31471ed0063a4ed">More...</a><br /></td></tr>
 <tr class="separator:ab577ad23e874e0f6d31471ed0063a4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a677444ac26c471d482b614446385cc0a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Object.html#a677444ac26c471d482b614446385cc0a">fixedUpdate</a> ()=0</td></tr>
 <tr class="memdesc:a677444ac26c471d482b614446385cc0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixed update method for consistent, time-sensitive updates.  <a href="classe2d_1_1Object.html#a677444ac26c471d482b614446385cc0a">More...</a><br /></td></tr>
@@ -110,7 +110,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a71bc05f30444e55aabcec3b1c564709e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable update method for frame-dependent updates.  <a href="classe2d_1_1Object.html#a71bc05f30444e55aabcec3b1c564709e">More...</a><br /></td></tr>
 <tr class="separator:a71bc05f30444e55aabcec3b1c564709e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77ef76f464a5de1fe0b7d9c8531d1cb4"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Object.html#a77ef76f464a5de1fe0b7d9c8531d1cb4">getIdentifier</a> () const</td></tr>
-<tr class="memdesc:a77ef76f464a5de1fe0b7d9c8531d1cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the unique identifier of the <a class="el" href="classe2d_1_1Object.html" title="Base class for all game objects in the E2D Engine.">Object</a>.  <a href="classe2d_1_1Object.html#a77ef76f464a5de1fe0b7d9c8531d1cb4">More...</a><br /></td></tr>
+<tr class="memdesc:a77ef76f464a5de1fe0b7d9c8531d1cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the unique identifier of the <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a>.  <a href="classe2d_1_1Object.html#a77ef76f464a5de1fe0b7d9c8531d1cb4">More...</a><br /></td></tr>
 <tr class="separator:a77ef76f464a5de1fe0b7d9c8531d1cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -126,10 +126,10 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ObjectRegistry</b></
 <tr class="separator:a1f1df9de486fc11f33e68ead225b6911"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Base class for all game objects in the E2D Engine. </p>
-<p><a class="el" href="classe2d_1_1Object.html" title="Base class for all game objects in the E2D Engine.">Object</a> is the superclass for all types of objects in the game, providing a common interface and shared functionality. Every <a class="el" href="classe2d_1_1Object.html" title="Base class for all game objects in the E2D Engine.">Object</a> has a unique identifier and can be updated regularly through fixed and variable update methods. </p>
+<div class="textblock"><p>Abstract base class for all game objects. </p>
+<p><a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a> is the superclass for all types of objects in the game, providing a common interface and shared functionality. Every <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a> has a unique identifier and can be updated regularly through fixed and variable update methods. </p>
 
-<p class="definition">Definition at line <a class="el" href="Object_8hpp_source.html#l00052">52</a> of file <a class="el" href="Object_8hpp_source.html">Object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Object_8hpp_source.html#l00049">49</a> of file <a class="el" href="Object_8hpp_source.html">Object.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a36622a40e5653fb979e080c89e4cef1b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36622a40e5653fb979e080c89e4cef1b">&#9670;&nbsp;</a></span>Object() <span class="overload">[1/2]</span></h2>
@@ -146,7 +146,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ObjectRegistry</b></
       </table>
 </div><div class="memdoc">
 
-<p>Default constructor for the <a class="el" href="classe2d_1_1Object.html" title="Base class for all game objects in the E2D Engine.">Object</a> class. </p>
+<p>Constructs a new <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a> object. </p>
+<p>Initializes a new instance of the <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a> class. </p>
 
 </div>
 </div>
@@ -174,7 +175,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ObjectRegistry</b></
 </table>
 </div><div class="memdoc">
 
-<p>Constructs an <a class="el" href="classe2d_1_1Object.html" title="Base class for all game objects in the E2D Engine.">Object</a> with a given identifier. </p>
+<p>Constructs an <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a> with a given identifier. </p>
+<p>Initializes a new instance of the <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a> class with the specified unique identifier.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">identifier</td><td>A string representing the unique identifier of the object. </td></tr>
@@ -207,8 +209,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ObjectRegistry</b></
 </table>
 </div><div class="memdoc">
 
-<p>Virtual destructor for <a class="el" href="classe2d_1_1Object.html" title="Base class for all game objects in the E2D Engine.">Object</a>. </p>
-<p>Allows for polymorphic destruction of <a class="el" href="classe2d_1_1Object.html" title="Base class for all game objects in the E2D Engine.">Object</a> instances. </p>
+<p>Pure virtual destructor. </p>
+<p>Ensures proper cleanup of resources upon destruction. </p>
 
 </div>
 </div>
@@ -267,6 +269,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ObjectRegistry</b></
 </div><div class="memdoc">
 
 <p>Gets the application reference for this object. </p>
+<p>Provides access to the application instance managing this <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a>.</p>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the application. </dd></dl>
 
 </div>
@@ -286,7 +289,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ObjectRegistry</b></
       </table>
 </div><div class="memdoc">
 
-<p>Gets the unique identifier of the <a class="el" href="classe2d_1_1Object.html" title="Base class for all game objects in the E2D Engine.">Object</a>. </p>
+<p>Gets the unique identifier of the <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a>. </p>
+<p>Retrieves the unique identifier assigned to this <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a>.</p>
 <dl class="section return"><dt>Returns</dt><dd>The identifier as a const reference to a string. </dd></dl>
 
 </div>

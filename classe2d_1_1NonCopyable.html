@@ -85,16 +85,16 @@ Inheritance diagram for e2d::NonCopyable:</div>
  <div class="center">
   <img src="classe2d_1_1NonCopyable.png" usemap="#e2d::NonCopyable_map" alt=""/>
   <map id="e2d::NonCopyable_map" name="e2d::NonCopyable_map">
-<area href="classe2d_1_1Application.html" title="Core class for managing the application lifecycle in the E2D Engine, handling initialization,..." alt="e2d::Application" shape="rect" coords="159,56,308,80"/>
-<area href="classe2d_1_1Object.html" title="Base class for all game objects in the E2D Engine." alt="e2d::Object" shape="rect" coords="159,112,308,136"/>
-<area href="classe2d_1_1ObjectRegistry.html" title="Manages a registry of all game objects in the E2D Engine." alt="e2d::ObjectRegistry" shape="rect" coords="159,168,308,192"/>
+<area href="classe2d_1_1Application.html" title="Abstract base for managing the lifecycle and main loop of the application." alt="e2d::Application" shape="rect" coords="159,56,308,80"/>
+<area href="classe2d_1_1Object.html" title="Abstract base class for all game objects." alt="e2d::Object" shape="rect" coords="159,112,308,136"/>
+<area href="classe2d_1_1ObjectRegistry.html" title="Manages a registry of all game objects." alt="e2d::ObjectRegistry" shape="rect" coords="159,168,308,192"/>
 <area href="classe2d_1_1Renderable.html" title="Abstract base class for renderable objects." alt="e2d::Renderable" shape="rect" coords="159,224,308,248"/>
 <area href="classe2d_1_1Renderer.html" title="Handles the rendering process for graphical objects." alt="e2d::Renderer" shape="rect" coords="159,280,308,304"/>
-<area href="classe2d_1_1Resource.html" title="Abstract base class for all resource types in the E2D engine." alt="e2d::Resource" shape="rect" coords="159,336,308,360"/>
+<area href="classe2d_1_1Resource.html" title="Abstract base class for all resource types." alt="e2d::Resource" shape="rect" coords="159,336,308,360"/>
 <area href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers." alt="e2d::ResourceRegistry" shape="rect" coords="159,392,308,416"/>
 <area href="classe2d_1_1System.html" title="Manages the initialization and shutdown of the engine&#39;s core subsystems." alt="e2d::System" shape="rect" coords="159,448,308,472"/>
 <area href="classe2d_1_1Timer.html" title="A class that provides functionality for a timer that can be paused, stopped, or resumed." alt="e2d::Timer" shape="rect" coords="159,504,308,528"/>
-<area href="classe2d_1_1Transformable.html" alt="e2d::Transformable" shape="rect" coords="159,560,308,584"/>
+<area href="classe2d_1_1Transformable.html" title="Provides an interface for objects that can be transformed." alt="e2d::Transformable" shape="rect" coords="159,560,308,584"/>
 <area href="classe2d_1_1Window.html" title="Represents a graphical window." alt="e2d::Window" shape="rect" coords="159,616,308,640"/>
 <area href="classe2d_1_1internal_1_1FormatImpl.html" title="A utility class for formatting strings with placeholders." alt="e2d::internal::FormatImpl" shape="rect" coords="159,672,308,696"/>
 <area href="classe2d_1_1internal_1_1LoggerImpl.html" title="Provides logging functionality with different log levels." alt="e2d::internal::LoggerImpl" shape="rect" coords="159,728,308,752"/>
@@ -121,8 +121,9 @@ Protected Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classe2d_1_1NonCopyable.html" title="The NonCopyable class provides a base class to make derived classes non-copyable.">NonCopyable</a> class provides a base class to make derived classes non-copyable. </p>
+<p>This class is intended to be used as a base class for other classes to prevent copying. It deletes the copy constructor and copy assignment operator, ensuring that objects of derived classes cannot be copied. </p>
 
-<p class="definition">Definition at line <a class="el" href="NonCopyable_8hpp_source.html#l00041">41</a> of file <a class="el" href="NonCopyable_8hpp_source.html">NonCopyable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NonCopyable_8hpp_source.html#l00043">43</a> of file <a class="el" href="NonCopyable_8hpp_source.html">NonCopyable.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a632e9b9f1948c9208ecb3258a78d69df"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a632e9b9f1948c9208ecb3258a78d69df">&#9670;&nbsp;</a></span>NonCopyable() <span class="overload">[1/2]</span></h2>
@@ -149,6 +150,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Deleted copy constructor to prevent copying of objects. </p>
+<p>Prevents copying of the <a class="el" href="classe2d_1_1NonCopyable.html" title="The NonCopyable class provides a base class to make derived classes non-copyable.">NonCopyable</a> object.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">other</td><td>The object to be copied. </td></tr>
@@ -182,6 +184,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Default constructor. </p>
+<p>Allows derived classes to be constructed. </p>
 
 </div>
 </div>
@@ -209,6 +212,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Default destructor. </p>
+<p>Allows derived classes to be destructed. </p>
 
 </div>
 </div>
@@ -238,13 +242,14 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Deleted copy assignment operator to prevent assignment of objects. </p>
+<p>Prevents assignment of the <a class="el" href="classe2d_1_1NonCopyable.html" title="The NonCopyable class provides a base class to make derived classes non-copyable.">NonCopyable</a> object.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The object to be assigned.</td></tr>
+    <tr><td class="paramname">other</td><td>The object to be assigned. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classe2d_1_1NonCopyable.html" title="The NonCopyable class provides a base class to make derived classes non-copyable.">NonCopyable</a>&amp; A reference to the current object. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the current object. </dd></dl>
 
 </div>
 </div>

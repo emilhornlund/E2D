@@ -93,7 +93,7 @@ Inheritance diagram for e2d::Renderable:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad40c77485d91f5a4d03b091d4a24156b"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Renderable.html#ad40c77485d91f5a4d03b091d4a24156b">~Renderable</a> ()=0</td></tr>
-<tr class="memdesc:ad40c77485d91f5a4d03b091d4a24156b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for <a class="el" href="classe2d_1_1Renderable.html" title="Abstract base class for renderable objects.">Renderable</a>.  <a href="classe2d_1_1Renderable.html#ad40c77485d91f5a4d03b091d4a24156b">More...</a><br /></td></tr>
+<tr class="memdesc:ad40c77485d91f5a4d03b091d4a24156b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual destructor.  <a href="classe2d_1_1Renderable.html#ad40c77485d91f5a4d03b091d4a24156b">More...</a><br /></td></tr>
 <tr class="separator:ad40c77485d91f5a4d03b091d4a24156b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad548808c46d669983870547b5d36ea8b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Renderable.html#ad548808c46d669983870547b5d36ea8b">getRenderPriority</a> () const</td></tr>
 <tr class="memdesc:ad548808c46d669983870547b5d36ea8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the render priority of the object.  <a href="classe2d_1_1Renderable.html#ad548808c46d669983870547b5d36ea8b">More...</a><br /></td></tr>
@@ -109,7 +109,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p>Abstract base class for renderable objects. </p>
 <p>This class provides an interface for all objects that can be rendered using a <a class="el" href="classe2d_1_1Renderer.html" title="Handles the rendering process for graphical objects.">Renderer</a>. It declares a pure virtual render method that must be implemented by all derived classes. </p>
 
-<p class="definition">Definition at line <a class="el" href="Renderable_8hpp_source.html#l00049">49</a> of file <a class="el" href="Renderable_8hpp_source.html">Renderable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Renderable_8hpp_source.html#l00046">46</a> of file <a class="el" href="Renderable_8hpp_source.html">Renderable.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad40c77485d91f5a4d03b091d4a24156b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad40c77485d91f5a4d03b091d4a24156b">&#9670;&nbsp;</a></span>~Renderable()</h2>
@@ -134,8 +134,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Virtual destructor for <a class="el" href="classe2d_1_1Renderable.html" title="Abstract base class for renderable objects.">Renderable</a>. </p>
-<p>Ensures proper destruction of derived classes. </p>
+<p>Pure virtual destructor. </p>
+<p>Ensures proper cleanup of resources upon destruction. </p>
 
 </div>
 </div>
@@ -156,7 +156,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the render priority of the object. </p>
-<p>Return a value indicating the rendering order of the object. Objects with higher priority values should be rendered later (on top).</p>
+<p>Returns a value indicating the rendering order of the object. Objects with higher priority values should be rendered later (on top).</p>
 <dl class="section return"><dt>Returns</dt><dd>int The render priority of the object. </dd></dl>
 
 </div>

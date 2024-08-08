@@ -76,7 +76,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Abstract base class for all resource types in the E2D engine.  
+<p>Abstract base class for all resource types.  
  <a href="classe2d_1_1Resource.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Resource_8hpp_source.html">Resource.hpp</a>&gt;</code></p>
@@ -95,10 +95,10 @@ Inheritance diagram for e2d::Resource:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a03a40c1c71eb1de92d15266328b71aba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Resource.html#a03a40c1c71eb1de92d15266328b71aba">Resource</a> ()</td></tr>
-<tr class="memdesc:a03a40c1c71eb1de92d15266328b71aba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for <a class="el" href="classe2d_1_1Resource.html" title="Abstract base class for all resource types in the E2D engine.">Resource</a>.  <a href="classe2d_1_1Resource.html#a03a40c1c71eb1de92d15266328b71aba">More...</a><br /></td></tr>
+<tr class="memdesc:a03a40c1c71eb1de92d15266328b71aba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classe2d_1_1Resource.html" title="Abstract base class for all resource types.">Resource</a> object.  <a href="classe2d_1_1Resource.html#a03a40c1c71eb1de92d15266328b71aba">More...</a><br /></td></tr>
 <tr class="separator:a03a40c1c71eb1de92d15266328b71aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4e3542fd1b9d3e322903e22cd29ab8b"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Resource.html#ac4e3542fd1b9d3e322903e22cd29ab8b">~Resource</a> ()=0</td></tr>
-<tr class="memdesc:ac4e3542fd1b9d3e322903e22cd29ab8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual destructor for <a class="el" href="classe2d_1_1Resource.html" title="Abstract base class for all resource types in the E2D engine.">Resource</a>.  <a href="classe2d_1_1Resource.html#ac4e3542fd1b9d3e322903e22cd29ab8b">More...</a><br /></td></tr>
+<tr class="memdesc:ac4e3542fd1b9d3e322903e22cd29ab8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual destructor.  <a href="classe2d_1_1Resource.html#ac4e3542fd1b9d3e322903e22cd29ab8b">More...</a><br /></td></tr>
 <tr class="separator:ac4e3542fd1b9d3e322903e22cd29ab8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cbaeb5b6b86e3686d880edae9852a6a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Resource.html#a0cbaeb5b6b86e3686d880edae9852a6a">loadFromFile</a> (const std::string &amp;filepath)=0</td></tr>
 <tr class="memdesc:a0cbaeb5b6b86e3686d880edae9852a6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the resource from a file.  <a href="classe2d_1_1Resource.html#a0cbaeb5b6b86e3686d880edae9852a6a">More...</a><br /></td></tr>
@@ -120,10 +120,10 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ResourceRegistry</b>
 <tr class="separator:a4a736512a691c901799631171a72f126"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Abstract base class for all resource types in the E2D engine. </p>
-<p>The <a class="el" href="classe2d_1_1Resource.html" title="Abstract base class for all resource types in the E2D engine.">Resource</a> class provides a common interface for all resources managed by the engine. </p>
+<div class="textblock"><p>Abstract base class for all resource types. </p>
+<p>The <a class="el" href="classe2d_1_1Resource.html" title="Abstract base class for all resource types.">Resource</a> class provides a common interface for all resources managed by the E2D engine. Derived classes must implement methods for loading resources from files and memory. </p>
 
-<p class="definition">Definition at line <a class="el" href="Resource_8hpp_source.html#l00051">51</a> of file <a class="el" href="Resource_8hpp_source.html">Resource.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Resource_8hpp_source.html#l00048">48</a> of file <a class="el" href="Resource_8hpp_source.html">Resource.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a03a40c1c71eb1de92d15266328b71aba"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a03a40c1c71eb1de92d15266328b71aba">&#9670;&nbsp;</a></span>Resource()</h2>
@@ -140,7 +140,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ResourceRegistry</b>
       </table>
 </div><div class="memdoc">
 
-<p>Default constructor for <a class="el" href="classe2d_1_1Resource.html" title="Abstract base class for all resource types in the E2D engine.">Resource</a>. </p>
+<p>Constructs a new <a class="el" href="classe2d_1_1Resource.html" title="Abstract base class for all resource types.">Resource</a> object. </p>
+<p>Initializes a new instance of the <a class="el" href="classe2d_1_1Resource.html" title="Abstract base class for all resource types.">Resource</a> class. </p>
 
 </div>
 </div>
@@ -167,7 +168,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ResourceRegistry</b>
 </table>
 </div><div class="memdoc">
 
-<p>Pure virtual destructor for <a class="el" href="classe2d_1_1Resource.html" title="Abstract base class for all resource types in the E2D engine.">Resource</a>. </p>
+<p>Pure virtual destructor. </p>
+<p>Ensures proper cleanup of resources upon destruction. </p>
 
 </div>
 </div>
@@ -196,6 +198,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ResourceRegistry</b>
 </div><div class="memdoc">
 
 <p>Gets the application reference for this resource. </p>
+<p>Provides access to the application instance managing this <a class="el" href="classe2d_1_1Resource.html" title="Abstract base class for all resource types.">Resource</a>.</p>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the application. </dd></dl>
 
 </div>
@@ -281,7 +284,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ResourceRegistry</b>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the resource is successfully loaded from memory, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the resource is successfully loaded from memory, false otherwise. </dd></dl>
 
 <p>Implemented in <a class="el" href="classe2d_1_1Texture.html#a7e2fcec5352357483c6a6af916c970a9">e2d::Texture</a>, and <a class="el" href="classe2d_1_1Font.html#a9d65f1a788e11be1710a19935b4397c4">e2d::Font</a>.</p>
 

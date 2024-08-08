@@ -91,10 +91,10 @@ Inheritance diagram for e2d::Window:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9498d7f4a647b1f87d033b8c1b65a0d1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Window.html#a9498d7f4a647b1f87d033b8c1b65a0d1">Window</a> ()</td></tr>
-<tr class="memdesc:a9498d7f4a647b1f87d033b8c1b65a0d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for <a class="el" href="classe2d_1_1Window.html" title="Represents a graphical window.">Window</a>.  <a href="classe2d_1_1Window.html#a9498d7f4a647b1f87d033b8c1b65a0d1">More...</a><br /></td></tr>
+<tr class="memdesc:a9498d7f4a647b1f87d033b8c1b65a0d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classe2d_1_1Window.html" title="Represents a graphical window.">Window</a> object.  <a href="classe2d_1_1Window.html#a9498d7f4a647b1f87d033b8c1b65a0d1">More...</a><br /></td></tr>
 <tr class="separator:a9498d7f4a647b1f87d033b8c1b65a0d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a18662c78fccd7250af2ab0633b231e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Window.html#a7a18662c78fccd7250af2ab0633b231e">~Window</a> ()</td></tr>
-<tr class="memdesc:a7a18662c78fccd7250af2ab0633b231e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for <a class="el" href="classe2d_1_1Window.html" title="Represents a graphical window.">Window</a>.  <a href="classe2d_1_1Window.html#a7a18662c78fccd7250af2ab0633b231e">More...</a><br /></td></tr>
+<tr class="memdesc:a7a18662c78fccd7250af2ab0633b231e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="classe2d_1_1Window.html#a7a18662c78fccd7250af2ab0633b231e">More...</a><br /></td></tr>
 <tr class="separator:a7a18662c78fccd7250af2ab0633b231e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80ccba2e85f093501ddf0fe69c10c8f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Window.html#a80ccba2e85f093501ddf0fe69c10c8f2">create</a> (const char *title, int width, int height)</td></tr>
 <tr class="memdesc:a80ccba2e85f093501ddf0fe69c10c8f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a window with the specified properties.  <a href="classe2d_1_1Window.html#a80ccba2e85f093501ddf0fe69c10c8f2">More...</a><br /></td></tr>
@@ -113,7 +113,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p>Represents a graphical window. </p>
 <p>This class provides functionalities to create, manage, and interact with a graphical window. It abstracts the underlying implementation details and provides a simple interface for window management. </p>
 
-<p class="definition">Definition at line <a class="el" href="Window_8hpp_source.html#l00059">59</a> of file <a class="el" href="Window_8hpp_source.html">Window.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Window_8hpp_source.html#l00053">53</a> of file <a class="el" href="Window_8hpp_source.html">Window.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9498d7f4a647b1f87d033b8c1b65a0d1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9498d7f4a647b1f87d033b8c1b65a0d1">&#9670;&nbsp;</a></span>Window()</h2>
@@ -130,7 +130,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Default constructor for <a class="el" href="classe2d_1_1Window.html" title="Represents a graphical window.">Window</a>. </p>
+<p>Constructs a new <a class="el" href="classe2d_1_1Window.html" title="Represents a graphical window.">Window</a> object. </p>
 <p>Initializes a new <a class="el" href="classe2d_1_1Window.html" title="Represents a graphical window.">Window</a> object. </p>
 
 </div>
@@ -150,8 +150,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Destructor for <a class="el" href="classe2d_1_1Window.html" title="Represents a graphical window.">Window</a>. </p>
-<p>Cleans up resources used by the <a class="el" href="classe2d_1_1Window.html" title="Represents a graphical window.">Window</a> object. </p>
+<p>Destructor. </p>
+<p>Ensures proper cleanup of resources upon destruction. </p>
 
 </div>
 </div>
@@ -189,6 +189,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a window with the specified properties. </p>
+<p>Initializes the window with a title, width, and height.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">title</td><td>The title of the window. </td></tr>
@@ -217,6 +218,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Destroys the window, freeing its resources. </p>
+<p>Frees the resources associated with the window. </p>
 
 </div>
 </div>
@@ -257,6 +259,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Checks if the window is created and valid. </p>
+<p>Determines whether the window is currently created and valid for use.</p>
 <dl class="section return"><dt>Returns</dt><dd>True if the window is created, false otherwise. </dd></dl>
 
 </div>

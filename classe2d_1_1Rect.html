@@ -69,6 +69,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#related">Related Functions</a> &#124;
 <a href="classe2d_1_1Rect-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">e2d::Rect&lt; T &gt; Class Template Reference</div>  </div>
@@ -122,12 +123,26 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:adfed97b527bdd0606cc400d397f5c61b"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Rect.html#adfed97b527bdd0606cc400d397f5c61b">height</a> {}</td></tr>
 <tr class="memdesc:adfed97b527bdd0606cc400d397f5c61b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The height of the rectangle.  <a href="classe2d_1_1Rect.html#adfed97b527bdd0606cc400d397f5c61b">More...</a><br /></td></tr>
 <tr class="separator:adfed97b527bdd0606cc400d397f5c61b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="related"></a>
+Related Functions</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>(Note that these are not member functions.) </p>
+</td></tr>
+<tr class="memitem:a31873741be08f374bc6bb7cfbfeaf468"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a31873741be08f374bc6bb7cfbfeaf468"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classe2d_1_1Rect.html#a31873741be08f374bc6bb7cfbfeaf468">operator==</a> (const <a class="el" href="classe2d_1_1Rect.html">Rect</a>&lt; T &gt; &amp;<a class="el" href="classe2d_1_1Rect.html#ab6bb071862573ebfa905a0b9da774960">left</a>, const <a class="el" href="classe2d_1_1Rect.html">Rect</a>&lt; T &gt; &amp;right)</td></tr>
+<tr class="memdesc:a31873741be08f374bc6bb7cfbfeaf468"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two rectangles for equality.  <a href="classe2d_1_1Rect.html#a31873741be08f374bc6bb7cfbfeaf468">More...</a><br /></td></tr>
+<tr class="separator:a31873741be08f374bc6bb7cfbfeaf468"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9f833120465eefcc4c6e4f76ee7b6cf"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ae9f833120465eefcc4c6e4f76ee7b6cf"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classe2d_1_1Rect.html#ae9f833120465eefcc4c6e4f76ee7b6cf">operator!=</a> (const <a class="el" href="classe2d_1_1Rect.html">Rect</a>&lt; T &gt; &amp;<a class="el" href="classe2d_1_1Rect.html#ab6bb071862573ebfa905a0b9da774960">left</a>, const <a class="el" href="classe2d_1_1Rect.html">Rect</a>&lt; T &gt; &amp;right)</td></tr>
+<tr class="memdesc:ae9f833120465eefcc4c6e4f76ee7b6cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two rectangles for inequality.  <a href="classe2d_1_1Rect.html#ae9f833120465eefcc4c6e4f76ee7b6cf">More...</a><br /></td></tr>
+<tr class="separator:ae9f833120465eefcc4c6e4f76ee7b6cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br />
 class e2d::Rect&lt; T &gt;</h3>
 
 <p>Represents a rectangle defined by a position (top-left corner) and a size (width and height). </p>
+<p>The <a class="el" href="classe2d_1_1Rect.html" title="Represents a rectangle defined by a position (top-left corner) and a size (width and height).">Rect</a> class provides functionalities to define and manipulate rectangles. It supports operations like checking if a point is inside the rectangle, finding the intersection with another rectangle, and retrieving the position, size, and center of the rectangle.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The numerical type of the rectangle's components (e.g., int, float, double). </td></tr>
@@ -135,7 +150,7 @@ class e2d::Rect&lt; T &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Rect_8hpp_source.html#l00046">46</a> of file <a class="el" href="Rect_8hpp_source.html">Rect.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Rect_8hpp_source.html#l00048">48</a> of file <a class="el" href="Rect_8hpp_source.html">Rect.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="acb633cc912d186fa1f435d768a6c0c07"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acb633cc912d186fa1f435d768a6c0c07">&#9670;&nbsp;</a></span>Rect() <span class="overload">[1/3]</span></h2>
@@ -163,6 +178,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Constructs a default rectangle with zeroed position and size. </p>
+<p>Initializes the rectangle with left, top, width, and height all set to zero. </p>
 
 </div>
 </div>
@@ -203,6 +219,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Constructs a rectangle with specified position and size. </p>
+<p>Initializes the rectangle with the given position (top-left corner) and size.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">position</td><td>The position of the top-left corner of the rectangle. </td></tr>
@@ -242,6 +259,7 @@ template&lt;typename U &gt; </div>
 </div><div class="memdoc">
 
 <p>Constructs a rectangle by converting from another rectangle of a different type. </p>
+<p>Initializes the rectangle by converting the components of another rectangle to this rectangle's type.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">U</td><td>The type of the source rectangle. </td></tr>
@@ -285,13 +303,14 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Checks if the rectangle contains a given point. </p>
+<p>Determines whether the specified point is inside the rectangle.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">point</td><td>The point to check. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the rectangle contains the point, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the rectangle contains the point, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -322,6 +341,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Finds the intersection with another rectangle. </p>
+<p>Calculates the intersection area between this rectangle and another rectangle.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">rectangle</td><td>The other rectangle to find the intersection with. </td></tr>
@@ -358,6 +378,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Gets the center point of the rectangle. </p>
+<p>Calculates and returns the center point of the rectangle.</p>
 <dl class="section return"><dt>Returns</dt><dd>The center point of the rectangle. </dd></dl>
 
 </div>
@@ -388,6 +409,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Gets the position of the rectangle. </p>
+<p>Retrieves the position of the top-left corner of the rectangle.</p>
 <dl class="section return"><dt>Returns</dt><dd>The position of the top-left corner of the rectangle. </dd></dl>
 
 </div>
@@ -418,7 +440,119 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Gets the size of the rectangle. </p>
+<p>Retrieves the size of the rectangle.</p>
 <dl class="section return"><dt>Returns</dt><dd>The size of the rectangle. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="ae9f833120465eefcc4c6e4f76ee7b6cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9f833120465eefcc4c6e4f76ee7b6cf">&#9670;&nbsp;</a></span>operator!=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classe2d_1_1Rect.html">Rect</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classe2d_1_1Rect.html">Rect</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>right</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compares two rectangles for inequality. </p>
+<p>Determines whether the specified rectangles are not equal.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The numerical type of the rectangle's components. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">left</td><td>The first rectangle. </td></tr>
+    <tr><td class="paramname">right</td><td>The second rectangle. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the rectangles are not equal, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a31873741be08f374bc6bb7cfbfeaf468"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31873741be08f374bc6bb7cfbfeaf468">&#9670;&nbsp;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classe2d_1_1Rect.html">Rect</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classe2d_1_1Rect.html">Rect</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>right</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compares two rectangles for equality. </p>
+<p>Determines whether the specified rectangles are equal.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The numerical type of the rectangle's components. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">left</td><td>The first rectangle. </td></tr>
+    <tr><td class="paramname">right</td><td>The second rectangle. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the rectangles are equal, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -439,7 +573,7 @@ template&lt;typename T &gt; </div>
 
 <p>The height of the rectangle. </p>
 
-<p class="definition">Definition at line <a class="el" href="Rect_8hpp_source.html#l00111">111</a> of file <a class="el" href="Rect_8hpp_source.html">Rect.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Rect_8hpp_source.html#l00129">129</a> of file <a class="el" href="Rect_8hpp_source.html">Rect.hpp</a>.</p>
 
 </div>
 </div>
@@ -459,7 +593,7 @@ template&lt;typename T &gt; </div>
 
 <p>The left coordinate of the rectangle. </p>
 
-<p class="definition">Definition at line <a class="el" href="Rect_8hpp_source.html#l00108">108</a> of file <a class="el" href="Rect_8hpp_source.html">Rect.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Rect_8hpp_source.html#l00126">126</a> of file <a class="el" href="Rect_8hpp_source.html">Rect.hpp</a>.</p>
 
 </div>
 </div>
@@ -479,7 +613,7 @@ template&lt;typename T &gt; </div>
 
 <p>The top coordinate of the rectangle. </p>
 
-<p class="definition">Definition at line <a class="el" href="Rect_8hpp_source.html#l00109">109</a> of file <a class="el" href="Rect_8hpp_source.html">Rect.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Rect_8hpp_source.html#l00127">127</a> of file <a class="el" href="Rect_8hpp_source.html">Rect.hpp</a>.</p>
 
 </div>
 </div>
@@ -499,7 +633,7 @@ template&lt;typename T &gt; </div>
 
 <p>The width of the rectangle. </p>
 
-<p class="definition">Definition at line <a class="el" href="Rect_8hpp_source.html#l00110">110</a> of file <a class="el" href="Rect_8hpp_source.html">Rect.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Rect_8hpp_source.html#l00128">128</a> of file <a class="el" href="Rect_8hpp_source.html">Rect.hpp</a>.</p>
 
 </div>
 </div>
