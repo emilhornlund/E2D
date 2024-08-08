@@ -4,7 +4,7 @@ var searchData=
   ['f1_65',['F1',['../Keyboard_8hpp.html#gad92603c71fa97e5b93c1d68951625ab0ae1dffc8709f31a4987c8a88334107e89',1,'F1()e2d::Keyboard'],['../Keyboard_8hpp.html#gad3b9d10d3c7bbb16b0e119fb542727b6ae1dffc8709f31a4987c8a88334107e89',1,'F1()e2d::Keyboard']]],
   ['f10_66',['F10',['../Keyboard_8hpp.html#gad92603c71fa97e5b93c1d68951625ab0ab213ce22ca6ad4eda8db82966b9b6e5a',1,'F10()e2d::Keyboard'],['../Keyboard_8hpp.html#gad3b9d10d3c7bbb16b0e119fb542727b6ab213ce22ca6ad4eda8db82966b9b6e5a',1,'F10()e2d::Keyboard']]],
   ['f11_67',['F11',['../Keyboard_8hpp.html#gad92603c71fa97e5b93c1d68951625ab0a643b0662422d1d0dffa3fca2e2bf28a8',1,'F11()e2d::Keyboard'],['../Keyboard_8hpp.html#gad3b9d10d3c7bbb16b0e119fb542727b6a643b0662422d1d0dffa3fca2e2bf28a8',1,'F11()e2d::Keyboard']]],
-  ['f12_68',['F12',['../Keyboard_8hpp.html#gad3b9d10d3c7bbb16b0e119fb542727b6ae902674982fc99aa343cdd94da7476c3',1,'F12()e2d::Keyboard'],['../Keyboard_8hpp.html#gad92603c71fa97e5b93c1d68951625ab0ae902674982fc99aa343cdd94da7476c3',1,'F12()e2d::Keyboard']]],
+  ['f12_68',['F12',['../Keyboard_8hpp.html#gad92603c71fa97e5b93c1d68951625ab0ae902674982fc99aa343cdd94da7476c3',1,'F12()e2d::Keyboard'],['../Keyboard_8hpp.html#gad3b9d10d3c7bbb16b0e119fb542727b6ae902674982fc99aa343cdd94da7476c3',1,'F12()e2d::Keyboard']]],
   ['f13_69',['F13',['../Keyboard_8hpp.html#gad92603c71fa97e5b93c1d68951625ab0a95dfde4807d4d6a9eec499203b3c24a0',1,'F13()e2d::Keyboard'],['../Keyboard_8hpp.html#gad3b9d10d3c7bbb16b0e119fb542727b6a95dfde4807d4d6a9eec499203b3c24a0',1,'F13()e2d::Keyboard']]],
   ['f14_70',['F14',['../Keyboard_8hpp.html#gad3b9d10d3c7bbb16b0e119fb542727b6a2468649b6215c4cdd2aef5095b3f5932',1,'F14()e2d::Keyboard'],['../Keyboard_8hpp.html#gad92603c71fa97e5b93c1d68951625ab0a2468649b6215c4cdd2aef5095b3f5932',1,'F14()e2d::Keyboard']]],
   ['f15_71',['F15',['../Keyboard_8hpp.html#gad3b9d10d3c7bbb16b0e119fb542727b6ae53b55851b9ff4979f2c3ff434a4a138',1,'F15()e2d::Keyboard'],['../Keyboard_8hpp.html#gad92603c71fa97e5b93c1d68951625ab0ae53b55851b9ff4979f2c3ff434a4a138',1,'F15()e2d::Keyboard']]],
@@ -33,8 +33,8 @@ var searchData=
   ['font_2ehpp_94',['Font.hpp',['../Font_8hpp.html',1,'']]],
   ['fontimpl_95',['FontImpl',['../classe2d_1_1internal_1_1FontImpl.html',1,'e2d::internal::FontImpl'],['../classe2d_1_1internal_1_1FontImpl.html#a3b12e39c088ca9fe48a81eec226f88ab',1,'e2d::internal::FontImpl::FontImpl()']]],
   ['fontimpl_2ehpp_96',['FontImpl.hpp',['../FontImpl_8hpp.html',1,'']]],
-  ['format_97',['format',['../classe2d_1_1internal_1_1FormatImpl.html#adf798f848e5daa529f14010b7e8c684e',1,'e2d::internal::FormatImpl::format()'],['../Format_8hpp.html#a82fd9aa24746a5278526d43bf8a72bd5',1,'e2d::format()']]],
-  ['format_2ehpp_98',['Format.hpp',['../Format_8hpp.html',1,'']]],
-  ['formatimpl_99',['FormatImpl',['../classe2d_1_1internal_1_1FormatImpl.html',1,'e2d::internal::FormatImpl'],['../classe2d_1_1internal_1_1FormatImpl.html#ad7bd188093e00366b9202329cea772f0',1,'e2d::internal::FormatImpl::FormatImpl()']]],
+  ['format_97',['format',['../classe2d_1_1Formatter.html#a708e6545cd48e8e12f5bb0dd0a2052f9',1,'e2d::Formatter']]],
+  ['formatter_98',['Formatter',['../classe2d_1_1Formatter.html',1,'e2d']]],
+  ['formatter_2ehpp_99',['Formatter.hpp',['../Formatter_8hpp.html',1,'']]],
   ['forward_100',['Forward',['../Keyboard_8hpp.html#gad92603c71fa97e5b93c1d68951625ab0a67d2f6740a8eaebf4d5c6f79be8da481',1,'e2d::Keyboard']]]
 ];

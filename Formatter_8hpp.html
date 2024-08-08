@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>E2D: include/E2D/Core/Format.hpp File Reference</title>
+<title>E2D: include/E2D/Core/Formatter.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,10 +68,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
-<div class="title">Format.hpp File Reference</div>  </div>
+<div class="title">Formatter.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -82,21 +81,15 @@ $(function() {
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;E2D/Core/Formatter.inl&gt;</code><br />
 </div>
-<p><a href="Format_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="Formatter_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1internal_1_1FormatImpl.html">e2d::internal::FormatImpl</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="internal-label">Internal</span> A utility class for formatting strings with placeholders.  <a href="classe2d_1_1internal_1_1FormatImpl.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Formatter.html">e2d::Formatter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A utility class for formatting strings with placeholders.  <a href="classe2d_1_1Formatter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a82fd9aa24746a5278526d43bf8a72bd5"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
-<tr class="memitem:a82fd9aa24746a5278526d43bf8a72bd5"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="Format_8hpp.html#a82fd9aa24746a5278526d43bf8a72bd5">e2d::format</a> (const std::string &amp;text, Args &amp;&amp;... args)</td></tr>
-<tr class="memdesc:a82fd9aa24746a5278526d43bf8a72bd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats a string with the given arguments.  <a href="Format_8hpp.html#a82fd9aa24746a5278526d43bf8a72bd5">More...</a><br /></td></tr>
-<tr class="separator:a82fd9aa24746a5278526d43bf8a72bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>MIT License. </p>
@@ -105,66 +98,8 @@ Functions</h2></td></tr>
 <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. </p>
 
-<p class="definition">Definition in file <a class="el" href="Format_8hpp_source.html">Format.hpp</a>.</p>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a82fd9aa24746a5278526d43bf8a72bd5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82fd9aa24746a5278526d43bf8a72bd5">&#9670;&nbsp;</a></span>format()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename... Args&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string e2d::format </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>text</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Args &amp;&amp;...&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Formats a string with the given arguments. </p>
-<p>A convenience function that delegates to the internal FormatImpl class to format strings with placeholders "{}".</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Args</td><td>The types of the arguments to format. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">text</td><td>The format string containing placeholders. </td></tr>
-    <tr><td class="paramname">args</td><td>The arguments to replace the placeholders. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A formatted string with placeholders replaced by the arguments. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="Format_8hpp_source.html#l00180">180</a> of file <a class="el" href="Format_8hpp_source.html">Format.hpp</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+<p class="definition">Definition in file <a class="el" href="Formatter_8hpp_source.html">Formatter.hpp</a>.</p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
