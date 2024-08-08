@@ -1,5 +1,5 @@
 /**
- * @file LoggerImpl.cpp
+ * @file Logger.cpp
  *
  * MIT License
  *
@@ -64,7 +64,7 @@ void enableVirtualTerminalProcessing()
 }
 } // namespace
 
-e2d::internal::LoggerImpl::LoggerImpl()
+e2d::Logger::Logger()
 {
 #ifdef E2D_DEBUG
     this->m_currentLevel = E2D_LOG_LEVEL_DEBUG;
@@ -72,13 +72,13 @@ e2d::internal::LoggerImpl::LoggerImpl()
     enableVirtualTerminalProcessing();
 }
 
-e2d::internal::LoggerImpl& e2d::internal::LoggerImpl::getInstance()
+e2d::Logger& e2d::Logger::getInstance()
 {
-    static LoggerImpl instance;
+    static Logger instance;
     return instance;
 }
 
-void e2d::internal::LoggerImpl::logImpl(LogLevel level, const std::string& message)
+void e2d::Logger::logImpl(LogLevel level, const std::string& message)
 {
     if (level < this->m_currentLevel)
     {
@@ -94,7 +94,7 @@ void e2d::internal::LoggerImpl::logImpl(LogLevel level, const std::string& messa
     std::cout << logStream.str();
 }
 
-std::string e2d::internal::LoggerImpl::currentDateTime()
+std::string e2d::Logger::currentDateTime()
 {
     auto       now       = std::chrono::system_clock::now();
     auto       ms        = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000;
@@ -106,7 +106,7 @@ std::string e2d::internal::LoggerImpl::currentDateTime()
     return oss.str();
 }
 
-std::string e2d::internal::LoggerImpl::logLevelToString(e2d::internal::LogLevel level)
+std::string e2d::Logger::logLevelToString(LogLevel level)
 {
     switch (level)
     {
@@ -122,7 +122,7 @@ std::string e2d::internal::LoggerImpl::logLevelToString(e2d::internal::LogLevel 
     return "UNKNOWN";
 }
 
-std::string e2d::internal::LoggerImpl::padLogLevel(const std::string& logLevel)
+std::string e2d::Logger::padLogLevel(const std::string& logLevel)
 {
     const size_t maxLength = 5; // Maximum length of log levels
     if (logLevel.length() < maxLength)
@@ -132,7 +132,7 @@ std::string e2d::internal::LoggerImpl::padLogLevel(const std::string& logLevel)
     return logLevel;
 }
 
-const char* e2d::internal::LoggerImpl::getColorForLogLevel(e2d::internal::LogLevel level)
+const char* e2d::Logger::getColorForLogLevel(LogLevel level)
 {
     switch (level)
     {

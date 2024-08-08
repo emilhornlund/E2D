@@ -11,6 +11,7 @@ set(SRC
     ${INCROOT}/Formatter.inl
     ${SRCROOT}/Formatter.cpp
     ${INCROOT}/Logger.hpp
+    ${INCROOT}/Logger.inl
     ${SRCROOT}/Logger.cpp
     ${INCROOT}/NonCopyable.hpp
     ${INCROOT}/Rect.hpp

@@ -38,13 +38,10 @@
 namespace e2d
 {
 
-namespace internal
-{
-
 /**
  * @enum LogLevel
  * @ingroup core
- * @brief @internal Represents the different levels of logging severity.
+ * @brief Represents the different levels of logging severity.
  */
 enum LogLevel
 {
@@ -55,13 +52,13 @@ enum LogLevel
 };
 
 /**
- * @class LoggerImpl
+ * @class Logger
  * @ingroup core
- * @brief @internal Provides logging functionality with different log levels.
+ * @brief Provides logging functionality with different log levels.
  *
  * This class handles logging messages with various levels of severity, formatting the messages, and ensuring thread-safe logging.
  */
-class E2D_CORE_API LoggerImpl final : NonCopyable
+class E2D_CORE_API Logger final : NonCopyable
 {
 public:
     /**
@@ -75,34 +72,31 @@ public:
      * @param args The arguments to replace the placeholders in the message.
      */
     template <typename... Args>
-    static void log(LogLevel level, const std::string& message, Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
-    {
-        getInstance().logImpl(level, Formatter::format(message, std::forward<Args>(args)...));
-    }
+    static void log(LogLevel level, const std::string& message, Args&&... args);
 
 private:
     /**
-     * @brief Constructs a new LoggerImpl object.
+     * @brief Constructs a new Logger object.
      *
-     * Initializes a new instance of the LoggerImpl class.
+     * Initializes a new instance of the Logger class.
      */
-    LoggerImpl();
+    Logger();
 
     /**
      * @brief Destructor.
      *
      * Ensures proper cleanup of resources upon destruction.
      */
-    ~LoggerImpl() = default;
+    ~Logger() = default;
 
     /**
-     * @brief Gets the singleton instance of the LoggerImpl.
+     * @brief Gets the singleton instance of the Logger.
      *
-     * Provides access to the single instance of LoggerImpl.
+     * Provides access to the single instance of Logger.
      *
-     * @return A reference to the LoggerImpl instance.
+     * @return A reference to the Logger instance.
      */
-    static LoggerImpl& getInstance();
+    static Logger& getInstance();
 
     /**
      * @brief Logs a message with the given log level.
@@ -155,9 +149,8 @@ private:
 
     LogLevel   m_currentLevel{E2D_LOG_LEVEL_INFO}; //!< The current log level.
     std::mutex m_mutex;                            //!< Mutex for synchronizing log access.
-};
 
-} // namespace internal
+}; // Logger class
 
 namespace log
 {
@@ -171,12 +164,11 @@ namespace log
  * @tparam Args The types of the arguments to format the message.
  * @param message The message to log, containing placeholders for the arguments.
  * @param args The arguments to replace the placeholders in the message.
+ *
+ * @see Logger
  */
 template <typename... Args>
-inline void debug(const std::string& message, Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
-{
-    internal::LoggerImpl::log(internal::E2D_LOG_LEVEL_DEBUG, message, std::forward<Args>(args)...);
-}
+inline void debug(const std::string& message, Args&&... args);
 
 /**
  * @ingroup core
@@ -187,12 +179,11 @@ inline void debug(const std::string& message, Args&&... args) // NOLINT(cppcoreg
  * @tparam Args The types of the arguments to format the message.
  * @param message The message to log, containing placeholders for the arguments.
  * @param args The arguments to replace the placeholders in the message.
+ *
+ * @see Logger
  */
 template <typename... Args>
-inline void info(const std::string& message, Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
-{
-    internal::LoggerImpl::log(internal::E2D_LOG_LEVEL_INFO, message, std::forward<Args>(args)...);
-}
+inline void info(const std::string& message, Args&&... args);
 
 /**
  * @ingroup core
@@ -203,12 +194,11 @@ inline void info(const std::string& message, Args&&... args) // NOLINT(cppcoregu
  * @tparam Args The types of the arguments to format the message.
  * @param message The message to log, containing placeholders for the arguments.
  * @param args The arguments to replace the placeholders in the message.
+ *
+ * @see Logger
  */
 template <typename... Args>
-inline void warn(const std::string& message, Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
-{
-    internal::LoggerImpl::log(internal::E2D_LOG_LEVEL_WARN, message, std::forward<Args>(args)...);
-}
+inline void warn(const std::string& message, Args&&... args);
 
 /**
  * @ingroup core
@@ -219,15 +209,16 @@ inline void warn(const std::string& message, Args&&... args) // NOLINT(cppcoregu
  * @tparam Args The types of the arguments to format the message.
  * @param message The message to log, containing placeholders for the arguments.
  * @param args The arguments to replace the placeholders in the message.
+ *
+ * @see Logger
  */
 template <typename... Args>
-inline void error(const std::string& message, Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
-{
-    internal::LoggerImpl::log(internal::E2D_LOG_LEVEL_ERROR, message, std::forward<Args>(args)...);
-}
+inline void error(const std::string& message, Args&&... args);
 
 } // namespace log
 
 } // namespace e2d
+
+#include <E2D/Core/Logger.inl>
 
 #endif //E2D_CORE_LOGGER_HPP
