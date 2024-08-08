@@ -69,6 +69,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -83,24 +84,32 @@ $(function() {
 <code>#include &lt;<a class="el" href="NonCopyable_8hpp_source.html">E2D/Core/NonCopyable.hpp</a>&gt;</code><br />
 <code>#include &lt;mutex&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;E2D/Core/Logger.inl&gt;</code><br />
 </div>
 <p><a href="Logger_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1internal_1_1LoggerImpl.html">e2d::internal::LoggerImpl</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="internal-label">Internal</span> Provides logging functionality with different log levels.  <a href="classe2d_1_1internal_1_1LoggerImpl.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Logger.html">e2d::Logger</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides logging functionality with different log levels.  <a href="classe2d_1_1Logger.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacee2d"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacee2d.html">e2d</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacee2d_1_1log"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacee2d_1_1log.html">e2d::log</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ga27d9006508ad53fafe2c41bde6918acd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acd">e2d::internal::LogLevel</a> { <a class="el" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acda4bcc94fcb1aabaa5e415aa13409c1763">e2d::internal::E2D_LOG_LEVEL_DEBUG</a>
-, <a class="el" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acda6f324b12a3313ba76dfbf612625c2d19">e2d::internal::E2D_LOG_LEVEL_INFO</a>
-, <a class="el" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acdafcfd4d0594d10291ec76593c66a8811d">e2d::internal::E2D_LOG_LEVEL_WARN</a>
-, <a class="el" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acda10805ee7b4a7e1ff10f4bb0941f96dea">e2d::internal::E2D_LOG_LEVEL_ERROR</a>
+<tr class="memitem:gacdd5a9f0ae57ff7d7e5264f16fcb058a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058a">e2d::LogLevel</a> { <a class="el" href="group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058aa1fb4469815513dcc4ae880cdbcea61ef">e2d::E2D_LOG_LEVEL_DEBUG</a>
+, <a class="el" href="group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058aa7de43c6211bd8cae8b138da463d0edc3">e2d::E2D_LOG_LEVEL_INFO</a>
+, <a class="el" href="group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058aacbdaa35fb279e368bb269a76eb72c4a1">e2d::E2D_LOG_LEVEL_WARN</a>
+, <a class="el" href="group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058aa510c5eac4d780dc49baa6989a9610639">e2d::E2D_LOG_LEVEL_ERROR</a>
  }</td></tr>
-<tr class="memdesc:ga27d9006508ad53fafe2c41bde6918acd"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="internal-label">Internal</span> Represents the different levels of logging severity.  <a href="group__core.html#ga27d9006508ad53fafe2c41bde6918acd">More...</a><br /></td></tr>
-<tr class="separator:ga27d9006508ad53fafe2c41bde6918acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:gacdd5a9f0ae57ff7d7e5264f16fcb058a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the different levels of logging severity.  <a href="group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058a">More...</a><br /></td></tr>
+<tr class="separator:gacdd5a9f0ae57ff7d7e5264f16fcb058a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>

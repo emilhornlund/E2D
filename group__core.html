@@ -83,8 +83,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Formatter.html">e2d::Formatter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A utility class for formatting strings with placeholders.  <a href="classe2d_1_1Formatter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1internal_1_1LoggerImpl.html">e2d::internal::LoggerImpl</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="internal-label">Internal</span> Provides logging functionality with different log levels.  <a href="classe2d_1_1internal_1_1LoggerImpl.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Logger.html">e2d::Logger</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides logging functionality with different log levels.  <a href="classe2d_1_1Logger.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classe2d_1_1NonCopyable.html" title="The NonCopyable class provides a base class to make derived classes non-copyable.">NonCopyable</a> class provides a base class to make derived classes non-copyable.  <a href="classe2d_1_1NonCopyable.html#details">More...</a><br /></td></tr>
@@ -107,13 +107,13 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ga27d9006508ad53fafe2c41bde6918acd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acd">e2d::internal::LogLevel</a> { <a class="el" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acda4bcc94fcb1aabaa5e415aa13409c1763">e2d::internal::E2D_LOG_LEVEL_DEBUG</a>
-, <a class="el" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acda6f324b12a3313ba76dfbf612625c2d19">e2d::internal::E2D_LOG_LEVEL_INFO</a>
-, <a class="el" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acdafcfd4d0594d10291ec76593c66a8811d">e2d::internal::E2D_LOG_LEVEL_WARN</a>
-, <a class="el" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acda10805ee7b4a7e1ff10f4bb0941f96dea">e2d::internal::E2D_LOG_LEVEL_ERROR</a>
+<tr class="memitem:gacdd5a9f0ae57ff7d7e5264f16fcb058a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058a">e2d::LogLevel</a> { <a class="el" href="group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058aa1fb4469815513dcc4ae880cdbcea61ef">e2d::E2D_LOG_LEVEL_DEBUG</a>
+, <a class="el" href="group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058aa7de43c6211bd8cae8b138da463d0edc3">e2d::E2D_LOG_LEVEL_INFO</a>
+, <a class="el" href="group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058aacbdaa35fb279e368bb269a76eb72c4a1">e2d::E2D_LOG_LEVEL_WARN</a>
+, <a class="el" href="group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058aa510c5eac4d780dc49baa6989a9610639">e2d::E2D_LOG_LEVEL_ERROR</a>
  }</td></tr>
-<tr class="memdesc:ga27d9006508ad53fafe2c41bde6918acd"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="internal-label">Internal</span> Represents the different levels of logging severity.  <a href="group__core.html#ga27d9006508ad53fafe2c41bde6918acd">More...</a><br /></td></tr>
-<tr class="separator:ga27d9006508ad53fafe2c41bde6918acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:gacdd5a9f0ae57ff7d7e5264f16fcb058a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the different levels of logging severity.  <a href="group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058a">More...</a><br /></td></tr>
+<tr class="separator:gacdd5a9f0ae57ff7d7e5264f16fcb058a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -138,31 +138,31 @@ Functions</h2></td></tr>
 <p>Provides essential utilities and base functionalities for the E2D game engine. </p>
 <p>The Core module includes foundational components and services that are fundamental for the E2D game engine. This module offers low-level utilities, basic data structures, and essential interfaces used across the engine. It is designed to be lightweight and efficient, ensuring minimal overhead while providing the necessary building blocks for more complex features in other modules. </p>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="ga27d9006508ad53fafe2c41bde6918acd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga27d9006508ad53fafe2c41bde6918acd">&#9670;&nbsp;</a></span>LogLevel</h2>
+<a id="gacdd5a9f0ae57ff7d7e5264f16fcb058a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacdd5a9f0ae57ff7d7e5264f16fcb058a">&#9670;&nbsp;</a></span>LogLevel</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acd">e2d::internal::LogLevel</a></td>
+          <td class="memname">enum <a class="el" href="group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058a">e2d::LogLevel</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p><span class="internal-label">Internal</span> Represents the different levels of logging severity. </p>
+<p>Represents the different levels of logging severity. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ga27d9006508ad53fafe2c41bde6918acda4bcc94fcb1aabaa5e415aa13409c1763"></a>E2D_LOG_LEVEL_DEBUG&#160;</td><td class="fielddoc"><p>Detailed information, typically of interest only when diagnosing problems. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gacdd5a9f0ae57ff7d7e5264f16fcb058aa1fb4469815513dcc4ae880cdbcea61ef"></a>E2D_LOG_LEVEL_DEBUG&#160;</td><td class="fielddoc"><p>Detailed information, typically of interest only when diagnosing problems. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ga27d9006508ad53fafe2c41bde6918acda6f324b12a3313ba76dfbf612625c2d19"></a>E2D_LOG_LEVEL_INFO&#160;</td><td class="fielddoc"><p>Confirmation that things are working as expected. </p>
+<tr><td class="fieldname"><a id="gacdd5a9f0ae57ff7d7e5264f16fcb058aa7de43c6211bd8cae8b138da463d0edc3"></a>E2D_LOG_LEVEL_INFO&#160;</td><td class="fielddoc"><p>Confirmation that things are working as expected. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ga27d9006508ad53fafe2c41bde6918acdafcfd4d0594d10291ec76593c66a8811d"></a>E2D_LOG_LEVEL_WARN&#160;</td><td class="fielddoc"><p>An indication that something unexpected happened, or indicative of some problem in the near future. </p>
+<tr><td class="fieldname"><a id="gacdd5a9f0ae57ff7d7e5264f16fcb058aacbdaa35fb279e368bb269a76eb72c4a1"></a>E2D_LOG_LEVEL_WARN&#160;</td><td class="fielddoc"><p>An indication that something unexpected happened, or indicative of some problem in the near future. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ga27d9006508ad53fafe2c41bde6918acda10805ee7b4a7e1ff10f4bb0941f96dea"></a>E2D_LOG_LEVEL_ERROR&#160;</td><td class="fielddoc"><p>An error has occurred. </p>
+<tr><td class="fieldname"><a id="gacdd5a9f0ae57ff7d7e5264f16fcb058aa510c5eac4d780dc49baa6989a9610639"></a>E2D_LOG_LEVEL_ERROR&#160;</td><td class="fielddoc"><p>An error has occurred. </p>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="Logger_8hpp_source.html#l00049">49</a> of file <a class="el" href="Logger_8hpp_source.html">Logger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Logger_8hpp_source.html#l00046">46</a> of file <a class="el" href="Logger_8hpp_source.html">Logger.hpp</a>.</p>
 
 </div>
 </div>
@@ -214,12 +214,11 @@ template&lt;typename... Args&gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">message</td><td>The message to log, containing placeholders for the arguments. </td></tr>
-    <tr><td class="paramname">args</td><td>The arguments to replace the placeholders in the message. </td></tr>
+    <tr><td class="paramname">args</td><td>The arguments to replace the placeholders in the message.</td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="Logger_8hpp_source.html#l00176">176</a> of file <a class="el" href="Logger_8hpp_source.html">Logger.hpp</a>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classe2d_1_1Logger.html" title="Provides logging functionality with different log levels.">Logger</a> </dd></dl>
 
 </div>
 </div>
@@ -270,12 +269,11 @@ template&lt;typename... Args&gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">message</td><td>The message to log, containing placeholders for the arguments. </td></tr>
-    <tr><td class="paramname">args</td><td>The arguments to replace the placeholders in the message. </td></tr>
+    <tr><td class="paramname">args</td><td>The arguments to replace the placeholders in the message.</td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="Logger_8hpp_source.html#l00224">224</a> of file <a class="el" href="Logger_8hpp_source.html">Logger.hpp</a>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classe2d_1_1Logger.html" title="Provides logging functionality with different log levels.">Logger</a> </dd></dl>
 
 </div>
 </div>
@@ -326,12 +324,11 @@ template&lt;typename... Args&gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">message</td><td>The message to log, containing placeholders for the arguments. </td></tr>
-    <tr><td class="paramname">args</td><td>The arguments to replace the placeholders in the message. </td></tr>
+    <tr><td class="paramname">args</td><td>The arguments to replace the placeholders in the message.</td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="Logger_8hpp_source.html#l00192">192</a> of file <a class="el" href="Logger_8hpp_source.html">Logger.hpp</a>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classe2d_1_1Logger.html" title="Provides logging functionality with different log levels.">Logger</a> </dd></dl>
 
 </div>
 </div>
@@ -382,12 +379,11 @@ template&lt;typename... Args&gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">message</td><td>The message to log, containing placeholders for the arguments. </td></tr>
-    <tr><td class="paramname">args</td><td>The arguments to replace the placeholders in the message. </td></tr>
+    <tr><td class="paramname">args</td><td>The arguments to replace the placeholders in the message.</td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="Logger_8hpp_source.html#l00208">208</a> of file <a class="el" href="Logger_8hpp_source.html">Logger.hpp</a>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classe2d_1_1Logger.html" title="Provides logging functionality with different log levels.">Logger</a> </dd></dl>
 
 </div>
 </div>

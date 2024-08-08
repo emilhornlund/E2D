@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loggerimpl_413',['LoggerImpl',['../classe2d_1_1internal_1_1LoggerImpl.html',1,'e2d::internal']]]
+  ['logger_424',['Logger',['../classe2d_1_1Logger.html',1,'e2d']]]
 ];

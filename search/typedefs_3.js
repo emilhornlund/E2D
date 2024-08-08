@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['vector2d_657',['Vector2d',['../Vector2_8hpp.html#a99c14221ff6e999c81ae741b3a92fbbf',1,'e2d']]],
-  ['vector2f_658',['Vector2f',['../Vector2_8hpp.html#a0001a48bd90f65c10c0b1863d03e8bd9',1,'e2d']]],
-  ['vector2i_659',['Vector2i',['../Vector2_8hpp.html#a6b233bdeb950f316c6d78dea8cd75f04',1,'e2d']]],
-  ['vector2u_660',['Vector2u',['../Vector2_8hpp.html#a0e3ed1be9d3456a8955ce3ebec0a1e9c',1,'e2d']]]
+  ['ttf_5ffont_673',['TTF_Font',['../FontImpl_8hpp.html#aef914262161c2138772a37ee1a41f87d',1,'TTF_Font():&#160;FontImpl.hpp'],['../TextImpl_8hpp.html#aef914262161c2138772a37ee1a41f87d',1,'TTF_Font():&#160;TextImpl.hpp']]]
 ];

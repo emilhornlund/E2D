@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loglevel_663',['LogLevel',['../group__core.html#ga27d9006508ad53fafe2c41bde6918acd',1,'e2d::internal']]]
+  ['loglevel_680',['LogLevel',['../group__core.html#gacdd5a9f0ae57ff7d7e5264f16fcb058a',1,'e2d']]]
 ];
