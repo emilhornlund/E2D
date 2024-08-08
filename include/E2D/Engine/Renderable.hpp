@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,9 +31,6 @@
 
 #include <E2D/Core/NonCopyable.hpp>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 class Renderer; // Forward declaration of Renderer
@@ -50,16 +47,16 @@ class E2D_ENGINE_API Renderable : NonCopyable
 {
 public:
     /**
-     * @brief Virtual destructor for Renderable.
+     * @brief Pure virtual destructor.
      *
-     * Ensures proper destruction of derived classes.
+     * Ensures proper cleanup of resources upon destruction.
      */
     virtual ~Renderable() = 0;
 
     /**
      * @brief Gets the render priority of the object.
      *
-     * Return a value indicating the rendering order of the object.
+     * Returns a value indicating the rendering order of the object.
      * Objects with higher priority values should be rendered later (on top).
      *
      * @return int The render priority of the object.
@@ -87,7 +84,7 @@ public:
     virtual void render(const Renderer& renderer) const = 0;
 
 private:
-    int m_renderPriority{0}; //!< Indicates the rendering order of the object
+    int m_renderPriority{0}; //!< Indicates the rendering order of the object.
 
 }; // class Renderable
 

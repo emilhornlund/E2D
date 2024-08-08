@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,9 +38,6 @@
 
 #include <memory>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 
@@ -54,33 +51,41 @@ class TextImpl; // Forward declaration of TextImpl
 /**
  * @class Text
  * @brief Represents a text entity that can be transformed and rendered on the screen.
+ *
+ * The Text class provides functionalities to display and manage text rendered on the screen.
+ * It supports setting the text string, font, and font size, and handles the transformations
+ * and rendering of the text.
  */
 class E2D_ENGINE_API Text : public Object, public Transformable, public Renderable
 {
 public:
     /**
-     * @brief Default constructor for the Sprite class.
+     * @brief Constructs a new Text object.
+     *
+     * Initializes a new instance of the Text class.
      */
     Text();
 
     /**
-     * @brief Default constructor for Text.
+     * @brief Constructs a new Text object with a specific identifier.
      *
-     * Constructs a Text object.
+     * Initializes a new instance of the Text class with the specified unique identifier.
      *
-     * @param identifier
+     * @param identifier A string representing the unique identifier of the text.
      */
     explicit Text(const std::string& identifier);
 
     /**
-     * @brief Destructor for Text.
+     * @brief Destructor.
      *
-     * Destroys the Text object, releasing its resources.
+     * Ensures proper cleanup of resources upon destruction.
      */
     ~Text() override;
 
     /**
      * @brief Gets the current text string.
+     *
+     * Retrieves the current text string to be displayed.
      *
      * @return The current text string.
      */
@@ -89,12 +94,16 @@ public:
     /**
      * @brief Sets the text string to be displayed.
      *
+     * Updates the text string to be displayed by this Text object.
+     *
      * @param string The new text string.
      */
     void setString(const std::string& string);
 
     /**
      * @brief Gets the font size.
+     *
+     * Retrieves the current font size used for rendering the text.
      *
      * @return The font size.
      */
@@ -103,12 +112,16 @@ public:
     /**
      * @brief Sets the font size.
      *
+     * Updates the font size used for rendering the text.
+     *
      * @param fontSize The new font size.
      */
     void setFontSize(unsigned int fontSize);
 
     /**
      * @brief Gets the font used for rendering the text.
+     *
+     * Retrieves a shared pointer to the Font object used for rendering the text.
      *
      * @return A shared pointer to the font.
      */
@@ -117,14 +130,18 @@ public:
     /**
      * @brief Sets the font used for rendering the text.
      *
+     * Assigns a new font to be used for rendering the text.
+     *
      * @param font A shared pointer to the new font.
      */
     void setFont(const std::shared_ptr<const Font>& font);
 
     /**
-     * @brief Get the size of the text entity.
+     * @brief Gets the size of the text entity.
      *
-     * @return Size of the text entity
+     * Retrieves the size of the text entity.
+     *
+     * @return Size of the text entity.
      */
     Vector2f getSize() const final;
 
@@ -154,13 +171,18 @@ public:
     /**
      * @brief Renders the text using the provided renderer.
      *
+     * Renders the text to the screen using the specified Renderer object.
+     *
      * @param renderer The Renderer object used for rendering the text.
      */
     void render(const e2d::Renderer& renderer) const final;
 
 private:
     /**
-     * @brief
+     * @brief Updates the native texture of the text.
+     *
+     * Internal method to update the native texture when the text string, font,
+     * or font size changes.
      */
     void updateNativeTexture();
 

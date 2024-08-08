@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,9 +39,6 @@
 
 #include <memory>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 class Renderer; // Forward declaration of Renderer
@@ -59,21 +56,25 @@ class E2D_ENGINE_API Sprite : public Object, public Transformable, public Render
 {
 public:
     /**
-     * @brief Default constructor for the Sprite class.
+     * @brief Constructs a new Sprite object.
+     *
+     * Initializes a new instance of the Sprite class.
      */
     Sprite();
 
     /**
-     * @brief Constructs a Sprite object with a specific identifier.
+     * @brief Constructs a new Sprite object with a specific identifier.
+     *
+     * Initializes a new instance of the Sprite class with the specified unique identifier.
      *
      * @param identifier A string representing the unique identifier of the sprite.
      */
     explicit Sprite(const std::string& identifier);
 
     /**
-     * @brief Destructor for Sprite.
+     * @brief Destructor.
      *
-     * Destroys the Sprite object, releasing its resources.
+     * Ensures proper cleanup of resources upon destruction.
      */
     ~Sprite() override;
 
@@ -84,7 +85,7 @@ public:
      * This texture defines the visual appearance of the sprite. If no texture is set,
      * a null shared pointer is returned.
      *
-     * @return std::shared_ptr<Texture> Shared pointer to the sprite's texture or null if none is set.
+     * @return Shared pointer to the sprite's texture or null if none is set.
      */
     std::shared_ptr<const e2d::Texture> getTexture() const;
 
@@ -101,6 +102,9 @@ public:
     /**
      * @brief Retrieves the texture rectangle of the sprite.
      *
+     * Returns the portion of the texture that is used for rendering the sprite.
+     * Useful for spritesheets where multiple sprites are on a single texture.
+     *
      * @return The current texture rectangle as an IntRect object.
      */
     const IntRect& getTextureRect() const;
@@ -116,9 +120,11 @@ public:
     void setTextureRect(const IntRect& rectangle);
 
     /**
-     * @brief Get the size of the sprite entity.
+     * @brief Gets the size of the sprite entity.
      *
-     * @return Size of the sprite entity
+     * Retrieves the size of the sprite entity.
+     *
+     * @return Size of the sprite entity.
      */
     Vector2f getSize() const final;
 
@@ -144,6 +150,7 @@ public:
      * @param deltaTime The time elapsed since the last variable update in seconds.
      */
     void variableUpdate(double deltaTime) override;
+
     /**
      * @brief Renders the sprite using the provided renderer and with the applied transformations.
      *

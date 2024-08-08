@@ -35,15 +35,9 @@
 #include <mutex>
 #include <string>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 
-/**
- * @brief Namespace for E2D internal
- */
 namespace internal
 {
 
@@ -62,6 +56,8 @@ enum LogLevel
 /**
  * @class LoggerImpl
  * @brief Provides logging functionality with different log levels.
+ *
+ * This class handles logging messages with various levels of severity, formatting the messages, and ensuring thread-safe logging.
  */
 class E2D_CORE_API LoggerImpl final : NonCopyable
 {
@@ -84,17 +80,23 @@ public:
 
 private:
     /**
-     * @brief Constructs a LoggerImpl instance.
+     * @brief Constructs a new LoggerImpl object.
+     *
+     * Initializes a new instance of the LoggerImpl class.
      */
     LoggerImpl();
 
     /**
-     * @brief Destructs the LoggerImpl instance.
+     * @brief Destructor.
+     *
+     * Ensures proper cleanup of resources upon destruction.
      */
     ~LoggerImpl() = default;
 
     /**
      * @brief Gets the singleton instance of the LoggerImpl.
+     *
+     * Provides access to the single instance of LoggerImpl.
      *
      * @return A reference to the LoggerImpl instance.
      */
@@ -102,6 +104,8 @@ private:
 
     /**
      * @brief Logs a message with the given log level.
+     *
+     * Internal implementation of the log function that actually logs the message.
      *
      * @param level The log level.
      * @param message The message to log.
@@ -111,12 +115,16 @@ private:
     /**
      * @brief Gets the current date and time as a string.
      *
+     * Retrieves the current date and time in a formatted string.
+     *
      * @return The current date and time as a string.
      */
     std::string currentDateTime();
 
     /**
      * @brief Converts a log level to its string representation.
+     *
+     * Converts the specified log level to a string for logging purposes.
      *
      * @param level The log level to convert.
      * @return The string representation of the log level.
@@ -126,6 +134,8 @@ private:
     /**
      * @brief Pads the log level string to a consistent length.
      *
+     * Pads the log level string to ensure consistent formatting in log messages.
+     *
      * @param logLevel The log level string.
      * @return The padded log level string.
      */
@@ -133,6 +143,8 @@ private:
 
     /**
      * @brief Gets the color code for the specified log level.
+     *
+     * Retrieves the ANSI color code associated with the specified log level.
      *
      * @param level The log level for which to get the color code.
      * @return The ANSI color code as a C-string.
@@ -145,9 +157,6 @@ private:
 
 } // namespace internal
 
-/**
- * @brief Namespace for E2D log
- */
 namespace log
 {
 

@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,37 +38,39 @@
 
 using TTF_Font = struct _TTF_Font; // NOLINT(bugprone-reserved-identifier)
 
-/**
- * @brief Namespace for E2D internal
- */
 namespace e2d::internal
 {
 
 /**
  * @class FontImpl
  * @brief Internal implementation of the Font class, responsible for loading and managing font data.
+ *
+ * The FontImpl class handles the internal details of loading font data from files and memory,
+ * and provides access to the native TTF font objects.
  */
 class E2D_ENGINE_API FontImpl final : NonCopyable
 {
 public:
     /**
-     * @brief Default constructor for FontImpl.
+     * @brief Constructs a new FontImpl object.
      *
-     * Constructs a FontImpl object.
+     * Initializes a new instance of the FontImpl class.
      */
     FontImpl();
 
     /**
-     * @brief Destructor for FontImpl.
+     * @brief Destructor.
      *
-     * Destroys the FontImpl object, releasing its resources.
+     * Ensures proper cleanup of resources upon destruction.
      */
     ~FontImpl();
 
     /**
      * @brief Loads a font from a file.
      *
-     * @param filepath Path to the font.
+     * Loads the font data from the specified file path.
+     *
+     * @param filepath Path to the font file.
      * @return True if the font is loaded successfully, false otherwise.
      */
     bool loadFromFile(const std::string& filepath);
@@ -76,16 +78,18 @@ public:
     /**
      * @brief Loads the font from memory.
      *
-     * This method loads the font from a block of memory.
+     * Loads the font data from a block of memory.
      *
      * @param data Pointer to the memory block containing the font data.
      * @param size Size of the memory block in bytes.
-     * @return true if the font is loaded successfully, false otherwise.
+     * @return True if the font is loaded successfully, false otherwise.
      */
     bool loadFromMemory(const void* data, std::size_t size);
 
     /**
      * @brief Retrieves the native TTF font object.
+     *
+     * Provides access to the underlying TTF_Font object for the specified font size.
      *
      * @param fontSize The size of the font to be retrieved.
      * @return Pointer to the underlying TTF_Font object.

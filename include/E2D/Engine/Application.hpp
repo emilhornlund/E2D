@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,9 +35,6 @@
 #include <memory>
 #include <string>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 class ObjectRegistry;   // Forward declaration of ObjectRegistry
@@ -47,28 +44,35 @@ class Window;           // Forward declaration of Window
 
 /**
  * @class Application
- * @brief Core class for managing the application lifecycle in the E2D Engine, handling initialization, main loop, and shutdown.
+ * @brief Abstract base for managing the lifecycle and main loop of the application.
  *
- * Application serves as the central class for E2D engine applications. It manages the main
- * game loop, event handling, and provides access to the renderer and object registry.
+ * The Application class is responsible for initializing the game, handling the main loop,
+ * processing events, updating the game state, and rendering frames. It serves as the entry point
+ * for the E2D engine and orchestrates the overall flow of the game.
  */
 class E2D_ENGINE_API Application : NonCopyable
 {
 public:
     /**
-     * @brief Constructs an Application object.
+     * @brief Constructs a new Application.
      *
-     * @param windowTitle The windowTitle of the window
+     * Initializes a new instance of the Application class with the specified window title.
+     *
+     * @param windowTitle The title of the window.
      */
     explicit Application(std::string windowTitle);
 
     /**
-     * @brief Virtual destructor for Application.
+     * @brief Pure virtual destructor.
+     *
+     * Ensures proper cleanup of resources upon destruction.
      */
     virtual ~Application() = 0;
 
     /**
      * @brief Runs the application.
+     *
+     * Starts the main loop of the application and continues running until the application quits.
      *
      * @return The exit code of the application.
      */
@@ -84,12 +88,16 @@ public:
     /**
      * @brief Quits the application.
      *
+     * Signals the application to stop running and sets the exit code.
+     *
      * @param exitCode The exit code of the application (default is 0).
      */
     void quit(int exitCode = 0);
 
     /**
      * @brief Gets the Window instance used by the application.
+     *
+     * Provides access to the window instance managed by the application.
      *
      * @return A reference to the Window.
      */
@@ -98,6 +106,8 @@ public:
     /**
      * @brief Gets the Renderer instance used by the application.
      *
+     * Provides access to the renderer instance managed by the application.
+     *
      * @return A reference to the Renderer.
      */
     Renderer& getRenderer() const;
@@ -105,28 +115,36 @@ public:
     /**
      * @brief Gets the ObjectRegistry instance used by the application.
      *
+     * Provides access to the object registry managed by the application.
+     *
      * @return A reference to the ObjectRegistry.
      */
     ObjectRegistry& getObjectRegistry() const;
 
     /**
-     * @brief Gets the resource registry instance used by the application.
+     * @brief Gets the ResourceRegistry instance used by the application.
      *
-     * @return A reference to the resource registry.
+     * Provides access to the resource registry managed by the application.
+     *
+     * @return A reference to the ResourceRegistry.
      */
     ResourceRegistry& getResourceRegistry() const;
 
     /**
-     * @brief Get the background color of the window
+     * @brief Gets the background color of the window.
      *
-     * @return The background color
+     * Retrieves the current background color of the window.
+     *
+     * @return The background color.
      */
     [[nodiscard]] const Color& getBackgroundColor() const;
 
     /**
-     * @brief Set the background color of the window
+     * @brief Sets the background color of the window.
      *
-     * @param backgroundColor The background color
+     * Changes the background color of the window to the specified color.
+     *
+     * @param backgroundColor The new background color.
      */
     void setBackgroundColor(const Color& backgroundColor);
 
@@ -149,7 +167,7 @@ private:
     std::unique_ptr<ResourceRegistry> m_resourceRegistry; //!< Unique pointer to the resource registry.
     Color                             m_backgroundColor;  //!< The background color of the window.
 
-}; //Application class
+}; // class Application
 
 } // namespace e2d
 

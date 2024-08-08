@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,15 +35,9 @@
 #include <memory>
 #include <string>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 
-/**
- * @brief Namespace for E2D internal
- */
 namespace internal
 {
 class WindowImpl; // Forward declaration of WindowImpl
@@ -60,21 +54,23 @@ class E2D_ENGINE_API Window final : NonCopyable
 {
 public:
     /**
-     * @brief Default constructor for Window.
+     * @brief Constructs a new Window object.
      *
      * Initializes a new Window object.
      */
     Window();
 
     /**
-     * @brief Destructor for Window.
+     * @brief Destructor.
      *
-     * Cleans up resources used by the Window object.
+     * Ensures proper cleanup of resources upon destruction.
      */
     ~Window();
 
     /**
      * @brief Creates a window with the specified properties.
+     *
+     * Initializes the window with a title, width, and height.
      *
      * @param title The title of the window.
      * @param width The width of the window in pixels.
@@ -86,12 +82,16 @@ public:
     /**
      * @brief Checks if the window is created and valid.
      *
+     * Determines whether the window is currently created and valid for use.
+     *
      * @return True if the window is created, false otherwise.
      */
     [[maybe_unused]] bool isCreated() const;
 
     /**
      * @brief Destroys the window, freeing its resources.
+     *
+     * Frees the resources associated with the window.
      */
     void destroy();
 

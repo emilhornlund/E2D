@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,9 +33,6 @@
 
 #include <string>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 class Application;      // Forward declaration of Application
@@ -43,10 +40,10 @@ class ResourceRegistry; // Forward declaration of ResourceRegistry
 
 /**
  * @class Resource
+ * @brief Abstract base class for all resource types.
  *
- * @brief Abstract base class for all resource types in the E2D engine.
- *
- * The Resource class provides a common interface for all resources managed by the engine.
+ * The Resource class provides a common interface for all resources managed by the E2D engine.
+ * Derived classes must implement methods for loading resources from files and memory.
  */
 class E2D_ENGINE_API Resource : NonCopyable
 {
@@ -54,12 +51,16 @@ class E2D_ENGINE_API Resource : NonCopyable
 
 public:
     /**
-     * @brief Default constructor for Resource.
+     * @brief Constructs a new Resource object.
+     *
+     * Initializes a new instance of the Resource class.
      */
     Resource();
 
     /**
-     * @brief Pure virtual destructor for Resource.
+     * @brief Pure virtual destructor.
+     *
+     * Ensures proper cleanup of resources upon destruction.
      */
     virtual ~Resource() = 0;
 
@@ -80,7 +81,7 @@ public:
      *
      * @param data Pointer to the memory block containing the resource data.
      * @param size Size of the memory block in bytes.
-     * @return true if the resource is successfully loaded from memory, false otherwise.
+     * @return True if the resource is successfully loaded from memory, false otherwise.
      */
     virtual bool loadFromMemory(const void* data, std::size_t size) = 0;
 
@@ -88,12 +89,14 @@ protected:
     /**
      * @brief Gets the application reference for this resource.
      *
+     * Provides access to the application instance managing this Resource.
+     *
      * @return A reference to the application.
      */
     Application& getApplication() const;
 
 private:
-    Application* m_application{nullptr}; //!< Raw pointer to the application, non-owning
+    Application* m_application{nullptr}; //!< Raw pointer to the application, non-owning.
 
 }; // Resource class
 

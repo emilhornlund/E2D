@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,62 +33,75 @@
 
 #include <cstdint>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 
 /**
  * @class Timer
  * @brief A class that provides functionality for a timer that can be paused, stopped, or resumed.
+ *
+ * The Timer class is designed to measure elapsed time in milliseconds or seconds. It provides methods
+ * to start, stop, pause, and resume the timer. Additionally, it offers functionalities to check the timer's
+ * current state and retrieve the elapsed time.
  */
 class E2D_CORE_API Timer final : NonCopyable
 {
 public:
     /**
-     * @brief Default constructor for Timer.
+     * @brief Constructs a new Timer object.
      *
-     * Constructs a new instance of the Timer class.
+     * Initializes a new instance of the Timer class.
      */
     Timer();
 
     /**
-     * @brief Default destructor for the Timer class.
+     * @brief Destructor.
      *
-     * Destroys the instance of the Timer class.
+     * Ensures proper cleanup of resources upon destruction.
      */
     ~Timer();
 
     /**
      * @brief Starts or resumes the timer.
+     *
+     * This method starts the timer if it is not already started or resumes it if it is paused.
      */
     void start();
 
     /**
      * @brief Stops the timer and resets its state.
+     *
+     * This method stops the timer and resets the elapsed time to zero.
      */
     void stop();
 
     /**
      * @brief Pauses the timer.
+     *
+     * This method pauses the timer, allowing it to be resumed later without resetting the elapsed time.
      */
     void pause();
 
     /**
      * @brief Resumes the timer from the paused state.
+     *
+     * This method resumes the timer from where it was paused.
      */
     void resume();
 
     /**
-     * @brief Returns the elapsed time in milliseconds since the timer was started or resumed.
+     * @brief Gets the elapsed time in milliseconds since the timer was started or resumed.
      *
-     * @return The elapsed time in ticks.
+     * Retrieves the total elapsed time in milliseconds. If the timer is paused, it returns the time until it was paused.
+     *
+     * @return The elapsed time in milliseconds.
      */
     std::uint32_t getElapsedTimeAsMilliseconds() const;
 
     /**
-     * @brief Returns the elapsed time in seconds since the timer was started or resumed.
+     * @brief Gets the elapsed time in seconds since the timer was started or resumed.
+     *
+     * Retrieves the total elapsed time in seconds. If the timer is paused, it returns the time until it was paused.
      *
      * @return The elapsed time in seconds.
      */
@@ -97,12 +110,16 @@ public:
     /**
      * @brief Checks if the timer is currently started.
      *
+     * Determines whether the timer has been started and is currently running or paused.
+     *
      * @return True if the timer is started, false otherwise.
      */
     bool isStarted() const;
 
     /**
      * @brief Checks if the timer is currently paused.
+     *
+     * Determines whether the timer is currently paused.
      *
      * @return True if the timer is paused, false otherwise.
      */
@@ -113,7 +130,8 @@ private:
     std::uint32_t m_pausedTicks = 0;     //!< The ticks when the timer was paused.
     bool          m_paused      = false; //!< Flag indicating if the timer is paused.
     bool          m_started     = false; //!< Flag indicating if the timer is started.
-};
+
+}; // Timer class
 
 } // namespace e2d
 

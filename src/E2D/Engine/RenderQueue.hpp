@@ -1,28 +1,28 @@
 /**
-* RenderQueue.hpp
-*
-* MIT License
-*
-* Copyright (c) 2023 Emil Hörnlund
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*/
+ * RenderQueue.hpp
+ *
+ * MIT License
+ *
+ * Copyright (c) 2024 Emil Hörnlund
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 #ifndef E2D_ENGINE_RENDER_QUEUE_HPP
 #define E2D_ENGINE_RENDER_QUEUE_HPP
@@ -36,9 +36,6 @@
 #include <functional>
 #include <queue>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d::internal
 {
 
@@ -55,16 +52,16 @@ class E2D_ENGINE_API RenderQueue final : NonCopyable
 {
 public:
     /**
-     * @brief Default constructor for RenderQueue.
+     * @brief Constructs a new RenderQueue object.
      *
-     * Constructs a RenderQueue object.
+     * Initializes a new instance of the RenderQueue class.
      */
     RenderQueue();
 
     /**
-     * @brief Destructor for RenderQueue.
+     * @brief Destructor.
      *
-     * Destroys the RenderQueue object, releasing its resources.
+     * Ensures proper cleanup of resources upon destruction.
      */
     ~RenderQueue();
 
@@ -84,7 +81,7 @@ public:
      * Pops the Renderable object with the highest render priority from the queue
      * and returns it. If the queue is empty, returns nullptr.
      *
-     * @return const Renderable* Pointer to the Renderable object with the highest priority,
+     * @return Pointer to the Renderable object with the highest priority,
      *         or nullptr if the queue is empty.
      */
     const Renderable* pop();
@@ -92,7 +89,9 @@ public:
     /**
      * @brief Checks if the queue is empty.
      *
-     * @return bool True if the queue is empty, false otherwise.
+     * Determines whether the render queue is currently empty.
+     *
+     * @return True if the queue is empty, false otherwise.
      */
     bool isEmpty() const;
 
@@ -115,7 +114,7 @@ private:
          *
          * @param lhs Pointer to the first Renderable object.
          * @param rhs Pointer to the second Renderable object.
-         * @return bool True if the first object has higher render priority than the second, false otherwise.
+         * @return True if the first object has higher render priority than the second, false otherwise.
          */
         bool operator()(const Renderable* lhs, const Renderable* rhs) const
         {

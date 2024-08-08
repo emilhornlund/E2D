@@ -1,42 +1,41 @@
 /**
-* Keyboard.hpp
-*
-* MIT License
-*
-* Copyright (c) 2024 Emil Hörnlund
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*/
+ * Keyboard.hpp
+ *
+ * MIT License
+ *
+ * Copyright (c) 2024 Emil Hörnlund
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 #ifndef E2D_ENGINE_KEYBOARD_HPP
 #define E2D_ENGINE_KEYBOARD_HPP
 
-/**
- * @namespace e2d::Keyboard
- * @brief Namespace containing keyboard-related enumerations and utilities.
- */
 namespace e2d::Keyboard
 {
 
 /**
  * @enum Key
  * @brief Enumeration of keyboard keys, representing the logical key symbols produced by a key press.
+ *
+ * The Key enum lists all possible keys that can be pressed on a keyboard, each corresponding
+ * to a specific character or control function.
  */
 enum class Key
 {
@@ -147,6 +146,9 @@ enum class Key
 /**
  * @enum Scancode
  * @brief Enumeration of keyboard scancodes, representing the physical location of keys on the keyboard.
+ *
+ * The Scancode enum lists all possible scancodes that represent the physical location
+ * of keys on a keyboard, each corresponding to a specific key position.
  */
 enum class Scancode
 {

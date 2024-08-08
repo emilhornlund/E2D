@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,9 +33,6 @@
 
 #include <string>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 class Application;    // Forward declaration of Application
@@ -43,7 +40,7 @@ class ObjectRegistry; // Forward declaration of ObjectRegistry
 
 /**
  * @class Object
- * @brief Base class for all game objects in the E2D Engine.
+ * @brief Abstract base class for all game objects.
  *
  * Object is the superclass for all types of objects in the game, providing a common interface
  * and shared functionality. Every Object has a unique identifier and can be updated regularly
@@ -55,21 +52,25 @@ class E2D_ENGINE_API Object : NonCopyable
 
 public:
     /**
-     * @brief Default constructor for the Object class.
+     * @brief Constructs a new Object object.
+     *
+     * Initializes a new instance of the Object class.
      */
     Object();
 
     /**
      * @brief Constructs an Object with a given identifier.
      *
+     * Initializes a new instance of the Object class with the specified unique identifier.
+     *
      * @param identifier A string representing the unique identifier of the object.
      */
     explicit Object(std::string identifier);
 
     /**
-     * @brief Virtual destructor for Object.
+     * @brief Pure virtual destructor.
      *
-     * Allows for polymorphic destruction of Object instances.
+     * Ensures proper cleanup of resources upon destruction.
      */
     virtual ~Object() = 0;
 
@@ -99,6 +100,8 @@ public:
     /**
      * @brief Gets the unique identifier of the Object.
      *
+     * Retrieves the unique identifier assigned to this Object.
+     *
      * @return The identifier as a const reference to a string.
      */
     const std::string& getIdentifier() const;
@@ -107,13 +110,15 @@ protected:
     /**
      * @brief Gets the application reference for this object.
      *
+     * Provides access to the application instance managing this Object.
+     *
      * @return A reference to the application.
      */
     Application& getApplication() const;
 
 private:
     const std::string m_identifier;           //!< The object's unique identifier.
-    Application*      m_application{nullptr}; //!< Raw pointer to the application, non-owning
+    Application*      m_application{nullptr}; //!< Raw pointer to the application, non-owning.
 
 }; // class Object
 

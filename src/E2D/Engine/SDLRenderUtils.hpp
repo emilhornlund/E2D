@@ -1,28 +1,28 @@
 /**
-* SDLRenderUtils.hpp
-*
-* MIT License
-*
-* Copyright (c) 2023 Emil Hörnlund
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*/
+ * SDLRenderUtils.hpp
+ *
+ * MIT License
+ *
+ * Copyright (c) 2024 Emil Hörnlund
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 #ifndef E2D_ENGINE_SDL_RENDER_UTILS_HPP
 #define E2D_ENGINE_SDL_RENDER_UTILS_HPP
@@ -33,14 +33,13 @@
 
 #include <SDL.h>
 
-/**
- * @brief Namespace for E2D internal
- */
 namespace e2d::internal
 {
 
 /**
  * @brief Converts an E2D Rect object to an SDL_Rect object.
+ *
+ * Converts the given E2D Rect object to an SDL_Rect object for use with SDL rendering functions.
  *
  * @tparam T The type of the rectangle's components (usually int or float).
  * @param rectangle The E2D Rect object to convert.
@@ -56,8 +55,10 @@ inline SDL_Rect toSDLRect(const e2d::Rect<T>& rectangle)
 }
 
 /**
- * @brief Calculates the destination rectangle for rendering a texture in SDL,
- * taking into account its position, origin, and scale.
+ * @brief Calculates the destination rectangle for rendering a texture in SDL.
+ *
+ * Computes the destination rectangle for rendering a texture, based on the texture's source rectangle,
+ * position, origin, and scale. This rectangle defines where and how the texture will be drawn on the screen.
  *
  * @param textureRect The texture rectangle (source rectangle).
  * @param position The position of the texture on the screen.
@@ -73,8 +74,8 @@ E2D_ENGINE_API SDL_Rect calculateSDLDestinationRect(const e2d::IntRect&  texture
 /**
  * @brief Calculates the rotation point for an SDL texture.
  *
- * This function takes into account the texture's size, its origin, and scale to determine the
- * appropriate rotation point.
+ * Computes the rotation point for a texture, considering the texture's size, its origin, and scale.
+ * This point is used for rotating the texture during rendering.
  *
  * @param size The size of the texture after scaling.
  * @param origin The original point around which the texture is scaled and rotated.
@@ -87,8 +88,8 @@ E2D_ENGINE_API SDL_Point
 /**
  * @brief Determines the SDL_RendererFlip value based on the scale of the texture.
  *
- * This function checks the scale of the texture and returns the appropriate SDL_RendererFlip
- * value to achieve the desired horizontal and/or vertical flip.
+ * Determines the appropriate SDL_RendererFlip value for flipping the texture horizontally and/or vertically
+ * based on its scaling factors.
  *
  * @param scale The scaling factors applied to the texture.
  * @return An SDL_RendererFlip value representing the flip state.

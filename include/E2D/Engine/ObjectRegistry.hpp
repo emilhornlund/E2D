@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,16 +38,13 @@
 #include <unordered_map>
 #include <vector>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 class Application; // Forward declaration of Application
 
 /**
  * @class ObjectRegistry
- * @brief Manages a registry of all game objects in the E2D Engine.
+ * @brief Manages a registry of all game objects.
  *
  * ObjectRegistry is responsible for managing the lifecycle of all game objects. It provides
  * methods to add, retrieve, and remove objects from the game. The registry can also return
@@ -57,16 +54,18 @@ class E2D_ENGINE_API ObjectRegistry final : NonCopyable
 {
 public:
     /**
-     * @brief Default constructor for ObjectRegistry.
+     * @brief Constructs a new ObjectRegistry object.
      *
-     * Initializes a new instance of the ObjectRegistry class.
+     * Initializes a new instance of the ObjectRegistry class with the specified Application instance.
+     *
+     * @param application A pointer to the Application instance managing this ObjectRegistry.
      */
     explicit ObjectRegistry(Application* application);
 
     /**
-     * @brief Destructor for ObjectRegistry.
+     * @brief Destructor.
      *
-     * Cleans up resources used by the ObjectRegistry object.
+     * Ensures proper cleanup of resources upon destruction.
      */
     ~ObjectRegistry();
 

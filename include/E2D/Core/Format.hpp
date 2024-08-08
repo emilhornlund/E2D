@@ -35,26 +35,35 @@
 #include <sstream>
 #include <string>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 
-/**
- * @brief Namespace for E2D internal
- */
 namespace internal
 {
 
 /**
  * @class FormatImpl
  * @brief A utility class for formatting strings with placeholders.
+ *
  * This class provides static methods to format strings with placeholders and arguments.
  */
 class E2D_CORE_API FormatImpl final : NonCopyable
 {
 public:
+    /**
+     * @brief Constructs a new FormatImpl object.
+     *
+     * Initializes a new instance of the FormatImpl class.
+     */
+    FormatImpl() = default;
+
+    /**
+     * @brief Destructor.
+     *
+     * Ensures proper cleanup of resources upon destruction.
+     */
+    ~FormatImpl() = default;
+
     /**
      * @brief Formats a string with the given arguments.
      *
@@ -122,6 +131,8 @@ private:
 
     /**
      * @brief Handles escaped braces by replacing double braces with single braces.
+     *
+     * Replaces occurrences of "{{" with "{" and "}}" with "}" in the input format string.
      *
      * @param text The input format string.
      * @return The modified format string with double braces replaced by single braces.

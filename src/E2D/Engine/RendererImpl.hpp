@@ -1,28 +1,28 @@
 /**
-* RendererImpl.hpp
-*
-* MIT License
-*
-* Copyright (c) 2023 Emil Hörnlund
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*/
+ * RendererImpl.hpp
+ *
+ * MIT License
+ *
+ * Copyright (c) 2024 Emil Hörnlund
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 #ifndef E2D_ENGINE_RENDERER_IMPL_HPP
 #define E2D_ENGINE_RENDERER_IMPL_HPP
@@ -37,9 +37,6 @@
 struct SDL_Renderer; // Forward declaration of SDL_Renderer
 struct SDL_Window;   // Forward declaration of SDL_Window
 
-/**
- * @brief Namespace for E2D internal
- */
 namespace e2d::internal
 {
 
@@ -54,21 +51,23 @@ class E2D_ENGINE_API RendererImpl final : NonCopyable
 {
 public:
     /**
-     * @brief Default constructor for RendererImpl.
+     * @brief Constructs a new RendererImpl object.
      *
      * Initializes a new instance of the RendererImpl class.
      */
     RendererImpl();
 
     /**
-     * @brief Destructor for RendererImpl.
+     * @brief Destructor.
      *
-     * Cleans up resources used by the RendererImpl object.
+     * Ensures proper cleanup of resources upon destruction.
      */
     ~RendererImpl();
 
     /**
      * @brief Initializes the renderer with the specified window.
+     *
+     * Creates a renderer associated with the given SDL_Window object.
      *
      * @param window A pointer to an SDL_Window object representing the window to render to.
      * @return True if the renderer is successfully created, false otherwise.
@@ -78,17 +77,23 @@ public:
     /**
      * @brief Checks if the renderer is created and valid.
      *
+     * Determines whether the renderer is currently created and valid for use.
+     *
      * @return True if the renderer is created, false otherwise.
      */
     [[maybe_unused]] bool isCreated() const;
 
     /**
      * @brief Destroys the renderer, freeing associated resources.
+     *
+     * Frees the resources associated with the renderer.
      */
     void destroy();
 
     /**
      * @brief Retrieves the native renderer object.
+     *
+     * Provides access to the underlying SDL_Renderer object.
      *
      * @return A pointer to the underlying SDL_Renderer object.
      */
@@ -97,9 +102,8 @@ public:
     /**
      * @brief Clears the screen with a specified color.
      *
-     * This method sets the renderer's drawing color to the specified Color object,
-     * and then clears the rendering target with this color. It is typically used
-     * to reset the screen before drawing new graphics in each frame of a rendering loop.
+     * Sets the renderer's drawing color to the specified Color object,
+     * and then clears the rendering target with this color.
      *
      * @param drawColor The color used for clearing the screen before rendering.
      */
@@ -108,15 +112,13 @@ public:
     /**
      * @brief Presents the rendered content on the screen.
      *
-     * This method updates the screen with any rendering performed since the last call.
-     * It should be called after all rendering operations are completed for the current frame,
-     * effectively displaying the rendered content on the screen. This is typically the last
-     * function called in a rendering loop.
+     * Updates the screen with any rendering performed since the last call.
+     * This should be called after all rendering operations are completed for the current frame.
      */
     void display();
 
 private:
-    SDL_Renderer* m_renderer{nullptr}; //!< Pointer to the SDL_Renderer object.
+    SDL_Renderer* m_renderer{nullptr}; //!< Pointer to the underlying SDL_Renderer object.
 
 }; // class RendererImpl
 

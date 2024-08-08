@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,24 +33,31 @@
 #include <E2D/Core/Rect.hpp>
 #include <E2D/Core/Vector2.hpp>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 
+/**
+ * @class Transformable
+ * @brief Provides an interface for objects that can be transformed.
+ *
+ * The Transformable class provides methods for setting and retrieving the position,
+ * origin, scale, and rotation of objects. It also includes methods for calculating
+ * local and global bounding rectangles.
+ */
 class E2D_ENGINE_API Transformable : NonCopyable
 {
 public:
     /**
-     * @brief Pure virtual destructor for Transformable.
+     * @brief Pure virtual destructor.
      *
-     * Ensures proper destruction of derived classes.
+     * Ensures proper cleanup of resources upon destruction.
      */
     virtual ~Transformable() = 0;
 
     /**
      * @brief Retrieves the current position of the object.
+     *
+     * Returns the position of the object's origin in the world or screen space.
      *
      * @return The current position as a Vector2f object.
      */
@@ -59,7 +66,7 @@ public:
     /**
      * @brief Sets the position of the object.
      *
-     * This position represents the location of the object's origin in the world or screen space.
+     * Updates the position of the object's origin in the world or screen space.
      *
      * @param position The Vector2f object representing the new position.
      */
@@ -68,6 +75,8 @@ public:
     /**
      * @brief Retrieves the origin point of the object.
      *
+     * Returns the point used as a pivot for transformations such as scaling and rotation.
+     *
      * @return The current origin as a Vector2f object.
      */
     const Vector2f& getOrigin() const;
@@ -75,7 +84,7 @@ public:
     /**
      * @brief Sets the origin point of the object.
      *
-     * The origin is used as a pivot for transformations such as scaling and rotation.
+     * Updates the point used as a pivot for transformations such as scaling and rotation.
      * Setting the origin to the center, for example, will rotate and scale the object around its center.
      *
      * @param origin The Vector2f object representing the new origin.
@@ -85,6 +94,8 @@ public:
     /**
      * @brief Retrieves the current scaling factors of the object.
      *
+     * Returns the scaling factors of the object in the x and y directions.
+     *
      * @return The current scale as a Vector2f object.
      */
     const Vector2f& getScale() const;
@@ -92,7 +103,7 @@ public:
     /**
      * @brief Sets the scaling factors of the object.
      *
-     * Negative scaling factors will flip the object horizontally or vertically.
+     * Updates the scaling factors of the object in the x and y directions. Negative scaling factors will flip the object horizontally or vertically.
      *
      * @param scale The Vector2f object representing the new scaling factors.
      */
@@ -101,6 +112,8 @@ public:
     /**
      * @brief Retrieves the current rotation angle of the object in degrees.
      *
+     * Returns the rotation angle of the object.
+     *
      * @return The current rotation angle.
      */
     double getRotation() const;
@@ -108,28 +121,36 @@ public:
     /**
      * @brief Sets the rotation angle of the object.
      *
+     * Updates the rotation angle of the object.
+     *
      * @param angle The new rotation angle in degrees.
      */
     void setRotation(double angle);
 
     /**
-     * @brief Get the size of the object.
+     * @brief Gets the size of the object.
      *
-     * @return Size of the object
+     * Pure virtual method to retrieve the size of the object.
+     *
+     * @return Size of the object.
      */
     virtual Vector2f getSize() const = 0;
 
     /**
-     * @brief Get the local bounding rectangle of the object.
+     * @brief Gets the local bounding rectangle of the object.
      *
-     * @return Local bounding rectangle of the object
+     * Returns the bounding rectangle of the object in its local coordinate space.
+     *
+     * @return Local bounding rectangle of the object.
      */
     FloatRect getLocalBounds() const;
 
     /**
-     * @brief Get the global bounding rectangle of the object.
+     * @brief Gets the global bounding rectangle of the object.
      *
-     * @return Global bounding rectangle of the object
+     * Returns the bounding rectangle of the object in the global coordinate space.
+     *
+     * @return Global bounding rectangle of the object.
      */
     FloatRect getGlobalBounds() const;
 

@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,35 +38,38 @@ struct SDL_Renderer;               // Forward declaration of SDL_Renderer
 struct SDL_Texture;                // Forward declaration of SDL_Texture
 using TTF_Font = struct _TTF_Font; // NOLINT(bugprone-reserved-identifier)
 
-/**
- * @brief Namespace for E2D internal
- */
 namespace e2d::internal
 {
 
 /**
  * @class TextImpl
  * @brief Internal implementation of the Text class, responsible for managing the rendering of text.
+ *
+ * The TextImpl class handles the internal details of text rendering, including managing the
+ * SDL texture used for displaying the text and updating it as necessary.
  */
 class E2D_ENGINE_API TextImpl final : NonCopyable
 {
 public:
     /**
-     * @brief Default constructor for TextImpl.
+     * @brief Constructs a new TextImpl object.
      *
-     * Constructs a TextImpl object.
+     * Initializes a new instance of the TextImpl class.
      */
     TextImpl();
 
     /**
-     * @brief Destructor for TextImpl.
+     * @brief Destructor.
      *
-     * Destroys the TextImpl object, releasing its resources.
+     * Ensures proper cleanup of resources upon destruction.
      */
     ~TextImpl();
 
     /**
      * @brief Updates the native texture for the text.
+     *
+     * Updates the SDL texture used for rendering the text based on the provided renderer,
+     * font, and text string. This method should be called whenever the text content or font changes.
      *
      * @param renderer The SDL renderer to use.
      * @param font The font to use for rendering the text.
@@ -77,17 +80,17 @@ public:
     /**
      * @brief Retrieves the size of the internal SDL texture.
      *
-     * This method returns the dimensions of the underlying SDL texture.
-     * It queries the texture's width and height, storing them in a Vector2i.
-     * If the texture is not loaded or the query fails, the method returns
-     * a vector with zero values.
+     * Returns the dimensions of the underlying SDL texture. If the texture is not loaded,
+     * this method returns a vector with zero values.
      *
-     * @return const e2d::Vector2i& Reference to a Vector2i object representing the texture's size.
+     * @return Reference to a Vector2i object representing the texture's size.
      */
     const e2d::Vector2i& getSize() const;
 
     /**
      * @brief Retrieves the native SDL texture object.
+     *
+     * Provides access to the underlying SDL texture used for rendering the text.
      *
      * @return Pointer to the underlying SDL_Texture object.
      */
@@ -95,11 +98,13 @@ public:
 
     /**
      * @brief Destroys the texture, freeing associated resources.
+     *
+     * Frees the resources associated with the SDL texture.
      */
     void destroy();
 
 private:
-    SDL_Texture*  m_texture{nullptr}; //!< Pointer to the SDL_Texture object.
+    SDL_Texture*  m_texture{nullptr}; //!< Pointer to the underlying SDL_Texture object.
     e2d::Vector2i m_textureSize;      //!< Stores the dimensions of the SDL_Texture object.
 
 }; // TextImpl class

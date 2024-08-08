@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,9 +41,6 @@
 #include <unordered_map>
 #include <utility>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 class Application; // Forward declaration of Application
@@ -70,7 +67,9 @@ private:
     {
     public:
         /**
-         * @brief Constructs a new resource with a type and identifier.
+         * @brief Constructs a new IResource object with a type and identifier.
+         *
+         * Initializes a new IResource instance with the specified type and identifier.
          *
          * @param type The type of the resource.
          * @param identifier The identifier of the resource.
@@ -78,12 +77,16 @@ private:
         IResource(std::string type, std::string identifier);
 
         /**
-         * @brief Default destructor.
+         * @brief Virtual destructor.
+         *
+         * Ensures proper cleanup of resources upon destruction.
          */
         virtual ~IResource();
 
         /**
          * @brief Gets the type of the resource.
+         *
+         * Retrieves the type of this resource.
          *
          * @return The type of the resource.
          */
@@ -92,6 +95,8 @@ private:
         /**
          * @brief Gets the identifier of the resource.
          *
+         * Retrieves the identifier of this resource.
+         *
          * @return The identifier of the resource.
          */
         const std::string& getIdentifier() const;
@@ -99,7 +104,8 @@ private:
     private:
         std::string m_type;       //!< The type of the resource.
         std::string m_identifier; //!< The identifier of the resource.
-    };
+
+    }; // IResource class
 
     /**
      * @class TResource
@@ -115,51 +121,58 @@ private:
     {
     public:
         /**
-         * @brief Default constructor for TResource.
+         * @brief Constructs a new TResource object.
          *
-         * Constructs a new instance of the TResource class.
+         * Initializes a new instance of the TResource class with the specified identifier.
          *
          * @param identifier The identifier of the resource.
          */
         explicit TResource(const std::string& identifier);
 
         /**
-         * @brief Default destructor for the TResource class.
+         * @brief Destructor.
          *
-         * Destroys the instance of the TResource class.
+         * Ensures proper cleanup of resources upon destruction.
          */
         ~TResource() final;
 
         std::shared_ptr<T> mValue; //!< The actual resource of type std::shared_ptr<const T>.
-    };
+
+    }; // TResource class
 
 public:
     /**
-     * @brief Default constructor for ObjectRegistry.
+     * @brief Constructs a new ResourceRegistry object.
      *
-     * Initializes a new instance of the ObjectRegistry class.
+     * Initializes a new instance of the ResourceRegistry class.
      *
-     * @param application Raw pointer to the application
+     * @param application Raw pointer to the application.
      */
     explicit ResourceRegistry(Application* application);
 
     /**
-     * @brief Destroys the ResourceRegistry.
+     * @brief Destructor.
+     *
+     * Ensures proper cleanup of resources upon destruction.
      */
     ~ResourceRegistry();
 
     /**
      * @brief Checks if a resource of type T exists.
      *
+     * Determines whether a resource with the given identifier exists in the registry.
+     *
      * @tparam T The type of the resource.
      * @param identifier The identifier of the resource.
-     * @return true if the resource exists, false otherwise.
+     * @return True if the resource exists, false otherwise.
      */
     template <typename T>
     bool exists(const std::string& identifier) const;
 
     /**
      * @brief Retrieves a resource of type T.
+     *
+     * Retrieves the resource with the given identifier from the registry if it exists.
      *
      * @tparam T The type of the resource.
      * @param identifier The identifier of the resource.
@@ -171,12 +184,14 @@ public:
     /**
      * @brief Loads a resource of type T from a file.
      *
+     * Loads the resource from the specified file and registers it with the given identifier.
+     *
      * @tparam T The type of the resource.
      * @tparam Args Additional arguments required for loading the resource.
      * @param identifier The identifier for the resource.
      * @param filepath The path to the file from which the resource is loaded.
      * @param args Additional arguments required for loading the resource.
-     * @return true if the resource is successfully loaded, false otherwise.
+     * @return True if the resource is successfully loaded, false otherwise.
      */
     template <typename T, typename... Args>
     bool loadFromFile(const std::string& identifier, const std::string& filepath, Args&&... args);
@@ -184,13 +199,15 @@ public:
     /**
      * @brief Loads a resource of type T from memory.
      *
+     * Loads the resource from the specified memory block and registers it with the given identifier.
+     *
      * @tparam T The type of the resource.
      * @tparam Args Additional arguments required for loading the resource.
      * @param identifier The identifier for the resource.
      * @param data Pointer to the memory block containing the resource data.
      * @param size Size of the memory block in bytes.
      * @param args Additional arguments required for loading the resource.
-     * @return true if the resource is successfully loaded, false otherwise.
+     * @return True if the resource is successfully loaded, false otherwise.
      */
     template <typename T, typename... Args>
     bool loadFromMemory(const std::string& identifier, const void* data, std::size_t size, Args&&... args);

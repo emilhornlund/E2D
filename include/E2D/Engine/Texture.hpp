@@ -4,7 +4,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2023 Emil Hörnlund
+ * Copyright (c) 2024 Emil Hörnlund
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,9 +38,6 @@
 #include <memory>
 #include <string>
 
-/**
- * @brief Namespace for E2D
- */
 namespace e2d
 {
 class Renderer; // Forward declaration of Renderer
@@ -61,38 +58,45 @@ class E2D_ENGINE_API Texture final : public Resource
 {
 public:
     /**
-     * @brief Default constructor for Texture.
+     * @brief Constructs a new Texture object.
      *
-     * Constructs a Texture object.
+     * Initializes a new instance of the Texture class.
      */
     Texture();
 
     /**
-     * @brief Destructor for Texture.
+     * @brief Destructor.
      *
-     * Destroys the Texture object, releasing its resources.
+     * Ensures proper cleanup of resources upon destruction.
      */
     ~Texture() final;
 
     /**
      * @brief Loads a texture from a file.
      *
-     * @param filepath Path to the texture filepath.
+     * Loads the texture from the specified file path.
+     *
+     * @param filepath Path to the texture file.
      * @return True if the texture is loaded successfully, false otherwise.
      */
     bool loadFromFile(const std::string& filepath) final;
 
+
     /**
      * @brief Loads the texture from memory.
      *
+     * Loads the texture from a block of memory.
+     *
      * @param data Pointer to the memory block containing the texture data.
      * @param size Size of the memory block in bytes.
-     * @return true if the texture is successfully loaded from memory, false otherwise.
+     * @return True if the texture is successfully loaded from memory, false otherwise.
      */
     bool loadFromMemory(const void* data, std::size_t size) final;
 
     /**
      * @brief Checks if the texture is loaded and valid.
+     *
+     * Determines whether the texture is currently loaded and valid for use.
      *
      * @return True if the texture is loaded, false otherwise.
      */
@@ -100,17 +104,19 @@ public:
 
     /**
      * @brief Destroys the texture, freeing associated resources.
+     *
+     * Frees the resources associated with the texture.
      */
     void destroy();
 
     /**
      * @brief Retrieves the size of the texture.
      *
-     * This method returns the dimensions of the texture as a Vector2i,
+     * Returns the dimensions of the texture as a Vector2i,
      * where x represents the width and y represents the height of the texture.
      * If the texture is not loaded, this method returns a vector with zero values.
      *
-     * @return const Vector2i& Reference to a Vector2i object representing the texture's size.
+     * @return Reference to a Vector2i object representing the texture's size.
      */
     const Vector2i& getSize() const;
 
