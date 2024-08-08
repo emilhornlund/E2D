@@ -1,5 +1,5 @@
 /**
- * Color.inl
+ * @file Color.inl
  *
  * MIT License
  *

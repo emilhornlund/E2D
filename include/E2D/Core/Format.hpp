@@ -1,5 +1,5 @@
 /**
- * Format.hpp
+ * @file Format.hpp
  *
  * MIT License
  *
@@ -43,7 +43,8 @@ namespace internal
 
 /**
  * @class FormatImpl
- * @brief A utility class for formatting strings with placeholders.
+ * @ingroup core
+ * @brief @internal A utility class for formatting strings with placeholders.
  *
  * This class provides static methods to format strings with placeholders and arguments.
  */

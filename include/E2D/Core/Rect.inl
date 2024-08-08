@@ -1,5 +1,5 @@
 /**
- * Rect.inl
+ * @file Rect.inl
  *
  * MIT License
  *

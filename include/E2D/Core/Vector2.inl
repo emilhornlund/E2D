@@ -1,5 +1,5 @@
 /**
- * Vector2.inl
+ * @file Vector2.inl
  *
  * MIT License
  *

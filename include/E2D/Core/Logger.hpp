@@ -1,5 +1,5 @@
 /**
- * Logger.hpp
+ * @file Logger.hpp
  *
  * MIT License
  *
@@ -43,7 +43,8 @@ namespace internal
 
 /**
  * @enum LogLevel
- * @brief Represents the different levels of logging severity.
+ * @ingroup core
+ * @brief @internal Represents the different levels of logging severity.
  */
 enum LogLevel
 {
@@ -55,7 +56,8 @@ enum LogLevel
 
 /**
  * @class LoggerImpl
- * @brief Provides logging functionality with different log levels.
+ * @ingroup core
+ * @brief @internal Provides logging functionality with different log levels.
  *
  * This class handles logging messages with various levels of severity, formatting the messages, and ensuring thread-safe logging.
  */
@@ -161,6 +163,7 @@ namespace log
 {
 
 /**
+ * @ingroup core
  * @brief Logs a debug message.
  *
  * Formats the message with the provided arguments and logs it with the DEBUG log level.
@@ -176,6 +179,7 @@ inline void debug(const std::string& message, Args&&... args) // NOLINT(cppcoreg
 }
 
 /**
+ * @ingroup core
  * @brief Logs an info message.
  *
  * Formats the message with the provided arguments and logs it with the INFO log level.
@@ -191,6 +195,7 @@ inline void info(const std::string& message, Args&&... args) // NOLINT(cppcoregu
 }
 
 /**
+ * @ingroup core
  * @brief Logs a warning message.
  *
  * Formats the message with the provided arguments and logs it with the WARN log level.
@@ -206,6 +211,7 @@ inline void warn(const std::string& message, Args&&... args) // NOLINT(cppcoregu
 }
 
 /**
+ * @ingroup core
  * @brief Logs an error message.
  *
  * Formats the message with the provided arguments and logs it with the ERROR log level.

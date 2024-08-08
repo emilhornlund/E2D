@@ -1,5 +1,5 @@
 /**
- * ResourceRegistry.hpp
+ * @file ResourceRegistry.hpp
  *
  * MIT License
  *
@@ -47,6 +47,7 @@ class Application; // Forward declaration of Application
 
 /**
  * @class ResourceRegistry
+ * @ingroup engine
  * @brief Manages loading and accessing resources by their identifiers.
  *
  * This class is responsible for loading resources from files and providing

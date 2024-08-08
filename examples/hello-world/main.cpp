@@ -1,5 +1,5 @@
 /**
- * main.cpp
+ * @file main.cpp
  *
  * MIT License
  *

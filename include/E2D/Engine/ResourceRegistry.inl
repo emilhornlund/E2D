@@ -1,5 +1,5 @@
 /**
- * ResourceRegistry.inl
+ * @file ResourceRegistry.inl
  *
  * MIT License
  *

@@ -1,5 +1,5 @@
 /**
- * Transformable.hpp
+ * @file Transformable.hpp
  *
  * MIT License
  *
@@ -38,6 +38,7 @@ namespace e2d
 
 /**
  * @class Transformable
+ * @ingroup engine
  * @brief Provides an interface for objects that can be transformed.
  *
  * The Transformable class provides methods for setting and retrieving the position,

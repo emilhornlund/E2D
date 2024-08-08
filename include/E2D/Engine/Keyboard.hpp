@@ -1,5 +1,5 @@
 /**
- * Keyboard.hpp
+ * @file Keyboard.hpp
  *
  * MIT License
  *
@@ -32,6 +32,7 @@ namespace e2d::Keyboard
 
 /**
  * @enum Key
+ * @ingroup engine
  * @brief Enumeration of keyboard keys, representing the logical key symbols produced by a key press.
  *
  * The Key enum lists all possible keys that can be pressed on a keyboard, each corresponding
@@ -145,6 +146,7 @@ enum class Key
 
 /**
  * @enum Scancode
+ * @ingroup engine
  * @brief Enumeration of keyboard scancodes, representing the physical location of keys on the keyboard.
  *
  * The Scancode enum lists all possible scancodes that represent the physical location

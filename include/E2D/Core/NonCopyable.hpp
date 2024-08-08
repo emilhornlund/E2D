@@ -1,5 +1,5 @@
 /**
- * NonCopyable.hpp
+ * @file NonCopyable.hpp
  *
  * MIT License
  *
@@ -34,6 +34,7 @@ namespace e2d
 
 /**
  * @class NonCopyable
+ * @ingroup core
  * @brief The NonCopyable class provides a base class to make derived classes non-copyable.
  *
  * This class is intended to be used as a base class for other classes to prevent copying.

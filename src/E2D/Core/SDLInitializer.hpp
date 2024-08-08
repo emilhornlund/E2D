@@ -1,5 +1,5 @@
 /**
- * SDLInitializer.hpp
+ * @file SDLInitializer.hpp
  *
  * MIT License
  *
@@ -32,7 +32,8 @@ namespace e2d::internal
 
 /**
  * @class SDLInitializer
- * @brief High-level wrapper for initializing and shutting down SDL subsystems.
+ * @ingroup core
+ * @brief @internal High-level wrapper for initializing and shutting down SDL subsystems.
  *
  * SDLInitializer provides static methods to initialize and shut down all required SDL subsystems.
  * This internal class encapsulates the details of starting and stopping SDL, SDL_image, and SDL_ttf,

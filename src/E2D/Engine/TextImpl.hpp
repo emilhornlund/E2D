@@ -1,5 +1,5 @@
 /**
- * TextImpl.hpp
+ * @file TextImpl.hpp
  *
  * MIT License
  *
@@ -43,7 +43,8 @@ namespace e2d::internal
 
 /**
  * @class TextImpl
- * @brief Internal implementation of the Text class, responsible for managing the rendering of text.
+ * @ingroup engine
+ * @brief @internal Internal implementation of the Text class, responsible for managing the rendering of text.
  *
  * The TextImpl class handles the internal details of text rendering, including managing the
  * SDL texture used for displaying the text and updating it as necessary.

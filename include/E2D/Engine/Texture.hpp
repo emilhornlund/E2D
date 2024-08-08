@@ -1,6 +1,6 @@
 /**
- * Texture.hpp
- * ResourceRegistry.hpp
+ * @file Texture.hpp
+ * @file ResourceRegistry.hpp
  *
  * MIT License
  *
@@ -49,6 +49,7 @@ class TextureImpl; // Forward declaration of TextureImpl
 
 /**
  * @class Texture
+ * @ingroup engine
  * @brief Manages texture resources.
  *
  * The Texture class encapsulates the functionality for loading and handling texture resources.

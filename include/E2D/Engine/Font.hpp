@@ -1,5 +1,5 @@
 /**
- * Font.hpp
+ * @file Font.hpp
  *
  * MIT License
  *
@@ -45,6 +45,7 @@ class FontImpl; // Forward declaration of FontImpl
 
 /**
  * @class Font
+ * @ingroup engine
  * @brief Represents a font resource that can be used for rendering text.
  *
  * The Font class provides functionality to load and manage font resources.

@@ -1,5 +1,5 @@
 /**
- * Color.hpp
+ * @file Color.hpp
  *
  * MIT License
  *
@@ -33,6 +33,7 @@ namespace e2d
 
 /**
  * @class Color
+ * @ingroup core
  * @brief Utility class for manipulating RGBA colors.
  *
  * The Color class provides a representation of colors with red, green, blue, and alpha (opacity) components.

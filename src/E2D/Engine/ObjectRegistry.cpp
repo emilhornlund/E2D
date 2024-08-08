@@ -1,5 +1,5 @@
 /**
- * ObjectRegistry.cpp
+ * @file ObjectRegistry.cpp
  *
  * MIT License
  *

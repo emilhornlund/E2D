@@ -1,5 +1,5 @@
 /**
- * Window.hpp
+ * @file Window.hpp
  *
  * MIT License
  *
@@ -45,6 +45,7 @@ class WindowImpl; // Forward declaration of WindowImpl
 
 /**
  * @class Window
+ * @ingroup engine
  * @brief Represents a graphical window.
  *
  * This class provides functionalities to create, manage, and interact with a graphical window.

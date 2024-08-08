@@ -1,5 +1,5 @@
 /**
- * Config.hpp
+ * @file Config.hpp
  *
  * MIT License
  *

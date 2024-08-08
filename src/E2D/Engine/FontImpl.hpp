@@ -1,5 +1,5 @@
 /**
- * FontImpl.hpp
+ * @file FontImpl.hpp
  *
  * MIT License
  *
@@ -43,7 +43,8 @@ namespace e2d::internal
 
 /**
  * @class FontImpl
- * @brief Internal implementation of the Font class, responsible for loading and managing font data.
+ * @ingroup engine
+ * @brief @internal Internal implementation of the Font class, responsible for loading and managing font data.
  *
  * The FontImpl class handles the internal details of loading font data from files and memory,
  * and provides access to the native TTF font objects.

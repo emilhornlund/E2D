@@ -1,5 +1,5 @@
 /**
- * WindowImpl.hpp
+ * @file WindowImpl.hpp
  *
  * MIT License
  *
@@ -40,7 +40,8 @@ namespace e2d::internal
 
 /**
  * @class WindowImpl
- * @brief Internal implementation class for Window.
+ * @ingroup engine
+ * @brief @internal Internal implementation class for Window.
  *
  * This class manages the low-level details of window creation, management, and destruction.
  * It interfaces directly with the underlying windowing system.

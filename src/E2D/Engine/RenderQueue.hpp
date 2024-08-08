@@ -1,5 +1,5 @@
 /**
- * RenderQueue.hpp
+ * @file RenderQueue.hpp
  *
  * MIT License
  *
@@ -41,7 +41,8 @@ namespace e2d::internal
 
 /**
  * @class RenderQueue
- * @brief Manages a priority queue of Renderable objects.
+ * @ingroup engine
+ * @brief @internal Manages a priority queue of Renderable objects.
  *
  * RenderQueue is a utility class that manages a queue of Renderable objects,
  * sorting them based on their render priority. This ensures that objects

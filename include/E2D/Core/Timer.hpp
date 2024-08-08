@@ -1,5 +1,5 @@
 /**
- * Timer.hpp
+ * @file Timer.hpp
  *
  * MIT License
  *
@@ -38,6 +38,7 @@ namespace e2d
 
 /**
  * @class Timer
+ * @ingroup core
  * @brief A class that provides functionality for a timer that can be paused, stopped, or resumed.
  *
  * The Timer class is designed to measure elapsed time in milliseconds or seconds. It provides methods

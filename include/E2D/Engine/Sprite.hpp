@@ -1,5 +1,5 @@
 /**
- * Sprite.hpp
+ * @file Sprite.hpp
  *
  * MIT License
  *
@@ -46,6 +46,7 @@ class Texture;  // Forward declaration of Texture
 
 /**
  * @class Sprite
+ * @ingroup engine
  * @brief Represents a 2D graphical sprite entity that can be transformed and rendered on the screen.
  *
  * The Sprite class provides functionalities to set texture and texture rectangle for rendering a sprite.

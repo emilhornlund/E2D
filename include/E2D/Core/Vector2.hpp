@@ -1,5 +1,5 @@
 /**
- * Vector2.hpp
+ * @file Vector2.hpp
  *
  * MIT License
  *
@@ -33,6 +33,7 @@ namespace e2d
 
 /**
  * @class Vector2
+ * @ingroup core
  * @brief Represents a 2-dimensional vector.
  *
  * The Vector2 class provides functionalities to define and manipulate 2D vectors.

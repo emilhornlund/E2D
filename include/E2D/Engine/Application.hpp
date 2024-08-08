@@ -1,5 +1,5 @@
 /**
- * Application.hpp
+ * @file Application.hpp
  *
  * MIT License
  *
@@ -44,6 +44,7 @@ class Window;           // Forward declaration of Window
 
 /**
  * @class Application
+ * @ingroup engine
  * @brief Abstract base for managing the lifecycle and main loop of the application.
  *
  * The Application class is responsible for initializing the game, handling the main loop,

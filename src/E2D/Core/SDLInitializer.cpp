@@ -1,5 +1,5 @@
 /**
- * SDLInitializer.cpp
+ * @file SDLInitializer.cpp
  *
  * MIT License
  *

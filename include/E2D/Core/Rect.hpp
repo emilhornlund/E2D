@@ -1,5 +1,5 @@
 /**
- * Rect.hpp
+ * @file Rect.hpp
  *
  * MIT License
  *
@@ -35,6 +35,7 @@ namespace e2d
 
 /**
  * @class Rect
+ * @ingroup core
  * @brief Represents a rectangle defined by a position (top-left corner) and a size (width and height).
  *
  * The Rect class provides functionalities to define and manipulate rectangles.

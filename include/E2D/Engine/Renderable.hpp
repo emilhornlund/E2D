@@ -1,5 +1,5 @@
 /**
- * Renderable.hpp
+ * @file Renderable.hpp
  *
  * MIT License
  *
@@ -37,6 +37,7 @@ class Renderer; // Forward declaration of Renderer
 
 /**
  * @class Renderable
+ * @ingroup engine
  * @brief Abstract base class for renderable objects.
  *
  * This class provides an interface for all objects that can be rendered

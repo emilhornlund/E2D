@@ -1,5 +1,5 @@
 /**
- * SDLRenderUtils.hpp
+ * @file SDLRenderUtils.hpp
  *
  * MIT License
  *
@@ -37,7 +37,8 @@ namespace e2d::internal
 {
 
 /**
- * @brief Converts an E2D Rect object to an SDL_Rect object.
+ * @ingroup engine
+ * @brief @internal Converts an E2D Rect object to an SDL_Rect object.
  *
  * Converts the given E2D Rect object to an SDL_Rect object for use with SDL rendering functions.
  *
@@ -55,7 +56,8 @@ inline SDL_Rect toSDLRect(const e2d::Rect<T>& rectangle)
 }
 
 /**
- * @brief Calculates the destination rectangle for rendering a texture in SDL.
+ * @ingroup engine
+ * @brief @internal Calculates the destination rectangle for rendering a texture in SDL.
  *
  * Computes the destination rectangle for rendering a texture, based on the texture's source rectangle,
  * position, origin, and scale. This rectangle defines where and how the texture will be drawn on the screen.
@@ -72,7 +74,8 @@ E2D_ENGINE_API SDL_Rect calculateSDLDestinationRect(const e2d::IntRect&  texture
                                                     const e2d::Vector2f& scale);
 
 /**
- * @brief Calculates the rotation point for an SDL texture.
+ * @ingroup engine
+ * @brief @internal Calculates the rotation point for an SDL texture.
  *
  * Computes the rotation point for a texture, considering the texture's size, its origin, and scale.
  * This point is used for rotating the texture during rendering.
@@ -86,7 +89,8 @@ E2D_ENGINE_API SDL_Point
     calculateSDLRotationPoint(const e2d::Vector2i& size, const e2d::Vector2f& origin, const e2d::Vector2f& scale);
 
 /**
- * @brief Determines the SDL_RendererFlip value based on the scale of the texture.
+ * @ingroup engine
+ * @brief @internal Determines the SDL_RendererFlip value based on the scale of the texture.
  *
  * Determines the appropriate SDL_RendererFlip value for flipping the texture horizontally and/or vertically
  * based on its scaling factors.

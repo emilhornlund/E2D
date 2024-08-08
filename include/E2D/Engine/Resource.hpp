@@ -1,5 +1,5 @@
 /**
- * Resource.hpp
+ * @file Resource.hpp
  *
  * MIT License
  *
@@ -40,6 +40,7 @@ class ResourceRegistry; // Forward declaration of ResourceRegistry
 
 /**
  * @class Resource
+ * @ingroup engine
  * @brief Abstract base class for all resource types.
  *
  * The Resource class provides a common interface for all resources managed by the E2D engine.

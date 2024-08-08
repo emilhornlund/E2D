@@ -1,5 +1,5 @@
 /**
- * Object.hpp
+ * @file Object.hpp
  *
  * MIT License
  *
@@ -40,6 +40,7 @@ class ObjectRegistry; // Forward declaration of ObjectRegistry
 
 /**
  * @class Object
+ * @ingroup engine
  * @brief Abstract base class for all game objects.
  *
  * Object is the superclass for all types of objects in the game, providing a common interface

@@ -1,5 +1,5 @@
 /**
- * TextureImpl.hpp
+ * @file TextureImpl.hpp
  *
  * MIT License
  *
@@ -42,7 +42,8 @@ namespace e2d::internal
 
 /**
  * @class TextureImpl
- * @brief Internal implementation class for Texture.
+ * @ingroup engine
+ * @brief @internal Internal implementation class for Texture.
  *
  * This class is responsible for the low-level details of texture management,
  * including loading and maintaining texture resources.

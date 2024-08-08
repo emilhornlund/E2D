@@ -1,5 +1,5 @@
 /**
- * Resource.cpp
+ * @file Resource.cpp
  *
  * MIT License
  *

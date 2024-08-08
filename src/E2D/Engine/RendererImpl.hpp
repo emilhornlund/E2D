@@ -1,5 +1,5 @@
 /**
- * RendererImpl.hpp
+ * @file RendererImpl.hpp
  *
  * MIT License
  *
@@ -42,7 +42,8 @@ namespace e2d::internal
 
 /**
  * @class RendererImpl
- * @brief Internal implementation class for Renderer.
+ * @ingroup engine
+ * @brief @internal Internal implementation class for Renderer.
  *
  * This class is responsible for the low-level details of rendering operations.
  * It interfaces directly with the graphics hardware through the underlying rendering system.

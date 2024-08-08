@@ -1,5 +1,5 @@
 /**
- * Sprite.cpp
+ * @file Sprite.cpp
  *
  * MIT License
  *

@@ -1,5 +1,5 @@
 /**
- * Event.hpp
+ * @file Event.hpp
  *
  * MIT License
  *
@@ -36,6 +36,7 @@ namespace e2d
 
 /**
  * @struct Event
+ * @ingroup engine
  * @brief Represents a generic event, encapsulating various event types such as keyboard inputs.
  *
  * The Event struct is a union of multiple event types that can occur within the E2D engine.
@@ -108,6 +109,7 @@ struct Event
 };
 
 /**
+ * @ingroup engine
  * @brief Polls for an event from the system queue and translates it to an E2D event.
  *
  * This function checks the system's event queue for new events and, if available,

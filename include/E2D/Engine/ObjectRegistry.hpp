@@ -1,5 +1,5 @@
 /**
- * ObjectRegistry.hpp
+ * @file ObjectRegistry.hpp
  *
  * MIT License
  *
@@ -44,6 +44,7 @@ class Application; // Forward declaration of Application
 
 /**
  * @class ObjectRegistry
+ * @ingroup engine
  * @brief Manages a registry of all game objects.
  *
  * ObjectRegistry is responsible for managing the lifecycle of all game objects. It provides

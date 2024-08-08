@@ -1,5 +1,5 @@
 /**
- * System.hpp
+ * @file System.hpp
  *
  * MIT License
  *
@@ -36,6 +36,7 @@ namespace e2d
 
 /**
  * @class System
+ * @ingroup core
  * @brief Manages the initialization and shutdown of the engine's core subsystems.
  *
  * The System class is responsible for setting up and tearing down essential components required for the engine's operation.

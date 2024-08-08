@@ -1,5 +1,5 @@
 /**
- * Core.hpp
+ * @file Core.hpp
  *
  * MIT License
  *
@@ -30,6 +30,8 @@
 #include <E2D/Core/Export.hpp>
 
 #include <E2D/Core/Color.hpp>
+#include <E2D/Core/Format.hpp>
+#include <E2D/Core/Logger.hpp>
 #include <E2D/Core/NonCopyable.hpp>
 #include <E2D/Core/Rect.hpp>
 #include <E2D/Core/System.hpp>
@@ -37,3 +39,13 @@
 #include <E2D/Core/Vector2.hpp>
 
 #endif //E2D_CORE_HPP
+
+/**
+ * @defgroup core Core module
+ * @brief Provides essential utilities and base functionalities for the E2D game engine.
+ *
+ * The Core module includes foundational components and services that are fundamental for the E2D game engine.
+ * This module offers low-level utilities, basic data structures, and essential interfaces used across the engine.
+ * It is designed to be lightweight and efficient, ensuring minimal overhead while providing the necessary building blocks
+ * for more complex features in other modules.
+ */

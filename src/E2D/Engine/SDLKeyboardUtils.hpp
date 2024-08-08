@@ -1,5 +1,5 @@
 /**
- * SDLKeyboardUtils.hpp
+ * @file SDLKeyboardUtils.hpp
  *
  * MIT License
  *
@@ -42,7 +42,8 @@ namespace e2d::internal
 {
 
 /**
- * @brief Translates an SDL_Keycode to the corresponding E2D Keyboard::Key enum value.
+ * @ingroup engine
+ * @brief @internal Translates an SDL_Keycode to the corresponding E2D Keyboard::Key enum value.
  *
  * Converts the given SDL_Keycode to the corresponding E2D Keyboard::Key value.
  *
@@ -52,7 +53,8 @@ namespace e2d::internal
 E2D_ENGINE_API Keyboard::Key toKeyCode(const SDL_Keycode& sdlKeyCode);
 
 /**
- * @brief Translates an SDL_Scancode to the corresponding E2D Keyboard::Scancode enum value.
+ * @ingroup engine
+ * @brief @internal Translates an SDL_Scancode to the corresponding E2D Keyboard::Scancode enum value.
  *
  * Converts the given SDL_Scancode to the corresponding E2D Keyboard::Scancode value.
  *

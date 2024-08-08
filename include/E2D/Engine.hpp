@@ -1,5 +1,5 @@
 /**
- * Engine.hpp
+ * @file Engine.hpp
  *
  * MIT License
  *
@@ -46,3 +46,13 @@
 #include <E2D/Engine/Window.hpp>
 
 #endif //E2D_ENGINE_HPP
+
+/**
+ * @defgroup engine Engine module
+ * @brief Manages the main game loop and high-level systems integration in the E2D game engine.
+ *
+ * The Engine module is responsible for orchestrating the main game loop, integrating core systems such as rendering,
+ * input handling, physics, and audio. It serves as the central hub that coordinates various subsystems to work together
+ * seamlessly. The Engine module ensures that the game's components are updated and rendered in a consistent and
+ * synchronized manner, providing a robust framework for game development.
+ */

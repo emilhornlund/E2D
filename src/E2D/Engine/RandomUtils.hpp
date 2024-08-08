@@ -1,5 +1,5 @@
 /**
- * RandomUtils.hpp
+ * @file RandomUtils.hpp
  *
  * MIT License
  *
@@ -35,7 +35,8 @@ namespace e2d::internal
 {
 
 /**
- * @brief Generates a random sequence of alphabetic characters.
+ * @ingroup engine
+ * @brief @internal Generates a random sequence of alphabetic characters.
  *
  * This function creates a string of the specified length consisting of random
  * alphabetic characters (both uppercase and lowercase).

@@ -1,5 +1,5 @@
 /**
- * Renderer.hpp
+ * @file Renderer.hpp
  *
  * MIT License
  *
@@ -47,6 +47,7 @@ class RenderQueue;  // Forward declaration of RenderQueue
 
 /**
  * @class Renderer
+ * @ingroup engine
  * @brief Handles the rendering process for graphical objects.
  *
  * The Renderer class is responsible for managing and executing the rendering process

@@ -1,5 +1,5 @@
 /**
- * ObjectRegistry.inl
+ * @file ObjectRegistry.inl
  *
  * MIT License
  *

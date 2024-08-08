@@ -1,5 +1,5 @@
 /**
- * ResourceRegistry.cpp
+ * @file ResourceRegistry.cpp
  *
  * MIT License
  *

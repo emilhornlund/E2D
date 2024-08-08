@@ -1,5 +1,5 @@
 /**
- * Text.hpp
+ * @file Text.hpp
  *
  * MIT License
  *
@@ -50,6 +50,7 @@ class TextImpl; // Forward declaration of TextImpl
 
 /**
  * @class Text
+ * @ingroup engine
  * @brief Represents a text entity that can be transformed and rendered on the screen.
  *
  * The Text class provides functionalities to display and manage text rendered on the screen.
