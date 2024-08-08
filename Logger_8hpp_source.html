@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>E2D: Logger.hpp Source File</title>
+<title>E2D: include/E2D/Core/Logger.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,101 +71,112 @@ $(function() {
 <div class="title">Logger.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<a href="Logger_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef E2D_CORE_LOGGER_HPP</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define E2D_CORE_LOGGER_HPP</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;E2D/Core/Export.hpp&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Core_2Export_8hpp.html">E2D/Core/Export.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;E2D/Core/Format.hpp&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;E2D/Core/NonCopyable.hpp&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Format_8hpp.html">E2D/Core/Format.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="NonCopyable_8hpp.html">E2D/Core/NonCopyable.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacee2d.html">e2d</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span>e2d</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">namespace </span>internal</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">enum</span> LogLevel</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    E2D_LOG_LEVEL_DEBUG, </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    E2D_LOG_LEVEL_INFO,  </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    E2D_LOG_LEVEL_WARN, </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    E2D_LOG_LEVEL_ERROR, </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classe2d_1_1internal_1_1LoggerImpl.html">   62</a></span>&#160;<span class="keyword">class </span>E2D_CORE_API <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html">LoggerImpl</a> final : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">   76</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">log</a>(LogLevel level, <span class="keyword">const</span> std::string&amp; message, Args&amp;&amp;... args) <span class="comment">// NOLINT(cppcoreguidelines-missing-std-forward)</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        getInstance().logImpl(level, <a class="code" href="namespacee2d.html#a82fd9aa24746a5278526d43bf8a72bd5">format</a>(message, std::forward&lt;Args&gt;(args)...));</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html">LoggerImpl</a>();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    ~<a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html">LoggerImpl</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">static</span> <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html">LoggerImpl</a>&amp; getInstance();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">void</span> logImpl(LogLevel level, <span class="keyword">const</span> std::string&amp; message);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::string currentDateTime();</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    std::string logLevelToString(LogLevel level);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    std::string padLogLevel(<span class="keyword">const</span> std::string&amp; logLevel);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* getColorForLogLevel(LogLevel level);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    LogLevel   m_currentLevel{E2D_LOG_LEVEL_INFO}; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    std::mutex m_mutex;                            </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;};</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;} <span class="comment">// namespace internal</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acd">   49</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acd">LogLevel</a></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="Logger_8hpp.html#ga27d9006508ad53fafe2c41bde6918acda4bcc94fcb1aabaa5e415aa13409c1763">   51</a></span>&#160;    <a class="code" href="Logger_8hpp.html#ga27d9006508ad53fafe2c41bde6918acda4bcc94fcb1aabaa5e415aa13409c1763">E2D_LOG_LEVEL_DEBUG</a>, </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="Logger_8hpp.html#ga27d9006508ad53fafe2c41bde6918acda6f324b12a3313ba76dfbf612625c2d19">   52</a></span>&#160;    <a class="code" href="Logger_8hpp.html#ga27d9006508ad53fafe2c41bde6918acda6f324b12a3313ba76dfbf612625c2d19">E2D_LOG_LEVEL_INFO</a>,  </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="Logger_8hpp.html#ga27d9006508ad53fafe2c41bde6918acdafcfd4d0594d10291ec76593c66a8811d">   53</a></span>&#160;    <a class="code" href="Logger_8hpp.html#ga27d9006508ad53fafe2c41bde6918acdafcfd4d0594d10291ec76593c66a8811d">E2D_LOG_LEVEL_WARN</a>, </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="Logger_8hpp.html#ga27d9006508ad53fafe2c41bde6918acda10805ee7b4a7e1ff10f4bb0941f96dea">   54</a></span>&#160;    <a class="code" href="Logger_8hpp.html#ga27d9006508ad53fafe2c41bde6918acda10805ee7b4a7e1ff10f4bb0941f96dea">E2D_LOG_LEVEL_ERROR</a>, </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classe2d_1_1internal_1_1LoggerImpl.html">   64</a></span>&#160;<span class="keyword">class </span>E2D_CORE_API <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html">LoggerImpl</a> final : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">   78</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">log</a>(<a class="code" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acd">LogLevel</a> level, <span class="keyword">const</span> std::string&amp; message, Args&amp;&amp;... args) <span class="comment">// NOLINT(cppcoreguidelines-missing-std-forward)</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        getInstance().logImpl(level, <a class="code" href="Format_8hpp.html#a82fd9aa24746a5278526d43bf8a72bd5">format</a>(message, std::forward&lt;Args&gt;(args)...));</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html">LoggerImpl</a>();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    ~<a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html">LoggerImpl</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keyword">static</span> <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html">LoggerImpl</a>&amp; getInstance();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">void</span> logImpl(<a class="code" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acd">LogLevel</a> level, <span class="keyword">const</span> std::string&amp; message);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    std::string currentDateTime();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    std::string logLevelToString(<a class="code" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acd">LogLevel</a> level);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    std::string padLogLevel(<span class="keyword">const</span> std::string&amp; logLevel);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* getColorForLogLevel(<a class="code" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acd">LogLevel</a> level);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <a class="code" href="group__core.html#ga27d9006508ad53fafe2c41bde6918acd">LogLevel</a>   m_currentLevel{<a class="code" href="Logger_8hpp.html#ga27d9006508ad53fafe2c41bde6918acda6f324b12a3313ba76dfbf612625c2d19">E2D_LOG_LEVEL_INFO</a>}; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    std::mutex m_mutex;                            </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;};</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="keyword">namespace </span>log</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;{</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> debug(<span class="keyword">const</span> std::string&amp; message, Args&amp;&amp;... args) <span class="comment">// NOLINT(cppcoreguidelines-missing-std-forward)</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;{</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">internal::LoggerImpl::log</a>(internal::E2D_LOG_LEVEL_DEBUG, message, std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> info(<span class="keyword">const</span> std::string&amp; message, Args&amp;&amp;... args) <span class="comment">// NOLINT(cppcoreguidelines-missing-std-forward)</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;{</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">internal::LoggerImpl::log</a>(internal::E2D_LOG_LEVEL_INFO, message, std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;}</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> warn(<span class="keyword">const</span> std::string&amp; message, Args&amp;&amp;... args) <span class="comment">// NOLINT(cppcoreguidelines-missing-std-forward)</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;{</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">internal::LoggerImpl::log</a>(internal::E2D_LOG_LEVEL_WARN, message, std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;}</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> error(<span class="keyword">const</span> std::string&amp; message, Args&amp;&amp;... args) <span class="comment">// NOLINT(cppcoreguidelines-missing-std-forward)</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;{</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">internal::LoggerImpl::log</a>(internal::E2D_LOG_LEVEL_ERROR, message, std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;}</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;} <span class="comment">// namespace log</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;} <span class="comment">// namespace e2d</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_CORE_LOGGER_HPP</span></div>
-<div class="ttc" id="aclasse2d_1_1NonCopyable_html"><div class="ttname"><a href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></div><div class="ttdoc">The NonCopyable class provides a base class to make derived classes non-copyable.</div><div class="ttdef"><b>Definition:</b> <a href="NonCopyable_8hpp_source.html#l00043">NonCopyable.hpp:44</a></div></div>
-<div class="ttc" id="aclasse2d_1_1internal_1_1LoggerImpl_html"><div class="ttname"><a href="classe2d_1_1internal_1_1LoggerImpl.html">e2d::internal::LoggerImpl</a></div><div class="ttdoc">Provides logging functionality with different log levels.</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00062">Logger.hpp:63</a></div></div>
-<div class="ttc" id="aclasse2d_1_1internal_1_1LoggerImpl_html_ae41b9bc60864ee6ed88eda48fa10ce86"><div class="ttname"><a href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">e2d::internal::LoggerImpl::log</a></div><div class="ttdeci">static void log(LogLevel level, const std::string &amp;message, Args &amp;&amp;... args)</div><div class="ttdoc">Logs a message with the given log level and arguments.</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00076">Logger.hpp:76</a></div></div>
-<div class="ttc" id="anamespacee2d_html"><div class="ttname"><a href="namespacee2d.html">e2d</a></div><div class="ttdoc">Color.hpp.</div><div class="ttdef"><b>Definition:</b> <a href="Color_8hpp_source.html#l00031">Color.hpp:32</a></div></div>
-<div class="ttc" id="anamespacee2d_html_a82fd9aa24746a5278526d43bf8a72bd5"><div class="ttname"><a href="namespacee2d.html#a82fd9aa24746a5278526d43bf8a72bd5">e2d::format</a></div><div class="ttdeci">std::string format(const std::string &amp;text, Args &amp;&amp;... args)</div><div class="ttdoc">Formats a string with the given arguments.</div><div class="ttdef"><b>Definition:</b> <a href="Format_8hpp_source.html#l00179">Format.hpp:179</a></div></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;} <span class="comment">// namespace internal</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">namespace </span>log</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;{</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="group__core.html#ga2fb15c2b6a8ecbaa0fd48ad5c4c869d2">  176</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__core.html#ga2fb15c2b6a8ecbaa0fd48ad5c4c869d2">debug</a>(<span class="keyword">const</span> std::string&amp; message, Args&amp;&amp;... args) <span class="comment">// NOLINT(cppcoreguidelines-missing-std-forward)</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;{</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">internal::LoggerImpl::log</a>(internal::E2D_LOG_LEVEL_DEBUG, message, std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="group__core.html#gabc8f75da250f257a347dbd0bd9eaf8f9">  192</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__core.html#gabc8f75da250f257a347dbd0bd9eaf8f9">info</a>(<span class="keyword">const</span> std::string&amp; message, Args&amp;&amp;... args) <span class="comment">// NOLINT(cppcoreguidelines-missing-std-forward)</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;{</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">internal::LoggerImpl::log</a>(internal::E2D_LOG_LEVEL_INFO, message, std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="group__core.html#gada0e372d0b7516a4848c1156b309d30f">  208</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__core.html#gada0e372d0b7516a4848c1156b309d30f">warn</a>(<span class="keyword">const</span> std::string&amp; message, Args&amp;&amp;... args) <span class="comment">// NOLINT(cppcoreguidelines-missing-std-forward)</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;{</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">internal::LoggerImpl::log</a>(internal::E2D_LOG_LEVEL_WARN, message, std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="group__core.html#ga7365db690e7a407c199edb26f546b4b6">  224</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__core.html#ga7365db690e7a407c199edb26f546b4b6">error</a>(<span class="keyword">const</span> std::string&amp; message, Args&amp;&amp;... args) <span class="comment">// NOLINT(cppcoreguidelines-missing-std-forward)</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;{</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <a class="code" href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">internal::LoggerImpl::log</a>(internal::E2D_LOG_LEVEL_ERROR, message, std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;} <span class="comment">// namespace log</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;} <span class="comment">// namespace e2d</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_CORE_LOGGER_HPP</span></div>
+<div class="ttc" id="aCore_2Export_8hpp_html"><div class="ttname"><a href="Core_2Export_8hpp.html">Export.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aFormat_8hpp_html"><div class="ttname"><a href="Format_8hpp.html">Format.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aFormat_8hpp_html_a82fd9aa24746a5278526d43bf8a72bd5"><div class="ttname"><a href="Format_8hpp.html#a82fd9aa24746a5278526d43bf8a72bd5">e2d::format</a></div><div class="ttdeci">std::string format(const std::string &amp;text, Args &amp;&amp;... args)</div><div class="ttdoc">Formats a string with the given arguments.</div><div class="ttdef"><b>Definition:</b> <a href="Format_8hpp_source.html#l00180">Format.hpp:180</a></div></div>
+<div class="ttc" id="aLogger_8hpp_html_ga27d9006508ad53fafe2c41bde6918acda10805ee7b4a7e1ff10f4bb0941f96dea"><div class="ttname"><a href="Logger_8hpp.html#ga27d9006508ad53fafe2c41bde6918acda10805ee7b4a7e1ff10f4bb0941f96dea">e2d::internal::E2D_LOG_LEVEL_ERROR</a></div><div class="ttdeci">@ E2D_LOG_LEVEL_ERROR</div><div class="ttdoc">An error has occurred.</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00054">Logger.hpp:54</a></div></div>
+<div class="ttc" id="aLogger_8hpp_html_ga27d9006508ad53fafe2c41bde6918acda4bcc94fcb1aabaa5e415aa13409c1763"><div class="ttname"><a href="Logger_8hpp.html#ga27d9006508ad53fafe2c41bde6918acda4bcc94fcb1aabaa5e415aa13409c1763">e2d::internal::E2D_LOG_LEVEL_DEBUG</a></div><div class="ttdeci">@ E2D_LOG_LEVEL_DEBUG</div><div class="ttdoc">Detailed information, typically of interest only when diagnosing problems.</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00051">Logger.hpp:51</a></div></div>
+<div class="ttc" id="aLogger_8hpp_html_ga27d9006508ad53fafe2c41bde6918acda6f324b12a3313ba76dfbf612625c2d19"><div class="ttname"><a href="Logger_8hpp.html#ga27d9006508ad53fafe2c41bde6918acda6f324b12a3313ba76dfbf612625c2d19">e2d::internal::E2D_LOG_LEVEL_INFO</a></div><div class="ttdeci">@ E2D_LOG_LEVEL_INFO</div><div class="ttdoc">Confirmation that things are working as expected.</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00052">Logger.hpp:52</a></div></div>
+<div class="ttc" id="aLogger_8hpp_html_ga27d9006508ad53fafe2c41bde6918acdafcfd4d0594d10291ec76593c66a8811d"><div class="ttname"><a href="Logger_8hpp.html#ga27d9006508ad53fafe2c41bde6918acdafcfd4d0594d10291ec76593c66a8811d">e2d::internal::E2D_LOG_LEVEL_WARN</a></div><div class="ttdeci">@ E2D_LOG_LEVEL_WARN</div><div class="ttdoc">An indication that something unexpected happened, or indicative of some problem in the near future.</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00053">Logger.hpp:53</a></div></div>
+<div class="ttc" id="aNonCopyable_8hpp_html"><div class="ttname"><a href="NonCopyable_8hpp.html">NonCopyable.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aclasse2d_1_1NonCopyable_html"><div class="ttname"><a href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></div><div class="ttdoc">The NonCopyable class provides a base class to make derived classes non-copyable.</div><div class="ttdef"><b>Definition:</b> <a href="NonCopyable_8hpp_source.html#l00044">NonCopyable.hpp:45</a></div></div>
+<div class="ttc" id="aclasse2d_1_1internal_1_1LoggerImpl_html"><div class="ttname"><a href="classe2d_1_1internal_1_1LoggerImpl.html">e2d::internal::LoggerImpl</a></div><div class="ttdoc">Internal Provides logging functionality with different log levels.</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00064">Logger.hpp:65</a></div></div>
+<div class="ttc" id="aclasse2d_1_1internal_1_1LoggerImpl_html_ae41b9bc60864ee6ed88eda48fa10ce86"><div class="ttname"><a href="classe2d_1_1internal_1_1LoggerImpl.html#ae41b9bc60864ee6ed88eda48fa10ce86">e2d::internal::LoggerImpl::log</a></div><div class="ttdeci">static void log(LogLevel level, const std::string &amp;message, Args &amp;&amp;... args)</div><div class="ttdoc">Logs a message with the given log level and arguments.</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00078">Logger.hpp:78</a></div></div>
+<div class="ttc" id="agroup__core_html_ga27d9006508ad53fafe2c41bde6918acd"><div class="ttname"><a href="group__core.html#ga27d9006508ad53fafe2c41bde6918acd">e2d::internal::LogLevel</a></div><div class="ttdeci">LogLevel</div><div class="ttdoc">Internal Represents the different levels of logging severity.</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00049">Logger.hpp:50</a></div></div>
+<div class="ttc" id="agroup__core_html_ga2fb15c2b6a8ecbaa0fd48ad5c4c869d2"><div class="ttname"><a href="group__core.html#ga2fb15c2b6a8ecbaa0fd48ad5c4c869d2">e2d::log::debug</a></div><div class="ttdeci">void debug(const std::string &amp;message, Args &amp;&amp;... args)</div><div class="ttdoc">Logs a debug message.</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00176">Logger.hpp:176</a></div></div>
+<div class="ttc" id="agroup__core_html_ga7365db690e7a407c199edb26f546b4b6"><div class="ttname"><a href="group__core.html#ga7365db690e7a407c199edb26f546b4b6">e2d::log::error</a></div><div class="ttdeci">void error(const std::string &amp;message, Args &amp;&amp;... args)</div><div class="ttdoc">Logs an error message.</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00224">Logger.hpp:224</a></div></div>
+<div class="ttc" id="agroup__core_html_gabc8f75da250f257a347dbd0bd9eaf8f9"><div class="ttname"><a href="group__core.html#gabc8f75da250f257a347dbd0bd9eaf8f9">e2d::log::info</a></div><div class="ttdeci">void info(const std::string &amp;message, Args &amp;&amp;... args)</div><div class="ttdoc">Logs an info message.</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00192">Logger.hpp:192</a></div></div>
+<div class="ttc" id="agroup__core_html_gada0e372d0b7516a4848c1156b309d30f"><div class="ttname"><a href="group__core.html#gada0e372d0b7516a4848c1156b309d30f">e2d::log::warn</a></div><div class="ttdeci">void warn(const std::string &amp;message, Args &amp;&amp;... args)</div><div class="ttdoc">Logs a warning message.</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00208">Logger.hpp:208</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

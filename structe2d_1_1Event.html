@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -62,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacee2d.html">e2d</a></li><li class="navelem"><a class="el" href="structe2d_1_1Event.html">Event</a></li>  </ul>
+<li class="navelem"><b>e2d</b></li><li class="navelem"><a class="el" href="structe2d_1_1Event.html">Event</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,14 +73,14 @@ $(function() {
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structe2d_1_1Event-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">e2d::Event Struct Reference</div>  </div>
+<div class="title">e2d::Event Struct Reference<div class="ingroups"><a class="el" href="group__engine.html">Engine module</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>Represents a generic event, encapsulating various event types such as keyboard inputs.  
  <a href="structe2d_1_1Event.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Event_8hpp_source.html">Event.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Event_8hpp_source.html">E2D/Engine/Event.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -134,7 +135,7 @@ union {</td></tr>
 <div class="textblock"><p>Represents a generic event, encapsulating various event types such as keyboard inputs. </p>
 <p>The <a class="el" href="structe2d_1_1Event.html" title="Represents a generic event, encapsulating various event types such as keyboard inputs.">Event</a> struct is a union of multiple event types that can occur within the E2D engine. It includes keyboard events and window resize events, and enumerates all possible event types. </p>
 
-<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00044">44</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00045">45</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a5cea0769907f91dff9a2d2531dc8f0cb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5cea0769907f91dff9a2d2531dc8f0cb">&#9670;&nbsp;</a></span>EventType</h2>
@@ -179,7 +180,7 @@ union {</td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00084">84</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00085">85</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
 
 </div>
 </div>
@@ -198,7 +199,7 @@ union {</td></tr>
 
 <p>Specific details for a keyboard event, valid when type is KeyPressed or KeyReleased. </p>
 
-<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00105">105</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00106">106</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
 
 </div>
 </div>
@@ -216,7 +217,7 @@ union {</td></tr>
 
 <p>Specific details for a window resize event, valid when type is Resized. </p>
 
-<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00106">106</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00107">107</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
 
 </div>
 </div>
@@ -234,12 +235,12 @@ union {</td></tr>
 
 <p>Type of the event, indicating what kind of event occurred. </p>
 
-<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00101">101</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00102">102</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="Event_8hpp_source.html">Event.hpp</a></li>
+<li>include/E2D/Engine/<a class="el" href="Event_8hpp_source.html">Event.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

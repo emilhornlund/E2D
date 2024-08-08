@@ -1,20 +1,6 @@
 var searchData=
 [
-  ['_7eapplication_459',['~Application',['../classe2d_1_1Application.html#a04e2f47f8f8e3cd3807c8ffd12d08aaa',1,'e2d::Application']]],
-  ['_7efont_460',['~Font',['../classe2d_1_1Font.html#a41b3e46f700b2380885bbfda07f28d98',1,'e2d::Font']]],
-  ['_7eformatimpl_461',['~FormatImpl',['../classe2d_1_1internal_1_1FormatImpl.html#a3bd530b13c2c7ae9c0f57478d4ea9cdb',1,'e2d::internal::FormatImpl']]],
-  ['_7enoncopyable_462',['~NonCopyable',['../classe2d_1_1NonCopyable.html#ac4c9c9e34d0adf5a9a1d3390825f8d42',1,'e2d::NonCopyable']]],
-  ['_7eobject_463',['~Object',['../classe2d_1_1Object.html#ab577ad23e874e0f6d31471ed0063a4ed',1,'e2d::Object']]],
-  ['_7eobjectregistry_464',['~ObjectRegistry',['../classe2d_1_1ObjectRegistry.html#aad79b208cb2b14726f58babe0f7157c6',1,'e2d::ObjectRegistry']]],
-  ['_7erenderable_465',['~Renderable',['../classe2d_1_1Renderable.html#ad40c77485d91f5a4d03b091d4a24156b',1,'e2d::Renderable']]],
-  ['_7erenderer_466',['~Renderer',['../classe2d_1_1Renderer.html#a78761466ade0e2daa3102ad077c96336',1,'e2d::Renderer']]],
-  ['_7eresource_467',['~Resource',['../classe2d_1_1Resource.html#ac4e3542fd1b9d3e322903e22cd29ab8b',1,'e2d::Resource']]],
-  ['_7eresourceregistry_468',['~ResourceRegistry',['../classe2d_1_1ResourceRegistry.html#a702571386d95f862ae0e5c3aae73122e',1,'e2d::ResourceRegistry']]],
-  ['_7esprite_469',['~Sprite',['../classe2d_1_1Sprite.html#a512dc655947b4923d99cdb1901f53371',1,'e2d::Sprite']]],
-  ['_7esystem_470',['~System',['../classe2d_1_1System.html#aaa6c161485c4c395146147b1c4c83056',1,'e2d::System']]],
-  ['_7etext_471',['~Text',['../classe2d_1_1Text.html#a8915ea8dd0bc9d14d05cd329ebd043e8',1,'e2d::Text']]],
-  ['_7etexture_472',['~Texture',['../classe2d_1_1Texture.html#a6319d4863af7bde38a347fa9271c2595',1,'e2d::Texture']]],
-  ['_7etimer_473',['~Timer',['../classe2d_1_1Timer.html#a6d501875b4aa8b5591cebfc7e05c85d8',1,'e2d::Timer']]],
-  ['_7etransformable_474',['~Transformable',['../classe2d_1_1Transformable.html#a795ed35e4fe1282fdc461638716be852',1,'e2d::Transformable']]],
-  ['_7ewindow_475',['~Window',['../classe2d_1_1Window.html#a7a18662c78fccd7250af2ab0633b231e',1,'e2d::Window']]]
+  ['warn_602',['warn',['../group__core.html#gada0e372d0b7516a4848c1156b309d30f',1,'e2d::log']]],
+  ['window_603',['Window',['../classe2d_1_1Window.html#a9498d7f4a647b1f87d033b8c1b65a0d1',1,'e2d::Window']]],
+  ['windowimpl_604',['WindowImpl',['../classe2d_1_1internal_1_1WindowImpl.html#aedbde3c9112acb7fd3c15b18b42af053',1,'e2d::internal::WindowImpl']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['window_354',['Window',['../classe2d_1_1Window.html',1,'e2d']]]
+  ['window_439',['Window',['../classe2d_1_1Window.html',1,'e2d']]],
+  ['windowimpl_440',['WindowImpl',['../classe2d_1_1internal_1_1WindowImpl.html',1,'e2d::internal']]]
 ];

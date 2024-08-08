@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>E2D: Transformable.hpp Source File</title>
+<title>E2D: include/E2D/Engine/Transformable.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,60 +71,64 @@ $(function() {
 <div class="title">Transformable.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<a href="Transformable_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef E2D_ENGINE_TRANSFORMABLE_HPP</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define E2D_ENGINE_TRANSFORMABLE_HPP</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;E2D/Engine/Export.hpp&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Engine_2Export_8hpp.html">E2D/Engine/Export.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;E2D/Core/NonCopyable.hpp&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;E2D/Core/Rect.hpp&gt;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;E2D/Core/Vector2.hpp&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="NonCopyable_8hpp.html">E2D/Core/NonCopyable.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Rect_8hpp.html">E2D/Core/Rect.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Vector2_8hpp.html">E2D/Core/Vector2.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacee2d.html">e2d</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span>e2d</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html">   47</a></span>&#160;<span class="keyword">class </span>E2D_ENGINE_API <a class="code" href="classe2d_1_1Transformable.html">Transformable</a> : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a795ed35e4fe1282fdc461638716be852">   55</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classe2d_1_1Transformable.html#a795ed35e4fe1282fdc461638716be852">~Transformable</a>() = 0;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#ab53ebf1d76c394e834cf6375f1436b0d">   64</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a>&amp; <a class="code" href="classe2d_1_1Transformable.html#ab53ebf1d76c394e834cf6375f1436b0d">getPosition</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a74487dcfdbc3ce5252228d02bd7c3a68">   73</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Transformable.html#a74487dcfdbc3ce5252228d02bd7c3a68">setPosition</a>(<span class="keyword">const</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a>&amp; position);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a3c2708686c0c7e94a3d32a8de9d57681">   82</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a>&amp; <a class="code" href="classe2d_1_1Transformable.html#a3c2708686c0c7e94a3d32a8de9d57681">getOrigin</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#aa44b892d957e73cc3ed1859fffd542a4">   92</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Transformable.html#aa44b892d957e73cc3ed1859fffd542a4">setOrigin</a>(<span class="keyword">const</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a>&amp; origin);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a56641ac6940d7e0d0020eabf6e7899f0">  101</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a>&amp; <a class="code" href="classe2d_1_1Transformable.html#a56641ac6940d7e0d0020eabf6e7899f0">getScale</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a79f54be561d7cc7abb969cba0d8a62b1">  110</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Transformable.html#a79f54be561d7cc7abb969cba0d8a62b1">setScale</a>(<span class="keyword">const</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a>&amp; scale);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a2275dad37bd63385b78f1021601f2bb4">  119</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classe2d_1_1Transformable.html#a2275dad37bd63385b78f1021601f2bb4">getRotation</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a5f09423409351645d5c5a559bfeacaa5">  128</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Transformable.html#a5f09423409351645d5c5a559bfeacaa5">setRotation</a>(<span class="keywordtype">double</span> angle);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#ae317c8d2fab9819e642bf93b0c9c2e12">  137</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a> <a class="code" href="classe2d_1_1Transformable.html#ae317c8d2fab9819e642bf93b0c9c2e12">getSize</a>() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a1d7956b404116e7205d4702ba30d896d">  146</a></span>&#160;    <a class="code" href="classe2d_1_1Rect.html">FloatRect</a> <a class="code" href="classe2d_1_1Transformable.html#a1d7956b404116e7205d4702ba30d896d">getLocalBounds</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#ad229fb8004a393f81798c92433a0edb6">  155</a></span>&#160;    <a class="code" href="classe2d_1_1Rect.html">FloatRect</a> <a class="code" href="classe2d_1_1Transformable.html#ad229fb8004a393f81798c92433a0edb6">getGlobalBounds</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a> m_position;    </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a> m_origin;      </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a> m_scale{1, 1}; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">double</span>   m_rotation{0}; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}; <span class="comment">// Transformable class</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;} <span class="comment">// namespace e2d</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_ENGINE_TRANSFORMABLE_HPP</span></div>
-<div class="ttc" id="aclasse2d_1_1NonCopyable_html"><div class="ttname"><a href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></div><div class="ttdoc">The NonCopyable class provides a base class to make derived classes non-copyable.</div><div class="ttdef"><b>Definition:</b> <a href="NonCopyable_8hpp_source.html#l00043">NonCopyable.hpp:44</a></div></div>
-<div class="ttc" id="aclasse2d_1_1Rect_html"><div class="ttname"><a href="classe2d_1_1Rect.html">e2d::Rect</a></div><div class="ttdoc">Represents a rectangle defined by a position (top-left corner) and a size (width and height).</div><div class="ttdef"><b>Definition:</b> <a href="Rect_8hpp_source.html#l00048">Rect.hpp:49</a></div></div>
-<div class="ttc" id="aclasse2d_1_1Transformable_html"><div class="ttname"><a href="classe2d_1_1Transformable.html">e2d::Transformable</a></div><div class="ttdoc">Provides an interface for objects that can be transformed.</div><div class="ttdef"><b>Definition:</b> <a href="Transformable_8hpp_source.html#l00047">Transformable.hpp:48</a></div></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html">   48</a></span>&#160;<span class="keyword">class </span>E2D_ENGINE_API <a class="code" href="classe2d_1_1Transformable.html">Transformable</a> : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a795ed35e4fe1282fdc461638716be852">   56</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classe2d_1_1Transformable.html#a795ed35e4fe1282fdc461638716be852">~Transformable</a>() = 0;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#ab53ebf1d76c394e834cf6375f1436b0d">   65</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a>&amp; <a class="code" href="classe2d_1_1Transformable.html#ab53ebf1d76c394e834cf6375f1436b0d">getPosition</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a74487dcfdbc3ce5252228d02bd7c3a68">   74</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Transformable.html#a74487dcfdbc3ce5252228d02bd7c3a68">setPosition</a>(<span class="keyword">const</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a>&amp; position);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a3c2708686c0c7e94a3d32a8de9d57681">   83</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a>&amp; <a class="code" href="classe2d_1_1Transformable.html#a3c2708686c0c7e94a3d32a8de9d57681">getOrigin</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#aa44b892d957e73cc3ed1859fffd542a4">   93</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Transformable.html#aa44b892d957e73cc3ed1859fffd542a4">setOrigin</a>(<span class="keyword">const</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a>&amp; origin);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a56641ac6940d7e0d0020eabf6e7899f0">  102</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a>&amp; <a class="code" href="classe2d_1_1Transformable.html#a56641ac6940d7e0d0020eabf6e7899f0">getScale</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a79f54be561d7cc7abb969cba0d8a62b1">  111</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Transformable.html#a79f54be561d7cc7abb969cba0d8a62b1">setScale</a>(<span class="keyword">const</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a>&amp; scale);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a2275dad37bd63385b78f1021601f2bb4">  120</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classe2d_1_1Transformable.html#a2275dad37bd63385b78f1021601f2bb4">getRotation</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a5f09423409351645d5c5a559bfeacaa5">  129</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Transformable.html#a5f09423409351645d5c5a559bfeacaa5">setRotation</a>(<span class="keywordtype">double</span> angle);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#ae317c8d2fab9819e642bf93b0c9c2e12">  138</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a> <a class="code" href="classe2d_1_1Transformable.html#ae317c8d2fab9819e642bf93b0c9c2e12">getSize</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#a1d7956b404116e7205d4702ba30d896d">  147</a></span>&#160;    <a class="code" href="classe2d_1_1Rect.html">FloatRect</a> <a class="code" href="classe2d_1_1Transformable.html#a1d7956b404116e7205d4702ba30d896d">getLocalBounds</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="classe2d_1_1Transformable.html#ad229fb8004a393f81798c92433a0edb6">  156</a></span>&#160;    <a class="code" href="classe2d_1_1Rect.html">FloatRect</a> <a class="code" href="classe2d_1_1Transformable.html#ad229fb8004a393f81798c92433a0edb6">getGlobalBounds</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a> m_position;    </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a> m_origin;      </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <a class="code" href="classe2d_1_1Vector2.html">Vector2f</a> m_scale{1, 1}; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordtype">double</span>   m_rotation{0}; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}; <span class="comment">// Transformable class</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;} <span class="comment">// namespace e2d</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_ENGINE_TRANSFORMABLE_HPP</span></div>
+<div class="ttc" id="aEngine_2Export_8hpp_html"><div class="ttname"><a href="Engine_2Export_8hpp.html">Export.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aNonCopyable_8hpp_html"><div class="ttname"><a href="NonCopyable_8hpp.html">NonCopyable.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aRect_8hpp_html"><div class="ttname"><a href="Rect_8hpp.html">Rect.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aVector2_8hpp_html"><div class="ttname"><a href="Vector2_8hpp.html">Vector2.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aclasse2d_1_1NonCopyable_html"><div class="ttname"><a href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></div><div class="ttdoc">The NonCopyable class provides a base class to make derived classes non-copyable.</div><div class="ttdef"><b>Definition:</b> <a href="NonCopyable_8hpp_source.html#l00044">NonCopyable.hpp:45</a></div></div>
+<div class="ttc" id="aclasse2d_1_1Rect_html"><div class="ttname"><a href="classe2d_1_1Rect.html">e2d::Rect</a></div><div class="ttdoc">Represents a rectangle defined by a position (top-left corner) and a size (width and height).</div><div class="ttdef"><b>Definition:</b> <a href="Rect_8hpp_source.html#l00049">Rect.hpp:50</a></div></div>
+<div class="ttc" id="aclasse2d_1_1Transformable_html"><div class="ttname"><a href="classe2d_1_1Transformable.html">e2d::Transformable</a></div><div class="ttdoc">Provides an interface for objects that can be transformed.</div><div class="ttdef"><b>Definition:</b> <a href="Transformable_8hpp_source.html#l00048">Transformable.hpp:49</a></div></div>
 <div class="ttc" id="aclasse2d_1_1Transformable_html_a1d7956b404116e7205d4702ba30d896d"><div class="ttname"><a href="classe2d_1_1Transformable.html#a1d7956b404116e7205d4702ba30d896d">e2d::Transformable::getLocalBounds</a></div><div class="ttdeci">FloatRect getLocalBounds() const</div><div class="ttdoc">Gets the local bounding rectangle of the object.</div></div>
 <div class="ttc" id="aclasse2d_1_1Transformable_html_a2275dad37bd63385b78f1021601f2bb4"><div class="ttname"><a href="classe2d_1_1Transformable.html#a2275dad37bd63385b78f1021601f2bb4">e2d::Transformable::getRotation</a></div><div class="ttdeci">double getRotation() const</div><div class="ttdoc">Retrieves the current rotation angle of the object in degrees.</div></div>
 <div class="ttc" id="aclasse2d_1_1Transformable_html_a3c2708686c0c7e94a3d32a8de9d57681"><div class="ttname"><a href="classe2d_1_1Transformable.html#a3c2708686c0c7e94a3d32a8de9d57681">e2d::Transformable::getOrigin</a></div><div class="ttdeci">const Vector2f &amp; getOrigin() const</div><div class="ttdoc">Retrieves the origin point of the object.</div></div>
@@ -137,7 +142,6 @@ $(function() {
 <div class="ttc" id="aclasse2d_1_1Transformable_html_ad229fb8004a393f81798c92433a0edb6"><div class="ttname"><a href="classe2d_1_1Transformable.html#ad229fb8004a393f81798c92433a0edb6">e2d::Transformable::getGlobalBounds</a></div><div class="ttdeci">FloatRect getGlobalBounds() const</div><div class="ttdoc">Gets the global bounding rectangle of the object.</div></div>
 <div class="ttc" id="aclasse2d_1_1Transformable_html_ae317c8d2fab9819e642bf93b0c9c2e12"><div class="ttname"><a href="classe2d_1_1Transformable.html#ae317c8d2fab9819e642bf93b0c9c2e12">e2d::Transformable::getSize</a></div><div class="ttdeci">virtual Vector2f getSize() const =0</div><div class="ttdoc">Gets the size of the object.</div></div>
 <div class="ttc" id="aclasse2d_1_1Vector2_html"><div class="ttname"><a href="classe2d_1_1Vector2.html">e2d::Vector2&lt; float &gt;</a></div></div>
-<div class="ttc" id="anamespacee2d_html"><div class="ttname"><a href="namespacee2d.html">e2d</a></div><div class="ttdoc">Color.hpp.</div><div class="ttdef"><b>Definition:</b> <a href="Color_8hpp_source.html#l00031">Color.hpp:32</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

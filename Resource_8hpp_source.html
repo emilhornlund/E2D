@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>E2D: Resource.hpp Source File</title>
+<title>E2D: include/E2D/Engine/Resource.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,56 +71,57 @@ $(function() {
 <div class="title">Resource.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<a href="Resource_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef E2D_ENGINE_RESOURCE_HPP</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define E2D_ENGINE_RESOURCE_HPP</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;E2D/Engine/Export.hpp&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Engine_2Export_8hpp.html">E2D/Engine/Export.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;E2D/Core/NonCopyable.hpp&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="NonCopyable_8hpp.html">E2D/Core/NonCopyable.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacee2d.html">e2d</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span>e2d</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">class </span><a class="code" href="namespacee2d_1_1Keyboard.html#ad92603c71fa97e5b93c1d68951625ab0ae498749f3c42246d50b15c81c101d988">Application</a>;      <span class="comment">// Forward declaration of Application</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">class </span><a class="code" href="Keyboard_8hpp.html#gad92603c71fa97e5b93c1d68951625ab0ae498749f3c42246d50b15c81c101d988">Application</a>;      <span class="comment">// Forward declaration of Application</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">class </span>ResourceRegistry; <span class="comment">// Forward declaration of ResourceRegistry</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classe2d_1_1Resource.html">   48</a></span>&#160;<span class="keyword">class </span>E2D_ENGINE_API <a class="code" href="classe2d_1_1Resource.html">Resource</a> : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classe2d_1_1ResourceRegistry.html">ResourceRegistry</a>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classe2d_1_1Resource.html#a03a40c1c71eb1de92d15266328b71aba">   58</a></span>&#160;    <a class="code" href="classe2d_1_1Resource.html#a03a40c1c71eb1de92d15266328b71aba">Resource</a>();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classe2d_1_1Resource.html#ac4e3542fd1b9d3e322903e22cd29ab8b">   65</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classe2d_1_1Resource.html#ac4e3542fd1b9d3e322903e22cd29ab8b">~Resource</a>() = 0;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classe2d_1_1Resource.html#a0cbaeb5b6b86e3686d880edae9852a6a">   75</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Resource.html#a0cbaeb5b6b86e3686d880edae9852a6a">loadFromFile</a>(<span class="keyword">const</span> std::string&amp; filepath) = 0;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classe2d_1_1Resource.html#aebd5ce9837d84aa564dc8964dd540ead">   86</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Resource.html#aebd5ce9837d84aa564dc8964dd540ead">loadFromMemory</a>(<span class="keyword">const</span> <span class="keywordtype">void</span>* data, std::size_t size) = 0;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classe2d_1_1Resource.html#aacf6d628092e04362e72d1f7e09b252c">   96</a></span>&#160;    <a class="code" href="classe2d_1_1Application.html">Application</a>&amp; <a class="code" href="classe2d_1_1Resource.html#aacf6d628092e04362e72d1f7e09b252c">getApplication</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="classe2d_1_1Application.html">Application</a>* m_application{<span class="keyword">nullptr</span>}; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}; <span class="comment">// Resource class</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;} <span class="comment">// namespace e2d</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_ENGINE_RESOURCE_HPP</span></div>
-<div class="ttc" id="aclasse2d_1_1Application_html"><div class="ttname"><a href="classe2d_1_1Application.html">e2d::Application</a></div><div class="ttdoc">Abstract base for managing the lifecycle and main loop of the application.</div><div class="ttdef"><b>Definition:</b> <a href="Application_8hpp_source.html#l00053">Application.hpp:54</a></div></div>
-<div class="ttc" id="aclasse2d_1_1NonCopyable_html"><div class="ttname"><a href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></div><div class="ttdoc">The NonCopyable class provides a base class to make derived classes non-copyable.</div><div class="ttdef"><b>Definition:</b> <a href="NonCopyable_8hpp_source.html#l00043">NonCopyable.hpp:44</a></div></div>
-<div class="ttc" id="aclasse2d_1_1ResourceRegistry_html"><div class="ttname"><a href="classe2d_1_1ResourceRegistry.html">e2d::ResourceRegistry</a></div><div class="ttdoc">Manages loading and accessing resources by their identifiers.</div><div class="ttdef"><b>Definition:</b> <a href="ResourceRegistry_8hpp_source.html#l00056">ResourceRegistry.hpp:57</a></div></div>
-<div class="ttc" id="aclasse2d_1_1Resource_html"><div class="ttname"><a href="classe2d_1_1Resource.html">e2d::Resource</a></div><div class="ttdoc">Abstract base class for all resource types.</div><div class="ttdef"><b>Definition:</b> <a href="Resource_8hpp_source.html#l00048">Resource.hpp:49</a></div></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classe2d_1_1Resource.html">   49</a></span>&#160;<span class="keyword">class </span>E2D_ENGINE_API <a class="code" href="classe2d_1_1Resource.html">Resource</a> : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classe2d_1_1ResourceRegistry.html">ResourceRegistry</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classe2d_1_1Resource.html#a03a40c1c71eb1de92d15266328b71aba">   59</a></span>&#160;    <a class="code" href="classe2d_1_1Resource.html#a03a40c1c71eb1de92d15266328b71aba">Resource</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classe2d_1_1Resource.html#ac4e3542fd1b9d3e322903e22cd29ab8b">   66</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classe2d_1_1Resource.html#ac4e3542fd1b9d3e322903e22cd29ab8b">~Resource</a>() = 0;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classe2d_1_1Resource.html#a0cbaeb5b6b86e3686d880edae9852a6a">   76</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Resource.html#a0cbaeb5b6b86e3686d880edae9852a6a">loadFromFile</a>(<span class="keyword">const</span> std::string&amp; filepath) = 0;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classe2d_1_1Resource.html#aebd5ce9837d84aa564dc8964dd540ead">   87</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Resource.html#aebd5ce9837d84aa564dc8964dd540ead">loadFromMemory</a>(<span class="keyword">const</span> <span class="keywordtype">void</span>* data, std::size_t size) = 0;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classe2d_1_1Resource.html#aacf6d628092e04362e72d1f7e09b252c">   97</a></span>&#160;    <a class="code" href="classe2d_1_1Application.html">Application</a>&amp; <a class="code" href="classe2d_1_1Resource.html#aacf6d628092e04362e72d1f7e09b252c">getApplication</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="classe2d_1_1Application.html">Application</a>* m_application{<span class="keyword">nullptr</span>}; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}; <span class="comment">// Resource class</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;} <span class="comment">// namespace e2d</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_ENGINE_RESOURCE_HPP</span></div>
+<div class="ttc" id="aEngine_2Export_8hpp_html"><div class="ttname"><a href="Engine_2Export_8hpp.html">Export.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aKeyboard_8hpp_html_gad92603c71fa97e5b93c1d68951625ab0ae498749f3c42246d50b15c81c101d988"><div class="ttname"><a href="Keyboard_8hpp.html#gad92603c71fa97e5b93c1d68951625ab0ae498749f3c42246d50b15c81c101d988">e2d::Keyboard::Scancode::Application</a></div><div class="ttdeci">@ Application</div><div class="ttdoc">Keyboard Application key.</div></div>
+<div class="ttc" id="aNonCopyable_8hpp_html"><div class="ttname"><a href="NonCopyable_8hpp.html">NonCopyable.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aclasse2d_1_1Application_html"><div class="ttname"><a href="classe2d_1_1Application.html">e2d::Application</a></div><div class="ttdoc">Abstract base for managing the lifecycle and main loop of the application.</div><div class="ttdef"><b>Definition:</b> <a href="Application_8hpp_source.html#l00054">Application.hpp:55</a></div></div>
+<div class="ttc" id="aclasse2d_1_1NonCopyable_html"><div class="ttname"><a href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></div><div class="ttdoc">The NonCopyable class provides a base class to make derived classes non-copyable.</div><div class="ttdef"><b>Definition:</b> <a href="NonCopyable_8hpp_source.html#l00044">NonCopyable.hpp:45</a></div></div>
+<div class="ttc" id="aclasse2d_1_1ResourceRegistry_html"><div class="ttname"><a href="classe2d_1_1ResourceRegistry.html">e2d::ResourceRegistry</a></div><div class="ttdoc">Manages loading and accessing resources by their identifiers.</div><div class="ttdef"><b>Definition:</b> <a href="ResourceRegistry_8hpp_source.html#l00057">ResourceRegistry.hpp:58</a></div></div>
+<div class="ttc" id="aclasse2d_1_1Resource_html"><div class="ttname"><a href="classe2d_1_1Resource.html">e2d::Resource</a></div><div class="ttdoc">Abstract base class for all resource types.</div><div class="ttdef"><b>Definition:</b> <a href="Resource_8hpp_source.html#l00049">Resource.hpp:50</a></div></div>
 <div class="ttc" id="aclasse2d_1_1Resource_html_a03a40c1c71eb1de92d15266328b71aba"><div class="ttname"><a href="classe2d_1_1Resource.html#a03a40c1c71eb1de92d15266328b71aba">e2d::Resource::Resource</a></div><div class="ttdeci">Resource()</div><div class="ttdoc">Constructs a new Resource object.</div></div>
 <div class="ttc" id="aclasse2d_1_1Resource_html_a0cbaeb5b6b86e3686d880edae9852a6a"><div class="ttname"><a href="classe2d_1_1Resource.html#a0cbaeb5b6b86e3686d880edae9852a6a">e2d::Resource::loadFromFile</a></div><div class="ttdeci">virtual bool loadFromFile(const std::string &amp;filepath)=0</div><div class="ttdoc">Loads the resource from a file.</div></div>
 <div class="ttc" id="aclasse2d_1_1Resource_html_aacf6d628092e04362e72d1f7e09b252c"><div class="ttname"><a href="classe2d_1_1Resource.html#aacf6d628092e04362e72d1f7e09b252c">e2d::Resource::getApplication</a></div><div class="ttdeci">Application &amp; getApplication() const</div><div class="ttdoc">Gets the application reference for this resource.</div></div>
 <div class="ttc" id="aclasse2d_1_1Resource_html_ac4e3542fd1b9d3e322903e22cd29ab8b"><div class="ttname"><a href="classe2d_1_1Resource.html#ac4e3542fd1b9d3e322903e22cd29ab8b">e2d::Resource::~Resource</a></div><div class="ttdeci">virtual ~Resource()=0</div><div class="ttdoc">Pure virtual destructor.</div></div>
 <div class="ttc" id="aclasse2d_1_1Resource_html_aebd5ce9837d84aa564dc8964dd540ead"><div class="ttname"><a href="classe2d_1_1Resource.html#aebd5ce9837d84aa564dc8964dd540ead">e2d::Resource::loadFromMemory</a></div><div class="ttdeci">virtual bool loadFromMemory(const void *data, std::size_t size)=0</div><div class="ttdoc">Loads the resource from memory.</div></div>
-<div class="ttc" id="anamespacee2d_1_1Keyboard_html_ad92603c71fa97e5b93c1d68951625ab0ae498749f3c42246d50b15c81c101d988"><div class="ttname"><a href="namespacee2d_1_1Keyboard.html#ad92603c71fa97e5b93c1d68951625ab0ae498749f3c42246d50b15c81c101d988">e2d::Keyboard::Scancode::Application</a></div><div class="ttdeci">@ Application</div><div class="ttdoc">Keyboard Application key.</div></div>
-<div class="ttc" id="anamespacee2d_html"><div class="ttname"><a href="namespacee2d.html">e2d</a></div><div class="ttdoc">Color.hpp.</div><div class="ttdef"><b>Definition:</b> <a href="Color_8hpp_source.html#l00031">Color.hpp:32</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

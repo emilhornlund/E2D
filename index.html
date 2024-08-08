@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -61,11 +62,322 @@ $(function() {
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
 <div class="title">E2D Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <img src="https://github.com/emilhornlund/E2D/actions/workflows/main.yml/badge.svg" alt="main workflow" style="pointer-events: none;" class="inline"/> <img src="https://github.com/emilhornlund/E2D/actions/workflows/docs.yml/badge.svg" alt="documentation workflow" style="pointer-events: none;" class="inline"/></p>
+<h1>E2D</h1>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#prerequisites">Prerequisites</a><ul>
+<li><a href="#prerequisites-instructions">Instructions</a><ul>
+<li><a href="#windows-prerequisites">Windows</a></li>
+<li><a href="#macos-prerequisites">macOS</a></li>
+<li><a href="#linux-prerequisites">Linux</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#packaging">Packaging</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#generating-documentation">Generating Documentation</a><ul>
+<li><a href="#instructions-for-installing-doxygen">Instructions for Installing Doxygen</a><ul>
+<li><a href="#windows-doxygen-installation">Windows</a></li>
+<li><a href="#macos-doxygen-installation">macOS</a></li>
+<li><a href="#linux-doxygen-installation">Linux</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#code-quality">Code Quality</a><ul>
+<li><a href="#clang-tidy">Clang-Tidy</a></li>
+<li><a href="#clang-format">Clang-Format</a></li>
+</ul>
+</li>
+<li><a href="#collaboration">Collaboration</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<h2>Overview</h2>
+<p>E2D is a modern 2D game engine written in C++17 that leverages the SDL2 library. Currently, a work in progress, the project aims to provide developers with a powerful and flexible platform to create cross-platform 2D games with ease. With its comprehensive features, intuitive API, and extensive documentation, E2D aims to empower developers to bring their game ideas to life efficiently and deliver captivating gaming experiences.</p>
+<p>For more information, visit the <a href="http://e2d.emilhornlund.com">E2D Documentation</a>.</p>
+<h2>Prerequisites</h2>
+<p>Before building and running the E2D project, ensure you have the following prerequisites:</p>
+<ul>
+<li><b>Operating System:</b> E2D is supported on Linux, Windows, and macOS.</li>
+<li><b>C++17 Compiler:</b> E2D requires a compiler that supports the C++17 standard. Supported compilers include GNU C++ (GCC), Clang, MinGW, ClangCL and MSVC (Microsoft Visual C++).</li>
+<li><b>CMake 3.22 or higher:</b> E2D uses CMake as the build system. Ensure that you have CMake version 3.22 or higher installed on your system. You can download CMake from the <a href="https://cmake.org/download/">official CMake website</a>.</li>
+<li><b>SDL2 Library:</b> E2D uses the SDL2 library for graphics and input handling. SDL2 and its extension libraries are already bundled with E2D for Windows and macOS. For Linux, make sure you have SDL2 and the extension libraries (SDL_image and SDL_ttf) installed on your system. Installation instructions for SDL2 can be found in the <a href="https://www.libsdl.org/download-2.0.php">official SDL2 documentation</a>.</li>
+<li><b>Doxygen (optional):</b> If you plan on generating the documentation, Doxygen is required. You can install Doxygen using the instructions provided for your specific operating system.</li>
+</ul>
+<h3>Prerequisites Instructions</h3>
+<h4>Windows Prerequisites</h4>
+<p>To set up the development environment on Windows, follow these steps:</p>
+<ol type="1">
+<li><b>Compiler:</b> Install one of the following C++17 compilers:<ul>
+<li><b>Visual Studio:</b> Download and install Visual Studio 2019 or newer from the <a href="https://visualstudio.microsoft.com/downloads/">official Microsoft website</a>. Make sure to select the C++ development workload during the installation process.</li>
+<li><b>MinGW-w64:</b> Download and install MinGW-w64 from the <a href="http://mingw-w64.org/doku.php">official MinGW-w64 website</a>. Make sure to select the C++ components during the installation process.</li>
+</ul>
+</li>
+<li><b>CMake:</b> Download and install CMake version 3.22 or higher from the <a href="https://cmake.org/download/">official CMake website</a>. Make sure to add CMake to your system's PATH during the installation process.</li>
+<li><b>SDL2:</b> SDL2 is already bundled with E2D for Windows, so no additional installation is required.</li>
+<li><b>Ninja:</b> To enhance the build performance, it is recommended to use Ninja as the build system. Install Ninja by running the following command using Chocolatey:</li>
+</ol>
+<div class="fragment"><div class="line">choco install ninja</div>
+</div><!-- fragment --><p>If you don't have Chocolatey installed, you can manually download Ninja from the <a href="https://ninja-build.org/">official Ninja website</a> and add it to your system's PATH.</p>
+<h4>macOS Prerequisites</h4>
+<p>To set up the development environment on macOS, follow these steps:</p>
+<ol type="1">
+<li><b>Compiler:</b> macOS comes with Clang installed by default, which supports C++17. No additional installation is required.</li>
+<li><b>CMake:</b> Install CMake version 3.22 or higher using Homebrew. Open a terminal and run the following command:</li>
+</ol>
+<div class="fragment"><div class="line">brew install cmake</div>
+</div><!-- fragment --><p>Homebrew will download and install CMake on your system.</p>
+<ol type="1">
+<li><b>SDL2:</b> SDL2 is already bundled with E2D for macOS, so no additional installation is required.</li>
+<li><b>Ninja:</b> To enhance the build performance, it is recommended to use Ninja as the build system. Install Ninja by running the following command using Homebrew:</li>
+</ol>
+<div class="fragment"><div class="line">brew install ninja</div>
+</div><!-- fragment --><p>Homebrew will download and install Ninja on your system.</p>
+<h4>Linux Prerequisites</h4>
+<p>To set up the development environment on Linux, follow these steps:</p>
+<ol type="1">
+<li><p class="startli"><b>Compiler:</b> Install one of the following C++17 compilers:</p><ul>
+<li><p class="startli"><b>GCC (GNU Compiler Collection):</b> Open a terminal and run the following command to install GCC:</p>
+<p class="startli">```shell sudo apt-get update sudo apt-get install build-essential ```</p>
+</li>
+<li><p class="startli"><b>Clang:</b> Open a terminal and run the following command to install Clang:</p>
+<p class="startli">```shell sudo apt-get update sudo apt-get install clang ```</p>
+</li>
+</ul>
+<p class="startli">Choose the compiler that suits your preference.</p>
+</li>
+<li><b>CMake:</b> Install CMake version 3.22 or higher using the package manager for your Linux distribution. For example, on Ubuntu, open a terminal and run the following command:</li>
+</ol>
+<div class="fragment"><div class="line">sudo apt-get update</div>
+<div class="line">sudo apt-get install cmake</div>
+</div><!-- fragment --><p>Adjust the command based on the package manager used in your distribution.</p>
+<ol type="1">
+<li><b>SDL2:</b> Install the SDL2 development package and SDL extension libraries <b>SDL_image</b> and <b>SDL_ttf</b> using the package manager for your Linux distribution. For example, on Ubuntu, open a terminal and run the following command:</li>
+</ol>
+<div class="fragment"><div class="line">sudo apt-get update</div>
+<div class="line">sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev</div>
+</div><!-- fragment --><p>Adjust the command based on the package manager used in your distribution.</p>
+<ol type="1">
+<li><b>Ninja:</b> To enhance the build performance, it is recommended to use Ninja as the build system. Install Ninja using the package manager for your Linux distribution. For example, on Ubuntu, open a terminal and run the following command:</li>
+</ol>
+<div class="fragment"><div class="line">sudo apt-get update</div>
+<div class="line">sudo apt-get install ninja-build</div>
+</div><!-- fragment --><p>Adjust the command based on the package manager used in your distribution.</p>
+<p>Ensure that you follow the appropriate instructions for your specific operating system to install the necessary dependencies.</p>
+<h2>Configuration</h2>
+<p>The E2D project provides several configuration options that can be set during the build process. These options are controlled via CMake variables. The following configuration options are available:</p>
+<ul>
+<li><code>CMAKE_BUILD_TYPE</code>: Choose the type of build. Valid options are <code>Debug</code> or <code>Release</code>. The default build type is set to <code>Release</code>.</li>
+<li><code>BUILD_SHARED_LIBS</code>: Set this variable to <code>ON</code> to build E2D as shared libraries or <code>OFF</code> to build it as static libraries. The default value is <code>ON</code>, which builds E2D as shared libraries.</li>
+<li><code>E2D_BUILD_ENGINE</code>: Set this variable to <code>ON</code> to enable building the E2D library module called "Engine" or <code>OFF</code> to disable it. Building the "Engine" module is enabled by default.</li>
+<li><code>E2D_BUILD_TEST_SUITE</code>: Set this variable to <code>ON</code> to build the E2D test suite or <code>OFF</code> to ignore it. Building the test suite is disabled by default.</li>
+<li><code>E2D_BUILD_DOCS</code>: Set this variable to <code>ON</code> to enable generating documentation using Doxygen or <code>OFF</code> to disable it. Generating documentation is disabled by default.</li>
+<li><code>E2D_BUILD_EXAMPLES</code>: Set this variable to <code>ON</code> to enable building the project examples or <code>OFF</code> to disable it. Building the examples is disabled by default.</li>
+<li><code>E2D_BUILD_FRAMEWORKS</code>: Set this variable to <code>ON</code> to build E2D as framework libraries (release only), or <code>OFF</code> to build according to <code>BUILD_SHARED_LIBS</code>. Framework library building is disabled by default.</li>
+<li><code>E2D_GENERATE_PDB</code>: Set this variable to <code>ON</code> to generate PDB debug symbols for the MSVC compiler or <code>OFF</code> to disable PDB generation. PDB files contain debugging information and are specific to Windows and MSVC compilers. PDB generation is enabled by default.</li>
+<li><code>E2D_USE_STATIC_STD_LIBS</code>: Set this variable to <code>ON</code> to statically link to the standard libraries or <code>OFF</code> to use them as DLLs. Statically linking the standard libraries is disabled by default.</li>
+<li><code>E2D_USE_SYSTEM_DEPS</code>: Set this variable to <code>ON</code> to use system-installed external dependencies or <code>OFF</code> to use the bundled dependencies. The bundled dependencies are used by default.</li>
+</ul>
+<p>To configure these options, use the <code>-D</code> flag when generating the build files. For example:</p>
+<div class="fragment"><div class="line">cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON ...</div>
+</div><!-- fragment --><h2>Installation</h2>
+<p>To build and install the E2D project, follow these steps:</p>
+<ol type="1">
+<li>Clone the repository: ```shell git clone <a href="#" onclick="location.href='mai'+'lto:'+'git'+'@g'+'ith'+'ub'+'.co'+'m'; return false;">git@g<span style="display: none;">.nosp@m.</span>ithu<span style="display: none;">.nosp@m.</span>b.com</a>:emilhornlund/E2D.git ```</li>
+<li><p class="startli">Generate the build files using CMake:</p><ul>
+<li><p class="startli"><b>Windows:</b></p>
+<p class="startli">If you're using Visual Studio as the compiler, open a command prompt or PowerShell and run the following command:</p>
+<p class="startli">```shell cmake -S . -B build -G"Visual Studio 17 2022" -A Win32 ```</p>
+<p class="startli">If you're using MinGW as the compiler, open a command prompt or PowerShell and run the following command:</p>
+<p class="startli">```shell cmake -S . -B build -GNinja ```</p>
+</li>
+<li><p class="startli"><b>macOS:</b></p>
+<p class="startli">Open a terminal and run the following command:</p>
+<p class="startli">```shell cmake -S . -B build -GNinja ```</p>
+</li>
+<li><p class="startli"><b>Linux:</b></p>
+<p class="startli">Open a terminal and run the following command:</p>
+<p class="startli">```shell cmake -S . -B build -GNinja ```</p>
+</li>
+</ul>
+<p class="startli">Adjust the command based on your operating system, compiler, and preferred CMake generator.</p>
+</li>
+<li><p class="startli">Build and install the project:</p><ul>
+<li><p class="startli"><b>Windows:</b></p>
+<p class="startli">If you're using Visual Studio, open the generated solution file (<code>E2D.sln</code>) in Visual Studio. Build the project using the desired configuration (e.g., Release or Debug).</p>
+<p class="startli">If you're using MinGW or Ninja, open a command prompt or PowerShell and run the following command:</p>
+<p class="startli">```shell cmake &ndash;build build &ndash;target install &ndash;config Release ```</p>
+</li>
+<li><p class="startli"><b>macOS and Linux:</b></p>
+<p class="startli">Open a terminal and run the following command:</p>
+<p class="startli">```shell cmake &ndash;build build &ndash;target install &ndash;config Release ```</p>
+</li>
+</ul>
+<p class="startli">Adjust the command based on your operating system and preferred configuration.</p>
+<p class="startli">If you want to customize the installation directory, you can modify the CMAKE_INSTALL_PREFIX variable during the CMake configuration step:</p>
+</li>
+</ol>
+<div class="fragment"><div class="line">cmake -S . -B build -DCMAKE_INSTALL_PREFIX=&lt;desired_installation_directory&gt;</div>
+</div><!-- fragment --><p>Replace <code>&lt;desired_installation_directory&gt;</code> with the actual directory path you prefer. By default, the installation will use the system default prefix.</p>
+<ol type="1">
+<li>After the installation process completes, the E2D project libraries and related files will be installed in the specified directory or the default system directory.</li>
+</ol>
+<p>Ensure that you follow the appropriate instructions for your specific operating system, compiler, and CMake generator when building and installing the project. Customize the <code>CMAKE_INSTALL_PREFIX</code> as needed to specify the desired installation directory.</p>
+<h2>Testing</h2>
+<p>The E2D project uses Catch2 for unit testing. Unit tests are essential to ensure the correctness and stability of the codebase. This section provides information on running the tests and understanding the testing workflow.</p>
+<p>To run the tests for the E2D project, follow these steps:</p>
+<ol type="1">
+<li>Make sure you have built and installed the E2D project as described in the <a href="#installation">Installation</a> section.</li>
+<li>Before building the E2D project, make sure to configure CMake to include the test suite by setting the <code>E2D_BUILD_TEST_SUITE</code> CMake variable to <code>ON</code>. You can do this by adding the following flag when generating the build files:</li>
+</ol>
+<div class="fragment"><div class="line">cmake -DE2D_BUILD_TEST_SUITE=ON ...</div>
+</div><!-- fragment --><p>This will enable the compilation of the test suite along with the rest of the project.</p>
+<ol type="1">
+<li>Run the following command to execute the tests:<ul>
+<li><p class="startli"><b>Windows:</b></p>
+<p class="startli">```shell cmake &ndash;build build &ndash;target runtests ```</p>
+</li>
+<li><p class="startli"><b>macOS and Linux:</b></p>
+<p class="startli">```shell ctest &ndash;test-dir build ```</p>
+<p class="startli">The <code>ctest</code> command will run all the available tests and display the test results in the terminal.</p>
+</li>
+</ul>
+</li>
+<li><p class="startli">You can also use additional options with the <code>ctest</code> command to customize the test execution. Refer to the previous instructions for more information on available options, such as running tests in parallel or running specific tests based on regular expressions.</p>
+<p class="startli">Adjust the commands based on your operating system and preferred configuration.</p>
+</li>
+<li>After running the tests, you will see a summary of the test results, including the number of passed, failed, and skipped tests. Additionally, detailed test logs will be available in the build directory.</li>
+</ol>
+<p>It is important to regularly run the tests to ensure the stability and correctness of the E2D project. Tests help catch bugs and regressions early in the development process, allowing for quick identification and resolution of issues.</p>
+<p>Feel free to add or modify tests in the appropriate test files located in the project's source code directory. Follow the existing test file structure and conventions to maintain consistency.</p>
+<h2>Packaging</h2>
+<p>To generate a package for the E2D project, you can use CPack, which is included with CMake. CPack provides various generators to create different package formats, such as ZIP, TGZ (TAR with gzip), RPM, DEB, and more.</p>
+<p>To generate a package, run the following command after building the project:</p>
+<div class="fragment"><div class="line">cpack -G ZIP</div>
+</div><!-- fragment --><p>This command will generate a ZIP package for the project. You can replace ZIP with the desired generator, such as TGZ for a TAR package with gzip compression.</p>
+<p>You can specify multiple generators separated by commas to generate multiple package formats at once. For example:</p>
+<div class="fragment"><div class="line">cpack -G ZIP,TGZ</div>
+</div><!-- fragment --><p>After running the cpack command, the package(s) will be generated in the current directory or the specified output directory, depending on your CPack configuration.</p>
+<p>Make sure to adjust the generator and other options according to your project's needs.</p>
+<h2>Example</h2>
+<p>To demonstrate the usage of the E2D library, we provide a simple example below:</p>
+<h3>CMakeLists.txt</h3>
+<p>In your <code>CMakeLists.txt</code> file, include the following lines to set up the E2D library and create an executable for your game:</p>
+<div class="fragment"><div class="line">cmake_minimum_required(VERSION 3.12)</div>
+<div class="line"> </div>
+<div class="line">project(MyGame)</div>
+<div class="line"> </div>
+<div class="line">find_package(E2D COMPONENTS Engine REQUIRED)</div>
+<div class="line"> </div>
+<div class="line">add_executable(mygame main.cpp)</div>
+<div class="line">target_link_libraries(mygame PRIVATE E2D::Engine)</div>
+</div><!-- fragment --><p>Make sure to adjust the project name, target name, and source file names according to your project structure.</p>
+<h3>main.cpp</h3>
+<p>Create a <code>main.cpp</code> file with the following code, which sets up your game class derived from <code><a class="el" href="classe2d_1_1Application.html" title="Abstract base for managing the lifecycle and main loop of the application.">e2d::Application</a></code>:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Application_8hpp.html">E2D/Engine/Application.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">class </span>MyGame final : <span class="keyword">public</span> <a class="code" href="classe2d_1_1Application.html">e2d::Application</a> {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    MyGame();</div>
+<div class="line"> </div>
+<div class="line">    ~MyGame() final;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line">MyGame::MyGame() : e2d::Application(&quot;MyGame&quot;) {}</div>
+<div class="line"> </div>
+<div class="line">MyGame::~MyGame() = <span class="keywordflow">default</span>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="keyword">auto</span> *application = <span class="keyword">new</span> MyGame();</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">int</span> exitCode = application-&gt;run();</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">delete</span> application;</div>
+<div class="line">    application = <span class="keyword">nullptr</span>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> exitCode;</div>
+<div class="line">}</div>
+<div class="ttc" id="aApplication_8hpp_html"><div class="ttname"><a href="Application_8hpp.html">Application.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aclasse2d_1_1Application_html"><div class="ttname"><a href="classe2d_1_1Application.html">e2d::Application</a></div><div class="ttdoc">Abstract base for managing the lifecycle and main loop of the application.</div><div class="ttdef"><b>Definition:</b> <a href="Application_8hpp_source.html#l00054">Application.hpp:55</a></div></div>
+</div><!-- fragment --><p>Ensure that you update the class name and the <code>Application</code> constructor parameter according to your desired game title.</p>
+<p>This example demonstrates the basic setup of an E2D game using the <code><a class="el" href="classe2d_1_1Application.html" title="Abstract base for managing the lifecycle and main loop of the application.">e2d::Application</a></code> class. You can build and run the <code>mygame</code> executable to see your game in action.</p>
+<p>For more comprehensive examples showcasing various features and functionalities of the E2D library, you can explore the "examples" directory at the root of the repository. The examples directory contains additional sample projects and code snippets that illustrate different aspects of game development using E2D.</p>
+<p>For more detailed information on how to use the E2D library and its various features, please refer to the documentation and additional examples provided in the project repository.</p>
+<h2>Generating Documentation</h2>
+<p>E2D supports generating documentation using Doxygen. To enable documentation generation during the build process, set the <code>E2D_BUILD_DOCS</code> CMake variable to ON:</p>
+<div class="fragment"><div class="line">cmake -DE2D_BUILD_DOCS=ON ...</div>
+</div><!-- fragment --><p>Once the project is built, you can generate the documentation by running the <code>e2d-tools-docs</code> target:</p>
+<div class="fragment"><div class="line">cmake --build build --target e2d-tools-docs</div>
+</div><!-- fragment --><p>The generated documentation will be available in the <code>docs</code> directory.</p>
+<h3>Instructions for Installing Doxygen:</h3>
+<h4>Windows Doxygen Installation</h4>
+<ol type="1">
+<li>Download the Doxygen installer from the official <a href="https://www.doxygen.nl/download.html">Doxygen website</a>.</li>
+<li>Run the installer and follow the on-screen instructions to complete the installation.</li>
+<li>If you plan to generate HTML Help documentation, ensure that you have the HTML Help Compiler program (hhc.exe) installed. You can download it from the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=21138">HTML Help Workshop</a> page.</li>
+</ol>
+<h4>macOS Doxygen Installation</h4>
+<p>Install Doxygen using Homebrew by running the following command in the terminal:</p>
+<div class="fragment"><div class="line">brew install doxygen</div>
+</div><!-- fragment --><h4>Linux Doxygen Installation</h4>
+<p>Install Doxygen using the package manager for your Linux distribution. For example, on Ubuntu, you can run the following command:</p>
+<div class="fragment"><div class="line">sudo apt-get install doxygen</div>
+</div><!-- fragment --><p>On Fedora, use the following command:</p>
+<div class="fragment"><div class="line">sudo dnf install doxygen</div>
+</div><!-- fragment --><p>Adjust the command based on the package manager used in your distribution.</p>
+<p>Ensure that Doxygen is installed and available in the system's executable search path before configuring and building the project.</p>
+<h2>Code Quality</h2>
+<p>In the E2D project, we strive for high code quality to ensure maintainability and readability. We have implemented two tools, <b>clang-tidy</b> and <b>clang-format</b>, to assist in achieving this goal. These tools help us identify and fix potential issues with our C++ code, ensuring adherence to best practices and coding standards.</p>
+<h3>Clang-Tidy</h3>
+<p>Clang-Tidy is a powerful tool that performs static analysis on our C++ code. It helps us identify potential bugs, stylistic issues, and other code quality problems. By integrating Clang-Tidy into our development workflow, we can catch issues early and maintain a consistent and clean codebase.</p>
+<p>To run Clang-Tidy, we have created a CMake target named <b>e2d-tools-tidy</b>. You can invoke this target by running the following command from the build directory:</p>
+<div class="fragment"><div class="line">cmake --build . --target e2d-tools-tidy</div>
+</div><!-- fragment --><p>Running the <b>e2d-tools-tidy</b> target will analyze the source code using Clang-Tidy and provide a report of any identified issues. It is essential to regularly run this target during development to ensure the code meets our quality standards.</p>
+<h3>Clang-Format</h3>
+<p>Clang-Format is a tool that automatically formats our C++ code according to a predefined set of rules. It enforces a consistent coding style across the entire codebase, improving readability and reducing the chance of introducing formatting errors.</p>
+<p>To apply Clang-Format to our codebase, we have created a CMake target named <b>e2d-tools-format</b>. You can run this target by executing the following command from the build directory:</p>
+<div class="fragment"><div class="line">cmake --build . --target e2d-tools-format</div>
+</div><!-- fragment --><p>Running the <b>e2d-tools-format</b> target will automatically format the source code files using Clang-Format. It will modify the files in place, ensuring that the code follows the defined coding style.</p>
+<p>By regularly running the <b>e2d-tools-format</b> target, we can maintain a consistent coding style throughout the project and reduce unnecessary code changes during code reviews.</p>
+<p>It is recommended to run both the <b>e2d-tools-tidy</b> and <b>e2d-tools-format</b> targets before committing any changes to the repository. This ensures that our codebase remains clean, well-formatted, and adheres to the highest quality standards.</p>
+<h2>Collaboration</h2>
+<p>E2D welcomes collaboration and contributions from the developer community. If you are interested in contributing to the project, you can follow these steps to get started:</p>
+<ol type="1">
+<li>Fork the E2D repository on GitHub.</li>
+<li>Make your desired changes or additions to the codebase.</li>
+<li>Ensure that your changes align with the project's coding style and guidelines.</li>
+<li>Test your changes thoroughly to ensure they do not introduce any regressions or issues.</li>
+<li>Submit a pull request (PR) to the main E2D repository, outlining the changes you have made and providing a clear description of your contribution.</li>
+<li>The project maintainers will review your PR, provide feedback, and work with you to refine the changes if necessary.</li>
+<li>Once the changes have been reviewed and approved, they will be merged into the main repository.</li>
+</ol>
+<p>When collaborating on E2D, it is important to adhere to the project's code of conduct and respect the ideas and opinions of other contributors. Open and constructive communication is encouraged to foster a positive and inclusive environment for all participants.</p>
+<p>In addition to code contributions, you can also contribute to the project by reporting bugs, suggesting new features, or providing feedback on existing functionality. You can do this by opening issues on the GitHub repository, clearly describing the problem or suggestion and providing any relevant details.</p>
+<p>By collaborating with the E2D community, you can help shape the future of the project and contribute to the growth and improvement of the 2D game development ecosystem.</p>
+<p>Thank you for considering contributing to E2D! We look forward to your involvement in the project.</p>
+<h2>License</h2>
+<p>This project is licensed under the MIT License, which is a permissive open-source license. The MIT License grants you the freedom to use, modify, and distribute this project, both in its original form and any modifications you make, subject to certain conditions.</p>
+<p>The full text of the MIT License can be found in the <a href="https://raw.githubusercontent.com/emilhornlund/E2D/main/LICENSE">LICENSE</a> file. It is important to review the license file for complete details, but in summary:</p>
+<ul>
+<li>You are free to use this project for personal or commercial purposes.</li>
+<li>You are allowed to modify the project and incorporate it into your own projects.</li>
+<li>You are permitted to distribute the project, either in its original form or as part of a larger work.</li>
+<li>You must include a copy of the original MIT License in any distribution of this project.</li>
+<li>The project is provided "as is," without any warranty or liability.</li>
+</ul>
+<p>Please read the <a href="https://raw.githubusercontent.com/emilhornlund/E2D/main/LICENSE">LICENSE</a> file for the complete terms and conditions of the MIT License.</p>
+<p>If you have any questions about the licensing or usage of this project, please refer to the license file or contact the project author. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['scancode_513',['Scancode',['../namespacee2d_1_1Keyboard.html#ad92603c71fa97e5b93c1d68951625ab0',1,'e2d::Keyboard']]]
+  ['loglevel_666',['LogLevel',['../group__core.html#ga27d9006508ad53fafe2c41bde6918acd',1,'e2d::internal']]]
 ];

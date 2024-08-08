@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>E2D: Timer.hpp Source File</title>
+<title>E2D: include/E2D/Core/Timer.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,55 +71,57 @@ $(function() {
 <div class="title">Timer.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<a href="Timer_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef E2D_CORE_TIMER_HPP</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define E2D_CORE_TIMER_HPP</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;E2D/Core/Export.hpp&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Core_2Export_8hpp.html">E2D/Core/Export.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;E2D/Core/NonCopyable.hpp&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="NonCopyable_8hpp.html">E2D/Core/NonCopyable.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacee2d.html">e2d</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span>e2d</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html">   47</a></span>&#160;<span class="keyword">class </span>E2D_CORE_API <a class="code" href="classe2d_1_1Timer.html">Timer</a> final : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#aa4509eb1baf0c179a69fc41eed8cd7df">   55</a></span>&#160;    <a class="code" href="classe2d_1_1Timer.html#aa4509eb1baf0c179a69fc41eed8cd7df">Timer</a>();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#a6d501875b4aa8b5591cebfc7e05c85d8">   62</a></span>&#160;    <a class="code" href="classe2d_1_1Timer.html#a6d501875b4aa8b5591cebfc7e05c85d8">~Timer</a>();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#a7d777ea27da3aa0cc8745e4b9ea01b79">   69</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Timer.html#a7d777ea27da3aa0cc8745e4b9ea01b79">start</a>();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#abead38d4f3fc671b7fbf3fb2019ee2fe">   76</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Timer.html#abead38d4f3fc671b7fbf3fb2019ee2fe">stop</a>();</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#a2206fe274227cc5929a2fa61d3c350bd">   83</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Timer.html#a2206fe274227cc5929a2fa61d3c350bd">pause</a>();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#a37bb4391d720b22327df529089407a61">   90</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Timer.html#a37bb4391d720b22327df529089407a61">resume</a>();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#ae9d798c32a0769be658370ad352d4a53">   99</a></span>&#160;    std::uint32_t <a class="code" href="classe2d_1_1Timer.html#ae9d798c32a0769be658370ad352d4a53">getElapsedTimeAsMilliseconds</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#af7e056c3375ca4f7817b1595507404ba">  108</a></span>&#160;    [[maybe_unused]] <span class="keywordtype">double</span> <a class="code" href="classe2d_1_1Timer.html#af7e056c3375ca4f7817b1595507404ba">getElapsedTimeAsSeconds</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#a8145ed58ad03802710f79ef136d73017">  117</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Timer.html#a8145ed58ad03802710f79ef136d73017">isStarted</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#af2a26590de9ce45946a329d994543d51">  126</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Timer.html#af2a26590de9ce45946a329d994543d51">isPaused</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    std::uint32_t m_startTicks  = 0;     </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    std::uint32_t m_pausedTicks = 0;     </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">bool</span>          m_paused      = <span class="keyword">false</span>; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordtype">bool</span>          m_started     = <span class="keyword">false</span>; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}; <span class="comment">// Timer class</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;} <span class="comment">// namespace e2d</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_CORE_TIMER_HPP</span></div>
-<div class="ttc" id="aclasse2d_1_1NonCopyable_html"><div class="ttname"><a href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></div><div class="ttdoc">The NonCopyable class provides a base class to make derived classes non-copyable.</div><div class="ttdef"><b>Definition:</b> <a href="NonCopyable_8hpp_source.html#l00043">NonCopyable.hpp:44</a></div></div>
-<div class="ttc" id="aclasse2d_1_1Timer_html"><div class="ttname"><a href="classe2d_1_1Timer.html">e2d::Timer</a></div><div class="ttdoc">A class that provides functionality for a timer that can be paused, stopped, or resumed.</div><div class="ttdef"><b>Definition:</b> <a href="Timer_8hpp_source.html#l00047">Timer.hpp:48</a></div></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html">   48</a></span>&#160;<span class="keyword">class </span>E2D_CORE_API <a class="code" href="classe2d_1_1Timer.html">Timer</a> final : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#aa4509eb1baf0c179a69fc41eed8cd7df">   56</a></span>&#160;    <a class="code" href="classe2d_1_1Timer.html#aa4509eb1baf0c179a69fc41eed8cd7df">Timer</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#a6d501875b4aa8b5591cebfc7e05c85d8">   63</a></span>&#160;    <a class="code" href="classe2d_1_1Timer.html#a6d501875b4aa8b5591cebfc7e05c85d8">~Timer</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#a7d777ea27da3aa0cc8745e4b9ea01b79">   70</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Timer.html#a7d777ea27da3aa0cc8745e4b9ea01b79">start</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#abead38d4f3fc671b7fbf3fb2019ee2fe">   77</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Timer.html#abead38d4f3fc671b7fbf3fb2019ee2fe">stop</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#a2206fe274227cc5929a2fa61d3c350bd">   84</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Timer.html#a2206fe274227cc5929a2fa61d3c350bd">pause</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#a37bb4391d720b22327df529089407a61">   91</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Timer.html#a37bb4391d720b22327df529089407a61">resume</a>();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#ae9d798c32a0769be658370ad352d4a53">  100</a></span>&#160;    std::uint32_t <a class="code" href="classe2d_1_1Timer.html#ae9d798c32a0769be658370ad352d4a53">getElapsedTimeAsMilliseconds</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#af7e056c3375ca4f7817b1595507404ba">  109</a></span>&#160;    [[maybe_unused]] <span class="keywordtype">double</span> <a class="code" href="classe2d_1_1Timer.html#af7e056c3375ca4f7817b1595507404ba">getElapsedTimeAsSeconds</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#a8145ed58ad03802710f79ef136d73017">  118</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Timer.html#a8145ed58ad03802710f79ef136d73017">isStarted</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="classe2d_1_1Timer.html#af2a26590de9ce45946a329d994543d51">  127</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Timer.html#af2a26590de9ce45946a329d994543d51">isPaused</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    std::uint32_t m_startTicks  = 0;     </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    std::uint32_t m_pausedTicks = 0;     </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordtype">bool</span>          m_paused      = <span class="keyword">false</span>; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">bool</span>          m_started     = <span class="keyword">false</span>; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}; <span class="comment">// Timer class</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;} <span class="comment">// namespace e2d</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_CORE_TIMER_HPP</span></div>
+<div class="ttc" id="aCore_2Export_8hpp_html"><div class="ttname"><a href="Core_2Export_8hpp.html">Export.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aNonCopyable_8hpp_html"><div class="ttname"><a href="NonCopyable_8hpp.html">NonCopyable.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aclasse2d_1_1NonCopyable_html"><div class="ttname"><a href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></div><div class="ttdoc">The NonCopyable class provides a base class to make derived classes non-copyable.</div><div class="ttdef"><b>Definition:</b> <a href="NonCopyable_8hpp_source.html#l00044">NonCopyable.hpp:45</a></div></div>
+<div class="ttc" id="aclasse2d_1_1Timer_html"><div class="ttname"><a href="classe2d_1_1Timer.html">e2d::Timer</a></div><div class="ttdoc">A class that provides functionality for a timer that can be paused, stopped, or resumed.</div><div class="ttdef"><b>Definition:</b> <a href="Timer_8hpp_source.html#l00048">Timer.hpp:49</a></div></div>
 <div class="ttc" id="aclasse2d_1_1Timer_html_a2206fe274227cc5929a2fa61d3c350bd"><div class="ttname"><a href="classe2d_1_1Timer.html#a2206fe274227cc5929a2fa61d3c350bd">e2d::Timer::pause</a></div><div class="ttdeci">void pause()</div><div class="ttdoc">Pauses the timer.</div></div>
 <div class="ttc" id="aclasse2d_1_1Timer_html_a37bb4391d720b22327df529089407a61"><div class="ttname"><a href="classe2d_1_1Timer.html#a37bb4391d720b22327df529089407a61">e2d::Timer::resume</a></div><div class="ttdeci">void resume()</div><div class="ttdoc">Resumes the timer from the paused state.</div></div>
 <div class="ttc" id="aclasse2d_1_1Timer_html_a6d501875b4aa8b5591cebfc7e05c85d8"><div class="ttname"><a href="classe2d_1_1Timer.html#a6d501875b4aa8b5591cebfc7e05c85d8">e2d::Timer::~Timer</a></div><div class="ttdeci">~Timer()</div><div class="ttdoc">Destructor.</div></div>
@@ -129,7 +132,6 @@ $(function() {
 <div class="ttc" id="aclasse2d_1_1Timer_html_ae9d798c32a0769be658370ad352d4a53"><div class="ttname"><a href="classe2d_1_1Timer.html#ae9d798c32a0769be658370ad352d4a53">e2d::Timer::getElapsedTimeAsMilliseconds</a></div><div class="ttdeci">std::uint32_t getElapsedTimeAsMilliseconds() const</div><div class="ttdoc">Gets the elapsed time in milliseconds since the timer was started or resumed.</div></div>
 <div class="ttc" id="aclasse2d_1_1Timer_html_af2a26590de9ce45946a329d994543d51"><div class="ttname"><a href="classe2d_1_1Timer.html#af2a26590de9ce45946a329d994543d51">e2d::Timer::isPaused</a></div><div class="ttdeci">bool isPaused() const</div><div class="ttdoc">Checks if the timer is currently paused.</div></div>
 <div class="ttc" id="aclasse2d_1_1Timer_html_af7e056c3375ca4f7817b1595507404ba"><div class="ttname"><a href="classe2d_1_1Timer.html#af7e056c3375ca4f7817b1595507404ba">e2d::Timer::getElapsedTimeAsSeconds</a></div><div class="ttdeci">double getElapsedTimeAsSeconds() const</div><div class="ttdoc">Gets the elapsed time in seconds since the timer was started or resumed.</div></div>
-<div class="ttc" id="anamespacee2d_html"><div class="ttname"><a href="namespacee2d.html">e2d</a></div><div class="ttdoc">Color.hpp.</div><div class="ttdef"><b>Definition:</b> <a href="Color_8hpp_source.html#l00031">Color.hpp:32</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

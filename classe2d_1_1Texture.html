@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -62,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacee2d.html">e2d</a></li><li class="navelem"><a class="el" href="classe2d_1_1Texture.html">Texture</a></li>  </ul>
+<li class="navelem"><b>e2d</b></li><li class="navelem"><a class="el" href="classe2d_1_1Texture.html">Texture</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,14 +72,14 @@ $(function() {
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classe2d_1_1Texture-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">e2d::Texture Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div>  </div>
+<div class="title">e2d::Texture Class Reference<span class="mlabels"><span class="mlabel">final</span></span><div class="ingroups"><a class="el" href="group__engine.html">Engine module</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>Manages texture resources.  
  <a href="classe2d_1_1Texture.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Texture_8hpp_source.html">Texture.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Texture_8hpp_source.html">E2D/Engine/Texture.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for e2d::Texture:</div>
 <div class="dyncontent">
@@ -110,7 +111,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a68411981af3ee76c096cd9031b65f454"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Texture.html#a68411981af3ee76c096cd9031b65f454">destroy</a> ()</td></tr>
 <tr class="memdesc:a68411981af3ee76c096cd9031b65f454"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the texture, freeing associated resources.  <a href="classe2d_1_1Texture.html#a68411981af3ee76c096cd9031b65f454">More...</a><br /></td></tr>
 <tr class="separator:a68411981af3ee76c096cd9031b65f454"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24aad6961af4ed08f2014b083c43a93f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacee2d.html#a6b233bdeb950f316c6d78dea8cd75f04">Vector2i</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Texture.html#a24aad6961af4ed08f2014b083c43a93f">getSize</a> () const</td></tr>
+<tr class="memitem:a24aad6961af4ed08f2014b083c43a93f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="Vector2_8hpp.html#a6b233bdeb950f316c6d78dea8cd75f04">Vector2i</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Texture.html#a24aad6961af4ed08f2014b083c43a93f">getSize</a> () const</td></tr>
 <tr class="memdesc:a24aad6961af4ed08f2014b083c43a93f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the size of the texture.  <a href="classe2d_1_1Texture.html#a24aad6961af4ed08f2014b083c43a93f">More...</a><br /></td></tr>
 <tr class="separator:a24aad6961af4ed08f2014b083c43a93f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93839fb439645f9f4790065abded6381"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Texture.html#a93839fb439645f9f4790065abded6381">getNativeTextureHandle</a> () const</td></tr>
@@ -127,7 +128,7 @@ Protected Member Functions</h2></td></tr>
 <div class="textblock"><p>Manages texture resources. </p>
 <p>The <a class="el" href="classe2d_1_1Texture.html" title="Manages texture resources.">Texture</a> class encapsulates the functionality for loading and handling texture resources. It abstracts the underlying implementation to provide an easy-to-use interface for textures. </p>
 
-<p class="definition">Definition at line <a class="el" href="Texture_8hpp_source.html#l00057">57</a> of file <a class="el" href="Texture_8hpp_source.html">Texture.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Texture_8hpp_source.html#l00058">58</a> of file <a class="el" href="Texture_8hpp_source.html">Texture.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a20b8916e1719a0f6cd349e27a06b1887"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a20b8916e1719a0f6cd349e27a06b1887">&#9670;&nbsp;</a></span>Texture()</h2>
@@ -255,7 +256,7 @@ Protected Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="namespacee2d.html#a6b233bdeb950f316c6d78dea8cd75f04">Vector2i</a>&amp; e2d::Texture::getSize </td>
+          <td class="memname">const <a class="el" href="Vector2_8hpp.html#a6b233bdeb950f316c6d78dea8cd75f04">Vector2i</a>&amp; e2d::Texture::getSize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -378,7 +379,7 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="Texture_8hpp_source.html">Texture.hpp</a></li>
+<li>include/E2D/Engine/<a class="el" href="Texture_8hpp_source.html">Texture.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
