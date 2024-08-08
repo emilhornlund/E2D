@@ -7,7 +7,9 @@ set(SRC
     ${INCROOT}/Color.hpp
     ${INCROOT}/Color.inl
     ${INCROOT}/Export.hpp
-    ${INCROOT}/Format.hpp
+    ${INCROOT}/Formatter.hpp
+    ${INCROOT}/Formatter.inl
+    ${SRCROOT}/Formatter.cpp
     ${INCROOT}/Logger.hpp
     ${SRCROOT}/Logger.cpp
     ${INCROOT}/NonCopyable.hpp

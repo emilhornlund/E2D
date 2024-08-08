@@ -1,5 +1,5 @@
 /**
- * @file Format.test.cpp
+ * @file Formatter.test.cpp
  *
  * MIT License
  *
@@ -24,56 +24,56 @@
  * THE SOFTWARE.
  */
 
-#include <E2D/Core/Format.hpp>
+#include <E2D/Core/Formatter.hpp>
 
 #include <catch2/catch_test_macros.hpp>
 
-TEST_CASE("Format Tests", "[Format]")
+TEST_CASE("Formatter Tests", "[Format]")
 {
     SECTION("Basic formatting")
     {
-        std::string result = e2d::format("Hello, {}!", "world");
+        std::string result = e2d::Formatter::format("Hello, {}!", "world");
         REQUIRE(result == "Hello, world!");
     }
 
     SECTION("Multiple placeholders")
     {
-        std::string result = e2d::format("{} + {} = {}", 1, 1, 2);
+        std::string result = e2d::Formatter::format("{} + {} = {}", 1, 1, 2);
         REQUIRE(result == "1 + 1 = 2");
     }
 
     SECTION("No placeholders")
     {
-        std::string result = e2d::format("No placeholders");
+        std::string result = e2d::Formatter::format("No placeholders");
         REQUIRE(result == "No placeholders");
     }
 
     SECTION("Extra arguments without placeholders")
     {
-        std::string result = e2d::format("Extra args", "arg1", 2, 3.0);
+        std::string result = e2d::Formatter::format("Extra args", "arg1", 2, 3.0);
         REQUIRE(result == "Extra args");
     }
 
     SECTION("Insufficient arguments")
     {
-        REQUIRE_THROWS_AS(e2d::format("This is {} test", "a", "extra"), std::runtime_error);
+        REQUIRE_THROWS_AS(e2d::Formatter::format("This is {} test", "a", "extra"), std::runtime_error);
     }
 
     SECTION("Different types")
     {
-        std::string result = e2d::format("String: {}, Integer: {}, Float: {}", "test", 42, 3.14);
+        std::string result = e2d::Formatter::format("String: {}, Integer: {}, Float: {}", "test", 42, 3.14);
         REQUIRE(result == "String: test, Integer: 42, Float: 3.14");
     }
 
     SECTION("Empty string")
     {
-        const std::string result = e2d::format("");
+        const std::string result = e2d::Formatter::format("");
         REQUIRE(result.empty());
     }
 
     SECTION("Escape braces")
     {
-        std::string result = e2d::format("Escaped braces {{}} not replaced");
+        std::string result = e2d::Formatter::format("Escaped braces {{}} not replaced");
         REQUIRE(result == "Escaped braces {} not replaced");
     }
 }

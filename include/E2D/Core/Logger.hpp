@@ -29,7 +29,7 @@
 
 #include <E2D/Core/Export.hpp>
 
-#include <E2D/Core/Format.hpp>
+#include <E2D/Core/Formatter.hpp>
 #include <E2D/Core/NonCopyable.hpp>
 
 #include <mutex>
@@ -77,7 +77,7 @@ public:
     template <typename... Args>
     static void log(LogLevel level, const std::string& message, Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
     {
-        getInstance().logImpl(level, format(message, std::forward<Args>(args)...));
+        getInstance().logImpl(level, Formatter::format(message, std::forward<Args>(args)...));
     }
 
 private:

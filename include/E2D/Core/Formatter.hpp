@@ -1,5 +1,5 @@
 /**
- * @file Format.hpp
+ * @file Formatter.hpp
  *
  * MIT License
  *
@@ -24,8 +24,8 @@
  * THE SOFTWARE.
  */
 
-#ifndef E2D_CORE_FORMAT_HPP
-#define E2D_CORE_FORMAT_HPP
+#ifndef E2D_CORE_FORMATTER_HPP
+#define E2D_CORE_FORMATTER_HPP
 
 #include <E2D/Core/Export.hpp>
 
@@ -38,33 +38,16 @@
 namespace e2d
 {
 
-namespace internal
-{
-
 /**
- * @class FormatImpl
+ * @class Formatter
  * @ingroup core
- * @brief @internal A utility class for formatting strings with placeholders.
+ * @brief A utility class for formatting strings with placeholders.
  *
  * This class provides static methods to format strings with placeholders and arguments.
  */
-class E2D_CORE_API FormatImpl final : NonCopyable
+class E2D_CORE_API Formatter final : NonCopyable
 {
 public:
-    /**
-     * @brief Constructs a new FormatImpl object.
-     *
-     * Initializes a new instance of the FormatImpl class.
-     */
-    FormatImpl() = default;
-
-    /**
-     * @brief Destructor.
-     *
-     * Ensures proper cleanup of resources upon destruction.
-     */
-    ~FormatImpl() = default;
-
     /**
      * @brief Formats a string with the given arguments.
      *
@@ -76,15 +59,23 @@ public:
      * @return A formatted string with placeholders replaced by the arguments.
      */
     template <typename... Args>
-    static std::string format(const std::string& text, Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
-    {
-        std::ostringstream oss;
-        auto               escapedText = handleEscapedBraces(text);
-        formatImpl(oss, escapedText, 0, std::forward<Args>(args)...);
-        return oss.str();
-    }
+    static std::string format(const std::string& text, Args&&... args);
 
 private:
+    /**
+     * @brief Constructs a new Formatter object.
+     *
+     * Initializes a new instance of the Formatter class.
+     */
+    Formatter() = default;
+
+    /**
+     * @brief Destructor.
+     *
+     * Ensures proper cleanup of resources upon destruction.
+     */
+    ~Formatter() = default;
+
     /**
      * @brief Base case for the recursive formatImpl method.
      *
@@ -94,10 +85,7 @@ private:
      * @param text The format string.
      * @param pos The current position in the format string.
      */
-    static void formatImpl(std::ostringstream& oss, const std::string& text, size_t pos)
-    {
-        oss << text.substr(pos);
-    }
+    static void formatImpl(std::ostringstream& oss, const std::string& text, size_t pos);
 
     /**
      * @brief Recursive method to process each argument and replace placeholders.
@@ -113,22 +101,7 @@ private:
      * @param args The remaining arguments to replace subsequent placeholders.
      */
     template <typename T, typename... Args>
-    static void formatImpl(std::ostringstream& oss, const std::string& text, size_t pos, T&& arg, Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
-    {
-        const size_t nextPos = text.find("{}", pos);
-        if (nextPos == std::string::npos)
-        {
-            formatImpl(oss, text, pos);
-            if constexpr (sizeof...(args) == 0)
-            {
-                throw std::runtime_error("Not enough placeholders in the format string.");
-            }
-            return;
-        }
-        oss << text.substr(pos, nextPos - pos);
-        oss << std::forward<T>(arg);
-        formatImpl(oss, text, nextPos + 2, std::forward<Args>(args)...);
-    }
+    static void formatImpl(std::ostringstream& oss, const std::string& text, size_t pos, T&& arg, Args&&... args);
 
     /**
      * @brief Handles escaped braces by replacing double braces with single braces.
@@ -138,50 +111,13 @@ private:
      * @param text The input format string.
      * @return The modified format string with double braces replaced by single braces.
      */
-    static std::string handleEscapedBraces(const std::string& text)
-    {
-        std::string result;
-        result.reserve(text.size());
-        for (size_t i = 0; i < text.size(); ++i)
-        {
-            if (text[i] == '{' && i + 1 < text.size() && text[i + 1] == '{')
-            {
-                result.push_back('{');
-                ++i;
-            }
-            else if (text[i] == '}' && i + 1 < text.size() && text[i + 1] == '}')
-            {
-                result.push_back('}');
-                ++i;
-            }
-            else
-            {
-                result.push_back(text[i]);
-            }
-        }
-        return result;
-    }
+    static std::string handleEscapedBraces(const std::string& text);
+};
 
-}; // class Format
+// class Formatter
 
-} // namespace internal
-
-/**
- * @brief Formats a string with the given arguments.
- *
- * A convenience function that delegates to the internal FormatImpl class to format strings with placeholders "{}".
- *
- * @tparam Args The types of the arguments to format.
- * @param text The format string containing placeholders.
- * @param args The arguments to replace the placeholders.
- * @return A formatted string with placeholders replaced by the arguments.
- */
-template <typename... Args>
-inline std::string format(const std::string& text, Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
-{
-    return internal::FormatImpl::format(text, std::forward<Args>(args)...);
-}
+#include <E2D/Core/Formatter.inl>
 
 } // namespace e2d
 
-#endif //E2D_CORE_FORMAT_HPP
+#endif //E2D_CORE_FORMATTER_HPP

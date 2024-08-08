@@ -1,5 +1,5 @@
 /**
- * @file Core.hpp
+ * @file Formatter.inl
  *
  * MIT License
  *
@@ -24,28 +24,29 @@
  * THE SOFTWARE.
  */
 
-#ifndef E2D_CORE_HPP
-#define E2D_CORE_HPP
+template <typename... Args>
+std::string Formatter::format(const std::string& text, Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
+{
+    std::ostringstream oss;
+    auto               escapedText = handleEscapedBraces(text);
+    formatImpl(oss, escapedText, 0, std::forward<Args>(args)...);
+    return oss.str();
+}
 
-#include <E2D/Core/Export.hpp>
-
-#include <E2D/Core/Color.hpp>
-#include <E2D/Core/Formatter.hpp>
-#include <E2D/Core/Logger.hpp>
-#include <E2D/Core/NonCopyable.hpp>
-#include <E2D/Core/Rect.hpp>
-#include <E2D/Core/System.hpp>
-#include <E2D/Core/Timer.hpp>
-#include <E2D/Core/Vector2.hpp>
-
-#endif //E2D_CORE_HPP
-
-/**
- * @defgroup core Core module
- * @brief Provides essential utilities and base functionalities for the E2D game engine.
- *
- * The Core module includes foundational components and services that are fundamental for the E2D game engine.
- * This module offers low-level utilities, basic data structures, and essential interfaces used across the engine.
- * It is designed to be lightweight and efficient, ensuring minimal overhead while providing the necessary building blocks
- * for more complex features in other modules.
- */
+template <typename T, typename... Args>
+void Formatter::formatImpl(std::ostringstream& oss, const std::string& text, size_t pos, T&& arg, Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
+{
+    const size_t nextPos = text.find("{}", pos);
+    if (nextPos == std::string::npos)
+    {
+        formatImpl(oss, text, pos);
+        if constexpr (sizeof...(args) == 0)
+        {
+            throw std::runtime_error("Not enough placeholders in the format string.");
+        }
+        return;
+    }
+    oss << text.substr(pos, nextPos - pos);
+    oss << std::forward<T>(arg);
+    formatImpl(oss, text, nextPos + 2, std::forward<Args>(args)...);
+}
