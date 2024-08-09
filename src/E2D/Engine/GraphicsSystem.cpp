@@ -1,5 +1,5 @@
 /**
- * @file SDLInitializer.cpp
+ * @file GraphicsSystem.cpp
  *
  * MIT License
  *
@@ -25,49 +25,57 @@
  */
 
 #include <E2D/Core/Logger.hpp>
-#include <E2D/Core/SDLInitializer.hpp>
 
-// NOLINTBEGIN
-#include <cstring> //unused, but must be included before SDL on macOS (bug?)
-// NOLINTEND
+#include <E2D/Engine/GraphicsSystem.hpp>
+#include <E2D/Engine/RendererContext.hpp>
 
 #include <SDL.h>
 #include <SDL_image.h>
-#include <SDL_ttf.h>
 
-bool e2d::internal::SDLInitializer::initialize()
+e2d::GraphicsSystem::GraphicsSystem()
 {
-    log::debug("Initializing SDL core systems");
-    if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+    log::debug("Constructing GraphicsSystem");
+}
+
+e2d::GraphicsSystem::~GraphicsSystem()
+{
+    log::debug("Destructing GraphicsSystem");
+}
+
+bool e2d::GraphicsSystem::initialize()
+{
+    log::debug("Initializing SDL video subsystem");
+    if (SDL_InitSubSystem(SDL_INIT_VIDEO) != 0)
     {
-        log::error("Failed to initialize SDL core systems: {}", SDL_GetError());
+        log::error("Failed to initialize SDL video subsystem: {}", SDL_GetError());
         return false;
     }
 
-    log::debug("Initializing SDL image system");
+    log::debug("Initializing SDL image subsystem");
     if (IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG) == 0)
     {
         log::error("Failed to initialize SDL image system: {}", SDL_GetError());
         return false;
     }
 
-    log::debug("Initializing SDL text rendering system");
-    if (TTF_Init() != 0)
+    log::debug("Initializing renderer context");
+    if (!internal::RendererContext::getInstance().initialize())
     {
-        log::error("Failed to initialize SDL text rendering system: {}", SDL_GetError());
+        log::error("Failed to initialize renderer context");
         return false;
     }
+
     return true;
 }
 
-void e2d::internal::SDLInitializer::shutdown()
+void e2d::GraphicsSystem::shutdown()
 {
-    log::debug("Shutting down SDL text rendering system");
-    TTF_Quit();
+    log::debug("Destroying renderer context");
+    internal::RendererContext::getInstance().destroy();
 
     log::debug("Shutting down SDL image system");
     IMG_Quit();
 
-    log::debug("Shutting down SDL core systems");
-    SDL_Quit();
+    log::debug("Shutting down SDL video subsystem");
+    SDL_QuitSubSystem(SDL_INIT_VIDEO);
 }

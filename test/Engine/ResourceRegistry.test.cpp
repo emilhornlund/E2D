@@ -27,12 +27,13 @@
 #include "helloworld.bin.hpp"
 #include "opensans.bin.hpp"
 
-#include <E2D/Core/System.hpp>
-
 #include <E2D/Engine/Application.hpp>
+#include <E2D/Engine/CoreSystem.hpp>
 #include <E2D/Engine/Font.hpp>
+#include <E2D/Engine/GraphicsSystem.hpp>
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/ResourceRegistry.hpp>
+#include <E2D/Engine/SystemManager.hpp>
 #include <E2D/Engine/Texture.hpp>
 #include <E2D/Engine/Window.hpp>
 
@@ -74,25 +75,19 @@ public:
     ResourceRegistryTest()
     {
         // Setup (runs before each SECTION)
-        e2d::System::initialize();
-        application.getWindow().create("Test Window", 800, 600);
-        application.getRenderer().create(application.getWindow());
+        e2d::SystemManager::getInstance().initialize<e2d::CoreSystem>();
+        e2d::SystemManager::getInstance().initialize<e2d::GraphicsSystem>();
     }
 
     ~ResourceRegistryTest()
     {
-        // Teardown (runs after each SECTION)
-        application.getRenderer().destroy();
-        application.getWindow().destroy();
-        e2d::System::shutdown();
+        e2d::SystemManager::getInstance().shutdown();
     }
-
-    ResourceRegistryTestApplication application;
 };
 
 TEST_CASE_METHOD(ResourceRegistryTest, "ResourceRegistry Tests", "[ResourceRegistry]")
 {
-    e2d::ResourceRegistry resourceRegistry(&application);
+    e2d::ResourceRegistry resourceRegistry;
 
     SECTION("A resource does not exist initially")
     {

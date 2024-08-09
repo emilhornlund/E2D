@@ -36,12 +36,11 @@ set(ENGINE_SRC
     Engine/helloworld.bin.hpp
     Engine/ObjectRegistry.test.cpp
     Engine/opensans.bin.hpp
-    Engine/Renderer.test.cpp
+    Engine/RendererContext.test.cpp
     Engine/RendererQueue.test.cpp
     Engine/ResourceRegistry.test.cpp
     Engine/SDLKeyboardUtils.test.cpp
     Engine/SDLRenderUtils.test.cpp
-    Engine/Window.test.cpp
 )
 e2d_add_test(e2d-test-engine "${ENGINE_SRC}" E2D::Engine)
 target_link_libraries(e2d-test-engine PRIVATE SDL2 SDL2_IMAGE SDL2_TTF)

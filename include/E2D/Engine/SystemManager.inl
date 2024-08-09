@@ -1,5 +1,5 @@
 /**
- * @file Renderer.test.cpp
+ * @file SystemManager.inl
  *
  * MIT License
  *
@@ -24,47 +24,17 @@
  * THE SOFTWARE.
  */
 
-#include <E2D/Core/System.hpp>
+#include <utility>
 
-#include <E2D/Engine/Renderer.hpp>
-#include <E2D/Engine/Window.hpp>
-
-#include <catch2/catch_test_macros.hpp>
-
-class RendererTest
+template <typename T>
+bool e2d::SystemManager::initialize()
 {
-public:
-    RendererTest()
+    static_assert(std::is_base_of<System, T>::value, "T must be derived from System");
+    auto system = std::make_unique<T>();
+    if (!system->initialize())
     {
-        // Setup (runs before each SECTION)
-        e2d::System::initialize();
-        window.create("Test Window", 800, 600);
+        return false;
     }
-
-    ~RendererTest()
-    {
-        // Teardown (runs after each SECTION)
-        window.destroy();
-        e2d::System::shutdown();
-    }
-
-    e2d::Window window;
-};
-
-TEST_CASE_METHOD(RendererTest, "Renderer Creation and Destruction", "[Renderer]")
-{
-    e2d::Renderer renderer;
-
-    SECTION("Create Renderer")
-    {
-        REQUIRE(renderer.create(window) == true);
-        REQUIRE(renderer.isCreated() == true);
-    }
-
-    SECTION("Destroy Renderer")
-    {
-        REQUIRE(renderer.create(window) == true);
-        renderer.destroy();
-        REQUIRE(renderer.isCreated() == false);
-    }
+    this->m_systems.push(std::move(system));
+    return true;
 }

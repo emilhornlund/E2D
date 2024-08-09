@@ -16,10 +16,6 @@ set(SRC
     ${INCROOT}/NonCopyable.hpp
     ${INCROOT}/Rect.hpp
     ${INCROOT}/Rect.inl
-    ${SRCROOT}/SDLInitializer.hpp
-    ${SRCROOT}/SDLInitializer.cpp
-    ${INCROOT}/System.hpp
-    ${SRCROOT}/System.cpp
     ${INCROOT}/Timer.hpp
     ${SRCROOT}/Timer.cpp
     ${INCROOT}/Vector2.hpp

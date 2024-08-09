@@ -1,5 +1,5 @@
 /**
- * @file Resource.cpp
+ * @file SystemManager.cpp
  *
  * MIT License
  *
@@ -26,14 +26,34 @@
 
 #include <E2D/Core/Logger.hpp>
 
-#include <E2D/Engine/Resource.hpp>
+#include <E2D/Engine/SystemManager.hpp>
 
-e2d::Resource::Resource()
+#include <SDL.h>
+
+e2d::SystemManager::SystemManager()
 {
-    log::debug("Constructing Resource");
+    log::debug("Constructing SystemManager");
 }
 
-e2d::Resource::~Resource()
+e2d::SystemManager::~SystemManager()
 {
-    log::debug("Destructing Resource");
+    log::debug("Destructing SystemManager");
+}
+
+e2d::SystemManager& e2d::SystemManager::getInstance()
+{
+    static SystemManager instance;
+    return instance;
+}
+
+void e2d::SystemManager::shutdown()
+{
+    log::info("Shutting down systems");
+    while (!this->m_systems.empty())
+    {
+        auto& system = *this->m_systems.top();
+        system.shutdown();
+        this->m_systems.pop();
+    }
+    SDL_Quit();
 }

@@ -26,6 +26,8 @@
 
 #include <E2D/Core/Logger.hpp>
 
+#include <E2D/Engine/Renderer.hpp>
+#include <E2D/Engine/RendererContext.hpp>
 #include <E2D/Engine/TextureImpl.hpp>
 
 // NOLINTBEGIN
@@ -46,8 +48,10 @@ e2d::internal::TextureImpl::~TextureImpl()
     this->destroy();
 }
 
-bool e2d::internal::TextureImpl::loadTexture(SDL_Renderer* renderer, const char* file)
+bool e2d::internal::TextureImpl::loadTexture(const char* file)
 {
+    auto* renderer = static_cast<SDL_Renderer*>(
+        internal::RendererContext::getInstance().getRenderer().getNativeRendererHandle());
     this->m_texture = IMG_LoadTexture(renderer, file);
     if (this->m_texture == nullptr)
     {
@@ -63,7 +67,7 @@ bool e2d::internal::TextureImpl::loadTexture(SDL_Renderer* renderer, const char*
     return true;
 }
 
-bool e2d::internal::TextureImpl::loadFromMemory(SDL_Renderer* renderer, const void* data, std::size_t size)
+bool e2d::internal::TextureImpl::loadFromMemory(const void* data, std::size_t size)
 {
     SDL_RWops* rw = SDL_RWFromConstMem(data, static_cast<int>(size));
     if (rw == nullptr)
@@ -72,6 +76,8 @@ bool e2d::internal::TextureImpl::loadFromMemory(SDL_Renderer* renderer, const vo
         return false;
     }
 
+    auto* renderer = static_cast<SDL_Renderer*>(
+        internal::RendererContext::getInstance().getRenderer().getNativeRendererHandle());
     this->m_texture = IMG_LoadTexture_RW(renderer, rw, 1);
     if (this->m_texture == nullptr)
     {

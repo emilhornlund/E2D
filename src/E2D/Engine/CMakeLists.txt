@@ -6,13 +6,19 @@ set(SRCROOT ${PROJECT_SOURCE_DIR}/src/E2D/Engine)
 set(SRC
     ${INCROOT}/Application.hpp
     ${SRCROOT}/Application.cpp
+    ${INCROOT}/CoreSystem.hpp
+    ${SRCROOT}/CoreSystem.cpp
     ${INCROOT}/Event.hpp
     ${SRCROOT}/Event.cpp
     ${INCROOT}/Export.hpp
     ${INCROOT}/Font.hpp
     ${SRCROOT}/Font.cpp
+    ${INCROOT}/FontSystem.hpp
+    ${SRCROOT}/FontSystem.cpp
     ${SRCROOT}/FontImpl.hpp
     ${SRCROOT}/FontImpl.cpp
+    ${INCROOT}/GraphicsSystem.hpp
+    ${SRCROOT}/GraphicsSystem.cpp
     ${INCROOT}/Keyboard.hpp
     ${INCROOT}/Object.hpp
     ${SRCROOT}/Object.cpp
@@ -29,6 +35,8 @@ set(SRC
     ${SRCROOT}/RendererImpl.cpp
     ${SRCROOT}/RenderQueue.hpp
     ${SRCROOT}/RenderQueue.cpp
+    ${SRCROOT}/RendererContext.hpp
+    ${SRCROOT}/RendererContext.cpp
     ${INCROOT}/Resource.hpp
     ${SRCROOT}/Resource.cpp
     ${INCROOT}/ResourceRegistry.hpp
@@ -40,6 +48,11 @@ set(SRC
     ${SRCROOT}/SDLRenderUtils.cpp
     ${INCROOT}/Sprite.hpp
     ${SRCROOT}/Sprite.cpp
+    ${INCROOT}/System.hpp
+    ${SRCROOT}/System.cpp
+    ${INCROOT}/SystemManager.hpp
+    ${INCROOT}/SystemManager.inl
+    ${SRCROOT}/SystemManager.cpp
     ${INCROOT}/Text.hpp
     ${SRCROOT}/Text.cpp
     ${SRCROOT}/TextImpl.hpp

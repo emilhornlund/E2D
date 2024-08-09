@@ -47,14 +47,12 @@ e2d::Texture::~Texture()
 
 bool e2d::Texture::loadFromFile(const std::string& filepath)
 {
-    auto* renderer = static_cast<SDL_Renderer*>(this->getApplication().getRenderer().getNativeRendererHandle());
-    return this->m_textureImpl->loadTexture(renderer, filepath.c_str());
+    return this->m_textureImpl->loadTexture(filepath.c_str());
 }
 
 bool e2d::Texture::loadFromMemory(const void* data, std::size_t size)
 {
-    auto* renderer = static_cast<SDL_Renderer*>(this->getApplication().getRenderer().getNativeRendererHandle());
-    return this->m_textureImpl->loadFromMemory(renderer, data, size);
+    return this->m_textureImpl->loadFromMemory(data, size);
 }
 
 bool e2d::Texture::isLoaded() const

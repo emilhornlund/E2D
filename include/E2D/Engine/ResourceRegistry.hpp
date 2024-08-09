@@ -43,7 +43,6 @@
 
 namespace e2d
 {
-class Application; // Forward declaration of Application
 
 /**
  * @class ResourceRegistry
@@ -146,10 +145,8 @@ public:
      * @brief Constructs a new ResourceRegistry object.
      *
      * Initializes a new instance of the ResourceRegistry class.
-     *
-     * @param application Raw pointer to the application.
      */
-    explicit ResourceRegistry(Application* application);
+    ResourceRegistry();
 
     /**
      * @brief Destructor.
@@ -214,7 +211,6 @@ public:
     bool loadFromMemory(const std::string& identifier, const void* data, std::size_t size, Args&&... args);
 
 private:
-    Application* m_application; //!< Raw pointer to the application, non-owning.
     std::unordered_map<std::string, std::unique_ptr<IResource>> m_resources; //!< Container for storing resources by their identifiers.
 
 }; // class ResourceRegistry

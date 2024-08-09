@@ -1,5 +1,5 @@
 /**
- * @file System.cpp
+ * @file FontSystem.cpp
  *
  * MIT License
  *
@@ -25,27 +25,35 @@
  */
 
 #include <E2D/Core/Logger.hpp>
-#include <E2D/Core/SDLInitializer.hpp>
-#include <E2D/Core/System.hpp>
 
-e2d::System::System()
+#include <E2D/Engine/FontSystem.hpp>
+
+#include <SDL_ttf.h>
+
+e2d::FontSystem::FontSystem()
 {
-    log::debug("Constructing System");
+    log::debug("Constructing FontSystem");
 }
 
-e2d::System::~System()
+e2d::FontSystem::~FontSystem()
 {
-    log::debug("Destructing System");
+    log::debug("Destructing FontSystem");
 }
 
-bool e2d::System::initialize()
+bool e2d::FontSystem::initialize()
 {
-    log::debug("Initializing system");
-    return internal::SDLInitializer::initialize();
+    log::debug("Initializing SDL ttf subsystem");
+    if (TTF_Init() != 0)
+    {
+        log::error("Failed to initialize SDL ttf system: {}", SDL_GetError());
+        return false;
+    }
+
+    return true;
 }
 
-void e2d::System::shutdown()
+void e2d::FontSystem::shutdown()
 {
-    log::debug("Shutting down system");
-    internal::SDLInitializer::shutdown();
+    log::debug("Shutting down SDL ttf system");
+    TTF_Quit();
 }

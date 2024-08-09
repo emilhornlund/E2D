@@ -31,7 +31,7 @@
 
 #include <utility>
 
-e2d::ResourceRegistry::ResourceRegistry(Application* application) : m_application(application)
+e2d::ResourceRegistry::ResourceRegistry()
 {
     log::debug("Constructing ResourceRegistry");
 }

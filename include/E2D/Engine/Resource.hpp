@@ -35,7 +35,6 @@
 
 namespace e2d
 {
-class Application;      // Forward declaration of Application
 class ResourceRegistry; // Forward declaration of ResourceRegistry
 
 /**
@@ -85,19 +84,6 @@ public:
      * @return True if the resource is successfully loaded from memory, false otherwise.
      */
     virtual bool loadFromMemory(const void* data, std::size_t size) = 0;
-
-protected:
-    /**
-     * @brief Gets the application reference for this resource.
-     *
-     * Provides access to the application instance managing this Resource.
-     *
-     * @return A reference to the application.
-     */
-    Application& getApplication() const;
-
-private:
-    Application* m_application{nullptr}; //!< Raw pointer to the application, non-owning.
 
 }; // Resource class
 

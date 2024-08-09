@@ -66,27 +66,25 @@ public:
     ~TextureImpl();
 
     /**
-     * @brief Loads a texture using a specified renderer and file path.
+     * @brief Loads a texture from a specified file path.
      *
-     * Loads a texture from the specified file using the provided SDL renderer.
+     * Loads a texture from the specified file.
      *
-     * @param renderer Pointer to the SDL_Renderer object used for texture loading.
      * @param file Path to the texture file.
      * @return True if the texture is successfully loaded, false otherwise.
      */
-    bool loadTexture(SDL_Renderer* renderer, const char* file);
+    bool loadTexture(const char* file);
 
     /**
      * @brief Loads the texture from memory.
      *
-     * Loads the texture from a block of memory using the provided SDL renderer.
+     * Loads the texture from a block of memory.
      *
-     * @param renderer Pointer to the SDL renderer.
      * @param data Pointer to the memory block containing the texture data.
      * @param size Size of the memory block in bytes.
      * @return True if the texture is successfully loaded from memory, false otherwise.
      */
-    bool loadFromMemory(SDL_Renderer* renderer, const void* data, std::size_t size);
+    bool loadFromMemory(const void* data, std::size_t size);
 
     /**
      * @brief Checks if the texture is loaded and valid.

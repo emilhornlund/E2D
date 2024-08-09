@@ -30,6 +30,7 @@
 #include <E2D/Engine/Application.hpp>
 #include <E2D/Engine/Font.hpp>
 #include <E2D/Engine/Renderer.hpp>
+#include <E2D/Engine/RendererContext.hpp>
 #include <E2D/Engine/SDLRenderUtils.hpp>
 #include <E2D/Engine/Text.hpp>
 #include <E2D/Engine/TextImpl.hpp>
@@ -131,7 +132,8 @@ void e2d::Text::render(const e2d::Renderer& renderer) const
 
 void e2d::Text::updateNativeTexture()
 {
-    auto* renderer = static_cast<SDL_Renderer*>(this->getApplication().getRenderer().getNativeRendererHandle());
-    auto* font     = static_cast<TTF_Font*>(this->m_font->getNativeFontHandle(this->m_fontSize));
+    auto* renderer = static_cast<SDL_Renderer*>(
+        internal::RendererContext::getInstance().getRenderer().getNativeRendererHandle());
+    auto* font = static_cast<TTF_Font*>(this->m_font->getNativeFontHandle(this->m_fontSize));
     this->m_textImpl->updateNativeTexture(renderer, font, this->m_string);
 }

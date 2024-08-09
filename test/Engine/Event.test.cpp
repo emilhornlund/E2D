@@ -24,9 +24,9 @@
  * THE SOFTWARE.
  */
 
-#include <E2D/Core/System.hpp>
-
+#include <E2D/Engine/CoreSystem.hpp>
 #include <E2D/Engine/Event.hpp>
+#include <E2D/Engine/SystemManager.hpp>
 
 #include <catch2/catch_test_macros.hpp>
 #include <SDL.h>
@@ -37,13 +37,13 @@ public:
     EventTest()
     {
         // Setup (runs before each SECTION)
-        e2d::System::initialize();
+        e2d::SystemManager::getInstance().initialize<e2d::CoreSystem>();
     }
 
     ~EventTest()
     {
         // Teardown (runs after each SECTION)
-        e2d::System::shutdown();
+        e2d::SystemManager::getInstance().shutdown();
     }
 };
 

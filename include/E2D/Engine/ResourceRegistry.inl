@@ -73,9 +73,8 @@ bool e2d::ResourceRegistry::loadFromFile(const std::string& identifier,
     static_assert(std::is_base_of<Resource, T>::value, "T must be derived from Resource");
     if (!this->exists<T>(identifier))
     {
-        auto resource                   = std::make_unique<TResource<T>>(identifier);
-        resource->mValue                = std::make_shared<T>();
-        resource->mValue->m_application = this->m_application;
+        auto resource    = std::make_unique<TResource<T>>(identifier);
+        resource->mValue = std::make_shared<T>();
         if (resource->mValue->loadFromFile(filepath, std::forward<Args>(args)...))
         {
             this->m_resources.insert(std::make_pair(identifier, std::move(resource)));
@@ -98,9 +97,8 @@ bool e2d::ResourceRegistry::loadFromMemory(const std::string& identifier,
     static_assert(std::is_base_of<Resource, T>::value, "T must be derived from Resource");
     if (!this->exists<T>(identifier))
     {
-        auto resource                   = std::make_unique<TResource<T>>(identifier);
-        resource->mValue                = std::make_shared<T>();
-        resource->mValue->m_application = this->m_application;
+        auto resource    = std::make_unique<TResource<T>>(identifier);
+        resource->mValue = std::make_shared<T>();
         if (resource->mValue->loadFromMemory(data, size, std::forward<Args>(args)...))
         {
             this->m_resources.insert(std::make_pair(identifier, std::move(resource)));

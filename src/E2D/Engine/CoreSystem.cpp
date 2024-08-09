@@ -1,5 +1,5 @@
 /**
- * @file Window.test.cpp
+ * @file CoreSystem.cpp
  *
  * MIT License
  *
@@ -24,42 +24,46 @@
  * THE SOFTWARE.
  */
 
-#include <E2D/Core/System.hpp>
+#include <E2D/Core/Logger.hpp>
 
-#include <E2D/Engine/Window.hpp>
+#include <E2D/Engine/CoreSystem.hpp>
 
-#include <catch2/catch_test_macros.hpp>
+#include <SDL.h>
 
-class WindowTest
+e2d::CoreSystem::CoreSystem()
 {
-public:
-    WindowTest()
-    {
-        // Setup (runs before each SECTION)
-        e2d::System::initialize();
-    }
+    log::debug("Constructing CoreSystem");
+}
 
-    ~WindowTest()
-    {
-        // Teardown (runs after each SECTION)
-        e2d::System::shutdown();
-    }
-};
-
-TEST_CASE_METHOD(WindowTest, "Window Creation and Destruction", "[Window]")
+e2d::CoreSystem::~CoreSystem()
 {
-    e2d::Window window;
+    log::debug("Destructing CoreSystem");
+}
 
-    SECTION("Create Window")
+bool e2d::CoreSystem::initialize()
+{
+    log::debug("Initializing SDL timer subsystem");
+    if (SDL_InitSubSystem(SDL_INIT_TIMER) != 0)
     {
-        REQUIRE(window.create("Test Window", 800, 600) == true);
-        REQUIRE(window.isCreated() == true);
+        log::error("Failed to initialize SDL timer subsystem: {}", SDL_GetError());
+        return false;
     }
 
-    SECTION("Destroy Window")
+    log::debug("Initializing SDL events subsystem");
+    if (SDL_InitSubSystem(SDL_INIT_EVENTS) != 0)
     {
-        REQUIRE(window.create("Test Window", 800, 600) == true);
-        window.destroy();
-        REQUIRE(window.isCreated() == false);
+        log::error("Failed to initialize SDL events subsystem: {}", SDL_GetError());
+        return false;
     }
+
+    return true;
+}
+
+void e2d::CoreSystem::shutdown()
+{
+    log::debug("Shutting down SDL timer subsystem");
+    SDL_QuitSubSystem(SDL_INIT_EVENTS);
+
+    log::debug("Shutting down SDL events subsystem");
+    SDL_QuitSubSystem(SDL_INIT_TIMER);
 }

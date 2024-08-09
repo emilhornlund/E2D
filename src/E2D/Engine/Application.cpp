@@ -25,26 +25,27 @@
  */
 
 #include <E2D/Core/Logger.hpp>
-#include <E2D/Core/System.hpp>
 #include <E2D/Core/Timer.hpp>
 
 #include <E2D/Engine/Application.hpp>
+#include <E2D/Engine/CoreSystem.hpp>
 #include <E2D/Engine/Event.hpp>
+#include <E2D/Engine/FontSystem.hpp>
+#include <E2D/Engine/GraphicsSystem.hpp>
 #include <E2D/Engine/Object.hpp>
 #include <E2D/Engine/ObjectRegistry.hpp>
 #include <E2D/Engine/Renderable.hpp>
 #include <E2D/Engine/Renderer.hpp>
+#include <E2D/Engine/RendererContext.hpp>
 #include <E2D/Engine/ResourceRegistry.hpp>
-#include <E2D/Engine/Window.hpp>
+#include <E2D/Engine/SystemManager.hpp>
 
 #include <utility>
 
 e2d::Application::Application(std::string windowTitle) :
 m_windowTitle(std::move(windowTitle)),
-m_window(std::make_unique<Window>()),
-m_renderer(std::make_unique<Renderer>()),
 m_objectRegistry(std::make_unique<ObjectRegistry>(this)),
-m_resourceRegistry(std::make_unique<ResourceRegistry>(this)),
+m_resourceRegistry(std::make_unique<ResourceRegistry>()),
 m_backgroundColor(Color::Black)
 {
     log::debug("Constructing Application");
@@ -59,21 +60,25 @@ int e2d::Application::run()
 {
     log::info("Starting application");
 
-    if (!System::initialize())
+    auto& systemManager = SystemManager::getInstance();
+    if (!systemManager.initialize<CoreSystem>())
     {
-        log::error("Failed to initialize system. Aborting application startup.");
+        log::error("Failed to initialize core system. Aborting application startup.");
         return -1;
     }
-    if (!this->m_window->create(this->m_windowTitle.c_str(), 800, 600))
+    if (!systemManager.initialize<GraphicsSystem>())
     {
-        log::error("Failed to create window. Aborting application startup.");
+        log::error("Failed to initialize graphics system. Aborting application startup.");
         return -1;
     }
-    if (!this->m_renderer->create(*this->m_window))
+    if (!systemManager.initialize<FontSystem>())
     {
-        log::error("Failed to create renderer. Aborting application startup.");
+        log::error("Failed to initialize font system. Aborting application startup.");
         return -1;
     }
+
+    auto& rendererContext = internal::RendererContext::getInstance();
+    rendererContext.initialize();
 
     Timer        targetFrameTimer;
     double const targetFrameTime = 1.0 / 60.0;
@@ -123,10 +128,10 @@ int e2d::Application::run()
 
         for (const auto& entity : this->m_objectRegistry->getAllObjectsOfType<Renderable>())
         {
-            this->m_renderer->draw(entity);
+            rendererContext.getRenderer().draw(entity);
         }
 
-        this->m_renderer->render(this->m_backgroundColor);
+        rendererContext.getRenderer().render(this->m_backgroundColor);
 
         elapsedTime += elapsedFrameTimeAsSeconds;
         if (elapsedTime >= 1.0)
@@ -135,12 +140,7 @@ int e2d::Application::run()
         }
     }
 
-    log::info("Terminating application");
-
-    this->m_window->destroy();
-    this->m_renderer->destroy();
-
-    System::shutdown();
+    systemManager.shutdown();
 
     return this->m_exitCode;
 }
@@ -154,16 +154,6 @@ void e2d::Application::quit(int exitCode)
 {
     this->m_exitCode = exitCode;
     this->m_running  = false;
-}
-
-e2d::Window& e2d::Application::getWindow() const
-{
-    return *this->m_window;
-}
-
-e2d::Renderer& e2d::Application::getRenderer() const
-{
-    return *this->m_renderer;
 }
 
 e2d::ObjectRegistry& e2d::Application::getObjectRegistry() const

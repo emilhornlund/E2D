@@ -30,8 +30,11 @@
 #include <E2D/Engine/Export.hpp>
 
 #include <E2D/Engine/Application.hpp>
+#include <E2D/Engine/CoreSystem.hpp>
 #include <E2D/Engine/Event.hpp>
 #include <E2D/Engine/Font.hpp>
+#include <E2D/Engine/FontSystem.hpp>
+#include <E2D/Engine/GraphicsSystem.hpp>
 #include <E2D/Engine/Keyboard.hpp>
 #include <E2D/Engine/Object.hpp>
 #include <E2D/Engine/ObjectRegistry.hpp>
@@ -40,6 +43,8 @@
 #include <E2D/Engine/Resource.hpp>
 #include <E2D/Engine/ResourceRegistry.hpp>
 #include <E2D/Engine/Sprite.hpp>
+#include <E2D/Engine/System.hpp>
+#include <E2D/Engine/SystemManager.hpp>
 #include <E2D/Engine/Text.hpp>
 #include <E2D/Engine/Texture.hpp>
 #include <E2D/Engine/Transformable.hpp>
