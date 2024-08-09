@@ -78,27 +78,35 @@ $(function() {
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Engine_2Export_8hpp.html">E2D/Engine/Export.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Application_8hpp.html">E2D/Engine/Application.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Event_8hpp.html">E2D/Engine/Event.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Font_8hpp.html">E2D/Engine/Font.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Keyboard_8hpp.html">E2D/Engine/Keyboard.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Object_8hpp.html">E2D/Engine/Object.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ObjectRegistry_8hpp.html">E2D/Engine/ObjectRegistry.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Renderable_8hpp.html">E2D/Engine/Renderable.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Renderer_8hpp.html">E2D/Engine/Renderer.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Resource_8hpp.html">E2D/Engine/Resource.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ResourceRegistry_8hpp.html">E2D/Engine/ResourceRegistry.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Sprite_8hpp.html">E2D/Engine/Sprite.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Text_8hpp.html">E2D/Engine/Text.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Texture_8hpp.html">E2D/Engine/Texture.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Transformable_8hpp.html">E2D/Engine/Transformable.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Window_8hpp.html">E2D/Engine/Window.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_ENGINE_HPP</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="CoreSystem_8hpp.html">E2D/Engine/CoreSystem.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Event_8hpp.html">E2D/Engine/Event.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Font_8hpp.html">E2D/Engine/Font.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="FontSystem_8hpp.html">E2D/Engine/FontSystem.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="GraphicsSystem_8hpp.html">E2D/Engine/GraphicsSystem.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Keyboard_8hpp.html">E2D/Engine/Keyboard.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Object_8hpp.html">E2D/Engine/Object.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ObjectRegistry_8hpp.html">E2D/Engine/ObjectRegistry.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Renderable_8hpp.html">E2D/Engine/Renderable.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Renderer_8hpp.html">E2D/Engine/Renderer.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Resource_8hpp.html">E2D/Engine/Resource.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ResourceRegistry_8hpp.html">E2D/Engine/ResourceRegistry.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Sprite_8hpp.html">E2D/Engine/Sprite.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="System_8hpp.html">E2D/Engine/System.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="SystemManager_8hpp.html">E2D/Engine/SystemManager.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Text_8hpp.html">E2D/Engine/Text.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Texture_8hpp.html">E2D/Engine/Texture.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Transformable_8hpp.html">E2D/Engine/Transformable.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Window_8hpp.html">E2D/Engine/Window.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_ENGINE_HPP</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="ttc" id="aApplication_8hpp_html"><div class="ttname"><a href="Application_8hpp.html">Application.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aCoreSystem_8hpp_html"><div class="ttname"><a href="CoreSystem_8hpp.html">CoreSystem.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aEngine_2Export_8hpp_html"><div class="ttname"><a href="Engine_2Export_8hpp.html">Export.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aEvent_8hpp_html"><div class="ttname"><a href="Event_8hpp.html">Event.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aFontSystem_8hpp_html"><div class="ttname"><a href="FontSystem_8hpp.html">FontSystem.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aFont_8hpp_html"><div class="ttname"><a href="Font_8hpp.html">Font.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aGraphicsSystem_8hpp_html"><div class="ttname"><a href="GraphicsSystem_8hpp.html">GraphicsSystem.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aKeyboard_8hpp_html"><div class="ttname"><a href="Keyboard_8hpp.html">Keyboard.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aObjectRegistry_8hpp_html"><div class="ttname"><a href="ObjectRegistry_8hpp.html">ObjectRegistry.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aObject_8hpp_html"><div class="ttname"><a href="Object_8hpp.html">Object.hpp</a></div><div class="ttdoc">MIT License.</div></div>
@@ -107,6 +115,8 @@ $(function() {
 <div class="ttc" id="aResourceRegistry_8hpp_html"><div class="ttname"><a href="ResourceRegistry_8hpp.html">ResourceRegistry.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aResource_8hpp_html"><div class="ttname"><a href="Resource_8hpp.html">Resource.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aSprite_8hpp_html"><div class="ttname"><a href="Sprite_8hpp.html">Sprite.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aSystemManager_8hpp_html"><div class="ttname"><a href="SystemManager_8hpp.html">SystemManager.hpp</a></div><div class="ttdoc">MIT License.</div></div>
+<div class="ttc" id="aSystem_8hpp_html"><div class="ttname"><a href="System_8hpp.html">System.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aText_8hpp_html"><div class="ttname"><a href="Text_8hpp.html">Text.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aTexture_8hpp_html"><div class="ttname"><a href="Texture_8hpp.html">Texture.hpp</a></div></div>
 <div class="ttc" id="aTransformable_8hpp_html"><div class="ttname"><a href="Transformable_8hpp.html">Transformable.hpp</a></div><div class="ttdoc">MIT License.</div></div>

@@ -97,12 +97,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9569476917964a6553d6bd554587ee8d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1internal_1_1TextureImpl.html#a9569476917964a6553d6bd554587ee8d">~TextureImpl</a> ()</td></tr>
 <tr class="memdesc:a9569476917964a6553d6bd554587ee8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="classe2d_1_1internal_1_1TextureImpl.html#a9569476917964a6553d6bd554587ee8d">More...</a><br /></td></tr>
 <tr class="separator:a9569476917964a6553d6bd554587ee8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb3beffb3d81ddc3172dddbf1ca6b996"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1internal_1_1TextureImpl.html#abb3beffb3d81ddc3172dddbf1ca6b996">loadTexture</a> (SDL_Renderer *renderer, const char *file)</td></tr>
-<tr class="memdesc:abb3beffb3d81ddc3172dddbf1ca6b996"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a texture using a specified renderer and file path.  <a href="classe2d_1_1internal_1_1TextureImpl.html#abb3beffb3d81ddc3172dddbf1ca6b996">More...</a><br /></td></tr>
-<tr class="separator:abb3beffb3d81ddc3172dddbf1ca6b996"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68888b237575987c12ac54da5cddfb85"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1internal_1_1TextureImpl.html#a68888b237575987c12ac54da5cddfb85">loadFromMemory</a> (SDL_Renderer *renderer, const void *data, std::size_t size)</td></tr>
-<tr class="memdesc:a68888b237575987c12ac54da5cddfb85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the texture from memory.  <a href="classe2d_1_1internal_1_1TextureImpl.html#a68888b237575987c12ac54da5cddfb85">More...</a><br /></td></tr>
-<tr class="separator:a68888b237575987c12ac54da5cddfb85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acde9390c2c19519087983775ddc1c866"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1internal_1_1TextureImpl.html#acde9390c2c19519087983775ddc1c866">loadTexture</a> (const char *file)</td></tr>
+<tr class="memdesc:acde9390c2c19519087983775ddc1c866"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a texture from a specified file path.  <a href="classe2d_1_1internal_1_1TextureImpl.html#acde9390c2c19519087983775ddc1c866">More...</a><br /></td></tr>
+<tr class="separator:acde9390c2c19519087983775ddc1c866"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99c63eb85d2c0f564df4ae9446c48dd3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1internal_1_1TextureImpl.html#a99c63eb85d2c0f564df4ae9446c48dd3">loadFromMemory</a> (const void *data, std::size_t size)</td></tr>
+<tr class="memdesc:a99c63eb85d2c0f564df4ae9446c48dd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the texture from memory.  <a href="classe2d_1_1internal_1_1TextureImpl.html#a99c63eb85d2c0f564df4ae9446c48dd3">More...</a><br /></td></tr>
+<tr class="separator:a99c63eb85d2c0f564df4ae9446c48dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6e31b25a247b170e807edfa6fad9c2f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1internal_1_1TextureImpl.html#ab6e31b25a247b170e807edfa6fad9c2f">isLoaded</a> () const</td></tr>
 <tr class="memdesc:ab6e31b25a247b170e807edfa6fad9c2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the texture is loaded and valid.  <a href="classe2d_1_1internal_1_1TextureImpl.html#ab6e31b25a247b170e807edfa6fad9c2f">More...</a><br /></td></tr>
 <tr class="separator:ab6e31b25a247b170e807edfa6fad9c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -246,8 +246,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a68888b237575987c12ac54da5cddfb85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68888b237575987c12ac54da5cddfb85">&#9670;&nbsp;</a></span>loadFromMemory()</h2>
+<a id="a99c63eb85d2c0f564df4ae9446c48dd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99c63eb85d2c0f564df4ae9446c48dd3">&#9670;&nbsp;</a></span>loadFromMemory()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -255,12 +255,6 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">bool e2d::internal::TextureImpl::loadFromMemory </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *&#160;</td>
-          <td class="paramname"><em>renderer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const void *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
         </tr>
@@ -279,10 +273,9 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Loads the texture from memory. </p>
-<p>Loads the texture from a block of memory using the provided SDL renderer.</p>
+<p>Loads the texture from a block of memory.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">renderer</td><td>Pointer to the SDL renderer. </td></tr>
     <tr><td class="paramname">data</td><td>Pointer to the memory block containing the texture data. </td></tr>
     <tr><td class="paramname">size</td><td>Size of the memory block in bytes. </td></tr>
   </table>
@@ -292,8 +285,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abb3beffb3d81ddc3172dddbf1ca6b996"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb3beffb3d81ddc3172dddbf1ca6b996">&#9670;&nbsp;</a></span>loadTexture()</h2>
+<a id="acde9390c2c19519087983775ddc1c866"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acde9390c2c19519087983775ddc1c866">&#9670;&nbsp;</a></span>loadTexture()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -301,28 +294,17 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">bool e2d::internal::TextureImpl::loadTexture </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *&#160;</td>
-          <td class="paramname"><em>renderer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>file</em>&#160;</td>
-        </tr>
-        <tr>
+          <td class="paramname"><em>file</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Loads a texture using a specified renderer and file path. </p>
-<p>Loads a texture from the specified file using the provided SDL renderer.</p>
+<p>Loads a texture from a specified file path. </p>
+<p>Loads a texture from the specified file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">renderer</td><td>Pointer to the SDL_Renderer object used for texture loading. </td></tr>
     <tr><td class="paramname">file</td><td>Path to the texture file. </td></tr>
   </table>
   </dd>

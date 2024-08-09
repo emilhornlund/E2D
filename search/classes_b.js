@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['vector2_446',['Vector2',['../classe2d_1_1Vector2.html',1,'e2d']]],
-  ['vector2_3c_20float_20_3e_447',['Vector2&lt; float &gt;',['../classe2d_1_1Vector2.html',1,'e2d']]],
-  ['vector2_3c_20int_20_3e_448',['Vector2&lt; int &gt;',['../classe2d_1_1Vector2.html',1,'e2d']]]
+  ['text_457',['Text',['../classe2d_1_1Text.html',1,'e2d']]],
+  ['textimpl_458',['TextImpl',['../classe2d_1_1internal_1_1TextImpl.html',1,'e2d::internal']]],
+  ['texture_459',['Texture',['../classe2d_1_1Texture.html',1,'e2d']]],
+  ['textureimpl_460',['TextureImpl',['../classe2d_1_1internal_1_1TextureImpl.html',1,'e2d::internal']]],
+  ['timer_461',['Timer',['../classe2d_1_1Timer.html',1,'e2d']]],
+  ['transformable_462',['Transformable',['../classe2d_1_1Transformable.html',1,'e2d']]]
 ];

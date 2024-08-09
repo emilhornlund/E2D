@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_424',['Logger',['../classe2d_1_1Logger.html',1,'e2d']]]
+  ['keyevent_439',['KeyEvent',['../structe2d_1_1Event_1_1KeyEvent.html',1,'e2d::Event']]]
 ];

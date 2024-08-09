@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['noncopyable_2ehpp_467',['NonCopyable.hpp',['../NonCopyable_8hpp.html',1,'']]]
+  ['logger_2ehpp_486',['Logger.hpp',['../Logger_8hpp.html',1,'']]]
 ];

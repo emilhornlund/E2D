@@ -107,12 +107,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acea77b1b05f486af97d34bc7cd2917df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Application.html#acea77b1b05f486af97d34bc7cd2917df">quit</a> (int exitCode=0)</td></tr>
 <tr class="memdesc:acea77b1b05f486af97d34bc7cd2917df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quits the application.  <a href="classe2d_1_1Application.html#acea77b1b05f486af97d34bc7cd2917df">More...</a><br /></td></tr>
 <tr class="separator:acea77b1b05f486af97d34bc7cd2917df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05e6f4e851df8eb8da30169faf0e4583"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classe2d_1_1Window.html">Window</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Application.html#a05e6f4e851df8eb8da30169faf0e4583">getWindow</a> () const</td></tr>
-<tr class="memdesc:a05e6f4e851df8eb8da30169faf0e4583"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="classe2d_1_1Window.html" title="Represents a graphical window.">Window</a> instance used by the application.  <a href="classe2d_1_1Application.html#a05e6f4e851df8eb8da30169faf0e4583">More...</a><br /></td></tr>
-<tr class="separator:a05e6f4e851df8eb8da30169faf0e4583"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6300250a6a1fa715e663987149b0a648"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classe2d_1_1Renderer.html">Renderer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Application.html#a6300250a6a1fa715e663987149b0a648">getRenderer</a> () const</td></tr>
-<tr class="memdesc:a6300250a6a1fa715e663987149b0a648"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="classe2d_1_1Renderer.html" title="Handles the rendering process for graphical objects.">Renderer</a> instance used by the application.  <a href="classe2d_1_1Application.html#a6300250a6a1fa715e663987149b0a648">More...</a><br /></td></tr>
-<tr class="separator:a6300250a6a1fa715e663987149b0a648"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab74ec89ce5504b9300df94c2f2c66058"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classe2d_1_1ObjectRegistry.html">ObjectRegistry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Application.html#ab74ec89ce5504b9300df94c2f2c66058">getObjectRegistry</a> () const</td></tr>
 <tr class="memdesc:ab74ec89ce5504b9300df94c2f2c66058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="classe2d_1_1ObjectRegistry.html" title="Manages a registry of all game objects.">ObjectRegistry</a> instance used by the application.  <a href="classe2d_1_1Application.html#ab74ec89ce5504b9300df94c2f2c66058">More...</a><br /></td></tr>
 <tr class="separator:ab74ec89ce5504b9300df94c2f2c66058"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,7 +130,7 @@ Protected Member Functions</h2></td></tr>
 <div class="textblock"><p>Abstract base for managing the lifecycle and main loop of the application. </p>
 <p>The <a class="el" href="classe2d_1_1Application.html" title="Abstract base for managing the lifecycle and main loop of the application.">Application</a> class is responsible for initializing the game, handling the main loop, processing events, updating the game state, and rendering frames. It serves as the entry point for the E2D engine and orchestrates the overall flow of the game. </p>
 
-<p class="definition">Definition at line <a class="el" href="Application_8hpp_source.html#l00054">54</a> of file <a class="el" href="Application_8hpp_source.html">Application.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Application_8hpp_source.html#l00052">52</a> of file <a class="el" href="Application_8hpp_source.html">Application.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aba1b89e1bb2b6ea054e228004e9e1911"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aba1b89e1bb2b6ea054e228004e9e1911">&#9670;&nbsp;</a></span>Application()</h2>
@@ -244,27 +238,6 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6300250a6a1fa715e663987149b0a648"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6300250a6a1fa715e663987149b0a648">&#9670;&nbsp;</a></span>getRenderer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classe2d_1_1Renderer.html">Renderer</a>&amp; e2d::Application::getRenderer </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the <a class="el" href="classe2d_1_1Renderer.html" title="Handles the rendering process for graphical objects.">Renderer</a> instance used by the application. </p>
-<p>Provides access to the renderer instance managed by the application.</p>
-<dl class="section return"><dt>Returns</dt><dd>A reference to the <a class="el" href="classe2d_1_1Renderer.html" title="Handles the rendering process for graphical objects.">Renderer</a>. </dd></dl>
-
-</div>
-</div>
 <a id="a403a5c2653e108c1f0ec719f6550e216"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a403a5c2653e108c1f0ec719f6550e216">&#9670;&nbsp;</a></span>getResourceRegistry()</h2>
 
@@ -283,27 +256,6 @@ Protected Member Functions</h2></td></tr>
 <p>Gets the <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a> instance used by the application. </p>
 <p>Provides access to the resource registry managed by the application.</p>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a>. </dd></dl>
-
-</div>
-</div>
-<a id="a05e6f4e851df8eb8da30169faf0e4583"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05e6f4e851df8eb8da30169faf0e4583">&#9670;&nbsp;</a></span>getWindow()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classe2d_1_1Window.html">Window</a>&amp; e2d::Application::getWindow </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the <a class="el" href="classe2d_1_1Window.html" title="Represents a graphical window.">Window</a> instance used by the application. </p>
-<p>Provides access to the window instance managed by the application.</p>
-<dl class="section return"><dt>Returns</dt><dd>A reference to the <a class="el" href="classe2d_1_1Window.html" title="Represents a graphical window.">Window</a>. </dd></dl>
 
 </div>
 </div>
