@@ -40,8 +40,6 @@
 
 namespace e2d
 {
-class Application; // Forward declaration of Application
-
 /**
  * @class ObjectRegistry
  * @ingroup engine
@@ -57,11 +55,9 @@ public:
     /**
      * @brief Constructs a new ObjectRegistry object.
      *
-     * Initializes a new instance of the ObjectRegistry class with the specified Application instance.
-     *
-     * @param application A pointer to the Application instance managing this ObjectRegistry.
+     * Initializes a new instance of the ObjectRegistry class.
      */
-    explicit ObjectRegistry(Application* application);
+    ObjectRegistry();
 
     /**
      * @brief Destructor.
@@ -120,7 +116,6 @@ public:
     std::vector<T*> getAllObjectsOfType() const;
 
 private:
-    Application* m_application;                                         //!< Raw pointer to the application, non-owning.
     std::unordered_map<std::string, std::unique_ptr<Object>> m_objects; //!< Map storing all objects by their unique identifiers.
 
 }; // class ObjectRegistry

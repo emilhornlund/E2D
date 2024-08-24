@@ -49,7 +49,7 @@ public:
 
 TEST_CASE("ObjectRegistry Tests", "[ObjectRegistry]")
 {
-    e2d::ObjectRegistry objectRegistry(nullptr);
+    e2d::ObjectRegistry objectRegistry;
 
     SECTION("Adding and Retrieving Objects")
     {

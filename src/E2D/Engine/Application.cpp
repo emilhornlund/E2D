@@ -44,7 +44,7 @@
 
 e2d::Application::Application(std::string windowTitle) :
 m_windowTitle(std::move(windowTitle)),
-m_objectRegistry(std::make_unique<ObjectRegistry>(this)),
+m_objectRegistry(std::make_unique<ObjectRegistry>()),
 m_resourceRegistry(std::make_unique<ResourceRegistry>()),
 m_backgroundColor(Color::Black)
 {

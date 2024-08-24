@@ -54,6 +54,6 @@ int main()
     // Engine
     [[maybe_unused]] const InstallApplication  application;
     [[maybe_unused]] const e2d::Sprite         sprite("MySprite");
-    [[maybe_unused]] const e2d::ObjectRegistry objectRegistry(nullptr);
+    [[maybe_unused]] const e2d::ObjectRegistry objectRegistry;
     [[maybe_unused]] const e2d::Texture        texture;
 }

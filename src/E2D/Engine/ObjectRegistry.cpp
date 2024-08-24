@@ -28,7 +28,7 @@
 
 #include <E2D/Engine/ObjectRegistry.hpp>
 
-e2d::ObjectRegistry::ObjectRegistry(Application* application) : m_application(application)
+e2d::ObjectRegistry::ObjectRegistry()
 {
     log::debug("Constructing ObjectRegistry");
 }

@@ -37,7 +37,6 @@
 
 namespace e2d
 {
-class Application;    // Forward declaration of Application
 class ObjectRegistry; // Forward declaration of ObjectRegistry
 
 /**
@@ -51,8 +50,6 @@ class ObjectRegistry; // Forward declaration of ObjectRegistry
  */
 class E2D_ENGINE_API Object : NonCopyable
 {
-    friend class ObjectRegistry;
-
 public:
     /**
      * @brief Constructs a new Object object.
@@ -109,16 +106,6 @@ public:
      */
     const std::string& getIdentifier() const;
 
-protected:
-    /**
-     * @brief Gets the application reference for this object.
-     *
-     * Provides access to the application instance managing this Object.
-     *
-     * @return A reference to the application.
-     */
-    Application& getApplication() const;
-
 private:
     /**
      * @brief Generates a unique identifier for an object.
@@ -131,10 +118,9 @@ private:
      */
     static std::string generateUniqueIdentifier();
 
-    static std::atomic<std::uint64_t> s_counter;              //!< Counter for unique identifiers.
-    static std::mutex                 s_counterMutex;         //!< Mutex to protect the counter.
-    const std::string                 m_identifier;           //!< The object's unique identifier.
-    Application*                      m_application{nullptr}; //!< Raw pointer to the application, non-owning.
+    static std::atomic<std::uint64_t> s_counter;      //!< Counter for unique identifiers.
+    static std::mutex                 s_counterMutex; //!< Mutex to protect the counter.
+    const std::string                 m_identifier;   //!< The object's unique identifier.
 
 }; // class Object
 

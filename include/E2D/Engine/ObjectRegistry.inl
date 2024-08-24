@@ -43,8 +43,7 @@ T& e2d::ObjectRegistry::createObject(Args&&... args) // NOLINT(cppcoreguidelines
         throw std::runtime_error("Object `" + id + "` already exists");
     }
 
-    object->m_application = this->m_application;
-    T& ref                = *object;
+    T& ref = *object;
     this->m_objects.insert(std::make_pair(id, std::move(object)));
 
     return ref;
