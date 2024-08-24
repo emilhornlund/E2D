@@ -114,6 +114,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a189d8d8a834c63814f6252ceca916822"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classe2d_1_1ObjectRegistry.html#a189d8d8a834c63814f6252ceca916822">getAllObjectsOfType</a> () const</td></tr>
 <tr class="memdesc:a189d8d8a834c63814f6252ceca916822"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template method to retrieve all objects of a specific type.  <a href="classe2d_1_1ObjectRegistry.html#a189d8d8a834c63814f6252ceca916822">More...</a><br /></td></tr>
 <tr class="separator:a189d8d8a834c63814f6252ceca916822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ce40e7240e779c21952c7cad1b91faa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1ObjectRegistry.html#a5ce40e7240e779c21952c7cad1b91faa">clean</a> ()</td></tr>
+<tr class="memdesc:a5ce40e7240e779c21952c7cad1b91faa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans up unloaded objects.  <a href="classe2d_1_1ObjectRegistry.html#a5ce40e7240e779c21952c7cad1b91faa">More...</a><br /></td></tr>
+<tr class="separator:a5ce40e7240e779c21952c7cad1b91faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages a registry of all game objects. </p>
@@ -162,6 +165,26 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5ce40e7240e779c21952c7cad1b91faa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ce40e7240e779c21952c7cad1b91faa">&#9670;&nbsp;</a></span>clean()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void e2d::ObjectRegistry::clean </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cleans up unloaded objects. </p>
+<p>This method clears the vector of unloaded objects, freeing up memory and ensuring that no resources are leaked. It should be called at an appropriate point in the application's lifecycle to finalize the removal of objects that have been unloaded from the registry. </p>
+
+</div>
+</div>
 <a id="a844cf6bfc54a23f4d9dc97e0428f4dbe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a844cf6bfc54a23f4d9dc97e0428f4dbe">&#9670;&nbsp;</a></span>createObject()</h2>
 

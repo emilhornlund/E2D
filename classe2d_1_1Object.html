@@ -111,6 +111,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a77ef76f464a5de1fe0b7d9c8531d1cb4"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Object.html#a77ef76f464a5de1fe0b7d9c8531d1cb4">getIdentifier</a> () const</td></tr>
 <tr class="memdesc:a77ef76f464a5de1fe0b7d9c8531d1cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the unique identifier of the <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a>.  <a href="classe2d_1_1Object.html#a77ef76f464a5de1fe0b7d9c8531d1cb4">More...</a><br /></td></tr>
 <tr class="separator:a77ef76f464a5de1fe0b7d9c8531d1cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a986763ddb2e51631ee0de25fb990c5fa"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Object.html#a986763ddb2e51631ee0de25fb990c5fa">onLoad</a> ()</td></tr>
+<tr class="memdesc:a986763ddb2e51631ee0de25fb990c5fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the object is loaded.  <a href="classe2d_1_1Object.html#a986763ddb2e51631ee0de25fb990c5fa">More...</a><br /></td></tr>
+<tr class="separator:a986763ddb2e51631ee0de25fb990c5fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b12dc83894bafb1106e4056a324ac79"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Object.html#a2b12dc83894bafb1106e4056a324ac79">onUnload</a> ()</td></tr>
+<tr class="memdesc:a2b12dc83894bafb1106e4056a324ac79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the object is unloaded.  <a href="classe2d_1_1Object.html#a2b12dc83894bafb1106e4056a324ac79">More...</a><br /></td></tr>
+<tr class="separator:a2b12dc83894bafb1106e4056a324ac79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract base class for all game objects. </p>
@@ -250,6 +256,62 @@ Public Member Functions</h2></td></tr>
 <p>Gets the unique identifier of the <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a>. </p>
 <p>Retrieves the unique identifier assigned to this <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a>.</p>
 <dl class="section return"><dt>Returns</dt><dd>The identifier as a const reference to a string. </dd></dl>
+
+</div>
+</div>
+<a id="a986763ddb2e51631ee0de25fb990c5fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a986763ddb2e51631ee0de25fb990c5fa">&#9670;&nbsp;</a></span>onLoad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void e2d::Object::onLoad </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when the object is loaded. </p>
+<p>This method is called when the object is first created and loaded into the system. Derived classes can override this method to perform any initialization or resource allocation required when the object is loaded. </p>
+
+</div>
+</div>
+<a id="a2b12dc83894bafb1106e4056a324ac79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b12dc83894bafb1106e4056a324ac79">&#9670;&nbsp;</a></span>onUnload()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void e2d::Object::onUnload </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when the object is unloaded. </p>
+<p>This method is called when the object is removed from the registry or when the application is shutting down. Derived classes can override this method to perform any cleanup or resource deallocation required when the object is unloaded. </p>
 
 </div>
 </div>
