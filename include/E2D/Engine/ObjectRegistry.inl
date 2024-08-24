@@ -44,6 +44,7 @@ T& e2d::ObjectRegistry::createObject(Args&&... args) // NOLINT(cppcoreguidelines
     }
 
     T& ref = *object;
+    object->onLoad();
     this->m_objects.insert(std::make_pair(id, std::move(object)));
 
     return ref;

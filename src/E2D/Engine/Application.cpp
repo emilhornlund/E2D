@@ -132,6 +132,8 @@ int e2d::Application::run()
 
         rendererContext.getRenderer().render(this->m_backgroundColor);
 
+        this->m_objectRegistry->clean();
+
         elapsedTime += elapsedFrameTimeAsSeconds;
         if (elapsedTime >= 1.0)
         {

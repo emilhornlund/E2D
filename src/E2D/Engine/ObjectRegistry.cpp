@@ -36,6 +36,12 @@ e2d::ObjectRegistry::ObjectRegistry()
 e2d::ObjectRegistry::~ObjectRegistry()
 {
     log::debug("Destructing ObjectRegistry");
+
+    for (auto it = this->m_objects.begin(); it != this->m_objects.end();)
+    {
+        it->second->onUnload();
+        it = this->m_objects.erase(it);
+    }
 }
 
 e2d::Object* e2d::ObjectRegistry::getObject(const std::string& identifier) const
@@ -53,6 +59,8 @@ bool e2d::ObjectRegistry::removeObject(const std::string& identifier)
     auto it = this->m_objects.find(identifier);
     if (it != this->m_objects.end())
     {
+        it->second->onUnload();
+        this->m_unloadedObjects.push_back(std::move(it->second));
         this->m_objects.erase(it);
         return true;
     }
@@ -68,4 +76,9 @@ std::vector<e2d::Object*> e2d::ObjectRegistry::getAllObjects() const
         allObjects.push_back(pair.second.get());
     }
     return allObjects;
+}
+
+void e2d::ObjectRegistry::clean()
+{
+    this->m_unloadedObjects.clear();
 }

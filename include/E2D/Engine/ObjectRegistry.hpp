@@ -115,8 +115,19 @@ public:
     template <typename T>
     std::vector<T*> getAllObjectsOfType() const;
 
+    /**
+     * @brief Cleans up unloaded objects.
+     *
+     * This method clears the vector of unloaded objects, freeing up memory and ensuring
+     * that no resources are leaked. It should be called at an appropriate point in the
+     * application's lifecycle to finalize the removal of objects that have been unloaded
+     * from the registry.
+     */
+    void clean();
+
 private:
     std::unordered_map<std::string, std::unique_ptr<Object>> m_objects; //!< Map storing all objects by their unique identifiers.
+    std::vector<std::unique_ptr<Object>> m_unloadedObjects; //!< Container storing objects that have been unloaded but are not yet destroyed.
 
 }; // class ObjectRegistry
 

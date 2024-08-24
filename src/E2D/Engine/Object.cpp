@@ -42,7 +42,10 @@ e2d::Object::Object(std::string identifier) : m_identifier(std::move(identifier)
     log::debug("Constructing Object with identifier '{}'", this->m_identifier);
 }
 
-e2d::Object::~Object() = default;
+e2d::Object::~Object()
+{
+    log::debug("Destructing Object with identifier '{}'", this->m_identifier);
+}
 
 std::string e2d::Object::generateUniqueIdentifier()
 {
@@ -54,4 +57,14 @@ std::string e2d::Object::generateUniqueIdentifier()
 const std::string& e2d::Object::getIdentifier() const
 {
     return this->m_identifier;
+}
+
+void e2d::Object::onLoad()
+{
+    log::debug("Loading Object with identifier '{}'", this->m_identifier);
+}
+
+void e2d::Object::onUnload()
+{
+    log::debug("Unloading Object with identifier '{}'", this->m_identifier);
 }

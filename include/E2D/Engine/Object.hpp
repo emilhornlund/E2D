@@ -106,6 +106,24 @@ public:
      */
     const std::string& getIdentifier() const;
 
+    /**
+     * @brief Called when the object is loaded.
+     *
+     * This method is called when the object is first created and loaded into the system.
+     * Derived classes can override this method to perform any initialization or resource
+     * allocation required when the object is loaded.
+     */
+    virtual void onLoad();
+
+    /**
+     * @brief Called when the object is unloaded.
+     *
+     * This method is called when the object is removed from the registry or when the
+     * application is shutting down. Derived classes can override this method to perform
+     * any cleanup or resource deallocation required when the object is unloaded.
+     */
+    virtual void onUnload();
+
 private:
     /**
      * @brief Generates a unique identifier for an object.
