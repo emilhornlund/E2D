@@ -79,49 +79,55 @@ $(function() {
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="NonCopyable_8hpp.html">E2D/Core/NonCopyable.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacee2d.html">e2d</a></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">class </span><a class="code" href="namespacee2d_1_1Keyboard.html#gad92603c71fa97e5b93c1d68951625ab0ae498749f3c42246d50b15c81c101d988">Application</a>;    <span class="comment">// Forward declaration of Application</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">class </span>ObjectRegistry; <span class="comment">// Forward declaration of ObjectRegistry</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html">   50</a></span>&#160;<span class="keyword">class </span><a class="code" href="Engine_2Export_8hpp.html#a554ac2f2f9fbb578d3fcaa010b299dd8">E2D_ENGINE_API</a> <a class="code" href="classe2d_1_1Object.html">Object</a> : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#a1f1df9de486fc11f33e68ead225b6911">   52</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classe2d_1_1ObjectRegistry.html">ObjectRegistry</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#a36622a40e5653fb979e080c89e4cef1b">   60</a></span>&#160;    <a class="code" href="classe2d_1_1Object.html#a36622a40e5653fb979e080c89e4cef1b">Object</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#ad1119c36d88e0be4f74970b601098c26">   69</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classe2d_1_1Object.html#ad1119c36d88e0be4f74970b601098c26">Object</a>(std::string identifier);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#ab577ad23e874e0f6d31471ed0063a4ed">   76</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classe2d_1_1Object.html#ab577ad23e874e0f6d31471ed0063a4ed">~Object</a>() = 0;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#a677444ac26c471d482b614446385cc0a">   86</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Object.html#a677444ac26c471d482b614446385cc0a">fixedUpdate</a>() = 0;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#a71bc05f30444e55aabcec3b1c564709e">   99</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Object.html#a71bc05f30444e55aabcec3b1c564709e">variableUpdate</a>(<span class="keywordtype">double</span> deltaTime) = 0;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#a77ef76f464a5de1fe0b7d9c8531d1cb4">  108</a></span>&#160;    <span class="keyword">const</span> std::string&amp; <a class="code" href="classe2d_1_1Object.html#a77ef76f464a5de1fe0b7d9c8531d1cb4">getIdentifier</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#a583103b23759d38efd24bd2bf7cce562">  118</a></span>&#160;    <a class="code" href="classe2d_1_1Application.html">Application</a>&amp; <a class="code" href="classe2d_1_1Object.html#a583103b23759d38efd24bd2bf7cce562">getApplication</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">const</span> std::string m_identifier;           </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="classe2d_1_1Application.html">Application</a>*      m_application{<span class="keyword">nullptr</span>}; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}; <span class="comment">// class Object</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;} <span class="comment">// namespace e2d</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_ENGINE_OBJECT_HPP</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;atomic&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacee2d.html">e2d</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">class </span><a class="code" href="namespacee2d_1_1Keyboard.html#gad92603c71fa97e5b93c1d68951625ab0ae498749f3c42246d50b15c81c101d988">Application</a>;    <span class="comment">// Forward declaration of Application</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">class </span>ObjectRegistry; <span class="comment">// Forward declaration of ObjectRegistry</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html">   52</a></span>&#160;<span class="keyword">class </span><a class="code" href="Engine_2Export_8hpp.html#a554ac2f2f9fbb578d3fcaa010b299dd8">E2D_ENGINE_API</a> <a class="code" href="classe2d_1_1Object.html">Object</a> : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#a1f1df9de486fc11f33e68ead225b6911">   54</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classe2d_1_1ObjectRegistry.html">ObjectRegistry</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#a36622a40e5653fb979e080c89e4cef1b">   62</a></span>&#160;    <a class="code" href="classe2d_1_1Object.html#a36622a40e5653fb979e080c89e4cef1b">Object</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#ad1119c36d88e0be4f74970b601098c26">   71</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classe2d_1_1Object.html#ad1119c36d88e0be4f74970b601098c26">Object</a>(std::string identifier);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#ab577ad23e874e0f6d31471ed0063a4ed">   78</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classe2d_1_1Object.html#ab577ad23e874e0f6d31471ed0063a4ed">~Object</a>() = 0;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#a677444ac26c471d482b614446385cc0a">   88</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Object.html#a677444ac26c471d482b614446385cc0a">fixedUpdate</a>() = 0;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#a71bc05f30444e55aabcec3b1c564709e">  101</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Object.html#a71bc05f30444e55aabcec3b1c564709e">variableUpdate</a>(<span class="keywordtype">double</span> deltaTime) = 0;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#a77ef76f464a5de1fe0b7d9c8531d1cb4">  110</a></span>&#160;    <span class="keyword">const</span> std::string&amp; <a class="code" href="classe2d_1_1Object.html#a77ef76f464a5de1fe0b7d9c8531d1cb4">getIdentifier</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="classe2d_1_1Object.html#a583103b23759d38efd24bd2bf7cce562">  120</a></span>&#160;    <a class="code" href="classe2d_1_1Application.html">Application</a>&amp; <a class="code" href="classe2d_1_1Object.html#a583103b23759d38efd24bd2bf7cce562">getApplication</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keyword">static</span> std::string generateUniqueIdentifier();</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keyword">static</span> std::atomic&lt;std::uint64_t&gt; s_counter;              </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">static</span> std::mutex                 s_counterMutex;         </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">const</span> std::string                 m_identifier;           </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <a class="code" href="classe2d_1_1Application.html">Application</a>*                      m_application{<span class="keyword">nullptr</span>}; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}; <span class="comment">// class Object</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;} <span class="comment">// namespace e2d</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_ENGINE_OBJECT_HPP</span></div>
 <div class="ttc" id="aEngine_2Export_8hpp_html"><div class="ttname"><a href="Engine_2Export_8hpp.html">Export.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aEngine_2Export_8hpp_html_a554ac2f2f9fbb578d3fcaa010b299dd8"><div class="ttname"><a href="Engine_2Export_8hpp.html#a554ac2f2f9fbb578d3fcaa010b299dd8">E2D_ENGINE_API</a></div><div class="ttdeci">#define E2D_ENGINE_API</div><div class="ttdef"><b>Definition:</b> <a href="Engine_2Export_8hpp_source.html#l00035">Export.hpp:35</a></div></div>
 <div class="ttc" id="aNonCopyable_8hpp_html"><div class="ttname"><a href="NonCopyable_8hpp.html">NonCopyable.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aclasse2d_1_1Application_html"><div class="ttname"><a href="classe2d_1_1Application.html">e2d::Application</a></div><div class="ttdoc">Abstract base for managing the lifecycle and main loop of the application.</div><div class="ttdef"><b>Definition:</b> <a href="Application_8hpp_source.html#l00052">Application.hpp:53</a></div></div>
 <div class="ttc" id="aclasse2d_1_1NonCopyable_html"><div class="ttname"><a href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></div><div class="ttdoc">The NonCopyable class provides a base class to make derived classes non-copyable.</div><div class="ttdef"><b>Definition:</b> <a href="NonCopyable_8hpp_source.html#l00044">NonCopyable.hpp:45</a></div></div>
 <div class="ttc" id="aclasse2d_1_1ObjectRegistry_html"><div class="ttname"><a href="classe2d_1_1ObjectRegistry.html">e2d::ObjectRegistry</a></div><div class="ttdoc">Manages a registry of all game objects.</div><div class="ttdef"><b>Definition:</b> <a href="ObjectRegistry_8hpp_source.html#l00054">ObjectRegistry.hpp:55</a></div></div>
-<div class="ttc" id="aclasse2d_1_1Object_html"><div class="ttname"><a href="classe2d_1_1Object.html">e2d::Object</a></div><div class="ttdoc">Abstract base class for all game objects.</div><div class="ttdef"><b>Definition:</b> <a href="Object_8hpp_source.html#l00050">Object.hpp:51</a></div></div>
+<div class="ttc" id="aclasse2d_1_1Object_html"><div class="ttname"><a href="classe2d_1_1Object.html">e2d::Object</a></div><div class="ttdoc">Abstract base class for all game objects.</div><div class="ttdef"><b>Definition:</b> <a href="Object_8hpp_source.html#l00052">Object.hpp:53</a></div></div>
 <div class="ttc" id="aclasse2d_1_1Object_html_a36622a40e5653fb979e080c89e4cef1b"><div class="ttname"><a href="classe2d_1_1Object.html#a36622a40e5653fb979e080c89e4cef1b">e2d::Object::Object</a></div><div class="ttdeci">Object()</div><div class="ttdoc">Constructs a new Object object.</div></div>
 <div class="ttc" id="aclasse2d_1_1Object_html_a583103b23759d38efd24bd2bf7cce562"><div class="ttname"><a href="classe2d_1_1Object.html#a583103b23759d38efd24bd2bf7cce562">e2d::Object::getApplication</a></div><div class="ttdeci">Application &amp; getApplication() const</div><div class="ttdoc">Gets the application reference for this object.</div></div>
 <div class="ttc" id="aclasse2d_1_1Object_html_a677444ac26c471d482b614446385cc0a"><div class="ttname"><a href="classe2d_1_1Object.html#a677444ac26c471d482b614446385cc0a">e2d::Object::fixedUpdate</a></div><div class="ttdeci">virtual void fixedUpdate()=0</div><div class="ttdoc">Fixed update method for consistent, time-sensitive updates.</div></div>

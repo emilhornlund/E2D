@@ -484,9 +484,6 @@ Functions</h2></td></tr>
 <tr class="memitem:gae6327551075ea02684a6332081e487dc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__engine.html#gae6327551075ea02684a6332081e487dc">e2d::pollEvent</a> (<a class="el" href="structe2d_1_1Event.html">e2d::Event</a> &amp;event)</td></tr>
 <tr class="memdesc:gae6327551075ea02684a6332081e487dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls for an event from the system queue and translates it to an E2D event.  <a href="group__engine.html#gae6327551075ea02684a6332081e487dc">More...</a><br /></td></tr>
 <tr class="separator:gae6327551075ea02684a6332081e487dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga432ae228e8e4ebb4a35028fec0a2b6fa"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__engine.html#ga432ae228e8e4ebb4a35028fec0a2b6fa">e2d::internal::generateRandomAlphabeticSequence</a> (size_t length)</td></tr>
-<tr class="memdesc:ga432ae228e8e4ebb4a35028fec0a2b6fa"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="internal-label">Internal</span> Generates a random sequence of alphabetic characters.  <a href="group__engine.html#ga432ae228e8e4ebb4a35028fec0a2b6fa">More...</a><br /></td></tr>
-<tr class="separator:ga432ae228e8e4ebb4a35028fec0a2b6fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga22c71cc5c62c7992c6facc3ab73d0745"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__engine.html#gad3b9d10d3c7bbb16b0e119fb542727b6">Keyboard::Key</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__engine.html#ga22c71cc5c62c7992c6facc3ab73d0745">e2d::internal::toKeyCode</a> (const SDL_Keycode &amp;sdlKeyCode)</td></tr>
 <tr class="memdesc:ga22c71cc5c62c7992c6facc3ab73d0745"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="internal-label">Internal</span> Translates an SDL_Keycode to the corresponding E2D <a class="el" href="group__engine.html#gad3b9d10d3c7bbb16b0e119fb542727b6" title="Enumeration of keyboard keys, representing the logical key symbols produced by a key press.">Keyboard::Key</a> enum value.  <a href="group__engine.html#ga22c71cc5c62c7992c6facc3ab73d0745">More...</a><br /></td></tr>
 <tr class="separator:ga22c71cc5c62c7992c6facc3ab73d0745"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1164,34 +1161,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An SDL_Point representing the rotation point for the texture. </dd></dl>
-
-</div>
-</div>
-<a id="ga432ae228e8e4ebb4a35028fec0a2b6fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga432ae228e8e4ebb4a35028fec0a2b6fa">&#9670;&nbsp;</a></span>generateRandomAlphabeticSequence()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string e2d::internal::generateRandomAlphabeticSequence </td>
-          <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>length</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p><span class="internal-label">Internal</span> Generates a random sequence of alphabetic characters. </p>
-<p>This function creates a string of the specified length consisting of random alphabetic characters (both uppercase and lowercase).</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">length</td><td>The length of the random sequence to generate. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A string containing the random alphabetic sequence. </dd></dl>
 
 </div>
 </div>
