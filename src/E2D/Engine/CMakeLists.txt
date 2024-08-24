@@ -25,8 +25,6 @@ set(SRC
     ${INCROOT}/ObjectRegistry.hpp
     ${INCROOT}/ObjectRegistry.inl
     ${SRCROOT}/ObjectRegistry.cpp
-    ${SRCROOT}/RandomUtils.hpp
-    ${SRCROOT}/RandomUtils.cpp
     ${INCROOT}/Renderable.hpp
     ${SRCROOT}/Renderable.cpp
     ${INCROOT}/Renderer.hpp

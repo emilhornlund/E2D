@@ -26,11 +26,13 @@
 #include <E2D/Core/Logger.hpp>
 
 #include <E2D/Engine/Object.hpp>
-#include <E2D/Engine/RandomUtils.hpp>
 
 #include <utility>
 
-e2d::Object::Object() : m_identifier(internal::generateRandomAlphabeticSequence(8))
+std::atomic<std::uint64_t> e2d::Object::s_counter{1};
+std::mutex                 e2d::Object::s_counterMutex;
+
+e2d::Object::Object() : m_identifier(generateUniqueIdentifier())
 {
     log::debug("Constructing Object with identifier '{}'", this->m_identifier);
 }
@@ -41,6 +43,13 @@ e2d::Object::Object(std::string identifier) : m_identifier(std::move(identifier)
 }
 
 e2d::Object::~Object() = default;
+
+std::string e2d::Object::generateUniqueIdentifier()
+{
+    const std::lock_guard<std::mutex> lock(s_counterMutex);
+    const std::uint64_t               uniqueId = s_counter++;
+    return "Object" + std::to_string(uniqueId);
+}
 
 const std::string& e2d::Object::getIdentifier() const
 {

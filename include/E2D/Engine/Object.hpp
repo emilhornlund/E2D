@@ -31,6 +31,8 @@
 
 #include <E2D/Core/NonCopyable.hpp>
 
+#include <atomic>
+#include <mutex>
 #include <string>
 
 namespace e2d
@@ -55,7 +57,7 @@ public:
     /**
      * @brief Constructs a new Object object.
      *
-     * Initializes a new instance of the Object class.
+     * Initializes a new instance of the Object class with a unique identifier.
      */
     Object();
 
@@ -118,8 +120,21 @@ protected:
     Application& getApplication() const;
 
 private:
-    const std::string m_identifier;           //!< The object's unique identifier.
-    Application*      m_application{nullptr}; //!< Raw pointer to the application, non-owning.
+    /**
+     * @brief Generates a unique identifier for an object.
+     *
+     * This function generates a unique identifier using an atomic counter, ensuring thread safety
+     * with the use of a mutex. The identifier is a string prefixed with "Object" followed by a
+     * numeric value.
+     *
+     * @return A string representing the unique identifier.
+     */
+    static std::string generateUniqueIdentifier();
+
+    static std::atomic<std::uint64_t> s_counter;              //!< Counter for unique identifiers.
+    static std::mutex                 s_counterMutex;         //!< Mutex to protect the counter.
+    const std::string                 m_identifier;           //!< The object's unique identifier.
+    Application*                      m_application{nullptr}; //!< Raw pointer to the application, non-owning.
 
 }; // class Object
 
