@@ -69,8 +69,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="classe2d_1_1Object-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">e2d::Object Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span><div class="ingroups"><a class="el" href="group__engine.html">Engine module</a></div></div>  </div>
@@ -113,23 +111,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a77ef76f464a5de1fe0b7d9c8531d1cb4"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Object.html#a77ef76f464a5de1fe0b7d9c8531d1cb4">getIdentifier</a> () const</td></tr>
 <tr class="memdesc:a77ef76f464a5de1fe0b7d9c8531d1cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the unique identifier of the <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a>.  <a href="classe2d_1_1Object.html#a77ef76f464a5de1fe0b7d9c8531d1cb4">More...</a><br /></td></tr>
 <tr class="separator:a77ef76f464a5de1fe0b7d9c8531d1cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a583103b23759d38efd24bd2bf7cce562"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classe2d_1_1Application.html">Application</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Object.html#a583103b23759d38efd24bd2bf7cce562">getApplication</a> () const</td></tr>
-<tr class="memdesc:a583103b23759d38efd24bd2bf7cce562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the application reference for this object.  <a href="classe2d_1_1Object.html#a583103b23759d38efd24bd2bf7cce562">More...</a><br /></td></tr>
-<tr class="separator:a583103b23759d38efd24bd2bf7cce562"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a1f1df9de486fc11f33e68ead225b6911"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Object.html#a1f1df9de486fc11f33e68ead225b6911">ObjectRegistry</a></td></tr>
-<tr class="separator:a1f1df9de486fc11f33e68ead225b6911"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract base class for all game objects. </p>
 <p><a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a> is the superclass for all types of objects in the game, providing a common interface and shared functionality. Every <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a> has a unique identifier and can be updated regularly through fixed and variable update methods. </p>
 
-<p class="definition">Definition at line <a class="el" href="Object_8hpp_source.html#l00052">52</a> of file <a class="el" href="Object_8hpp_source.html">Object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Object_8hpp_source.html#l00051">51</a> of file <a class="el" href="Object_8hpp_source.html">Object.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a36622a40e5653fb979e080c89e4cef1b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36622a40e5653fb979e080c89e4cef1b">&#9670;&nbsp;</a></span>Object() <span class="overload">[1/2]</span></h2>
@@ -245,35 +232,6 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a583103b23759d38efd24bd2bf7cce562"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a583103b23759d38efd24bd2bf7cce562">&#9670;&nbsp;</a></span>getApplication()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classe2d_1_1Application.html">Application</a>&amp; e2d::Object::getApplication </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets the application reference for this object. </p>
-<p>Provides access to the application instance managing this <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a>.</p>
-<dl class="section return"><dt>Returns</dt><dd>A reference to the application. </dd></dl>
-
-</div>
-</div>
 <a id="a77ef76f464a5de1fe0b7d9c8531d1cb4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a77ef76f464a5de1fe0b7d9c8531d1cb4">&#9670;&nbsp;</a></span>getIdentifier()</h2>
 
@@ -329,31 +287,6 @@ Friends</h2></td></tr>
 </dl>
 
 <p>Implemented in <a class="el" href="classe2d_1_1Text.html#a37364be03fe89d4a571afa2cfbb9d780">e2d::Text</a>, and <a class="el" href="classe2d_1_1Sprite.html#af755e9beb6edbbde7ec8e120f314d44e">e2d::Sprite</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="a1f1df9de486fc11f33e68ead225b6911"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f1df9de486fc11f33e68ead225b6911">&#9670;&nbsp;</a></span>ObjectRegistry</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">friend class <a class="el" href="classe2d_1_1ObjectRegistry.html">ObjectRegistry</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Object_8hpp_source.html#l00054">54</a> of file <a class="el" href="Object_8hpp_source.html">Object.hpp</a>.</p>
 
 </div>
 </div>

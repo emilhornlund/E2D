@@ -69,7 +69,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classe2d_1_1Sprite-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">e2d::Sprite Class Reference<div class="ingroups"><a class="el" href="group__engine.html">Engine module</a></div></div>  </div>
@@ -169,12 +168,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4b101981d35ef3d4e51a9d4a4e311edc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Renderable.html#a4b101981d35ef3d4e51a9d4a4e311edc">setRenderPriority</a> (int renderPriority)</td></tr>
 <tr class="memdesc:a4b101981d35ef3d4e51a9d4a4e311edc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the render priority of the object.  <a href="classe2d_1_1Renderable.html#a4b101981d35ef3d4e51a9d4a4e311edc">More...</a><br /></td></tr>
 <tr class="separator:a4b101981d35ef3d4e51a9d4a4e311edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a583103b23759d38efd24bd2bf7cce562"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classe2d_1_1Application.html">Application</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Object.html#a583103b23759d38efd24bd2bf7cce562">getApplication</a> () const</td></tr>
-<tr class="memdesc:a583103b23759d38efd24bd2bf7cce562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the application reference for this object.  <a href="classe2d_1_1Object.html#a583103b23759d38efd24bd2bf7cce562">More...</a><br /></td></tr>
-<tr class="separator:a583103b23759d38efd24bd2bf7cce562"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a 2D graphical sprite entity that can be transformed and rendered on the screen. </p>
@@ -293,35 +286,6 @@ Protected Member Functions</h2></td></tr>
 <p>This method is called at a consistent rate, typically 60 times per second, and is used for updates where consistent timing is crucial. This is ideal for physics updates, collision detection, and other time-sensitive operations where a fixed time step is necessary to maintain consistent behavior. </p>
 
 <p>Implements <a class="el" href="classe2d_1_1Object.html#a677444ac26c471d482b614446385cc0a">e2d::Object</a>.</p>
-
-</div>
-</div>
-<a id="a583103b23759d38efd24bd2bf7cce562"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a583103b23759d38efd24bd2bf7cce562">&#9670;&nbsp;</a></span>getApplication()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classe2d_1_1Application.html">Application</a>&amp; e2d::Object::getApplication </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets the application reference for this object. </p>
-<p>Provides access to the application instance managing this <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a>.</p>
-<dl class="section return"><dt>Returns</dt><dd>A reference to the application. </dd></dl>
 
 </div>
 </div>

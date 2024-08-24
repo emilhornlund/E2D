@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['objectregistry_855',['ObjectRegistry',['../classe2d_1_1Object.html#a1f1df9de486fc11f33e68ead225b6911',1,'e2d::Object']]]
+  ['resourceregistry_853',['ResourceRegistry',['../classe2d_1_1Resource.html#a4a736512a691c901799631171a72f126',1,'e2d::Resource']]]
 ];
