@@ -1,5 +1,5 @@
 /**
- * @file WindowImpl.hpp
+ * @file Window.hpp
  *
  * MIT License
  *
@@ -24,59 +24,61 @@
  * THE SOFTWARE.
  */
 
-#ifndef E2D_ENGINE_WINDOW_IMPL_HPP
-#define E2D_ENGINE_WINDOW_IMPL_HPP
+#ifndef E2D_ENGINE_WINDOW_HPP
+#define E2D_ENGINE_WINDOW_HPP
 
 #include <E2D/Engine/Export.hpp>
 
+#include <E2D/Core/Color.hpp>
 #include <E2D/Core/NonCopyable.hpp>
 
 #include <memory>
+#include <string>
 
 struct SDL_Window; // Forward declaration of SDL_Window
 
-namespace e2d::internal
+namespace e2d
 {
 
 /**
- * @class WindowImpl
+ * @class Window
  * @ingroup engine
- * @brief @internal Internal implementation class for Window.
+ * @brief Represents a graphical window.
  *
- * This class manages the low-level details of window creation, management, and destruction.
- * It interfaces directly with the underlying windowing system.
+ * This class provides functionalities to create, manage, and interact with a graphical window.
+ * It abstracts the underlying implementation details and provides a simple interface for window management.
  */
-class E2D_ENGINE_API WindowImpl final : NonCopyable
+class E2D_ENGINE_API Window final : NonCopyable
 {
 public:
     /**
-     * @brief Constructs a new WindowImpl object.
+     * @brief Constructs a new Window object.
      *
-     * Initializes a new instance of the WindowImpl class.
+     * Initializes a new Window object.
      */
-    WindowImpl();
+    Window();
 
     /**
      * @brief Destructor.
      *
      * Ensures proper cleanup of resources upon destruction.
      */
-    ~WindowImpl();
+    ~Window();
 
     /**
-     * @brief Creates a window with specified properties.
+     * @brief Creates a window with the specified properties.
      *
      * Initializes the window with a title, width, and height.
      *
      * @param title The title of the window.
      * @param width The width of the window in pixels.
      * @param height The height of the window in pixels.
-     * @return True if the window is successfully created, false otherwise.
+     * @return True if the creation was successful, false otherwise.
      */
     bool create(const char* title, int width, int height);
 
     /**
-     * @brief Checks if the window is currently created and valid.
+     * @brief Checks if the window is created and valid.
      *
      * Determines whether the window is currently created and valid for use.
      *
@@ -85,9 +87,9 @@ public:
     [[maybe_unused]] bool isCreated() const;
 
     /**
-     * @brief Destroys the window, freeing associated resources.
+     * @brief Destroys the window, freeing its resources.
      *
-     * Frees the resources associated with the SDL window.
+     * Frees the resources associated with the window.
      */
     void destroy();
 
@@ -98,13 +100,13 @@ public:
      *
      * @return A pointer to the underlying SDL_Window object.
      */
-    SDL_Window* getWindow() const;
+    SDL_Window* getNativeWindow() const;
 
 private:
     SDL_Window* m_window{nullptr}; //!< Pointer to the underlying SDL_Window object.
 
-}; // class WindowImpl
+}; // class Window
 
-} // namespace e2d::internal
+} // namespace e2d
 
-#endif //E2D_ENGINE_WINDOW_IMPL_HPP
+#endif //E2D_ENGINE_WINDOW_HPP

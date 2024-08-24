@@ -98,7 +98,7 @@ void e2d::Sprite::render(const e2d::Renderer& renderer) const
 
         const auto flip = internal::toSDLRendererFlip(this->getScale());
 
-        SDL_RenderCopyEx(static_cast<SDL_Renderer*>(renderer.getNativeRendererHandle()),
+        SDL_RenderCopyEx(renderer.getNativeRenderer(),
                          static_cast<SDL_Texture*>(this->m_texture->getNativeTextureHandle()),
                          &sourceRectangle,
                          &destinationRectangle,

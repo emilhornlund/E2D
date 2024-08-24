@@ -120,7 +120,7 @@ void e2d::Text::render(const e2d::Renderer& renderer) const
 
         const auto flip = internal::toSDLRendererFlip(this->getScale());
 
-        SDL_RenderCopyEx(static_cast<SDL_Renderer*>(renderer.getNativeRendererHandle()),
+        SDL_RenderCopyEx(renderer.getNativeRenderer(),
                          texture,
                          nullptr,
                          &destinationRectangle,
@@ -132,8 +132,7 @@ void e2d::Text::render(const e2d::Renderer& renderer) const
 
 void e2d::Text::updateNativeTexture()
 {
-    auto* renderer = static_cast<SDL_Renderer*>(
-        internal::RendererContext::getInstance().getRenderer().getNativeRendererHandle());
-    auto* font = static_cast<TTF_Font*>(this->m_font->getNativeFontHandle(this->m_fontSize));
+    auto* renderer = internal::RendererContext::getInstance().getRenderer().getNativeRenderer();
+    auto* font     = static_cast<TTF_Font*>(this->m_font->getNativeFontHandle(this->m_fontSize));
     this->m_textImpl->updateNativeTexture(renderer, font, this->m_string);
 }

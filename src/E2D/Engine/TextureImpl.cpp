@@ -50,8 +50,7 @@ e2d::internal::TextureImpl::~TextureImpl()
 
 bool e2d::internal::TextureImpl::loadTexture(const char* file)
 {
-    auto* renderer = static_cast<SDL_Renderer*>(
-        internal::RendererContext::getInstance().getRenderer().getNativeRendererHandle());
+    auto* renderer  = internal::RendererContext::getInstance().getRenderer().getNativeRenderer();
     this->m_texture = IMG_LoadTexture(renderer, file);
     if (this->m_texture == nullptr)
     {
@@ -76,8 +75,7 @@ bool e2d::internal::TextureImpl::loadFromMemory(const void* data, std::size_t si
         return false;
     }
 
-    auto* renderer = static_cast<SDL_Renderer*>(
-        internal::RendererContext::getInstance().getRenderer().getNativeRendererHandle());
+    auto* renderer  = internal::RendererContext::getInstance().getRenderer().getNativeRenderer();
     this->m_texture = IMG_LoadTexture_RW(renderer, rw, 1);
     if (this->m_texture == nullptr)
     {

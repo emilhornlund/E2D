@@ -34,6 +34,8 @@
 
 #include <memory>
 
+struct SDL_Renderer; // Forward declaration of SDL_Renderer
+
 namespace e2d
 {
 class Renderable; // Forward declaration of Renderable
@@ -41,8 +43,7 @@ class Window;     // Forward declaration of Window
 
 namespace internal
 {
-class RendererImpl; // Forward declaration of RendererImpl
-class RenderQueue;  // Forward declaration of RenderQueue
+class RenderQueue; // Forward declaration of RenderQueue
 } // namespace internal
 
 /**
@@ -114,17 +115,17 @@ public:
     void render(const Color& drawColor) const;
 
     /**
-     * @brief Retrieves a handle to the native renderer.
+     * @brief Retrieves the native renderer object.
      *
-     * This function is used internally to link the renderer with other components.
+     * Provides access to the underlying SDL_Renderer object.
      *
-     * @return A pointer to the native renderer handle.
+     * @return A pointer to the underlying SDL_Renderer object.
      */
-    void* getNativeRendererHandle() const;
+    SDL_Renderer* getNativeRenderer() const;
 
 private:
-    std::unique_ptr<internal::RendererImpl> m_rendererImpl; //!< Pointer to the renderer implementation.
-    std::unique_ptr<internal::RenderQueue>  m_renderQueue;  //!< Pointer to the render queue.
+    SDL_Renderer*                          m_renderer{nullptr}; //!< Pointer to the underlying SDL_Renderer object.
+    std::unique_ptr<internal::RenderQueue> m_renderQueue;       //!< Pointer to the render queue.
 
 }; // class Renderer
 

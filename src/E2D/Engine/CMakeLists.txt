@@ -28,10 +28,8 @@ set(SRC
     ${SRCROOT}/ObjectRegistry.cpp
     ${INCROOT}/Renderable.hpp
     ${SRCROOT}/Renderable.cpp
-    ${INCROOT}/Renderer.hpp
+    ${SRCROOT}/Renderer.hpp
     ${SRCROOT}/Renderer.cpp
-    ${SRCROOT}/RendererImpl.hpp
-    ${SRCROOT}/RendererImpl.cpp
     ${SRCROOT}/RenderQueue.hpp
     ${SRCROOT}/RenderQueue.cpp
     ${SRCROOT}/RendererContext.hpp
@@ -62,10 +60,8 @@ set(SRC
     ${SRCROOT}/TextureImpl.cpp
     ${INCROOT}/Transformable.hpp
     ${SRCROOT}/Transformable.cpp
-    ${INCROOT}/Window.hpp
+    ${SRCROOT}/Window.hpp
     ${SRCROOT}/Window.cpp
-    ${SRCROOT}/WindowImpl.hpp
-    ${SRCROOT}/WindowImpl.cpp
 )
 
 e2d_add_library(Engine SOURCES ${SRC})

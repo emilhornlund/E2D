@@ -39,7 +39,6 @@
 #include <E2D/Engine/Object.hpp>
 #include <E2D/Engine/ObjectRegistry.hpp>
 #include <E2D/Engine/Renderable.hpp>
-#include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/Resource.hpp>
 #include <E2D/Engine/ResourceRegistry.hpp>
 #include <E2D/Engine/Sprite.hpp>
@@ -48,7 +47,6 @@
 #include <E2D/Engine/Text.hpp>
 #include <E2D/Engine/Texture.hpp>
 #include <E2D/Engine/Transformable.hpp>
-#include <E2D/Engine/Window.hpp>
 
 #endif //E2D_ENGINE_HPP
 

@@ -27,9 +27,10 @@
 #include <E2D/Core/Logger.hpp>
 
 #include <E2D/Engine/Window.hpp>
-#include <E2D/Engine/WindowImpl.hpp>
 
-e2d::Window::Window() : m_windowImpl(std::make_unique<internal::WindowImpl>())
+#include <SDL.h>
+
+e2d::Window::Window()
 {
     log::debug("Constructing Window");
 }
@@ -39,23 +40,33 @@ e2d::Window::~Window()
     log::debug("Destructing Window");
 }
 
-
 bool e2d::Window::create(const char* title, int width, int height)
 {
-    return this->m_windowImpl->create(title, width, height);
+    log::debug("Creating window with title '{}', width '{}', and height '{}'", title, width, height);
+    this->m_window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
+    if (this->m_window == nullptr)
+    {
+        log::error("Failed to create window: '{}'", SDL_GetError());
+        return false;
+    }
+    return true;
 }
 
 bool e2d::Window::isCreated() const
 {
-    return this->m_windowImpl->isCreated();
+    return this->m_window != nullptr;
 }
 
 void e2d::Window::destroy()
 {
-    this->m_windowImpl->destroy();
+    if (this->m_window)
+    {
+        SDL_DestroyWindow(this->m_window);
+        this->m_window = nullptr;
+    }
 }
 
-void* e2d::Window::getNativeWindowHandle() const
+SDL_Window* e2d::Window::getNativeWindow() const
 {
-    return this->m_windowImpl->getWindow();
+    return this->m_window;
 }

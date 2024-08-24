@@ -28,13 +28,12 @@
 
 #include <E2D/Engine/Renderable.hpp>
 #include <E2D/Engine/Renderer.hpp>
-#include <E2D/Engine/RendererImpl.hpp>
 #include <E2D/Engine/RenderQueue.hpp>
 #include <E2D/Engine/Window.hpp>
 
-e2d::Renderer::Renderer() :
-m_rendererImpl(std::make_unique<internal::RendererImpl>()),
-m_renderQueue(std::make_unique<internal::RenderQueue>())
+#include <SDL.h>
+
+e2d::Renderer::Renderer() : m_renderQueue(std::make_unique<internal::RenderQueue>())
 {
     log::debug("Constructing Renderer");
 }
@@ -42,21 +41,36 @@ m_renderQueue(std::make_unique<internal::RenderQueue>())
 e2d::Renderer::~Renderer()
 {
     log::debug("Destructing Renderer");
+    this->destroy();
 }
 
 bool e2d::Renderer::create(const e2d::Window& window)
 {
-    return this->m_rendererImpl->create(static_cast<SDL_Window*>(window.getNativeWindowHandle()));
+    log::debug("Creating renderer");
+
+    this->m_renderer = SDL_CreateRenderer(window.getNativeWindow(), -1, SDL_RENDERER_ACCELERATED);
+
+    if (this->m_renderer == nullptr)
+    {
+        log::error("Failed to create renderer: {}", SDL_GetError());
+        return false;
+    }
+
+    return true;
 }
 
 bool e2d::Renderer::isCreated() const
 {
-    return this->m_rendererImpl->isCreated();
+    return this->m_renderer != nullptr;
 }
 
 void e2d::Renderer::destroy()
 {
-    this->m_rendererImpl->destroy();
+    if (this->m_renderer)
+    {
+        SDL_DestroyRenderer(this->m_renderer);
+        this->m_renderer = nullptr;
+    }
 }
 
 void e2d::Renderer::draw(const e2d::Renderable* renderable)
@@ -66,7 +80,8 @@ void e2d::Renderer::draw(const e2d::Renderable* renderable)
 
 void e2d::Renderer::render(const e2d::Color& drawColor) const
 {
-    this->m_rendererImpl->clear(drawColor);
+    SDL_SetRenderDrawColor(this->m_renderer, drawColor.r, drawColor.g, drawColor.b, drawColor.a);
+    SDL_RenderClear(this->m_renderer);
 
     while (!this->m_renderQueue->isEmpty())
     {
@@ -77,10 +92,10 @@ void e2d::Renderer::render(const e2d::Color& drawColor) const
         }
     }
 
-    this->m_rendererImpl->display();
+    SDL_RenderPresent(this->m_renderer);
 }
 
-void* e2d::Renderer::getNativeRendererHandle() const
+SDL_Renderer* e2d::Renderer::getNativeRenderer() const
 {
-    return this->m_rendererImpl->getRenderer();
+    return this->m_renderer;
 }

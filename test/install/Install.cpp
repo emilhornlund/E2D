@@ -55,7 +55,5 @@ int main()
     [[maybe_unused]] const InstallApplication  application;
     [[maybe_unused]] const e2d::Sprite         sprite("MySprite");
     [[maybe_unused]] const e2d::ObjectRegistry objectRegistry(nullptr);
-    [[maybe_unused]] const e2d::Renderer       renderer;
     [[maybe_unused]] const e2d::Texture        texture;
-    [[maybe_unused]] const e2d::Window         window;
 }
