@@ -74,11 +74,11 @@ e2d::Vector2f e2d::Sprite::getSize() const
     return {static_cast<float>(this->m_textureRect.getSize().x), static_cast<float>(this->m_textureRect.getSize().y)};
 }
 
-void e2d::Sprite::fixedUpdate()
+void e2d::Sprite::onFixedUpdate()
 {
 }
 
-void e2d::Sprite::variableUpdate(double deltaTime)
+void e2d::Sprite::onVariableUpdate(double deltaTime)
 {
     (void)deltaTime;
 }

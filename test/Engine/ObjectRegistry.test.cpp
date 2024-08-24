@@ -38,11 +38,11 @@ public:
     {
     }
 
-    void fixedUpdate() final
+    void onFixedUpdate() final
     {
     }
 
-    void variableUpdate(double) final
+    void onVariableUpdate(double) final
     {
     }
 };

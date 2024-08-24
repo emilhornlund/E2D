@@ -154,7 +154,7 @@ public:
      * for physics updates, collision detection, and other time-sensitive operations
      * where a fixed time step is necessary to maintain consistent behavior.
      */
-    void fixedUpdate() override;
+    void onFixedUpdate() override;
 
     /**
      * @brief Variable update method for frame-dependent updates.
@@ -167,7 +167,7 @@ public:
      *
      * @param deltaTime The time elapsed since the last variable update in seconds.
      */
-    void variableUpdate(double deltaTime) override;
+    void onVariableUpdate(double deltaTime) override;
 
     /**
      * @brief Renders the text using the provided renderer.

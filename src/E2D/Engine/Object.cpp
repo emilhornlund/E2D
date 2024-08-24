@@ -47,18 +47,6 @@ e2d::Object::~Object()
     log::debug("Destructing Object with identifier '{}'", this->m_identifier);
 }
 
-std::string e2d::Object::generateUniqueIdentifier()
-{
-    const std::lock_guard<std::mutex> lock(s_counterMutex);
-    const std::uint64_t               uniqueId = s_counter++;
-    return "Object" + std::to_string(uniqueId);
-}
-
-const std::string& e2d::Object::getIdentifier() const
-{
-    return this->m_identifier;
-}
-
 void e2d::Object::onLoad()
 {
     log::debug("Loading Object with identifier '{}'", this->m_identifier);
@@ -67,4 +55,30 @@ void e2d::Object::onLoad()
 void e2d::Object::onUnload()
 {
     log::debug("Unloading Object with identifier '{}'", this->m_identifier);
+}
+
+void e2d::Object::onEvent(const e2d::Event& event)
+{
+    (void)event;
+}
+
+void e2d::Object::onFixedUpdate()
+{
+}
+
+void e2d::Object::onVariableUpdate(double deltaTime)
+{
+    (void)deltaTime;
+}
+
+const std::string& e2d::Object::getIdentifier() const
+{
+    return this->m_identifier;
+}
+
+std::string e2d::Object::generateUniqueIdentifier()
+{
+    const std::lock_guard<std::mutex> lock(s_counterMutex);
+    const std::uint64_t               uniqueId = s_counter++;
+    return "Object" + std::to_string(uniqueId);
 }

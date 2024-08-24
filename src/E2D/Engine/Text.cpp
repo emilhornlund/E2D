@@ -93,11 +93,11 @@ e2d::Vector2f e2d::Text::getSize() const
     return {static_cast<float>(this->m_textImpl->getSize().x), static_cast<float>(this->m_textImpl->getSize().y)};
 }
 
-void e2d::Text::fixedUpdate()
+void e2d::Text::onFixedUpdate()
 {
 }
 
-void e2d::Text::variableUpdate(double deltaTime)
+void e2d::Text::onVariableUpdate(double deltaTime)
 {
     (void)deltaTime;
 }

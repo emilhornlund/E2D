@@ -37,6 +37,7 @@
 
 namespace e2d
 {
+struct Event;         // Forward declaration of Event
 class ObjectRegistry; // Forward declaration of ObjectRegistry
 
 /**
@@ -75,38 +76,6 @@ public:
     virtual ~Object() = 0;
 
     /**
-     * @brief Fixed update method for consistent, time-sensitive updates.
-     *
-     * This method is called at a consistent rate, typically 60 times per second,
-     * and is used for updates where consistent timing is crucial. This is ideal
-     * for physics updates, collision detection, and other time-sensitive operations
-     * where a fixed time step is necessary to maintain consistent behavior.
-     */
-    virtual void fixedUpdate() = 0;
-
-    /**
-     * @brief Variable update method for frame-dependent updates.
-     *
-     * This method is called as often as possible, typically every frame, and receives
-     * the time elapsed since the last update as a parameter. Use this method for updates
-     * that can vary with the frame rate, such as animations, general game logic, and
-     * operations that are not time-sensitive. The deltaTime parameter helps in creating
-     * frame rate independent behavior.
-     *
-     * @param deltaTime The time elapsed since the last variable update in seconds.
-     */
-    virtual void variableUpdate(double deltaTime) = 0;
-
-    /**
-     * @brief Gets the unique identifier of the Object.
-     *
-     * Retrieves the unique identifier assigned to this Object.
-     *
-     * @return The identifier as a const reference to a string.
-     */
-    const std::string& getIdentifier() const;
-
-    /**
      * @brief Called when the object is loaded.
      *
      * This method is called when the object is first created and loaded into the system.
@@ -123,6 +92,49 @@ public:
      * any cleanup or resource deallocation required when the object is unloaded.
      */
     virtual void onUnload();
+
+    /**
+     * @brief Handles events directed to this object.
+     *
+     * This method is called when an event relevant to this object occurs. Derived classes
+     * can override this method to handle specific types of events, such as input events,
+     * window events, or custom events defined by the application.
+     *
+     * @param event The event that has occurred, which this object should process.
+     */
+    virtual void onEvent(const Event& event);
+
+    /**
+     * @brief Fixed update method for consistent, time-sensitive updates.
+     *
+     * This method is called at a consistent rate, typically 60 times per second,
+     * and is used for updates where consistent timing is crucial. This is ideal
+     * for physics updates, collision detection, and other time-sensitive operations
+     * where a fixed time step is necessary to maintain consistent behavior.
+     */
+    virtual void onFixedUpdate();
+
+    /**
+     * @brief Variable update method for frame-dependent updates.
+     *
+     * This method is called as often as possible, typically every frame, and receives
+     * the time elapsed since the last update as a parameter. Use this method for updates
+     * that can vary with the frame rate, such as animations, general game logic, and
+     * operations that are not time-sensitive. The deltaTime parameter helps in creating
+     * frame rate independent behavior.
+     *
+     * @param deltaTime The time elapsed since the last variable update in seconds.
+     */
+    virtual void onVariableUpdate(double deltaTime);
+
+    /**
+     * @brief Gets the unique identifier of the Object.
+     *
+     * Retrieves the unique identifier assigned to this Object.
+     *
+     * @return The identifier as a const reference to a string.
+     */
+    const std::string& getIdentifier() const;
 
 private:
     /**

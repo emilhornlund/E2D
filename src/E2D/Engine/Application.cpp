@@ -100,11 +100,18 @@ int e2d::Application::run()
             {
                 this->quit();
             }
+            else if (event.has_value())
+            {
+                for (const auto& object : this->m_objectRegistry->getAllObjects())
+                {
+                    object->onEvent(event.value());
+                }
+            }
         }
 
         for (const auto& object : this->m_objectRegistry->getAllObjects())
         {
-            object->fixedUpdate();
+            object->onFixedUpdate();
         }
 
         while (elapsedFrameTimeAsSeconds < targetFrameTime - remainder)
@@ -115,7 +122,7 @@ int e2d::Application::run()
 
             for (const auto& object : this->m_objectRegistry->getAllObjects())
             {
-                object->variableUpdate(deltaTime);
+                object->onVariableUpdate(deltaTime);
             }
         }
 
