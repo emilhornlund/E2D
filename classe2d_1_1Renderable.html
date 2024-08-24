@@ -102,15 +102,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4b101981d35ef3d4e51a9d4a4e311edc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Renderable.html#a4b101981d35ef3d4e51a9d4a4e311edc">setRenderPriority</a> (int renderPriority)</td></tr>
 <tr class="memdesc:a4b101981d35ef3d4e51a9d4a4e311edc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the render priority of the object.  <a href="classe2d_1_1Renderable.html#a4b101981d35ef3d4e51a9d4a4e311edc">More...</a><br /></td></tr>
 <tr class="separator:a4b101981d35ef3d4e51a9d4a4e311edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62b8657dca43f4472da35eb75c050f54"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Renderable.html#a62b8657dca43f4472da35eb75c050f54">render</a> (const <a class="el" href="classe2d_1_1Renderer.html">Renderer</a> &amp;renderer) const =0</td></tr>
-<tr class="memdesc:a62b8657dca43f4472da35eb75c050f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the object using the given renderer.  <a href="classe2d_1_1Renderable.html#a62b8657dca43f4472da35eb75c050f54">More...</a><br /></td></tr>
-<tr class="separator:a62b8657dca43f4472da35eb75c050f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a268a43859af5a40d91b2d28a0a25d3aa"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Renderable.html#a268a43859af5a40d91b2d28a0a25d3aa">render</a> () const =0</td></tr>
+<tr class="memdesc:a268a43859af5a40d91b2d28a0a25d3aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the object using the given renderer.  <a href="classe2d_1_1Renderable.html#a268a43859af5a40d91b2d28a0a25d3aa">More...</a><br /></td></tr>
+<tr class="separator:a268a43859af5a40d91b2d28a0a25d3aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract base class for renderable objects. </p>
-<p>This class provides an interface for all objects that can be rendered using a <a class="el" href="classe2d_1_1Renderer.html" title="Handles the rendering process for graphical objects.">Renderer</a>. It declares a pure virtual render method that must be implemented by all derived classes. </p>
+<p>This class provides an interface for all objects that can be rendered using a Renderer. It declares a pure virtual render method that must be implemented by all derived classes. </p>
 
-<p class="definition">Definition at line <a class="el" href="Renderable_8hpp_source.html#l00047">47</a> of file <a class="el" href="Renderable_8hpp_source.html">Renderable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Renderable_8hpp_source.html#l00046">46</a> of file <a class="el" href="Renderable_8hpp_source.html">Renderable.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad40c77485d91f5a4d03b091d4a24156b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad40c77485d91f5a4d03b091d4a24156b">&#9670;&nbsp;</a></span>~Renderable()</h2>
@@ -162,8 +162,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a62b8657dca43f4472da35eb75c050f54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62b8657dca43f4472da35eb75c050f54">&#9670;&nbsp;</a></span>render()</h2>
+<a id="a268a43859af5a40d91b2d28a0a25d3aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a268a43859af5a40d91b2d28a0a25d3aa">&#9670;&nbsp;</a></span>render()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,8 +174,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void e2d::Renderable::render </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classe2d_1_1Renderer.html">Renderer</a> &amp;&#160;</td>
-          <td class="paramname"><em>renderer</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -187,15 +186,9 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Renders the object using the given renderer. </p>
-<p>This is a pure virtual function that must be implemented by all derived classes to define how they should be rendered.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">renderer</td><td>The renderer to use for rendering. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>This is a pure virtual function that must be implemented by all derived classes to define how they should be rendered. </p>
 
-<p>Implemented in <a class="el" href="classe2d_1_1Sprite.html#ae9f79fa6d64856fcec655a0b375eaa09">e2d::Sprite</a>, and <a class="el" href="classe2d_1_1Text.html#a6fb1e0dc918096e9c951f6c1fc86e80b">e2d::Text</a>.</p>
+<p>Implemented in <a class="el" href="classe2d_1_1Text.html#a742828f826ceade469e22abe482e4b17">e2d::Text</a>, and <a class="el" href="classe2d_1_1Sprite.html#ad47a10c8f565eb2ce95cc596546659b1">e2d::Sprite</a>.</p>
 
 </div>
 </div>

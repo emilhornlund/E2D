@@ -126,9 +126,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af755e9beb6edbbde7ec8e120f314d44e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Sprite.html#af755e9beb6edbbde7ec8e120f314d44e">variableUpdate</a> (double deltaTime) override</td></tr>
 <tr class="memdesc:af755e9beb6edbbde7ec8e120f314d44e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable update method for frame-dependent updates.  <a href="classe2d_1_1Sprite.html#af755e9beb6edbbde7ec8e120f314d44e">More...</a><br /></td></tr>
 <tr class="separator:af755e9beb6edbbde7ec8e120f314d44e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9f79fa6d64856fcec655a0b375eaa09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Sprite.html#ae9f79fa6d64856fcec655a0b375eaa09">render</a> (const <a class="el" href="classe2d_1_1Renderer.html">Renderer</a> &amp;renderer) const final</td></tr>
-<tr class="memdesc:ae9f79fa6d64856fcec655a0b375eaa09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the sprite using the provided renderer and with the applied transformations.  <a href="classe2d_1_1Sprite.html#ae9f79fa6d64856fcec655a0b375eaa09">More...</a><br /></td></tr>
-<tr class="separator:ae9f79fa6d64856fcec655a0b375eaa09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad47a10c8f565eb2ce95cc596546659b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Sprite.html#ad47a10c8f565eb2ce95cc596546659b1">render</a> () const final</td></tr>
+<tr class="memdesc:ad47a10c8f565eb2ce95cc596546659b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the sprite using the provided renderer and with the applied transformations.  <a href="classe2d_1_1Sprite.html#ad47a10c8f565eb2ce95cc596546659b1">More...</a><br /></td></tr>
+<tr class="separator:ad47a10c8f565eb2ce95cc596546659b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77ef76f464a5de1fe0b7d9c8531d1cb4"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Object.html#a77ef76f464a5de1fe0b7d9c8531d1cb4">getIdentifier</a> () const</td></tr>
 <tr class="memdesc:a77ef76f464a5de1fe0b7d9c8531d1cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the unique identifier of the <a class="el" href="classe2d_1_1Object.html" title="Abstract base class for all game objects.">Object</a>.  <a href="classe2d_1_1Object.html#a77ef76f464a5de1fe0b7d9c8531d1cb4">More...</a><br /></td></tr>
 <tr class="separator:a77ef76f464a5de1fe0b7d9c8531d1cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,7 +173,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p>Represents a 2D graphical sprite entity that can be transformed and rendered on the screen. </p>
 <p>The <a class="el" href="classe2d_1_1Sprite.html" title="Represents a 2D graphical sprite entity that can be transformed and rendered on the screen.">Sprite</a> class provides functionalities to set texture and texture rectangle for rendering a sprite. It handles sprite transformations such as scaling, rotation, and flipping internally, providing an intuitive interface for game development. </p>
 
-<p class="definition">Definition at line <a class="el" href="Sprite_8hpp_source.html#l00056">56</a> of file <a class="el" href="Sprite_8hpp_source.html">Sprite.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Sprite_8hpp_source.html#l00055">55</a> of file <a class="el" href="Sprite_8hpp_source.html">Sprite.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab7ebad423f3a3f8273f10de3a2937ac9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab7ebad423f3a3f8273f10de3a2937ac9">&#9670;&nbsp;</a></span>Sprite() <span class="overload">[1/2]</span></h2>
@@ -594,8 +594,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae9f79fa6d64856fcec655a0b375eaa09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9f79fa6d64856fcec655a0b375eaa09">&#9670;&nbsp;</a></span>render()</h2>
+<a id="ad47a10c8f565eb2ce95cc596546659b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad47a10c8f565eb2ce95cc596546659b1">&#9670;&nbsp;</a></span>render()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -606,8 +606,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void e2d::Sprite::render </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classe2d_1_1Renderer.html">Renderer</a> &amp;&#160;</td>
-          <td class="paramname"><em>renderer</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -619,15 +618,9 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Renders the sprite using the provided renderer and with the applied transformations. </p>
-<p>This function utilizes internal utilities to calculate the destination rectangle, rotation point, and flip state based on the sprite's current properties like position, scale, origin, and rotation. If the sprite has no texture set, it will not be rendered.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">renderer</td><td>The <a class="el" href="classe2d_1_1Renderer.html" title="Handles the rendering process for graphical objects.">Renderer</a> object used for rendering the sprite. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>This function utilizes internal utilities to calculate the destination rectangle, rotation point, and flip state based on the sprite's current properties like position, scale, origin, and rotation. If the sprite has no texture set, it will not be rendered. </p>
 
-<p>Implements <a class="el" href="classe2d_1_1Renderable.html#a62b8657dca43f4472da35eb75c050f54">e2d::Renderable</a>.</p>
+<p>Implements <a class="el" href="classe2d_1_1Renderable.html#a268a43859af5a40d91b2d28a0a25d3aa">e2d::Renderable</a>.</p>
 
 </div>
 </div>

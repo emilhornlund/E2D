@@ -10,7 +10,7 @@ var searchData=
   ['_7eobject_630',['~Object',['../classe2d_1_1Object.html#ab577ad23e874e0f6d31471ed0063a4ed',1,'e2d::Object']]],
   ['_7eobjectregistry_631',['~ObjectRegistry',['../classe2d_1_1ObjectRegistry.html#aad79b208cb2b14726f58babe0f7157c6',1,'e2d::ObjectRegistry']]],
   ['_7erenderable_632',['~Renderable',['../classe2d_1_1Renderable.html#ad40c77485d91f5a4d03b091d4a24156b',1,'e2d::Renderable']]],
-  ['_7erenderer_633',['~Renderer',['../classe2d_1_1Renderer.html#a78761466ade0e2daa3102ad077c96336',1,'e2d::Renderer']]],
+  ['_7erenderer_633',['~Renderer',['../classe2d_1_1internal_1_1Renderer.html#a2fd0ae79375c7e181d7868a7eba0d35e',1,'e2d::internal::Renderer']]],
   ['_7erenderqueue_634',['~RenderQueue',['../classe2d_1_1internal_1_1RenderQueue.html#a428dd4047d357abe83c16634ea91e44b',1,'e2d::internal::RenderQueue']]],
   ['_7eresource_635',['~Resource',['../classe2d_1_1Resource.html#ac4e3542fd1b9d3e322903e22cd29ab8b',1,'e2d::Resource']]],
   ['_7eresourceregistry_636',['~ResourceRegistry',['../classe2d_1_1ResourceRegistry.html#a702571386d95f862ae0e5c3aae73122e',1,'e2d::ResourceRegistry']]],
@@ -22,5 +22,5 @@ var searchData=
   ['_7etextureimpl_642',['~TextureImpl',['../classe2d_1_1internal_1_1TextureImpl.html#a9569476917964a6553d6bd554587ee8d',1,'e2d::internal::TextureImpl']]],
   ['_7etimer_643',['~Timer',['../classe2d_1_1Timer.html#a6d501875b4aa8b5591cebfc7e05c85d8',1,'e2d::Timer']]],
   ['_7etransformable_644',['~Transformable',['../classe2d_1_1Transformable.html#a795ed35e4fe1282fdc461638716be852',1,'e2d::Transformable']]],
-  ['_7ewindow_645',['~Window',['../classe2d_1_1Window.html#a7a18662c78fccd7250af2ab0633b231e',1,'e2d::Window']]]
+  ['_7ewindow_645',['~Window',['../classe2d_1_1internal_1_1Window.html#a0017653730838640188da49b0f7494dd',1,'e2d::internal::Window']]]
 ];

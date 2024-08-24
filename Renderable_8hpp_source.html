@@ -81,37 +81,35 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacee2d.html">e2d</a></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">class </span>Renderer; <span class="comment">// Forward declaration of Renderer</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderable.html">   47</a></span>&#160;<span class="keyword">class </span><a class="code" href="Engine_2Export_8hpp.html#a554ac2f2f9fbb578d3fcaa010b299dd8">E2D_ENGINE_API</a> <a class="code" href="classe2d_1_1Renderable.html">Renderable</a> : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderable.html#ad40c77485d91f5a4d03b091d4a24156b">   55</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classe2d_1_1Renderable.html#ad40c77485d91f5a4d03b091d4a24156b">~Renderable</a>() = 0;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderable.html#ad548808c46d669983870547b5d36ea8b">   65</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classe2d_1_1Renderable.html#ad548808c46d669983870547b5d36ea8b">getRenderPriority</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderable.html#a4b101981d35ef3d4e51a9d4a4e311edc">   75</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Renderable.html#a4b101981d35ef3d4e51a9d4a4e311edc">setRenderPriority</a>(<span class="keywordtype">int</span> renderPriority);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderable.html#a62b8657dca43f4472da35eb75c050f54">   85</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Renderable.html#a62b8657dca43f4472da35eb75c050f54">render</a>(<span class="keyword">const</span> <a class="code" href="classe2d_1_1Renderer.html">Renderer</a>&amp; renderer) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderable.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="Engine_2Export_8hpp.html#a554ac2f2f9fbb578d3fcaa010b299dd8">E2D_ENGINE_API</a> <a class="code" href="classe2d_1_1Renderable.html">Renderable</a> : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderable.html#ad40c77485d91f5a4d03b091d4a24156b">   54</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classe2d_1_1Renderable.html#ad40c77485d91f5a4d03b091d4a24156b">~Renderable</a>() = 0;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderable.html#ad548808c46d669983870547b5d36ea8b">   64</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classe2d_1_1Renderable.html#ad548808c46d669983870547b5d36ea8b">getRenderPriority</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderable.html#a4b101981d35ef3d4e51a9d4a4e311edc">   74</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Renderable.html#a4b101981d35ef3d4e51a9d4a4e311edc">setRenderPriority</a>(<span class="keywordtype">int</span> renderPriority);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderable.html#a268a43859af5a40d91b2d28a0a25d3aa">   82</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Renderable.html#a268a43859af5a40d91b2d28a0a25d3aa">render</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">int</span> m_renderPriority{0}; </div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">int</span> m_renderPriority{0}; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}; <span class="comment">// class Renderable</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;} <span class="comment">// namespace e2d</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_ENGINE_RENDERABLE_HPP</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}; <span class="comment">// class Renderable</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;} <span class="comment">// namespace e2d</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_ENGINE_RENDERABLE_HPP</span></div>
 <div class="ttc" id="aEngine_2Export_8hpp_html"><div class="ttname"><a href="Engine_2Export_8hpp.html">Export.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aEngine_2Export_8hpp_html_a554ac2f2f9fbb578d3fcaa010b299dd8"><div class="ttname"><a href="Engine_2Export_8hpp.html#a554ac2f2f9fbb578d3fcaa010b299dd8">E2D_ENGINE_API</a></div><div class="ttdeci">#define E2D_ENGINE_API</div><div class="ttdef"><b>Definition:</b> <a href="Engine_2Export_8hpp_source.html#l00035">Export.hpp:35</a></div></div>
 <div class="ttc" id="aNonCopyable_8hpp_html"><div class="ttname"><a href="NonCopyable_8hpp.html">NonCopyable.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aclasse2d_1_1NonCopyable_html"><div class="ttname"><a href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></div><div class="ttdoc">The NonCopyable class provides a base class to make derived classes non-copyable.</div><div class="ttdef"><b>Definition:</b> <a href="NonCopyable_8hpp_source.html#l00044">NonCopyable.hpp:45</a></div></div>
-<div class="ttc" id="aclasse2d_1_1Renderable_html"><div class="ttname"><a href="classe2d_1_1Renderable.html">e2d::Renderable</a></div><div class="ttdoc">Abstract base class for renderable objects.</div><div class="ttdef"><b>Definition:</b> <a href="Renderable_8hpp_source.html#l00047">Renderable.hpp:48</a></div></div>
+<div class="ttc" id="aclasse2d_1_1Renderable_html"><div class="ttname"><a href="classe2d_1_1Renderable.html">e2d::Renderable</a></div><div class="ttdoc">Abstract base class for renderable objects.</div><div class="ttdef"><b>Definition:</b> <a href="Renderable_8hpp_source.html#l00046">Renderable.hpp:47</a></div></div>
+<div class="ttc" id="aclasse2d_1_1Renderable_html_a268a43859af5a40d91b2d28a0a25d3aa"><div class="ttname"><a href="classe2d_1_1Renderable.html#a268a43859af5a40d91b2d28a0a25d3aa">e2d::Renderable::render</a></div><div class="ttdeci">virtual void render() const =0</div><div class="ttdoc">Renders the object using the given renderer.</div></div>
 <div class="ttc" id="aclasse2d_1_1Renderable_html_a4b101981d35ef3d4e51a9d4a4e311edc"><div class="ttname"><a href="classe2d_1_1Renderable.html#a4b101981d35ef3d4e51a9d4a4e311edc">e2d::Renderable::setRenderPriority</a></div><div class="ttdeci">void setRenderPriority(int renderPriority)</div><div class="ttdoc">Sets the render priority of the object.</div></div>
-<div class="ttc" id="aclasse2d_1_1Renderable_html_a62b8657dca43f4472da35eb75c050f54"><div class="ttname"><a href="classe2d_1_1Renderable.html#a62b8657dca43f4472da35eb75c050f54">e2d::Renderable::render</a></div><div class="ttdeci">virtual void render(const Renderer &amp;renderer) const =0</div><div class="ttdoc">Renders the object using the given renderer.</div></div>
 <div class="ttc" id="aclasse2d_1_1Renderable_html_ad40c77485d91f5a4d03b091d4a24156b"><div class="ttname"><a href="classe2d_1_1Renderable.html#ad40c77485d91f5a4d03b091d4a24156b">e2d::Renderable::~Renderable</a></div><div class="ttdeci">virtual ~Renderable()=0</div><div class="ttdoc">Pure virtual destructor.</div></div>
 <div class="ttc" id="aclasse2d_1_1Renderable_html_ad548808c46d669983870547b5d36ea8b"><div class="ttname"><a href="classe2d_1_1Renderable.html#ad548808c46d669983870547b5d36ea8b">e2d::Renderable::getRenderPriority</a></div><div class="ttdeci">int getRenderPriority() const</div><div class="ttdoc">Gets the render priority of the object.</div></div>
-<div class="ttc" id="aclasse2d_1_1Renderer_html"><div class="ttname"><a href="classe2d_1_1Renderer.html">e2d::Renderer</a></div><div class="ttdoc">Handles the rendering process for graphical objects.</div><div class="ttdef"><b>Definition:</b> <a href="Renderer_8hpp_source.html#l00060">Renderer.hpp:61</a></div></div>
 <div class="ttc" id="anamespacee2d_html"><div class="ttname"><a href="namespacee2d.html">e2d</a></div><div class="ttdef"><b>Definition:</b> <a href="Color_8hpp_source.html#l00031">Color.hpp:32</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
