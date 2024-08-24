@@ -40,7 +40,6 @@
 
 namespace e2d
 {
-class Renderer; // Forward declaration of Renderer
 
 namespace internal
 {

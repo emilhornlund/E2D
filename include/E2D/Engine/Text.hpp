@@ -46,7 +46,7 @@ class Font; // Forward declaration of Font
 namespace internal
 {
 class TextImpl; // Forward declaration of TextImpl
-}
+} // namespace internal
 
 /**
  * @class Text
@@ -173,10 +173,8 @@ public:
      * @brief Renders the text using the provided renderer.
      *
      * Renders the text to the screen using the specified Renderer object.
-     *
-     * @param renderer The Renderer object used for rendering the text.
      */
-    void render(const e2d::Renderer& renderer) const final;
+    void render() const final;
 
 private:
     /**

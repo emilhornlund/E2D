@@ -32,9 +32,8 @@
 class MyRenderable : public e2d::Renderable
 {
 public:
-    void render(const e2d::Renderer& renderer) const final
+    void render() const final
     {
-        (void)renderer; // Explicitly mark as unused
     }
 };
 

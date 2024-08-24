@@ -39,12 +39,11 @@ struct SDL_Renderer; // Forward declaration of SDL_Renderer
 namespace e2d
 {
 class Renderable; // Forward declaration of Renderable
-class Window;     // Forward declaration of Window
 
 namespace internal
 {
 class RenderQueue; // Forward declaration of RenderQueue
-} // namespace internal
+class Window;      // Forward declaration of Window
 
 /**
  * @class Renderer
@@ -128,6 +127,8 @@ private:
     std::unique_ptr<internal::RenderQueue> m_renderQueue;       //!< Pointer to the render queue.
 
 }; // class Renderer
+
+} // namespace internal
 
 } // namespace e2d
 

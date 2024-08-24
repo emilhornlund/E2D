@@ -33,14 +33,10 @@
 
 #include <memory>
 
-namespace e2d
+namespace e2d::internal
 {
 class Renderer; // Forward declaration of Renderer
 class Window;   // Forward declaration of Window
-} // namespace e2d
-
-namespace e2d::internal
-{
 
 /**
  * @class RendererContext

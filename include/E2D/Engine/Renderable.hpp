@@ -33,7 +33,6 @@
 
 namespace e2d
 {
-class Renderer; // Forward declaration of Renderer
 
 /**
  * @class Renderable
@@ -79,10 +78,8 @@ public:
      *
      * This is a pure virtual function that must be implemented by
      * all derived classes to define how they should be rendered.
-     *
-     * @param renderer The renderer to use for rendering.
      */
-    virtual void render(const Renderer& renderer) const = 0;
+    virtual void render() const = 0;
 
 private:
     int m_renderPriority{0}; //!< Indicates the rendering order of the object.

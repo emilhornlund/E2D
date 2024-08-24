@@ -31,8 +31,6 @@
 #include <E2D/Engine/Texture.hpp>
 #include <E2D/Engine/TextureImpl.hpp>
 
-#include <SDL.h>
-
 #include <stdexcept>
 
 e2d::Texture::Texture() : m_textureImpl(std::make_unique<internal::TextureImpl>())

@@ -30,17 +30,17 @@
 
 #include <SDL.h>
 
-e2d::Window::Window()
+e2d::internal::Window::Window()
 {
     log::debug("Constructing Window");
 }
 
-e2d::Window::~Window()
+e2d::internal::Window::~Window()
 {
     log::debug("Destructing Window");
 }
 
-bool e2d::Window::create(const char* title, int width, int height)
+bool e2d::internal::Window::create(const char* title, int width, int height)
 {
     log::debug("Creating window with title '{}', width '{}', and height '{}'", title, width, height);
     this->m_window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
@@ -52,12 +52,12 @@ bool e2d::Window::create(const char* title, int width, int height)
     return true;
 }
 
-bool e2d::Window::isCreated() const
+bool e2d::internal::Window::isCreated() const
 {
     return this->m_window != nullptr;
 }
 
-void e2d::Window::destroy()
+void e2d::internal::Window::destroy()
 {
     if (this->m_window)
     {
@@ -66,7 +66,7 @@ void e2d::Window::destroy()
     }
 }
 
-SDL_Window* e2d::Window::getNativeWindow() const
+SDL_Window* e2d::internal::Window::getNativeWindow() const
 {
     return this->m_window;
 }

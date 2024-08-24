@@ -41,8 +41,7 @@
 
 namespace e2d
 {
-class Renderer; // Forward declaration of Renderer
-class Texture;  // Forward declaration of Texture
+class Texture; // Forward declaration of Texture
 
 /**
  * @class Sprite
@@ -159,10 +158,8 @@ public:
      * rotation point, and flip state based on the sprite's current properties like
      * position, scale, origin, and rotation. If the sprite has no texture set, it will
      * not be rendered.
-     *
-     * @param renderer The Renderer object used for rendering the sprite.
      */
-    void render(const Renderer& renderer) const final;
+    void render() const final;
 
 private:
     std::shared_ptr<const Texture> m_texture; //!< Pointer to the sprite's texture. Used for rendering the sprite.

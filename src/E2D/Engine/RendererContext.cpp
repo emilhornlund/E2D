@@ -88,12 +88,12 @@ void e2d::internal::RendererContext::destroy()
     }
 }
 
-e2d::Window& e2d::internal::RendererContext::getWindow() const
+e2d::internal::Window& e2d::internal::RendererContext::getWindow() const
 {
     return *this->m_window;
 }
 
-e2d::Renderer& e2d::internal::RendererContext::getRenderer() const
+e2d::internal::Renderer& e2d::internal::RendererContext::getRenderer() const
 {
     return *this->m_renderer;
 }

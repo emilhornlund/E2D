@@ -37,7 +37,7 @@
 
 struct SDL_Window; // Forward declaration of SDL_Window
 
-namespace e2d
+namespace e2d::internal
 {
 
 /**
@@ -107,6 +107,6 @@ private:
 
 }; // class Window
 
-} // namespace e2d
+} // namespace e2d::internal
 
 #endif //E2D_ENGINE_WINDOW_HPP

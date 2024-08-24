@@ -102,7 +102,7 @@ void e2d::Text::variableUpdate(double deltaTime)
     (void)deltaTime;
 }
 
-void e2d::Text::render(const e2d::Renderer& renderer) const
+void e2d::Text::render() const
 {
     auto* texture = this->m_textImpl->getTexture();
     if (texture)
@@ -120,7 +120,7 @@ void e2d::Text::render(const e2d::Renderer& renderer) const
 
         const auto flip = internal::toSDLRendererFlip(this->getScale());
 
-        SDL_RenderCopyEx(renderer.getNativeRenderer(),
+        SDL_RenderCopyEx(internal::RendererContext::getInstance().getRenderer().getNativeRenderer(),
                          texture,
                          nullptr,
                          &destinationRectangle,

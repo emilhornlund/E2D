@@ -27,6 +27,7 @@
 #include <E2D/Core/Logger.hpp>
 
 #include <E2D/Engine/Renderer.hpp>
+#include <E2D/Engine/RendererContext.hpp>
 #include <E2D/Engine/SDLRenderUtils.hpp>
 #include <E2D/Engine/Sprite.hpp>
 #include <E2D/Engine/Texture.hpp>
@@ -82,7 +83,7 @@ void e2d::Sprite::variableUpdate(double deltaTime)
     (void)deltaTime;
 }
 
-void e2d::Sprite::render(const e2d::Renderer& renderer) const
+void e2d::Sprite::render() const
 {
     if (this->m_texture)
     {
@@ -98,7 +99,7 @@ void e2d::Sprite::render(const e2d::Renderer& renderer) const
 
         const auto flip = internal::toSDLRendererFlip(this->getScale());
 
-        SDL_RenderCopyEx(renderer.getNativeRenderer(),
+        SDL_RenderCopyEx(internal::RendererContext::getInstance().getRenderer().getNativeRenderer(),
                          static_cast<SDL_Texture*>(this->m_texture->getNativeTextureHandle()),
                          &sourceRectangle,
                          &destinationRectangle,
