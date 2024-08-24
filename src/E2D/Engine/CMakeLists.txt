@@ -9,6 +9,7 @@ set(SRC
     ${INCROOT}/CoreSystem.hpp
     ${SRCROOT}/CoreSystem.cpp
     ${INCROOT}/Event.hpp
+    ${INCROOT}/Event.inl
     ${SRCROOT}/Event.cpp
     ${INCROOT}/Export.hpp
     ${INCROOT}/Font.hpp

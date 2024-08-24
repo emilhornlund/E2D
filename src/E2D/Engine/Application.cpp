@@ -94,10 +94,9 @@ int e2d::Application::run()
         targetFrameTimer.start();
         double elapsedFrameTimeAsSeconds = targetFrameTimer.getElapsedTimeAsSeconds();
 
-        e2d::Event event{};
-        while (pollEvent(event))
+        while (const std::optional<Event> event = pollEvent())
         {
-            if (event.type == Event::Closed)
+            if (event->is<Event::Closed>())
             {
                 this->quit();
             }

@@ -49,9 +49,8 @@ public:
 
 TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
 {
-    SDL_Event  sdlEvent{};
-    e2d::Event actualEvent{};
-    bool       wasPolled;
+    SDL_Event                 sdlEvent{};
+    std::optional<e2d::Event> actualEvent{};
 
     SECTION("Handle Key Down Event")
     {
@@ -62,16 +61,17 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::KeyPressed);
-        REQUIRE(actualEvent.key.code == e2d::Keyboard::Key::A);
-        REQUIRE(actualEvent.key.scancode == e2d::Keyboard::Scancode::A);
-        REQUIRE(actualEvent.key.alt == false);
-        REQUIRE(actualEvent.key.control == false);
-        REQUIRE(actualEvent.key.shift == false);
-        REQUIRE(actualEvent.key.system == false);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::KeyPressed);
+        REQUIRE(actualEvent->is<e2d::Event::KeyPressed>());
+        REQUIRE(actualEvent->key.code == e2d::Keyboard::Key::A);
+        REQUIRE(actualEvent->key.scancode == e2d::Keyboard::Scancode::A);
+        REQUIRE(actualEvent->key.alt == false);
+        REQUIRE(actualEvent->key.control == false);
+        REQUIRE(actualEvent->key.shift == false);
+        REQUIRE(actualEvent->key.system == false);
     }
 
     SECTION("Handle Key Down Event with Modifiers")
@@ -83,16 +83,16 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::KeyPressed);
-        REQUIRE(actualEvent.key.code == e2d::Keyboard::Key::A);
-        REQUIRE(actualEvent.key.scancode == e2d::Keyboard::Scancode::A);
-        REQUIRE(actualEvent.key.alt == true);
-        REQUIRE(actualEvent.key.control == true);
-        REQUIRE(actualEvent.key.shift == true);
-        REQUIRE(actualEvent.key.system == true);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::KeyPressed);
+        REQUIRE(actualEvent->key.code == e2d::Keyboard::Key::A);
+        REQUIRE(actualEvent->key.scancode == e2d::Keyboard::Scancode::A);
+        REQUIRE(actualEvent->key.alt == true);
+        REQUIRE(actualEvent->key.control == true);
+        REQUIRE(actualEvent->key.shift == true);
+        REQUIRE(actualEvent->key.system == true);
     }
 
     SECTION("Handle Key Up Event")
@@ -104,16 +104,16 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::KeyReleased);
-        REQUIRE(actualEvent.key.code == e2d::Keyboard::Key::A);
-        REQUIRE(actualEvent.key.scancode == e2d::Keyboard::Scancode::A);
-        REQUIRE(actualEvent.key.alt == false);
-        REQUIRE(actualEvent.key.control == false);
-        REQUIRE(actualEvent.key.shift == false);
-        REQUIRE(actualEvent.key.system == false);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::KeyReleased);
+        REQUIRE(actualEvent->key.code == e2d::Keyboard::Key::A);
+        REQUIRE(actualEvent->key.scancode == e2d::Keyboard::Scancode::A);
+        REQUIRE(actualEvent->key.alt == false);
+        REQUIRE(actualEvent->key.control == false);
+        REQUIRE(actualEvent->key.shift == false);
+        REQUIRE(actualEvent->key.system == false);
     }
 
     SECTION("Handle Key Up Event with Modifiers")
@@ -125,16 +125,16 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::KeyReleased);
-        REQUIRE(actualEvent.key.code == e2d::Keyboard::Key::A);
-        REQUIRE(actualEvent.key.scancode == e2d::Keyboard::Scancode::A);
-        REQUIRE(actualEvent.key.alt == true);
-        REQUIRE(actualEvent.key.control == true);
-        REQUIRE(actualEvent.key.shift == true);
-        REQUIRE(actualEvent.key.system == true);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::KeyReleased);
+        REQUIRE(actualEvent->key.code == e2d::Keyboard::Key::A);
+        REQUIRE(actualEvent->key.scancode == e2d::Keyboard::Scancode::A);
+        REQUIRE(actualEvent->key.alt == true);
+        REQUIRE(actualEvent->key.control == true);
+        REQUIRE(actualEvent->key.shift == true);
+        REQUIRE(actualEvent->key.system == true);
     }
 
     SECTION("Handle Window Close Event")
@@ -145,10 +145,10 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::Closed);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::Closed);
     }
 
     SECTION("Handle Window Resize Event")
@@ -161,12 +161,12 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::Resized);
-        REQUIRE(actualEvent.size.width == 800);
-        REQUIRE(actualEvent.size.height == 600);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::Resized);
+        REQUIRE(actualEvent->size.width == 800);
+        REQUIRE(actualEvent->size.height == 600);
     }
 
     SECTION("Handle Window Focus Lost Event")
@@ -177,10 +177,10 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::LostFocus);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::LostFocus);
     }
 
     SECTION("Handle Window Focus Gained Event")
@@ -191,10 +191,10 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::GainedFocus);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::GainedFocus);
     }
 
     SECTION("Handle Window Minimized Event")
@@ -205,10 +205,10 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::Minimized);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::Minimized);
     }
 
     SECTION("Handle Window Maximized Event")
@@ -219,10 +219,10 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::Maximized);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::Maximized);
     }
 
     SECTION("Handle Window Restored Event")
@@ -233,10 +233,10 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::Restored);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::Restored);
     }
 
     SECTION("Handle Window Mouse Entered Event")
@@ -247,10 +247,10 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::MouseEntered);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::MouseEntered);
     }
 
     SECTION("Handle Window Mouse Left Event")
@@ -261,10 +261,10 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::MouseLeft);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::MouseLeft);
     }
 
     SECTION("Handle Quit Event")
@@ -273,19 +273,18 @@ TEST_CASE_METHOD(EventTest, "pollEvent", "[Event]")
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
         SDL_PushEvent(&sdlEvent);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == true);
-        REQUIRE(actualEvent.type == e2d::Event::Quit);
+        REQUIRE(actualEvent.has_value());
+        REQUIRE(actualEvent->type == e2d::Event::Quit);
     }
 
     SECTION("No Event Polled")
     {
         SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT);
 
-        wasPolled = e2d::pollEvent(actualEvent);
+        actualEvent = e2d::pollEvent();
 
-        REQUIRE(wasPolled == false);
-        REQUIRE(actualEvent.type == e2d::Event::Unknown);
+        REQUIRE_FALSE(actualEvent.has_value());
     }
 }

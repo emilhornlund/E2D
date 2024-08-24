@@ -31,14 +31,15 @@ bool toKeyboardEvent(const SDL_Event& sdlEvent, e2d::Event& event);
 
 bool toWindowEvent(const SDL_Event& sdlEvent, e2d::Event& event);
 
-bool e2d::pollEvent(e2d::Event& event)
+std::optional<e2d::Event> e2d::pollEvent()
 {
     SDL_Event sdlEvent{};
-    bool      valid = false;
 
-    while (SDL_PollEvent(&sdlEvent) && !valid)
+    while (SDL_PollEvent(&sdlEvent))
     {
-        event = {};
+        e2d::Event event = {};
+        bool       valid = false;
+
         switch (sdlEvent.type)
         {
             case SDL_KEYDOWN:
@@ -57,8 +58,14 @@ bool e2d::pollEvent(e2d::Event& event)
                 valid      = false;
                 break;
         }
+
+        if (valid)
+        {
+            return event;
+        }
     }
-    return valid;
+
+    return std::nullopt;
 }
 
 /**

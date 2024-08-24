@@ -31,6 +31,8 @@
 
 #include <E2D/Engine/Keyboard.hpp>
 
+#include <optional>
+
 namespace e2d
 {
 
@@ -101,6 +103,18 @@ struct Event
 
     EventType type{}; //!< Type of the event, indicating what kind of event occurred.
 
+    /**
+     * @brief Checks if the event matches a specified type.
+     *
+     * This method allows you to check if the event is of a certain type by comparing
+     * the event's type with the provided type.
+     *
+     * @tparam T The event type to check against (e.g., Event::Closed).
+     * @return True if the event matches the specified type, false otherwise.
+     */
+    template <EventType T>
+    bool is() const;
+
     union
     {
         KeyEvent  key;  //!< Specific details for a keyboard event, valid when type is KeyPressed or KeyReleased.
@@ -116,11 +130,13 @@ struct Event
  * translates them into the E2D engine's internal event format. It is used within the
  * main game loop to process input and other system events.
  *
- * @param event Reference to an Event struct where the polled event will be stored.
- * @return True if an event was successfully polled, false if the event queue was empty.
- */
-E2D_ENGINE_API bool pollEvent(e2d::Event& event);
+ * @return An optional Event. The optional contains an Event if an event was successfully polled, or std::nullopt
+ *         if the event queue was empty.
+*/
+E2D_ENGINE_API std::optional<e2d::Event> pollEvent();
 
 } // namespace e2d
+
+#include <E2D/Engine/Event.inl>
 
 #endif //E2D_ENGINE_EVENT_HPP
