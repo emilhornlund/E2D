@@ -70,6 +70,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structe2d_1_1Event-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -115,6 +116,13 @@ Public Types</h2></td></tr>
 <tr class="memdesc:a5cea0769907f91dff9a2d2531dc8f0cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerates the types of events that can be processed.  <a href="structe2d_1_1Event.html#a5cea0769907f91dff9a2d2531dc8f0cb">More...</a><br /></td></tr>
 <tr class="separator:a5cea0769907f91dff9a2d2531dc8f0cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a8ce2f9fbfd28d3053d520046a0aaea7a"><td class="memTemplParams" colspan="2">template&lt;EventType T&gt; </td></tr>
+<tr class="memitem:a8ce2f9fbfd28d3053d520046a0aaea7a"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structe2d_1_1Event.html#a8ce2f9fbfd28d3053d520046a0aaea7a">is</a> () const</td></tr>
+<tr class="memdesc:a8ce2f9fbfd28d3053d520046a0aaea7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the event matches a specified type.  <a href="structe2d_1_1Event.html#a8ce2f9fbfd28d3053d520046a0aaea7a">More...</a><br /></td></tr>
+<tr class="separator:a8ce2f9fbfd28d3053d520046a0aaea7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:abbad04077fc871cc60621f8a7dca9734"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structe2d_1_1Event.html#a5cea0769907f91dff9a2d2531dc8f0cb">EventType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structe2d_1_1Event.html#abbad04077fc871cc60621f8a7dca9734">type</a> {}</td></tr>
@@ -134,7 +142,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>Represents a generic event, encapsulating various event types such as keyboard inputs. </p>
 <p>The <a class="el" href="structe2d_1_1Event.html" title="Represents a generic event, encapsulating various event types such as keyboard inputs.">Event</a> struct is a union of multiple event types that can occur within the E2D engine. It includes keyboard events and window resize events, and enumerates all possible event types. </p>
 
-<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00045">45</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00047">47</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a5cea0769907f91dff9a2d2531dc8f0cb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5cea0769907f91dff9a2d2531dc8f0cb">&#9670;&nbsp;</a></span>EventType</h2>
@@ -179,7 +187,37 @@ Public Attributes</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00085">85</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00087">87</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8ce2f9fbfd28d3053d520046a0aaea7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ce2f9fbfd28d3053d520046a0aaea7a">&#9670;&nbsp;</a></span>is()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;EventType T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool e2d::Event::is </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the event matches a specified type. </p>
+<p>This method allows you to check if the event is of a certain type by comparing the event's type with the provided type.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The event type to check against (e.g., <a class="el" href="structe2d_1_1Event.html#a5cea0769907f91dff9a2d2531dc8f0cba7ca3fe9563be20d3cbc0b83b3d243c03" title="Represents a window close event.">Event::Closed</a>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the event matches the specified type, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -212,7 +250,7 @@ Public Attributes</h2></td></tr>
 
 <p>Specific details for a keyboard event, valid when type is KeyPressed or KeyReleased. </p>
 
-<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00106">106</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00120">120</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
 
 </div>
 </div>
@@ -230,7 +268,7 @@ Public Attributes</h2></td></tr>
 
 <p>Specific details for a window resize event, valid when type is Resized. </p>
 
-<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00107">107</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00121">121</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
 
 </div>
 </div>
@@ -248,7 +286,7 @@ Public Attributes</h2></td></tr>
 
 <p>Type of the event, indicating what kind of event occurred. </p>
 
-<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00102">102</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Event_8hpp_source.html#l00104">104</a> of file <a class="el" href="Event_8hpp_source.html">Event.hpp</a>.</p>
 
 </div>
 </div>

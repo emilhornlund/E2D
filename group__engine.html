@@ -481,9 +481,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gae6327551075ea02684a6332081e487dc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__engine.html#gae6327551075ea02684a6332081e487dc">e2d::pollEvent</a> (<a class="el" href="structe2d_1_1Event.html">e2d::Event</a> &amp;event)</td></tr>
-<tr class="memdesc:gae6327551075ea02684a6332081e487dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls for an event from the system queue and translates it to an E2D event.  <a href="group__engine.html#gae6327551075ea02684a6332081e487dc">More...</a><br /></td></tr>
-<tr class="separator:gae6327551075ea02684a6332081e487dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa267b0cb62e5e16546aa1fb833e3e5e"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="structe2d_1_1Event.html">e2d::Event</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__engine.html#gaaa267b0cb62e5e16546aa1fb833e3e5e">e2d::pollEvent</a> ()</td></tr>
+<tr class="memdesc:gaaa267b0cb62e5e16546aa1fb833e3e5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls for an event from the system queue and translates it to an E2D event.  <a href="group__engine.html#gaaa267b0cb62e5e16546aa1fb833e3e5e">More...</a><br /></td></tr>
+<tr class="separator:gaaa267b0cb62e5e16546aa1fb833e3e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga22c71cc5c62c7992c6facc3ab73d0745"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__engine.html#gad3b9d10d3c7bbb16b0e119fb542727b6">Keyboard::Key</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__engine.html#ga22c71cc5c62c7992c6facc3ab73d0745">e2d::internal::toKeyCode</a> (const SDL_Keycode &amp;sdlKeyCode)</td></tr>
 <tr class="memdesc:ga22c71cc5c62c7992c6facc3ab73d0745"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="internal-label">Internal</span> Translates an SDL_Keycode to the corresponding E2D <a class="el" href="group__engine.html#gad3b9d10d3c7bbb16b0e119fb542727b6" title="Enumeration of keyboard keys, representing the logical key symbols produced by a key press.">Keyboard::Key</a> enum value.  <a href="group__engine.html#ga22c71cc5c62c7992c6facc3ab73d0745">More...</a><br /></td></tr>
 <tr class="separator:ga22c71cc5c62c7992c6facc3ab73d0745"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1164,17 +1164,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gae6327551075ea02684a6332081e487dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae6327551075ea02684a6332081e487dc">&#9670;&nbsp;</a></span>pollEvent()</h2>
+<a id="gaaa267b0cb62e5e16546aa1fb833e3e5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaa267b0cb62e5e16546aa1fb833e3e5e">&#9670;&nbsp;</a></span>pollEvent()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool e2d::pollEvent </td>
+          <td class="memname">std::optional&lt;<a class="el" href="structe2d_1_1Event.html">e2d::Event</a>&gt; e2d::pollEvent </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structe2d_1_1Event.html">e2d::Event</a> &amp;&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1182,13 +1181,7 @@ Functions</h2></td></tr>
 
 <p>Polls for an event from the system queue and translates it to an E2D event. </p>
 <p>This function checks the system's event queue for new events and, if available, translates them into the E2D engine's internal event format. It is used within the main game loop to process input and other system events.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">event</td><td>Reference to an <a class="el" href="structe2d_1_1Event.html" title="Represents a generic event, encapsulating various event types such as keyboard inputs.">Event</a> struct where the polled event will be stored. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if an event was successfully polled, false if the event queue was empty. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An optional <a class="el" href="structe2d_1_1Event.html" title="Represents a generic event, encapsulating various event types such as keyboard inputs.">Event</a>. The optional contains an <a class="el" href="structe2d_1_1Event.html" title="Represents a generic event, encapsulating various event types such as keyboard inputs.">Event</a> if an event was successfully polled, or std::nullopt if the event queue was empty. </dd></dl>
 
 </div>
 </div>
