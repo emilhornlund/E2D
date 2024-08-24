@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>E2D: include/E2D/Engine/Renderer.hpp Source File</title>
+<title>E2D: src/E2D/Engine/Renderer.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_acae4a6795fa1086d34f612ee46a3e1e.html">E2D</a></li><li class="navelem"><a class="el" href="dir_66d8f6369ceeeff49b7f39c739034f20.html">Engine</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4c821e1b1a81b8aa4b54aea9a12b0a94.html">E2D</a></li><li class="navelem"><a class="el" href="dir_82d84b2d558a8c6f79bede547ba7bf68.html">Engine</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -82,45 +82,46 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacee2d.html">e2d</a></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">class </span>Renderable; <span class="comment">// Forward declaration of Renderable</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">class </span>Window;     <span class="comment">// Forward declaration of Window</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">namespace </span>internal</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">class </span>RendererImpl; <span class="comment">// Forward declaration of RendererImpl</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">class </span>RenderQueue;  <span class="comment">// Forward declaration of RenderQueue</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <span class="comment">// namespace internal</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html">   59</a></span>&#160;<span class="keyword">class </span><a class="code" href="Engine_2Export_8hpp.html#a554ac2f2f9fbb578d3fcaa010b299dd8">E2D_ENGINE_API</a> <a class="code" href="classe2d_1_1Renderer.html">Renderer</a> final : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#af8997b2954dda8ffe99e3d284375235a">   67</a></span>&#160;    <a class="code" href="classe2d_1_1Renderer.html#af8997b2954dda8ffe99e3d284375235a">Renderer</a>();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#a78761466ade0e2daa3102ad077c96336">   74</a></span>&#160;    <a class="code" href="classe2d_1_1Renderer.html#a78761466ade0e2daa3102ad077c96336">~Renderer</a>();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#a10ca9cd218477940043581c937ccaf4c">   82</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Renderer.html#a10ca9cd218477940043581c937ccaf4c">create</a>(<span class="keyword">const</span> <a class="code" href="classe2d_1_1Window.html">Window</a>&amp; window);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#affcddc6cd83a3c3f390ecfdb938ee0ec">   89</a></span>&#160;    [[maybe_unused]] <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Renderer.html#affcddc6cd83a3c3f390ecfdb938ee0ec">isCreated</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#aa4c7c1a826083678ca9bfee433230f84">   94</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Renderer.html#aa4c7c1a826083678ca9bfee433230f84">destroy</a>();</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#a3363944f716fd1b39fcd222d21ac2ee0">  105</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Renderer.html#a3363944f716fd1b39fcd222d21ac2ee0">draw</a>(<span class="keyword">const</span> <a class="code" href="classe2d_1_1Renderable.html">Renderable</a>* renderable);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#a3bbcde818048a897f75eabd8405297b0">  114</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Renderer.html#a3bbcde818048a897f75eabd8405297b0">render</a>(<span class="keyword">const</span> <a class="code" href="classe2d_1_1Color.html">Color</a>&amp; drawColor) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#ae87a4d85a9d9a6cd60c6f22a74bf57db">  123</a></span>&#160;    <span class="keywordtype">void</span>* <a class="code" href="classe2d_1_1Renderer.html#ae87a4d85a9d9a6cd60c6f22a74bf57db">getNativeRendererHandle</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    std::unique_ptr&lt;internal::RendererImpl&gt; m_rendererImpl; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    std::unique_ptr&lt;internal::RenderQueue&gt;  m_renderQueue;  </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}; <span class="comment">// class Renderer</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;} <span class="comment">// namespace e2d</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_ENGINE_RENDERER_HPP</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">struct </span>SDL_Renderer; <span class="comment">// Forward declaration of SDL_Renderer</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacee2d.html">e2d</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">class </span>Renderable; <span class="comment">// Forward declaration of Renderable</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">class </span>Window;     <span class="comment">// Forward declaration of Window</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">namespace </span>internal</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">class </span>RenderQueue; <span class="comment">// Forward declaration of RenderQueue</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <span class="comment">// namespace internal</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html">   60</a></span>&#160;<span class="keyword">class </span><a class="code" href="Engine_2Export_8hpp.html#a554ac2f2f9fbb578d3fcaa010b299dd8">E2D_ENGINE_API</a> <a class="code" href="classe2d_1_1Renderer.html">Renderer</a> final : <a class="code" href="classe2d_1_1NonCopyable.html">NonCopyable</a></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#af8997b2954dda8ffe99e3d284375235a">   68</a></span>&#160;    <a class="code" href="classe2d_1_1Renderer.html#af8997b2954dda8ffe99e3d284375235a">Renderer</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#a78761466ade0e2daa3102ad077c96336">   75</a></span>&#160;    <a class="code" href="classe2d_1_1Renderer.html#a78761466ade0e2daa3102ad077c96336">~Renderer</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#a10ca9cd218477940043581c937ccaf4c">   83</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Renderer.html#a10ca9cd218477940043581c937ccaf4c">create</a>(<span class="keyword">const</span> <a class="code" href="classe2d_1_1Window.html">Window</a>&amp; window);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#affcddc6cd83a3c3f390ecfdb938ee0ec">   90</a></span>&#160;    [[maybe_unused]] <span class="keywordtype">bool</span> <a class="code" href="classe2d_1_1Renderer.html#affcddc6cd83a3c3f390ecfdb938ee0ec">isCreated</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#aa4c7c1a826083678ca9bfee433230f84">   95</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Renderer.html#aa4c7c1a826083678ca9bfee433230f84">destroy</a>();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#a3363944f716fd1b39fcd222d21ac2ee0">  106</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Renderer.html#a3363944f716fd1b39fcd222d21ac2ee0">draw</a>(<span class="keyword">const</span> <a class="code" href="classe2d_1_1Renderable.html">Renderable</a>* renderable);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#a3bbcde818048a897f75eabd8405297b0">  115</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classe2d_1_1Renderer.html#a3bbcde818048a897f75eabd8405297b0">render</a>(<span class="keyword">const</span> <a class="code" href="classe2d_1_1Color.html">Color</a>&amp; drawColor) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="classe2d_1_1Renderer.html#a96f3cd6b2091c53eacd2ce276f9ee423">  124</a></span>&#160;    SDL_Renderer* <a class="code" href="classe2d_1_1Renderer.html#a96f3cd6b2091c53eacd2ce276f9ee423">getNativeRenderer</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    SDL_Renderer*                          m_renderer{<span class="keyword">nullptr</span>}; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    std::unique_ptr&lt;internal::RenderQueue&gt; m_renderQueue;       </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}; <span class="comment">// class Renderer</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;} <span class="comment">// namespace e2d</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//E2D_ENGINE_RENDERER_HPP</span></div>
 <div class="ttc" id="aColor_8hpp_html"><div class="ttname"><a href="Color_8hpp.html">Color.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aEngine_2Export_8hpp_html"><div class="ttname"><a href="Engine_2Export_8hpp.html">Export.hpp</a></div><div class="ttdoc">MIT License.</div></div>
 <div class="ttc" id="aEngine_2Export_8hpp_html_a554ac2f2f9fbb578d3fcaa010b299dd8"><div class="ttname"><a href="Engine_2Export_8hpp.html#a554ac2f2f9fbb578d3fcaa010b299dd8">E2D_ENGINE_API</a></div><div class="ttdeci">#define E2D_ENGINE_API</div><div class="ttdef"><b>Definition:</b> <a href="Engine_2Export_8hpp_source.html#l00035">Export.hpp:35</a></div></div>
@@ -128,16 +129,16 @@ $(function() {
 <div class="ttc" id="aclasse2d_1_1Color_html"><div class="ttname"><a href="classe2d_1_1Color.html">e2d::Color</a></div><div class="ttdoc">Utility class for manipulating RGBA colors.</div><div class="ttdef"><b>Definition:</b> <a href="Color_8hpp_source.html#l00042">Color.hpp:43</a></div></div>
 <div class="ttc" id="aclasse2d_1_1NonCopyable_html"><div class="ttname"><a href="classe2d_1_1NonCopyable.html">e2d::NonCopyable</a></div><div class="ttdoc">The NonCopyable class provides a base class to make derived classes non-copyable.</div><div class="ttdef"><b>Definition:</b> <a href="NonCopyable_8hpp_source.html#l00044">NonCopyable.hpp:45</a></div></div>
 <div class="ttc" id="aclasse2d_1_1Renderable_html"><div class="ttname"><a href="classe2d_1_1Renderable.html">e2d::Renderable</a></div><div class="ttdoc">Abstract base class for renderable objects.</div><div class="ttdef"><b>Definition:</b> <a href="Renderable_8hpp_source.html#l00047">Renderable.hpp:48</a></div></div>
-<div class="ttc" id="aclasse2d_1_1Renderer_html"><div class="ttname"><a href="classe2d_1_1Renderer.html">e2d::Renderer</a></div><div class="ttdoc">Handles the rendering process for graphical objects.</div><div class="ttdef"><b>Definition:</b> <a href="Renderer_8hpp_source.html#l00059">Renderer.hpp:60</a></div></div>
+<div class="ttc" id="aclasse2d_1_1Renderer_html"><div class="ttname"><a href="classe2d_1_1Renderer.html">e2d::Renderer</a></div><div class="ttdoc">Handles the rendering process for graphical objects.</div><div class="ttdef"><b>Definition:</b> <a href="Renderer_8hpp_source.html#l00060">Renderer.hpp:61</a></div></div>
 <div class="ttc" id="aclasse2d_1_1Renderer_html_a10ca9cd218477940043581c937ccaf4c"><div class="ttname"><a href="classe2d_1_1Renderer.html#a10ca9cd218477940043581c937ccaf4c">e2d::Renderer::create</a></div><div class="ttdeci">bool create(const Window &amp;window)</div><div class="ttdoc">Initializes the renderer with the specified window.</div></div>
 <div class="ttc" id="aclasse2d_1_1Renderer_html_a3363944f716fd1b39fcd222d21ac2ee0"><div class="ttname"><a href="classe2d_1_1Renderer.html#a3363944f716fd1b39fcd222d21ac2ee0">e2d::Renderer::draw</a></div><div class="ttdeci">void draw(const Renderable *renderable)</div><div class="ttdoc">Adds a Renderable object to the render queue.</div></div>
 <div class="ttc" id="aclasse2d_1_1Renderer_html_a3bbcde818048a897f75eabd8405297b0"><div class="ttname"><a href="classe2d_1_1Renderer.html#a3bbcde818048a897f75eabd8405297b0">e2d::Renderer::render</a></div><div class="ttdeci">void render(const Color &amp;drawColor) const</div><div class="ttdoc">Renders content to the window using the specified color.</div></div>
 <div class="ttc" id="aclasse2d_1_1Renderer_html_a78761466ade0e2daa3102ad077c96336"><div class="ttname"><a href="classe2d_1_1Renderer.html#a78761466ade0e2daa3102ad077c96336">e2d::Renderer::~Renderer</a></div><div class="ttdeci">~Renderer()</div><div class="ttdoc">Destructor.</div></div>
+<div class="ttc" id="aclasse2d_1_1Renderer_html_a96f3cd6b2091c53eacd2ce276f9ee423"><div class="ttname"><a href="classe2d_1_1Renderer.html#a96f3cd6b2091c53eacd2ce276f9ee423">e2d::Renderer::getNativeRenderer</a></div><div class="ttdeci">SDL_Renderer * getNativeRenderer() const</div><div class="ttdoc">Retrieves the native renderer object.</div></div>
 <div class="ttc" id="aclasse2d_1_1Renderer_html_aa4c7c1a826083678ca9bfee433230f84"><div class="ttname"><a href="classe2d_1_1Renderer.html#aa4c7c1a826083678ca9bfee433230f84">e2d::Renderer::destroy</a></div><div class="ttdeci">void destroy()</div><div class="ttdoc">Destroys the renderer, freeing its resources.</div></div>
-<div class="ttc" id="aclasse2d_1_1Renderer_html_ae87a4d85a9d9a6cd60c6f22a74bf57db"><div class="ttname"><a href="classe2d_1_1Renderer.html#ae87a4d85a9d9a6cd60c6f22a74bf57db">e2d::Renderer::getNativeRendererHandle</a></div><div class="ttdeci">void * getNativeRendererHandle() const</div><div class="ttdoc">Retrieves a handle to the native renderer.</div></div>
 <div class="ttc" id="aclasse2d_1_1Renderer_html_af8997b2954dda8ffe99e3d284375235a"><div class="ttname"><a href="classe2d_1_1Renderer.html#af8997b2954dda8ffe99e3d284375235a">e2d::Renderer::Renderer</a></div><div class="ttdeci">Renderer()</div><div class="ttdoc">Constructs a new Renderer object.</div></div>
 <div class="ttc" id="aclasse2d_1_1Renderer_html_affcddc6cd83a3c3f390ecfdb938ee0ec"><div class="ttname"><a href="classe2d_1_1Renderer.html#affcddc6cd83a3c3f390ecfdb938ee0ec">e2d::Renderer::isCreated</a></div><div class="ttdeci">bool isCreated() const</div><div class="ttdoc">Checks if the renderer is created and valid.</div></div>
-<div class="ttc" id="aclasse2d_1_1Window_html"><div class="ttname"><a href="classe2d_1_1Window.html">e2d::Window</a></div><div class="ttdoc">Represents a graphical window.</div><div class="ttdef"><b>Definition:</b> <a href="Window_8hpp_source.html#l00054">Window.hpp:55</a></div></div>
+<div class="ttc" id="aclasse2d_1_1Window_html"><div class="ttname"><a href="classe2d_1_1Window.html">e2d::Window</a></div><div class="ttdoc">Represents a graphical window.</div><div class="ttdef"><b>Definition:</b> <a href="Window_8hpp_source.html#l00051">Window.hpp:52</a></div></div>
 <div class="ttc" id="anamespacee2d_html"><div class="ttname"><a href="namespacee2d.html">e2d</a></div><div class="ttdef"><b>Definition:</b> <a href="Color_8hpp_source.html#l00031">Color.hpp:32</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

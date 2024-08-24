@@ -112,15 +112,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3bbcde818048a897f75eabd8405297b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Renderer.html#a3bbcde818048a897f75eabd8405297b0">render</a> (const <a class="el" href="classe2d_1_1Color.html">Color</a> &amp;drawColor) const</td></tr>
 <tr class="memdesc:a3bbcde818048a897f75eabd8405297b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders content to the window using the specified color.  <a href="classe2d_1_1Renderer.html#a3bbcde818048a897f75eabd8405297b0">More...</a><br /></td></tr>
 <tr class="separator:a3bbcde818048a897f75eabd8405297b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae87a4d85a9d9a6cd60c6f22a74bf57db"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Renderer.html#ae87a4d85a9d9a6cd60c6f22a74bf57db">getNativeRendererHandle</a> () const</td></tr>
-<tr class="memdesc:ae87a4d85a9d9a6cd60c6f22a74bf57db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a handle to the native renderer.  <a href="classe2d_1_1Renderer.html#ae87a4d85a9d9a6cd60c6f22a74bf57db">More...</a><br /></td></tr>
-<tr class="separator:ae87a4d85a9d9a6cd60c6f22a74bf57db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96f3cd6b2091c53eacd2ce276f9ee423"><td class="memItemLeft" align="right" valign="top">SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Renderer.html#a96f3cd6b2091c53eacd2ce276f9ee423">getNativeRenderer</a> () const</td></tr>
+<tr class="memdesc:a96f3cd6b2091c53eacd2ce276f9ee423"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the native renderer object.  <a href="classe2d_1_1Renderer.html#a96f3cd6b2091c53eacd2ce276f9ee423">More...</a><br /></td></tr>
+<tr class="separator:a96f3cd6b2091c53eacd2ce276f9ee423"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handles the rendering process for graphical objects. </p>
 <p>The <a class="el" href="classe2d_1_1Renderer.html" title="Handles the rendering process for graphical objects.">Renderer</a> class is responsible for managing and executing the rendering process of <a class="el" href="classe2d_1_1Renderable.html" title="Abstract base class for renderable objects.">Renderable</a> objects within the E2D Engine. It maintains a render queue to sort and render objects based on their render priority. The <a class="el" href="classe2d_1_1Renderer.html" title="Handles the rendering process for graphical objects.">Renderer</a> class provides functions for adding <a class="el" href="classe2d_1_1Renderable.html" title="Abstract base class for renderable objects.">Renderable</a> objects to the queue and for performing the actual rendering process to display the content on the screen. </p>
 
-<p class="definition">Definition at line <a class="el" href="Renderer_8hpp_source.html#l00059">59</a> of file <a class="el" href="Renderer_8hpp_source.html">Renderer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Renderer_8hpp_source.html#l00060">60</a> of file <a class="el" href="Renderer_8hpp_source.html">Renderer.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af8997b2954dda8ffe99e3d284375235a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af8997b2954dda8ffe99e3d284375235a">&#9670;&nbsp;</a></span>Renderer()</h2>
@@ -236,14 +236,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae87a4d85a9d9a6cd60c6f22a74bf57db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae87a4d85a9d9a6cd60c6f22a74bf57db">&#9670;&nbsp;</a></span>getNativeRendererHandle()</h2>
+<a id="a96f3cd6b2091c53eacd2ce276f9ee423"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96f3cd6b2091c53eacd2ce276f9ee423">&#9670;&nbsp;</a></span>getNativeRenderer()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* e2d::Renderer::getNativeRendererHandle </td>
+          <td class="memname">SDL_Renderer* e2d::Renderer::getNativeRenderer </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -251,9 +251,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves a handle to the native renderer. </p>
-<p>This function is used internally to link the renderer with other components.</p>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the native renderer handle. </dd></dl>
+<p>Retrieves the native renderer object. </p>
+<p>Provides access to the underlying SDL_Renderer object.</p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the underlying SDL_Renderer object. </dd></dl>
 
 </div>
 </div>
@@ -305,7 +305,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/E2D/Engine/<a class="el" href="Renderer_8hpp_source.html">Renderer.hpp</a></li>
+<li>src/E2D/Engine/<a class="el" href="Renderer_8hpp_source.html">Renderer.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -106,15 +106,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0afc703a47cf468181c5cab8907e1bb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Window.html#a0afc703a47cf468181c5cab8907e1bb6">destroy</a> ()</td></tr>
 <tr class="memdesc:a0afc703a47cf468181c5cab8907e1bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the window, freeing its resources.  <a href="classe2d_1_1Window.html#a0afc703a47cf468181c5cab8907e1bb6">More...</a><br /></td></tr>
 <tr class="separator:a0afc703a47cf468181c5cab8907e1bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a937ea86a22949258f82e38ce7d588680"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Window.html#a937ea86a22949258f82e38ce7d588680">getNativeWindowHandle</a> () const</td></tr>
-<tr class="memdesc:a937ea86a22949258f82e38ce7d588680"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a handle to the native window.  <a href="classe2d_1_1Window.html#a937ea86a22949258f82e38ce7d588680">More...</a><br /></td></tr>
-<tr class="separator:a937ea86a22949258f82e38ce7d588680"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a938247d7100656d7366b2c2d92da3f29"><td class="memItemLeft" align="right" valign="top">SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Window.html#a938247d7100656d7366b2c2d92da3f29">getNativeWindow</a> () const</td></tr>
+<tr class="memdesc:a938247d7100656d7366b2c2d92da3f29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the native window object.  <a href="classe2d_1_1Window.html#a938247d7100656d7366b2c2d92da3f29">More...</a><br /></td></tr>
+<tr class="separator:a938247d7100656d7366b2c2d92da3f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a graphical window. </p>
 <p>This class provides functionalities to create, manage, and interact with a graphical window. It abstracts the underlying implementation details and provides a simple interface for window management. </p>
 
-<p class="definition">Definition at line <a class="el" href="Window_8hpp_source.html#l00054">54</a> of file <a class="el" href="Window_8hpp_source.html">Window.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Window_8hpp_source.html#l00051">51</a> of file <a class="el" href="Window_8hpp_source.html">Window.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9498d7f4a647b1f87d033b8c1b65a0d1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9498d7f4a647b1f87d033b8c1b65a0d1">&#9670;&nbsp;</a></span>Window()</h2>
@@ -223,14 +223,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a937ea86a22949258f82e38ce7d588680"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a937ea86a22949258f82e38ce7d588680">&#9670;&nbsp;</a></span>getNativeWindowHandle()</h2>
+<a id="a938247d7100656d7366b2c2d92da3f29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a938247d7100656d7366b2c2d92da3f29">&#9670;&nbsp;</a></span>getNativeWindow()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* e2d::Window::getNativeWindowHandle </td>
+          <td class="memname">SDL_Window* e2d::Window::getNativeWindow </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -238,9 +238,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves a handle to the native window. </p>
-<p>This function is used internally to link the window with other components.</p>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the native window handle. </dd></dl>
+<p>Retrieves the native window object. </p>
+<p>Provides access to the underlying SDL_Window object used for managing the window.</p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the underlying SDL_Window object. </dd></dl>
 
 </div>
 </div>
@@ -266,7 +266,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/E2D/Engine/<a class="el" href="Window_8hpp_source.html">Window.hpp</a></li>
+<li>src/E2D/Engine/<a class="el" href="Window_8hpp_source.html">Window.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
