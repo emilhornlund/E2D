@@ -39,6 +39,7 @@ namespace e2d
 {
 class ObjectRegistry;   // Forward declaration of ObjectRegistry
 class ResourceRegistry; // Forward declaration of ResourceRegistry
+class SceneManager;     // Forward declaration of SceneManager
 
 /**
  * @class Application
@@ -94,24 +95,6 @@ public:
     void quit(int exitCode = 0);
 
     /**
-     * @brief Gets the ObjectRegistry instance used by the application.
-     *
-     * Provides access to the object registry managed by the application.
-     *
-     * @return A reference to the ObjectRegistry.
-     */
-    ObjectRegistry& getObjectRegistry() const;
-
-    /**
-     * @brief Gets the ResourceRegistry instance used by the application.
-     *
-     * Provides access to the resource registry managed by the application.
-     *
-     * @return A reference to the ResourceRegistry.
-     */
-    ResourceRegistry& getResourceRegistry() const;
-
-    /**
      * @brief Gets the background color of the window.
      *
      * Retrieves the current background color of the window.
@@ -131,6 +114,15 @@ public:
 
 protected:
     /**
+     * @brief Gets the SceneManager instance used by the application.
+     *
+     * This method returns the SceneManager that handles the current scenes within the application.
+     *
+     * @return A reference to the SceneManager.
+     */
+    SceneManager& getSceneManager() const;
+
+    /**
      * @brief Called when the application starts running.
      *
      * Override this method in derived classes to implement custom logic that should
@@ -139,12 +131,11 @@ protected:
     virtual void onRunning();
 
 private:
-    int                               m_exitCode = 0;     //!< The exit code of the application.
-    bool                              m_running  = false; //!< Flag indicating whether the application is running.
-    const std::string                 m_windowTitle;      //!< The title of the window.
-    std::unique_ptr<ObjectRegistry>   m_objectRegistry;   //!< Unique pointer to the object registry.
-    std::unique_ptr<ResourceRegistry> m_resourceRegistry; //!< Unique pointer to the resource registry.
-    Color                             m_backgroundColor;  //!< The background color of the window.
+    int               m_exitCode = 0;     //!< The exit code of the application.
+    bool              m_running  = false; //!< Flag indicating whether the application is running.
+    const std::string m_windowTitle;      //!< The title of the window.
+    std::unique_ptr<SceneManager> m_sceneManager; //!< Pointer to the SceneManager responsible for handling scenes within the application.
+    Color                         m_backgroundColor; //!< The background color of the window.
 
 }; // class Application
 

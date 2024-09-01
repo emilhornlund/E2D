@@ -191,6 +191,12 @@ function(e2d_add_test target SOURCES DEPENDS)
     e2d_set_target_warnings(${target})
     e2d_set_public_symbols_hidden(${target})
 
+    add_custom_command(
+            TARGET ${target} PRE_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_LIST_DIR}/resources
+            $<TARGET_FILE_DIR:${target}>/resources/${RES_NAME}
+            COMMENT "Copying resource file: ${RESOURCE_FILE}")
+
     catch_discover_tests(${target} WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR})
 endfunction()
 

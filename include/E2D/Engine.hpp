@@ -41,6 +41,8 @@
 #include <E2D/Engine/Renderable.hpp>
 #include <E2D/Engine/Resource.hpp>
 #include <E2D/Engine/ResourceRegistry.hpp>
+#include <E2D/Engine/Scene.hpp>
+#include <E2D/Engine/SceneManager.hpp>
 #include <E2D/Engine/Sprite.hpp>
 #include <E2D/Engine/System.hpp>
 #include <E2D/Engine/SystemManager.hpp>

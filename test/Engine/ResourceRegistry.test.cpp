@@ -27,7 +27,6 @@
 #include "helloworld.bin.hpp"
 #include "opensans.bin.hpp"
 
-#include <E2D/Engine/Application.hpp>
 #include <E2D/Engine/CoreSystem.hpp>
 #include <E2D/Engine/Font.hpp>
 #include <E2D/Engine/GraphicsSystem.hpp>
@@ -35,9 +34,10 @@
 #include <E2D/Engine/ResourceRegistry.hpp>
 #include <E2D/Engine/SystemManager.hpp>
 #include <E2D/Engine/Texture.hpp>
-#include <E2D/Engine/Window.hpp>
 
 #include <catch2/catch_test_macros.hpp>
+
+#include <filesystem>
 
 class DummyFileResource final : public e2d::Resource
 {
@@ -59,16 +59,6 @@ public:
     int mTest{123};
 };
 
-class ResourceRegistryTestApplication final : public e2d::Application
-{
-public:
-    ResourceRegistryTestApplication() : e2d::Application("ResourceRegistryTestApp")
-    {
-    }
-
-    ~ResourceRegistryTestApplication() final = default;
-};
-
 class ResourceRegistryTest
 {
 public:
@@ -87,23 +77,23 @@ public:
 
 TEST_CASE_METHOD(ResourceRegistryTest, "ResourceRegistry Tests", "[ResourceRegistry]")
 {
-    e2d::ResourceRegistry resourceRegistry;
+    auto& resourceRegistry = e2d::ResourceRegistry::getInstance();
 
     SECTION("A resource does not exist initially")
     {
-        REQUIRE_FALSE(resourceRegistry.exists<DummyFileResource>("MyDummyFileResource"));
+        REQUIRE_FALSE(resourceRegistry.exists<DummyFileResource>("MyDummyFileResource1"));
 
-        REQUIRE_THROWS(resourceRegistry.get<DummyFileResource>("MyDummyFileResource"));
+        REQUIRE_THROWS(resourceRegistry.get<DummyFileResource>("MyDummyFileResource1"));
     }
 
     SECTION("A generic resource was loaded and retrieved successfully")
     {
-        REQUIRE(resourceRegistry.loadFromFile<DummyFileResource>("MyDummyFileResource",
+        REQUIRE(resourceRegistry.loadFromFile<DummyFileResource>("MyDummyFileResource2",
                                                                  "/some/path/to/MyDummyFileResource.ext"));
 
-        REQUIRE(resourceRegistry.exists<DummyFileResource>("MyDummyFileResource"));
+        REQUIRE(resourceRegistry.exists<DummyFileResource>("MyDummyFileResource2"));
 
-        auto dummyResource = resourceRegistry.get<DummyFileResource>("MyDummyFileResource");
+        auto dummyResource = resourceRegistry.get<DummyFileResource>("MyDummyFileResource2");
 
         REQUIRE_FALSE(dummyResource == nullptr);
         REQUIRE(dummyResource->mTest == 123);
@@ -111,20 +101,20 @@ TEST_CASE_METHOD(ResourceRegistryTest, "ResourceRegistry Tests", "[ResourceRegis
 
     SECTION("A generic resource was loaded unsuccessfully")
     {
-        REQUIRE_FALSE(resourceRegistry.loadFromFile<DummyFileResource>("MyDummyFileResource", ""));
+        REQUIRE_FALSE(resourceRegistry.loadFromFile<DummyFileResource>("MyDummyFileResource3", ""));
 
-        REQUIRE_FALSE(resourceRegistry.exists<DummyFileResource>("MyDummyFileResource"));
+        REQUIRE_FALSE(resourceRegistry.exists<DummyFileResource>("MyDummyFileResource3"));
 
-        REQUIRE_THROWS(resourceRegistry.get<DummyFileResource>("MyDummyFileResource"));
+        REQUIRE_THROWS(resourceRegistry.get<DummyFileResource>("MyDummyFileResource3"));
     }
 
     SECTION("A texture resource was loaded from file and retrieved successfully")
     {
-        REQUIRE(resourceRegistry.loadFromFile<e2d::Texture>("HelloWorld", "resources/hello-world.png"));
+        REQUIRE(resourceRegistry.loadFromFile<e2d::Texture>("HelloWorld1", "resources/hello-world.png"));
 
-        REQUIRE(resourceRegistry.exists<e2d::Texture>("HelloWorld"));
+        REQUIRE(resourceRegistry.exists<e2d::Texture>("HelloWorld1"));
 
-        auto helloWorldTextureResource = resourceRegistry.get<e2d::Texture>("HelloWorld");
+        auto helloWorldTextureResource = resourceRegistry.get<e2d::Texture>("HelloWorld1");
 
         REQUIRE_FALSE(helloWorldTextureResource == nullptr);
         REQUIRE(helloWorldTextureResource->isLoaded() == true);
@@ -133,20 +123,20 @@ TEST_CASE_METHOD(ResourceRegistryTest, "ResourceRegistry Tests", "[ResourceRegis
 
     SECTION("A texture resource was loaded from file unsuccessfully")
     {
-        REQUIRE_FALSE(resourceRegistry.loadFromFile<e2d::Texture>("HelloWorld", ""));
+        REQUIRE_FALSE(resourceRegistry.loadFromFile<e2d::Texture>("HelloWorld2", ""));
 
-        REQUIRE_FALSE(resourceRegistry.exists<e2d::Texture>("HelloWorld"));
+        REQUIRE_FALSE(resourceRegistry.exists<e2d::Texture>("HelloWorld2"));
 
-        REQUIRE_THROWS(resourceRegistry.get<e2d::Texture>("HelloWorld"));
+        REQUIRE_THROWS(resourceRegistry.get<e2d::Texture>("HelloWorld2"));
     }
 
     SECTION("A texture resource was loaded from memory and retrieved successfully")
     {
-        REQUIRE(resourceRegistry.loadFromMemory<e2d::Texture>("HelloWorld", helloworld_data, helloworld_data_length));
+        REQUIRE(resourceRegistry.loadFromMemory<e2d::Texture>("HelloWorld3", helloworld_data, helloworld_data_length));
 
-        REQUIRE(resourceRegistry.exists<e2d::Texture>("HelloWorld"));
+        REQUIRE(resourceRegistry.exists<e2d::Texture>("HelloWorld3"));
 
-        auto helloWorldTextureResource = resourceRegistry.get<e2d::Texture>("HelloWorld");
+        auto helloWorldTextureResource = resourceRegistry.get<e2d::Texture>("HelloWorld3");
 
         REQUIRE_FALSE(helloWorldTextureResource == nullptr);
         REQUIRE(helloWorldTextureResource->isLoaded() == true);
@@ -155,31 +145,31 @@ TEST_CASE_METHOD(ResourceRegistryTest, "ResourceRegistry Tests", "[ResourceRegis
 
     SECTION("A font resource was loaded from file and retrieved successfully")
     {
-        REQUIRE(resourceRegistry.loadFromFile<e2d::Font>("OpenSans", "resources/OpenSans.ttf"));
+        REQUIRE(resourceRegistry.loadFromFile<e2d::Font>("OpenSans1", "resources/OpenSans.ttf"));
 
-        REQUIRE(resourceRegistry.exists<e2d::Font>("OpenSans"));
+        REQUIRE(resourceRegistry.exists<e2d::Font>("OpenSans1"));
 
-        auto resource = resourceRegistry.get<e2d::Font>("OpenSans");
+        auto resource = resourceRegistry.get<e2d::Font>("OpenSans1");
 
         REQUIRE_FALSE(resource == nullptr);
     }
 
     SECTION("A font resource was loaded from file unsuccessfully")
     {
-        REQUIRE_FALSE(resourceRegistry.loadFromFile<e2d::Font>("OpenSans", ""));
+        REQUIRE_FALSE(resourceRegistry.loadFromFile<e2d::Font>("OpenSans2", ""));
 
-        REQUIRE_FALSE(resourceRegistry.exists<e2d::Font>("OpenSans"));
+        REQUIRE_FALSE(resourceRegistry.exists<e2d::Font>("OpenSans2"));
 
-        REQUIRE_THROWS(resourceRegistry.get<e2d::Font>("OpenSans"));
+        REQUIRE_THROWS(resourceRegistry.get<e2d::Font>("OpenSans2"));
     }
 
     SECTION("A font resource was loaded from memory and retrieved successfully")
     {
-        REQUIRE(resourceRegistry.loadFromMemory<e2d::Font>("OpenSans", open_sans_data, open_sans_data_length));
+        REQUIRE(resourceRegistry.loadFromMemory<e2d::Font>("OpenSans3", open_sans_data, open_sans_data_length));
 
-        REQUIRE(resourceRegistry.exists<e2d::Font>("OpenSans"));
+        REQUIRE(resourceRegistry.exists<e2d::Font>("OpenSans3"));
 
-        auto resource = resourceRegistry.get<e2d::Font>("OpenSans");
+        auto resource = resourceRegistry.get<e2d::Font>("OpenSans3");
 
         REQUIRE_FALSE(resource == nullptr);
     }

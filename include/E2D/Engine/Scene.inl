@@ -1,5 +1,5 @@
 /**
- * @file ResourceRegistry.cpp
+ * @file Scene.inl
  *
  * MIT License
  *
@@ -24,47 +24,8 @@
  * THE SOFTWARE.
  */
 
-#include <E2D/Core/Logger.hpp>
-
-#include <E2D/Engine/ResourceRegistry.hpp>
-#include <E2D/Engine/Texture.hpp>
-
-#include <utility>
-
-e2d::ResourceRegistry::ResourceRegistry()
+template <typename T, typename... Args>
+T& e2d::Scene::createObject(Args&&... args) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
-    log::debug("Constructing ResourceRegistry");
-}
-
-e2d::ResourceRegistry::~ResourceRegistry()
-{
-    log::debug("Destructing ResourceRegistry");
-}
-
-e2d::ResourceRegistry& e2d::ResourceRegistry::getInstance()
-{
-    static ResourceRegistry instance;
-    return instance;
-}
-
-e2d::ResourceRegistry::IResource::IResource(std::string type, std::string identifier) :
-m_type(std::move(type)),
-m_identifier(std::move(identifier))
-{
-    log::debug("Constructing IResource of type: '{}' with identifier: '{}'", this->m_type, this->m_identifier);
-}
-
-e2d::ResourceRegistry::IResource::~IResource()
-{
-    log::debug("Destructing IResource of type: '{}' with identifier: '{}'", this->m_type, this->m_identifier);
-}
-
-const std::string& e2d::ResourceRegistry::IResource::getType() const
-{
-    return this->m_type;
-}
-
-const std::string& e2d::ResourceRegistry::IResource::getIdentifier() const
-{
-    return this->m_identifier;
+    return this->m_objectRegistry->createObject<T>(std::forward<Args>(args)...);
 }

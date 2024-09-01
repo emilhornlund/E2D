@@ -23,6 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 #include <E2D/Core/Logger.hpp>
 
 #include <E2D/Engine/Object.hpp>

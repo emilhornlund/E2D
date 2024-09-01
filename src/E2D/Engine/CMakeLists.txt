@@ -39,6 +39,11 @@ set(SRC
     ${INCROOT}/ResourceRegistry.hpp
     ${INCROOT}/ResourceRegistry.inl
     ${SRCROOT}/ResourceRegistry.cpp
+    ${INCROOT}/Scene.hpp
+    ${SRCROOT}/Scene.cpp
+    ${INCROOT}/SceneManager.hpp
+    ${INCROOT}/SceneManager.inl
+    ${SRCROOT}/SceneManager.cpp
     ${SRCROOT}/SDLKeyboardUtils.hpp
     ${SRCROOT}/SDLKeyboardUtils.cpp
     ${SRCROOT}/SDLRenderUtils.hpp

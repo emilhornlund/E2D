@@ -32,20 +32,17 @@
 #include <E2D/Engine/Event.hpp>
 #include <E2D/Engine/FontSystem.hpp>
 #include <E2D/Engine/GraphicsSystem.hpp>
-#include <E2D/Engine/Object.hpp>
-#include <E2D/Engine/ObjectRegistry.hpp>
-#include <E2D/Engine/Renderable.hpp>
 #include <E2D/Engine/Renderer.hpp>
 #include <E2D/Engine/RendererContext.hpp>
-#include <E2D/Engine/ResourceRegistry.hpp>
+#include <E2D/Engine/Scene.hpp>
+#include <E2D/Engine/SceneManager.hpp>
 #include <E2D/Engine/SystemManager.hpp>
 
 #include <utility>
 
 e2d::Application::Application(std::string windowTitle) :
 m_windowTitle(std::move(windowTitle)),
-m_objectRegistry(std::make_unique<ObjectRegistry>()),
-m_resourceRegistry(std::make_unique<ResourceRegistry>()),
+m_sceneManager(std::make_unique<SceneManager>()),
 m_backgroundColor(Color::Black)
 {
     log::debug("Constructing Application");
@@ -91,60 +88,62 @@ int e2d::Application::run()
 
     while (this->m_running)
     {
-        targetFrameTimer.start();
-        double elapsedFrameTimeAsSeconds = targetFrameTimer.getElapsedTimeAsSeconds();
-
-        while (const std::optional<Event> event = pollEvent())
+        if (this->m_sceneManager->isEmpty())
         {
-            if (event->is<Event::Closed>())
+            this->quit();
+        }
+        else
+        {
+            const auto& scene = this->m_sceneManager->getActiveScene();
+            if (!scene->isLoaded())
             {
-                this->quit();
+                scene->load();
             }
-            else if (event.has_value())
+
+            targetFrameTimer.start();
+            double elapsedFrameTimeAsSeconds = targetFrameTimer.getElapsedTimeAsSeconds();
+
+            while (const std::optional<Event> event = pollEvent())
             {
-                for (const auto& object : this->m_objectRegistry->getAllObjects())
+                if (event->is<Event::Closed>())
                 {
-                    object->onEvent(event.value());
+                    this->quit();
+                }
+                else if (event.has_value())
+                {
+                    scene->handleEvent(event.value());
                 }
             }
-        }
 
-        for (const auto& object : this->m_objectRegistry->getAllObjects())
-        {
-            object->onFixedUpdate();
-        }
+            scene->fixedUpdate();
 
-        while (elapsedFrameTimeAsSeconds < targetFrameTime - remainder)
-        {
-            const auto currentTime    = targetFrameTimer.getElapsedTimeAsSeconds();
-            const auto deltaTime      = currentTime - elapsedFrameTimeAsSeconds;
-            elapsedFrameTimeAsSeconds = currentTime;
-
-            for (const auto& object : this->m_objectRegistry->getAllObjects())
+            while (elapsedFrameTimeAsSeconds < targetFrameTime - remainder)
             {
-                object->onVariableUpdate(deltaTime);
+                const auto currentTime    = targetFrameTimer.getElapsedTimeAsSeconds();
+                const auto deltaTime      = currentTime - elapsedFrameTimeAsSeconds;
+                elapsedFrameTimeAsSeconds = currentTime;
+
+                scene->variableUpdate(deltaTime);
             }
-        }
 
-        remainder = elapsedFrameTimeAsSeconds - (targetFrameTime - remainder);
-        if (remainder >= targetFrameTime)
-        {
-            remainder = 0.0;
-        }
+            remainder = elapsedFrameTimeAsSeconds - (targetFrameTime - remainder);
+            if (remainder >= targetFrameTime)
+            {
+                remainder = 0.0;
+            }
 
-        for (const auto& entity : this->m_objectRegistry->getAllObjectsOfType<Renderable>())
-        {
-            rendererContext.getRenderer().draw(entity);
-        }
+            scene->draw();
 
-        rendererContext.getRenderer().render(this->m_backgroundColor);
+            rendererContext.getRenderer().render(this->m_backgroundColor);
 
-        this->m_objectRegistry->clean();
+            scene->clean();
+            this->m_sceneManager->clean();
 
-        elapsedTime += elapsedFrameTimeAsSeconds;
-        if (elapsedTime >= 1.0)
-        {
-            elapsedTime = 0.0;
+            elapsedTime += elapsedFrameTimeAsSeconds;
+            if (elapsedTime >= 1.0)
+            {
+                elapsedTime = 0.0;
+            }
         }
     }
 
@@ -164,16 +163,6 @@ void e2d::Application::quit(int exitCode)
     this->m_running  = false;
 }
 
-e2d::ObjectRegistry& e2d::Application::getObjectRegistry() const
-{
-    return *this->m_objectRegistry;
-}
-
-e2d::ResourceRegistry& e2d::Application::getResourceRegistry() const
-{
-    return *this->m_resourceRegistry;
-}
-
 const e2d::Color& e2d::Application::getBackgroundColor() const
 {
     return this->m_backgroundColor;
@@ -182,6 +171,11 @@ const e2d::Color& e2d::Application::getBackgroundColor() const
 void e2d::Application::setBackgroundColor(const e2d::Color& backgroundColor)
 {
     this->m_backgroundColor = backgroundColor;
+}
+
+e2d::SceneManager& e2d::Application::getSceneManager() const
+{
+    return *this->m_sceneManager;
 }
 
 void e2d::Application::onRunning()

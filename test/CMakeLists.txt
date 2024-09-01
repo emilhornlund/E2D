@@ -31,6 +31,7 @@ target_link_libraries(e2d-test-core PRIVATE SDL2 SDL2_IMAGE SDL2_TTF)
 
 # E2D Engine Library Tests
 set(ENGINE_SRC
+    Engine/derived/TestScene.hpp
     Engine/Application.test.cpp
     Engine/Event.test.cpp
     Engine/helloworld.bin.hpp
@@ -39,6 +40,8 @@ set(ENGINE_SRC
     Engine/RendererContext.test.cpp
     Engine/RendererQueue.test.cpp
     Engine/ResourceRegistry.test.cpp
+    Engine/SceneManager.test.cpp
+    Engine/Scene.test.cpp
     Engine/SDLKeyboardUtils.test.cpp
     Engine/SDLRenderUtils.test.cpp
 )

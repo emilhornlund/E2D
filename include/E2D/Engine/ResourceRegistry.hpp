@@ -142,18 +142,16 @@ private:
 
 public:
     /**
-     * @brief Constructs a new ResourceRegistry object.
+     * @brief Retrieves the singleton instance of the ResourceRegistry.
      *
-     * Initializes a new instance of the ResourceRegistry class.
-     */
-    ResourceRegistry();
-
-    /**
-     * @brief Destructor.
+     * This method returns a reference to the singleton instance of the ResourceRegistry,
+     * which is responsible for managing resources like textures, fonts, and other assets.
+     * The registry ensures that resources are efficiently loaded, accessed, and shared
+     * across the application.
      *
-     * Ensures proper cleanup of resources upon destruction.
+     * @return A reference to the singleton ResourceRegistry instance.
      */
-    ~ResourceRegistry();
+    static ResourceRegistry& getInstance();
 
     /**
      * @brief Checks if a resource of type T exists.
@@ -211,6 +209,20 @@ public:
     bool loadFromMemory(const std::string& identifier, const void* data, std::size_t size, Args&&... args);
 
 private:
+    /**
+     * @brief Constructs a new ResourceRegistry object.
+     *
+     * Initializes a new instance of the ResourceRegistry class.
+     */
+    ResourceRegistry();
+
+    /**
+     * @brief Destructor.
+     *
+     * Ensures proper cleanup of resources upon destruction.
+     */
+    ~ResourceRegistry();
+
     std::unordered_map<std::string, std::unique_ptr<IResource>> m_resources; //!< Container for storing resources by their identifiers.
 
 }; // class ResourceRegistry
