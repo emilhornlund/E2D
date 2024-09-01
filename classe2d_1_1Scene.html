@@ -106,6 +106,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9e5c13d525fc151ed23811c880b4ae05"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Scene.html#a9e5c13d525fc151ed23811c880b4ae05">isLoaded</a> () const</td></tr>
 <tr class="memdesc:a9e5c13d525fc151ed23811c880b4ae05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the scene is currently loaded.  <a href="classe2d_1_1Scene.html#a9e5c13d525fc151ed23811c880b4ae05">More...</a><br /></td></tr>
 <tr class="separator:a9e5c13d525fc151ed23811c880b4ae05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a058e7c5a4ccaa1a97326ad30b15b2ecb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Scene.html#a058e7c5a4ccaa1a97326ad30b15b2ecb">isPaused</a> () const</td></tr>
+<tr class="memdesc:a058e7c5a4ccaa1a97326ad30b15b2ecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the scene is currently paused.  <a href="classe2d_1_1Scene.html#a058e7c5a4ccaa1a97326ad30b15b2ecb">More...</a><br /></td></tr>
+<tr class="separator:a058e7c5a4ccaa1a97326ad30b15b2ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -124,6 +127,12 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a0127f3b21580381af3731a703e3bafe3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Scene.html#a0127f3b21580381af3731a703e3bafe3">onUnload</a> ()</td></tr>
 <tr class="memdesc:a0127f3b21580381af3731a703e3bafe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the scene is unloaded.  <a href="classe2d_1_1Scene.html#a0127f3b21580381af3731a703e3bafe3">More...</a><br /></td></tr>
 <tr class="separator:a0127f3b21580381af3731a703e3bafe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7df3fc78dda68d5cf4c837d16cbf139f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Scene.html#a7df3fc78dda68d5cf4c837d16cbf139f">onPause</a> ()</td></tr>
+<tr class="memdesc:a7df3fc78dda68d5cf4c837d16cbf139f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the scene is paused.  <a href="classe2d_1_1Scene.html#a7df3fc78dda68d5cf4c837d16cbf139f">More...</a><br /></td></tr>
+<tr class="separator:a7df3fc78dda68d5cf4c837d16cbf139f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61ba2daa06122e4481911fdcdc1971e7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1Scene.html#a61ba2daa06122e4481911fdcdc1971e7">onResume</a> ()</td></tr>
+<tr class="memdesc:a61ba2daa06122e4481911fdcdc1971e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the scene is resumed.  <a href="classe2d_1_1Scene.html#a61ba2daa06122e4481911fdcdc1971e7">More...</a><br /></td></tr>
+<tr class="separator:a61ba2daa06122e4481911fdcdc1971e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -344,6 +353,27 @@ template&lt;typename T , typename... Args&gt; </div>
 
 </div>
 </div>
+<a id="a058e7c5a4ccaa1a97326ad30b15b2ecb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a058e7c5a4ccaa1a97326ad30b15b2ecb">&#9670;&nbsp;</a></span>isPaused()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool e2d::Scene::isPaused </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the scene is currently paused. </p>
+<p>Determines whether the scene is currently in a paused state. When a scene is paused, it does not process updates or handle events until it is resumed.</p>
+<dl class="section return"><dt>Returns</dt><dd>True if the scene is paused, false otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="a51b90e5c302e66ac8f1b66901a2d0e24"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a51b90e5c302e66ac8f1b66901a2d0e24">&#9670;&nbsp;</a></span>onLoad()</h2>
 
@@ -369,6 +399,62 @@ template&lt;typename T , typename... Args&gt; </div>
 
 <p>Called when the scene is loaded. </p>
 <p>This method is called when the scene is first created and loaded into the system. Derived classes should override this method to perform any initialization or resource allocation required when the scene is loaded. </p>
+
+</div>
+</div>
+<a id="a7df3fc78dda68d5cf4c837d16cbf139f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7df3fc78dda68d5cf4c837d16cbf139f">&#9670;&nbsp;</a></span>onPause()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void e2d::Scene::onPause </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when the scene is paused. </p>
+<p>This method is invoked when the scene is paused. Derived classes can override this method to implement custom behavior that should occur when the scene is paused, such as stopping animations, pausing gameplay, or suspending other activities. </p>
+
+</div>
+</div>
+<a id="a61ba2daa06122e4481911fdcdc1971e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61ba2daa06122e4481911fdcdc1971e7">&#9670;&nbsp;</a></span>onResume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void e2d::Scene::onResume </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when the scene is resumed. </p>
+<p>This method is invoked when the scene is resumed after being paused. Derived classes can override this method to implement custom behavior that should occur when the scene is resumed, such as restarting animations, resuming gameplay, or continuing other activities. </p>
 
 </div>
 </div>
