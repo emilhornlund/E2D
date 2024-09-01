@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['sdlkeyboardutils_2ehpp_489',['SDLKeyboardUtils.hpp',['../SDLKeyboardUtils_8hpp.html',1,'']]],
-  ['sdlrenderutils_2ehpp_490',['SDLRenderUtils.hpp',['../SDLRenderUtils_8hpp.html',1,'']]],
-  ['sprite_2ehpp_491',['Sprite.hpp',['../Sprite_8hpp.html',1,'']]],
-  ['system_2ehpp_492',['System.hpp',['../System_8hpp.html',1,'']]],
-  ['systemmanager_2ehpp_493',['SystemManager.hpp',['../SystemManager_8hpp.html',1,'']]]
+  ['scene_2ehpp_498',['Scene.hpp',['../Scene_8hpp.html',1,'']]],
+  ['scenemanager_2ehpp_499',['SceneManager.hpp',['../SceneManager_8hpp.html',1,'']]],
+  ['sdlkeyboardutils_2ehpp_500',['SDLKeyboardUtils.hpp',['../SDLKeyboardUtils_8hpp.html',1,'']]],
+  ['sdlrenderutils_2ehpp_501',['SDLRenderUtils.hpp',['../SDLRenderUtils_8hpp.html',1,'']]],
+  ['sprite_2ehpp_502',['Sprite.hpp',['../Sprite_8hpp.html',1,'']]],
+  ['system_2ehpp_503',['System.hpp',['../System_8hpp.html',1,'']]],
+  ['systemmanager_2ehpp_504',['SystemManager.hpp',['../SystemManager_8hpp.html',1,'']]]
 ];

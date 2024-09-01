@@ -19,7 +19,7 @@ var searchData=
   ['coresystem_30',['CoreSystem',['../classe2d_1_1CoreSystem.html#a3c39d89ebf4d84ba5eb38ea79274e695',1,'e2d::CoreSystem::CoreSystem()'],['../classe2d_1_1CoreSystem.html',1,'e2d::CoreSystem']]],
   ['coresystem_2ehpp_31',['CoreSystem.hpp',['../CoreSystem_8hpp.html',1,'']]],
   ['create_32',['create',['../classe2d_1_1internal_1_1Window.html#a16659256f959a5ca0d0040bd2929b979',1,'e2d::internal::Window::create()'],['../classe2d_1_1internal_1_1Renderer.html#a1d25b65f82544b65e4d2a7c591bc66c4',1,'e2d::internal::Renderer::create()']]],
-  ['createobject_33',['createObject',['../classe2d_1_1ObjectRegistry.html#a844cf6bfc54a23f4d9dc97e0428f4dbe',1,'e2d::ObjectRegistry']]],
+  ['createobject_33',['createObject',['../classe2d_1_1Scene.html#a1fddde11d8a0b2497fe907c6608bd403',1,'e2d::Scene::createObject()'],['../classe2d_1_1ObjectRegistry.html#a844cf6bfc54a23f4d9dc97e0428f4dbe',1,'e2d::ObjectRegistry::createObject()']]],
   ['cut_34',['Cut',['../namespacee2d_1_1Keyboard.html#gad92603c71fa97e5b93c1d68951625ab0aeb334dca00e390e0d3ebf52d205807d7',1,'e2d::Keyboard']]],
   ['cyan_35',['Cyan',['../classe2d_1_1Color.html#a935323a9dcdd5879051fbd38c6a9ad8d',1,'e2d::Color']]]
 ];

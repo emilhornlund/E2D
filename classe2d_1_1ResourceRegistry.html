@@ -70,6 +70,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classe2d_1_1ResourceRegistry-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">e2d::ResourceRegistry Class Reference<span class="mlabels"><span class="mlabel">final</span></span><div class="ingroups"><a class="el" href="group__engine.html">Engine module</a></div></div>  </div>
@@ -92,12 +93,6 @@ Inheritance diagram for e2d::ResourceRegistry:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab25a0daf3fba821bb3a03d1cc6f274bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1ResourceRegistry.html#ab25a0daf3fba821bb3a03d1cc6f274bf">ResourceRegistry</a> ()</td></tr>
-<tr class="memdesc:ab25a0daf3fba821bb3a03d1cc6f274bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a> object.  <a href="classe2d_1_1ResourceRegistry.html#ab25a0daf3fba821bb3a03d1cc6f274bf">More...</a><br /></td></tr>
-<tr class="separator:ab25a0daf3fba821bb3a03d1cc6f274bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a702571386d95f862ae0e5c3aae73122e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1ResourceRegistry.html#a702571386d95f862ae0e5c3aae73122e">~ResourceRegistry</a> ()</td></tr>
-<tr class="memdesc:a702571386d95f862ae0e5c3aae73122e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="classe2d_1_1ResourceRegistry.html#a702571386d95f862ae0e5c3aae73122e">More...</a><br /></td></tr>
-<tr class="separator:a702571386d95f862ae0e5c3aae73122e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa00893514e4192541428a5b54a56c3d4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aa00893514e4192541428a5b54a56c3d4"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classe2d_1_1ResourceRegistry.html#aa00893514e4192541428a5b54a56c3d4">exists</a> (const std::string &amp;identifier) const</td></tr>
 <tr class="memdesc:aa00893514e4192541428a5b54a56c3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a resource of type T exists.  <a href="classe2d_1_1ResourceRegistry.html#aa00893514e4192541428a5b54a56c3d4">More...</a><br /></td></tr>
@@ -114,54 +109,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a32979f54b4409c0cea8e30ae86c4689e"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classe2d_1_1ResourceRegistry.html#a32979f54b4409c0cea8e30ae86c4689e">loadFromMemory</a> (const std::string &amp;identifier, const void *data, std::size_t size, Args &amp;&amp;... args)</td></tr>
 <tr class="memdesc:a32979f54b4409c0cea8e30ae86c4689e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a resource of type T from memory.  <a href="classe2d_1_1ResourceRegistry.html#a32979f54b4409c0cea8e30ae86c4689e">More...</a><br /></td></tr>
 <tr class="separator:a32979f54b4409c0cea8e30ae86c4689e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a36912e690b6ed5a3c3314ad27fa4e5fb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classe2d_1_1ResourceRegistry.html">ResourceRegistry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classe2d_1_1ResourceRegistry.html#a36912e690b6ed5a3c3314ad27fa4e5fb">getInstance</a> ()</td></tr>
+<tr class="memdesc:a36912e690b6ed5a3c3314ad27fa4e5fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the singleton instance of the <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a>.  <a href="classe2d_1_1ResourceRegistry.html#a36912e690b6ed5a3c3314ad27fa4e5fb">More...</a><br /></td></tr>
+<tr class="separator:a36912e690b6ed5a3c3314ad27fa4e5fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages loading and accessing resources by their identifiers. </p>
 <p>This class is responsible for loading resources from files and providing access to them by their identifiers. It ensures that resources are type-safe and properly managed in memory. </p>
 
 <p class="definition">Definition at line <a class="el" href="ResourceRegistry_8hpp_source.html#l00056">56</a> of file <a class="el" href="ResourceRegistry_8hpp_source.html">ResourceRegistry.hpp</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ab25a0daf3fba821bb3a03d1cc6f274bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab25a0daf3fba821bb3a03d1cc6f274bf">&#9670;&nbsp;</a></span>ResourceRegistry()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">e2d::ResourceRegistry::ResourceRegistry </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Constructs a new <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a> object. </p>
-<p>Initializes a new instance of the <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a> class. </p>
-
-</div>
-</div>
-<a id="a702571386d95f862ae0e5c3aae73122e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a702571386d95f862ae0e5c3aae73122e">&#9670;&nbsp;</a></span>~ResourceRegistry()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">e2d::ResourceRegistry::~ResourceRegistry </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Destructor. </p>
-<p>Ensures proper cleanup of resources upon destruction. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aa00893514e4192541428a5b54a56c3d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa00893514e4192541428a5b54a56c3d4">&#9670;&nbsp;</a></span>exists()</h2>
 
@@ -231,6 +191,35 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An optional reference to the resource if it exists. </dd></dl>
+
+</div>
+</div>
+<a id="a36912e690b6ed5a3c3314ad27fa4e5fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36912e690b6ed5a3c3314ad27fa4e5fb">&#9670;&nbsp;</a></span>getInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classe2d_1_1ResourceRegistry.html">ResourceRegistry</a>&amp; e2d::ResourceRegistry::getInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the singleton instance of the <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a>. </p>
+<p>This method returns a reference to the singleton instance of the <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a>, which is responsible for managing resources like textures, fonts, and other assets. The registry ensures that resources are efficiently loaded, accessed, and shared across the application.</p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the singleton <a class="el" href="classe2d_1_1ResourceRegistry.html" title="Manages loading and accessing resources by their identifiers.">ResourceRegistry</a> instance. </dd></dl>
 
 </div>
 </div>

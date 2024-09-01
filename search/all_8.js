@@ -7,9 +7,9 @@ var searchData=
   ['intrect_160',['IntRect',['../namespacee2d.html#a694b96f41ee5f9cfa53a51f824aa6b12',1,'e2d']]],
   ['is_161',['is',['../structe2d_1_1Event.html#a8ce2f9fbfd28d3053d520046a0aaea7a',1,'e2d::Event']]],
   ['iscreated_162',['isCreated',['../classe2d_1_1internal_1_1Window.html#a90fd1d97ebcf6c50da6f43525c795f65',1,'e2d::internal::Window::isCreated()'],['../classe2d_1_1internal_1_1Renderer.html#a5bc79bd6e922acf046ebbf77e842b306',1,'e2d::internal::Renderer::isCreated()']]],
-  ['isempty_163',['isEmpty',['../classe2d_1_1internal_1_1RenderQueue.html#a5b638a8e26285c7a3445d44dd2dcd708',1,'e2d::internal::RenderQueue']]],
+  ['isempty_163',['isEmpty',['../classe2d_1_1internal_1_1RenderQueue.html#a5b638a8e26285c7a3445d44dd2dcd708',1,'e2d::internal::RenderQueue::isEmpty()'],['../classe2d_1_1SceneManager.html#af7264b7754d78e6aab09fb1127fccf11',1,'e2d::SceneManager::isEmpty()']]],
   ['isinitialized_164',['isInitialized',['../classe2d_1_1internal_1_1RendererContext.html#a18b4c3625a0ee9cf6660bf4fc470e38a',1,'e2d::internal::RendererContext']]],
-  ['isloaded_165',['isLoaded',['../classe2d_1_1internal_1_1TextureImpl.html#ab6e31b25a247b170e807edfa6fad9c2f',1,'e2d::internal::TextureImpl::isLoaded()'],['../classe2d_1_1Texture.html#aa22484a0435684c7c61ff3a6c3d1062f',1,'e2d::Texture::isLoaded()']]],
+  ['isloaded_165',['isLoaded',['../classe2d_1_1Scene.html#a9e5c13d525fc151ed23811c880b4ae05',1,'e2d::Scene::isLoaded()'],['../classe2d_1_1Texture.html#aa22484a0435684c7c61ff3a6c3d1062f',1,'e2d::Texture::isLoaded()'],['../classe2d_1_1internal_1_1TextureImpl.html#ab6e31b25a247b170e807edfa6fad9c2f',1,'e2d::internal::TextureImpl::isLoaded()']]],
   ['ispaused_166',['isPaused',['../classe2d_1_1Timer.html#af2a26590de9ce45946a329d994543d51',1,'e2d::Timer']]],
   ['isrunning_167',['isRunning',['../classe2d_1_1Application.html#a5fc35c77becf95758d66d22a3676193a',1,'e2d::Application']]],
   ['isstarted_168',['isStarted',['../classe2d_1_1Timer.html#a8145ed58ad03802710f79ef136d73017',1,'e2d::Timer']]]
