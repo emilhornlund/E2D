@@ -104,6 +104,16 @@ public:
      */
     bool isLoaded() const;
 
+    /**
+     * @brief Checks if the scene is currently paused.
+     *
+     * Determines whether the scene is currently in a paused state.
+     * When a scene is paused, it does not process updates or handle events until it is resumed.
+     *
+     * @return True if the scene is paused, false otherwise.
+     */
+    bool isPaused() const;
+
 protected:
     /**
      * @brief Constructs a new Scene object.
@@ -148,6 +158,25 @@ protected:
      */
     virtual void onUnload();
 
+    /**
+     * @brief Called when the scene is paused.
+     *
+     * This method is invoked when the scene is paused. Derived classes can override this
+     * method to implement custom behavior that should occur when the scene is paused,
+     * such as stopping animations, pausing gameplay, or suspending other activities.
+     */
+    virtual void onPause();
+
+    /**
+     * @brief Called when the scene is resumed.
+     *
+     * This method is invoked when the scene is resumed after being paused.
+     * Derived classes can override this method to implement custom behavior that should
+     * occur when the scene is resumed, such as restarting animations, resuming gameplay,
+     * or continuing other activities.
+     */
+    virtual void onResume();
+
 private:
     /**
      * @brief Generates a unique identifier for the scene.
@@ -177,6 +206,22 @@ private:
      * will no longer be updated or rendered.
      */
     void unload();
+
+    /**
+     * @brief Pauses the scene.
+     *
+     * Pauses the scene by setting its state to paused and calling the `onPause` method.
+     * This will stop the scene from processing updates and handling events until it is resumed.
+     */
+    void pause();
+
+    /**
+     * @brief Resumes the scene.
+     *
+     * Resumes the scene by setting its state to active and calling the `onResume` method.
+     * This will allow the scene to start processing updates and handling events again.
+     */
+    void resume();
 
     /**
      * @brief Handles incoming events for the scene.
@@ -229,6 +274,7 @@ private:
     static std::mutex s_counterMutex;  //!< Mutex to ensure thread-safe access to the scene identifier counter.
     const std::string m_identifier;    //!< The unique identifier for this scene instance.
     bool              m_loaded{false}; //!< Flag indicating whether the scene is currently loaded.
+    bool              m_paused{true};  //!< Flag indicating whether the scene is currently paused.
     std::unique_ptr<ObjectRegistry> m_objectRegistry;        //!< Manages the lifecycle of objects within the scene.
     SceneManager*                   m_sceneManager{nullptr}; //!< Pointer to the SceneManager instance.
 

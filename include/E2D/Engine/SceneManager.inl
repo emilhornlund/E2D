@@ -29,8 +29,15 @@ T& e2d::SceneManager::pushScene(Args&&... args) // NOLINT(cppcoreguidelines-miss
 {
     static_assert(std::is_base_of<Scene, T>::value, "T must be derived from Scene");
 
+    if (!this->m_scenes.empty())
+    {
+        this->m_scenes.back()->pause();
+    }
+
     auto scene            = std::make_unique<T>(std::forward<Args>(args)...);
     scene->m_sceneManager = this;
+    scene->load();
+    scene->resume();
 
     T& ref = *scene;
     this->m_scenes.push_back(std::move(scene));

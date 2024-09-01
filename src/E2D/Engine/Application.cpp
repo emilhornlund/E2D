@@ -95,10 +95,6 @@ int e2d::Application::run()
         else
         {
             const auto& scene = this->m_sceneManager->getActiveScene();
-            if (!scene->isLoaded())
-            {
-                scene->load();
-            }
 
             targetFrameTimer.start();
             double elapsedFrameTimeAsSeconds = targetFrameTimer.getElapsedTimeAsSeconds();
@@ -115,7 +111,10 @@ int e2d::Application::run()
                 }
             }
 
-            scene->fixedUpdate();
+            if (!scene->isPaused())
+            {
+                scene->fixedUpdate();
+            }
 
             while (elapsedFrameTimeAsSeconds < targetFrameTime - remainder)
             {
@@ -123,7 +122,10 @@ int e2d::Application::run()
                 const auto deltaTime      = currentTime - elapsedFrameTimeAsSeconds;
                 elapsedFrameTimeAsSeconds = currentTime;
 
-                scene->variableUpdate(deltaTime);
+                if (!scene->isPaused())
+                {
+                    scene->variableUpdate(deltaTime);
+                }
             }
 
             remainder = elapsedFrameTimeAsSeconds - (targetFrameTime - remainder);

@@ -26,6 +26,7 @@
 
 #include <E2D/Core/Logger.hpp>
 
+#include <E2D/Engine/Event.hpp>
 #include <E2D/Engine/ObjectRegistry.hpp>
 #include <E2D/Engine/Renderable.hpp>
 #include <E2D/Engine/Renderer.hpp>
@@ -66,7 +67,7 @@ void e2d::Scene::load()
 {
     if (!this->m_loaded)
     {
-        log::debug("Loading Scene with identifier '{}'", this->m_identifier);
+        log::info("Loading Scene with identifier '{}'", this->m_identifier);
         this->onLoad();
         this->m_loaded = true;
     }
@@ -76,9 +77,29 @@ void e2d::Scene::unload()
 {
     if (this->m_loaded)
     {
-        log::debug("Unloading Scene with identifier '{}'", this->m_identifier);
+        log::info("Unloading Scene with identifier '{}'", this->m_identifier);
         this->onUnload();
         this->m_loaded = false;
+    }
+}
+
+void e2d::Scene::pause()
+{
+    if (!this->m_paused)
+    {
+        this->m_paused = true;
+        log::info("Pausing Scene with with identifier '{}'", this->m_identifier);
+        this->onPause();
+    }
+}
+
+void e2d::Scene::resume()
+{
+    if (this->m_paused)
+    {
+        this->m_paused = false;
+        log::info("Resuming Scene with with identifier '{}'", this->m_identifier);
+        this->onResume();
     }
 }
 
@@ -87,11 +108,28 @@ bool e2d::Scene::isLoaded() const
     return this->m_loaded;
 }
 
+bool e2d::Scene::isPaused() const
+{
+    return this->m_paused;
+}
+
 void e2d::Scene::handleEvent(const e2d::Event& event)
 {
-    for (const auto& object : this->m_objectRegistry->getAllObjects())
+    if (event.is<e2d::Event::LostFocus>())
     {
-        object->onEvent(event);
+        this->pause();
+    }
+    if (event.is<e2d::Event::GainedFocus>())
+    {
+        this->resume();
+    }
+
+    if (!this->m_paused)
+    {
+        for (const auto& object : this->m_objectRegistry->getAllObjects())
+        {
+            object->onEvent(event);
+        }
     }
 }
 
@@ -129,6 +167,14 @@ void e2d::Scene::onLoad()
 }
 
 void e2d::Scene::onUnload()
+{
+}
+
+void e2d::Scene::onPause()
+{
+}
+
+void e2d::Scene::onResume()
 {
 }
 

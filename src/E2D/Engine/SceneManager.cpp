@@ -68,10 +68,17 @@ void e2d::SceneManager::popScene()
         log::error("Failed to pop a scene since no scenes are loaded");
         throw std::runtime_error("Scenes are empty");
     }
+
     auto it = this->m_scenes.back();
+    it->pause();
     it->unload();
     this->m_unloadedScenes.push_back(it);
     this->m_scenes.pop_back();
+
+    if (!this->m_scenes.empty())
+    {
+        this->m_scenes.back()->resume();
+    }
 }
 
 void e2d::SceneManager::clean()
