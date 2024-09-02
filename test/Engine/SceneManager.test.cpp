@@ -42,17 +42,35 @@ TEST_CASE("SceneManager Tests", "[SceneManager]")
         REQUIRE_FALSE(sceneManager.isEmpty());
         REQUIRE(sceneManager.getActiveScene()->getIdentifier() == scene1.getIdentifier());
 
+        REQUIRE(scene1.isLoaded());
+        REQUIRE_FALSE(scene1.isPaused());
+
         const auto& scene2 = sceneManager.pushScene<TestScene>("TestScene2");
         REQUIRE_FALSE(sceneManager.isEmpty());
         REQUIRE(sceneManager.getActiveScene()->getIdentifier() == scene2.getIdentifier());
+
+        REQUIRE(scene1.isLoaded());
+        REQUIRE(scene1.isPaused());
+
+        REQUIRE(scene2.isLoaded());
+        REQUIRE_FALSE(scene2.isPaused());
 
         sceneManager.popScene();
 
         REQUIRE_FALSE(sceneManager.isEmpty());
         REQUIRE(sceneManager.getActiveScene()->getIdentifier() == scene1.getIdentifier());
 
+        REQUIRE(scene1.isLoaded());
+        REQUIRE_FALSE(scene1.isPaused());
+
+        REQUIRE_FALSE(scene2.isLoaded());
+        REQUIRE(scene2.isPaused());
+
         sceneManager.popScene();
         REQUIRE(sceneManager.isEmpty());
+
+        REQUIRE_FALSE(scene1.isLoaded());
+        REQUIRE(scene1.isPaused());
     }
 
     SECTION("Get active scene when no scenes are loaded")
